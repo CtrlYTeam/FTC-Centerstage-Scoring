@@ -1,0 +1,142 @@
+/* #f9812c oranage */
+/* #0464cc blue */
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.top_bar{
+  width: 100%;
+  height: 75px;
+  background-color: #0464cc;
+}
+/* .background{
+  background-color: #080708;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+} */
+.logo{
+  height: 60px;
+  margin: 5px;
+}
+.red_backdrop{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: -20px;
+  height: 800px;
+  background-color: #D2DAFF; 
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+  margin: 10px;
+}
+.blue_backdrop{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  height: 800px;
+  background-color: #D2DAFF; 
+  right: -20px;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+.team_one{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: -20px;
+  top: 1000px;
+  height: 800px;
+  background-color: #D2DAFF; 
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+  margin: 10px;
+}
+.team_two{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  height: 800px; 
+  right: -20px;
+  top: 1000px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+.team_one_headar, .team_two_headar{
+  font-family: monospace;
+  text-align: center;
+}
+.player_one{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  height: 400px; 
+  left: -20px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+  margin: 10px;
+}
+.player_one_headar, .player_two_headar, .player_three_headar, .player_four_headar{
+  font-family: monospace;
+  text-align: center;
+}
+.player_two{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: 50%;
+  height: 400px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+  margin: 10px;
+  
+}
+.player_three{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  height: 400px; 
+  left: -20px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+.player_four{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: 50%;
+  height: 400px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+
