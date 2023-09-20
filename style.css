@@ -4,39 +4,83 @@
     margin: 0;
     padding: 0;
   }
+  html, body {
+    overflow-x: hidden;
+  }
 
 .top_bar{
+  position: fixed;
   width: 100%;
   height: 75px;
   background-color: #0464cc;
+  z-index: 1;
 }
-.player_one_input{
-
-}
-.player_two_input{
-
-}
-.player_three_input{
-  
-}
-.player_four_input{
-  
-}
-/* .background{
-  background-color: #080708;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-} */
 .logo{
   height: 60px;
   margin: 5px;
+}
+.player_one_input{
+  width: 15%;
+  height: 35px;
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  top: 35px;
+  left: 24%;
+  transform: translate(-50%, -50%);
+}
+.player_two_input{
+  width: 15%;
+  height: 35px;
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  top: 35px;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+.vs_text{
+  font-family: monospace;
+  font-size: 3em;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.player_three_input{
+  width: 15%;
+  height: 35px;
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  top: 35px;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+.player_four_input{
+  width: 15%;
+  height: 35px;
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  top: 35px;
+  left: 76%;
+  transform: translate(-50%, -50%);
 }
 .red_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
+  top: 75px;
   left: -20px;
   height: 800px;
   background-color: #D2DAFF; 
@@ -51,6 +95,7 @@
   -webkit-box-sizing: border-box;
   width: 50%;
   height: 800px;
+  top: 75px;
   background-color: #D2DAFF; 
   right: -20px;
   position: absolute;
@@ -85,8 +130,9 @@
   border: 5px solid blue;
   border-radius: 10px;
   margin: 10px;
+
 }
-.team_one_headar, .team_two_headar{
+.team_one_header, .team_two_header{
   font-family: monospace;
   text-align: center;
 }
@@ -103,8 +149,9 @@
   border: 5px solid red;
   border-radius: 10px;
   margin: 10px;
+
 }
-.player_one_headar, .player_two_headar, .player_three_headar, .player_four_headar{
+.player_one_header, .player_two_header, .player_three_header, .player_four_header{
   font-family: monospace;
   text-align: center;
 }
@@ -121,7 +168,6 @@
   border: 5px solid red;
   border-radius: 10px;
   margin: 10px;
-  
 }
 .player_three{
   top: 400px;
@@ -151,4 +197,24 @@
   border-radius: 10px;
   margin: 10px;
 }
+.team_one_backstage_pixels_minus{
+  
+}
 
+.hexagon_top {
+  width: 0;
+  border-bottom: 30px solid #18042b;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+.hexagon_center {
+  width: 104px;
+  height: 60px;
+  background-color: #18042b;
+}
+.hexagon_bottom {
+  width: 0;
+  border-top: 30px solid #18042b; 
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
