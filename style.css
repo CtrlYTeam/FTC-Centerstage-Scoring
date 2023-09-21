@@ -45,7 +45,7 @@
 }
 .vs_text{
   font-family: monospace;
-  font-size: 3em;
+  font-size: 3.5vw;
   position: absolute;
   top: 35px;
   left: 50%;
@@ -74,6 +74,19 @@
   top: 35px;
   left: 76%;
   transform: translate(-50%, -50%);
+}
+.info_panel {
+  width: 50px;
+  aspect-ratio: 1/1;
+  font-family: monospace;
+  font-size: 3em;
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  top: 35px;
+  right: -10px;
+  transform: translate(-50%, -50%);
+  border: 0px solid transparent;
 }
 .red_backdrop{
   box-sizing: border-box;
@@ -152,7 +165,7 @@
   display: flex;
   justify-content: center;
 }
-.team_one_backstage_pixels_minus{
+.team_one_backstage_pixels_minus, .team_one_set_line_minus, .team_one_minor_penalties_minus, .team_one_major_penalties_minus{
   margin-left: 10px;
   margin-right: -13px;
   width: 10%;
@@ -164,7 +177,7 @@
   text-align: center;
   font-family: verdana;
 }
-.team_one_backstage_pixels_plus{
+.team_one_backstage_pixels_plus, .team_one_minor_penalties_plus, .team_one_major_penalties_plus{
   width: 10%;
   height: 70px;
   border-radius: 0px 10px 10px 0px;
@@ -175,7 +188,7 @@
   text-align: center;
   font-family: verdana;
 }
-.team_one_backstage_pixels_number{
+.team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number{
   width: 15%;
   height: 66px;
   position: relative;
@@ -186,8 +199,25 @@
   text-align: center;
   font-family: verdana;
 }
-.team_one_backstage_pixels_header{
-  
+.backstage_pixels_header{
+  top: 1070px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid gray;
+  border-radius: 10px;
+  margin: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  font-size: 2.5vw;
+  font-family: monospace;
 }
 .player_one_header, .player_two_header, .player_three_header, .player_four_header{
   font-family: monospace;

@@ -14,6 +14,7 @@
     <h1 class = "vs_text">vs</h1>
     <input type="text" id="playerThree" class = "player_three_input" placeholder="player 3"/>
     <input type="text" id="playerFour" class = "player_four_input" placeholder="player 4"/>
+    <button type="button" class="info_panel"></button>
   </div>
   <div class = "background">
     <div class = "red_backdrop">
@@ -28,12 +29,24 @@
       </div>  
       
     </div>
+    <h1 class = "backstage_pixels_header">Backstage pixels</h1>
     <div class = "team_one">
       <h1 class = "team_one_header">Team one</h1>
-      <button type = "button" class = "team_one_backstage_pixels_minus"><b>-</b></button>
-      <input class = "team_one_backstage_pixels_number" type = "text" maxlength = "4" placeholder = "0">
-      <button type = "button" class = "team_one_backstage_pixels_plus"><b>+</b></button>
-      <h1 class = "team_one_backstage_pixels_header">placeholder</h1>
+      <div class = "team_one_backstage_pixels">
+        <button type = "button" class = "team_one_backstage_pixels_minus"><b>-</b></button>
+        <input type = "text" class = "team_one_backstage_pixels_number" maxlength = "4" placeholder = "0">
+        <button type = "button" class = "team_one_backstage_pixels_plus"><b>+</b></button>
+      </div>
+      <div class = "team_one_minor_penalties">
+        <button type = "button" class = "team_one_minor_penalties_minus"><b>-</b></button>
+        <input type = "text" class = "team_one_minor_penalties_number" maxlength = "4" placeholder = "0">
+        <button type = "button" class = "team_one_minor_penalties_plus"><b>+</b></button>
+      </div>
+      <div class = "team_one_major_penalties">
+        <button type = "button" class = "team_one_major_penalties_minus"><b>-</b></button>
+        <input type = "text" class = "team_one_major_penalties_number" maxlength = "4" placeholder = "0">
+        <button type = "button" class = "team_one_major_penalties_plus"><b>+</b></button>
+      </div>
       <div class = "player_one">
         <h1 class = "player_one_header">player one</h1>
 
