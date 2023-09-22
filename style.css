@@ -88,6 +88,9 @@
   transform: translate(-50%, -50%);
   border: 0px solid transparent;
 }
+.dropdown_panel{
+  display: none;
+}
 .red_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -168,6 +171,7 @@
 .team_one_backstage_pixels_minus, .team_one_set_line_minus, .team_one_minor_penalties_minus, .team_one_major_penalties_minus{
   margin-left: 10px;
   margin-right: -13px;
+  margin-top: 35px;
   width: 10%;
   height: 70px;
   border-radius: 10px 0px 0px 10px;
@@ -182,6 +186,7 @@
   height: 70px;
   border-radius: 0px 10px 10px 0px;
   margin-left: -13px;
+  margin-top: 35px;
   border: 2px solid gray;
   background-color:antiquewhite;
   font-size: 150%;
@@ -191,6 +196,7 @@
 .team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number{
   width: 15%;
   height: 66px;
+  margin-top: 35px;
   position: relative;
   border: 2px solid gray;
   background-color:white;
@@ -199,8 +205,8 @@
   text-align: center;
   font-family: verdana;
 }
-.backstage_pixels_header{
-  top: 1070px;
+.backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
+  top: 1103px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -218,6 +224,12 @@
   z-index: 1;
   font-size: 2.5vw;
   font-family: monospace;
+}
+.minor_penalties_header{
+  top: 1213px;
+}
+.major_penalties_header{
+  top: 1315px;
 }
 .player_one_header, .player_two_header, .player_three_header, .player_four_header{
   font-family: monospace;
