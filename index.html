@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+  <title>Document</title>
+  <link href = "style.css" rel = "stylesheet" type = "text/css">
+</head>
+
+<body>
+  <div class = "top_bar">
+    <img src = "images/logo.png" alt = "Website Logo" class = "logo">
+    <input type = "text" id = "playerOne" class = "player_one_input" placeholder = "player 1" />
+    <input type = "text" id = "playerTwo" class = "player_two_input" placeholder = "player 2" />
+    <h1 class = "vs_text">vs</h1>
+    <input type = "text" id = "playerThree" class = "player_three_input" placeholder = "player 3" />
+    <input type = "text" id = "playerFour" class = "player_four_input" placeholder = "player 4" />
+    <button type = "button" class = "info_panel"><img src = "images/arrow.svg" alt = "arrow SVG"></button>
+  </div>
+  <div class = "dropdown_panel">
+    <a href = "http://www.onlinewebfonts.com">Web Fonts</a>
+  </div>
+  <div class = "background">
+    <div class = "red_backdrop">
+      <h1 class = "team_one_header">Team one</h1>
+    </div>
+    <div class = "blue_backdrop">
+      <h1 class = "team_two_header">Team two</h1>
+      <div class = "hexagon">
+        <div class = "hexagon_top"></div>
+        <div class = "hexagon_center"></div>
+        <div class = "hexagon_bottom"></div>
+      </div>
+
+    </div>
+    <h1 class = "backstage_pixels_header">Backstage pixels</h1>
+    <h1 class = "minor_penalties_header">Minor penalties</h1>
+    <h1 class = "major_penalties_header">Major penalties</h1>
+    <div class = "team_one">
+      <h1 class = "team_one_header">Team one</h1>
+      <div class = "team_one_backstage_pixels">
+        <button type = "button" class = "team_one_backstage_pixels_minus" id = "teamOneBackstagePixelsMinus"><b>-</b></button>
+        <input type = "number" class = "team_one_backstage_pixels_number" id = "teamOneBackstagePixelsNumber" maxlength = "4"
+          placeholder = "0">
+        <button type = "button" class = "team_one_backstage_pixels_plus" id = "teamOneBackstagePixelsPlus"><b>+</b></button>
+      </div>
+      <div class = "team_one_minor_penalties">
+        <button type = "button" class = "team_one_minor_penalties_minus"><b>-</b></button>
+        <input type = "number" class = "team_one_minor_penalties_number" maxlength = "4" placeholder = "0">
+        <button type = "button" class = "team_one_minor_penalties_plus"><b>+</b></button>
+      </div>
+      <div class = "team_one_major_penalties">
+        <button type = "button" class = "team_one_major_penalties_minus"><b>-</b></button>
+        <input type = "number" class = "team_one_major_penalties_number" maxlength = "4" placeholder = "0">
+        <button type = "button" class = "team_one_major_penalties_plus"><b>+</b></button>
+      </div>
+      <div class = "player_one">
+        <h1 class = "player_one_header">player one</h1>
+
+      </div>
+      <div class = "player_two">
+        <h1 class = "player_two_header">player two</h1>
+
+      </div>
+    </div>
+    <div class = "team_two">
+      <h1 class = "team_two_header">Team two</h1>
+      <div class = "player_three">
+        <h1 class = "player_three_header">player three</h1>
+
+      </div>
+      <div class = "player_four">
+        <h1 class = "player_four_header">player four</h1>
+
+      </div>
+    </div>
+  </div>
+  <script defer src = "index.js"></script>
+</body>
+
+</html>

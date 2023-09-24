@@ -33,3 +33,30 @@
 //         newHex = hexagon.cloneNode(true);
 //     }
 // }
+
+const teamOne = [0,0,0,0,0,0,0]
+
+
+function teamOnePoints () {
+}
+
+function backstagePixelsChange (change) {
+  let backstagePixels = document.getElementById("teamOneBackstagePixelsNumber")
+  if(change < 0 && backstagePixels.value == 0){}else{
+    teamOne[1] = Number(backstagePixels.value)
+    teamOne[1] += change
+    backstagePixels.value = teamOne[2]
+  }
+}
+
+let backstagePixelsPlus = document.getElementById("teamOneBackstagePixelsPlus")
+let backstagePixelsMinus = document.getElementById("teamOneBackstagePixelsMinus")
+backstagePixels.addEventListener('input', function () {
+  backstagePixelsChange(0)
+}); 
+backstagePixelsPlus.addEventListener("click", function() {
+  backstagePixelsChange(1)
+});
+backstagePixelsMinus.addEventListener("click", function() {
+  backstagePixelsChange(-1)
+});
