@@ -1,62 +1,89 @@
+const hexTop    = document.querySelector('.hexagon_top')
+const hexCenter = document.querySelector('.hexagon_center')
+const hexBottom = document.querySelector('.hexagon_bottom')
+const hexDiag   = parseInt(getComputedStyle(hexTop).borderBottom) + 
+                  parseInt(getComputedStyle(hexCenter).height)    + 
+                  parseInt(getComputedStyle(hexBottom).borderTop)
+const hex_x     = parseInt(getComputedStyle(hexCenter).width)
+const padding_x = 5
+const padding_y = 25
+const rowCount  = 12
+const hexInline = 6  // Lower
 
+const container = document.querySelector('.blue_backdrop')
+const hexagon   = document.querySelector('.hexagon')
+let   newHex
 
-// // Get the container and hexagon elements
-// const container = document.querySelector('.blue_backdrop');
-// const hexagon   = document.querySelector('.hexagon');
+for(let j=0; j < rowCount/2; j++) {
+  for(let i=1; i < hexInline+2; i++) {
+    if(!j && i === hexInline+1)
+      continue;
 
-// // Define the number of rows and columns
-// const numRows = 3; // Adjust the number of rows
-// const numCols = 3; // Adjust the number of columns
-
-// // Calculate the horizontal and vertical spacing between hexagons
-// const horizontalSpacing = hexagon.offsetWidth  * 0.75; // 75% of hexagon width
-// const verticalSpacing   = hexagon.offsetHeight * 0.5;  // 50% of hexagon height
-
-// let newHex = hexagon.cloneNode(true);
-// let x      = newHex.getBoundingClientRect().left + window.scrollX;
-// let y      = newHex.getBoundingClientRect().top + window.scrollY;
-
-// // Loop to create and position hexagons
-// for (let row = 0; row < numRows; row++) {
-//     for (let col = 0; col < numCols; col++) {        
-//         // Calculate the position for the cloned hexagon
-//         console.log(y)
-//         y -= 5;
-
-//         // Apply the position to the cloned hexagon
-//         newHex.style.transform = `translate(${x}px, ${y}px)`;
-
-//         // Append the cloned hexagon to the container
-//         container.appendChild(newHex);
-
-//         // Clone the hexagon element
-//         newHex = hexagon.cloneNode(true);
-//     }
-// }
-
-const teamOne = [0,0,0,0,0,0,0]
-
-
-function teamOnePoints () {
-}
-
-function backstagePixelsChange (change) {
-  let backstagePixels = document.getElementById("teamOneBackstagePixelsNumber")
-  if(change < 0 && backstagePixels.value == 0){}else{
-    teamOne[1] = Number(backstagePixels.value)
-    teamOne[1] += change
-    backstagePixels.value = teamOne[2]
+    newHex = hexagon.cloneNode(true)                                                                                         // No clue about this term
+    newHex.style.transform = `translate(${i * (hex_x + padding_x) - (j? hex_x + padding_x: 0)}px, ${-2*j*hexDiag*(hexInline-1) - (j>1?(j-1)*hexDiag:0) - i*hexDiag - j*2*padding_y}px)`
+    container.appendChild(newHex)
+  }
+  for(let i=1; i < hexInline+1; i++) {
+    newHex = hexagon.cloneNode(true)                                                                                                                     // No clue about this term
+    newHex.style.transform = `translate(${i * (hex_x + padding_x) - 0.5 * (hex_x + padding_x)}px, ${(-2*j*hexDiag*(hexInline-1) - hexDiag*(hexInline-1 + i) - j*hexDiag - padding_y*(j*2 + 1))}px)`
+    container.appendChild(newHex)
   }
 }
 
-let backstagePixelsPlus = document.getElementById("teamOneBackstagePixelsPlus")
-let backstagePixelsMinus = document.getElementById("teamOneBackstagePixelsMinus")
-backstagePixels.addEventListener('input', function () {
-  backstagePixelsChange(0)
-}); 
-backstagePixelsPlus.addEventListener("click", function() {
-  backstagePixelsChange(1)
-});
-backstagePixelsMinus.addEventListener("click", function() {
-  backstagePixelsChange(-1)
-});
+//pixels on backboard, mozaiacs, pixels in backstage, team prop, auto spike, auto pixel, auto park, suspension, park, drone, minor penalties, major pentalites
+const teamOne = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+function teamOnePoints () {
+  
+}
+let teamOneMinorPenalties = [
+document.getElementById("teamOneMinorPenaltiesPixelsNumber"),
+document.getElementById("teamOneMinorPenaltiesPixelsPlus"),
+document.getElementById("teamOneMinorPenaltiesPixelsMinus")
+]
+
+function teamOneMinorPenaltiesChange(change) {
+  if(!(change < 0 && teamOneMinorPenalties[0].value == 0)) {
+    teamOne[2] = Number(teamOneMinorPenalties[0].value)
+    teamOne[2] += change
+    teamOneMinorPenalties[0].value = teamOne[2]
+  }
+}
+
+teamOneMinorPenalties[0].addEventListener('input', () => {
+  teamOneMinorPenaltiesChange(0)
+})
+
+teamOneMinorPenalties[1].addEventListener("click", () => {
+  teamOneMinorPenaltiesChange(1)
+})
+
+teamOneMinorPenalties[2].addEventListener("click", () => {
+  teamOneMinorPenaltiesChange(-1)
+})
+
+let teamOnebackstagePixels = [
+document.getElementById("teamOneBackstagePixelsNumber"),
+document.getElementById("teamOneBackstagePixelsPlus"),
+document.getElementById("teamOneBackstagePixelsMinus")
+]
+
+function teamOnebackstagePixelsChange(change) {
+  if(!(change < 0 && teamOnebackstagePixels[0].value === 0)) {
+    teamOne[2] = Number(teamOnebackstagePixels[0].value)
+    teamOne[2] += change
+    teamOnebackstagePixels[0].value = teamOne[2]
+  }
+}
+
+teamOnebackstagePixels[0].addEventListener('input', () => {
+  teamOnebackstagePixelsChange(0)
+})
+
+teamOnebackstagePixels[1].addEventListener("click", () => {
+  teamOnebackstagePixelsChange(1)
+})
+
+teamOnebackstagePixels[2].addEventListener("click", () => {
+  teamOnebackstagePixelsChange(-1)
+})
