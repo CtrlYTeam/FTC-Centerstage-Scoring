@@ -7,7 +7,7 @@ const hexDiag   = parseInt(getComputedStyle(hexTop).borderBottom) +
 const hex_x     = parseInt(getComputedStyle(hexCenter).width)
 const padding_x = 5
 const padding_y = 25
-const rowCount  = 12
+const rowCount  = 11
 const hexInline = 6  // Lower
 
 const container = document.querySelector('.blue_backdrop')

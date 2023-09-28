@@ -207,6 +207,11 @@ html, body {
   appearance: none;
   appearance: textfield;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
   top: 1553px;
   box-sizing: border-box;
