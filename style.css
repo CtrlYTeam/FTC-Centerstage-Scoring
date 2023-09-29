@@ -286,18 +286,77 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 10px;
   margin: 10px;
 }
-.team_one_player_one_drone_zone{
+.player_one_drone_zone{
   position: absolute;
   top: 75px;
 }
 input[type="radio"] {
   display: none;
 }
-.team_one_player_one_drone_zone_one, .team_one_player_one_drone_zone_two, .team_one_player_one_drone_zone_three, .team_one_player_one_drone_zone_none{
-  /* position: absolute; */
-  width: 25%;
-  height: 10%;
+.player_one_drone_zone{
+  width: 100%;
+  top: 140px;
 }
+.player_one_drone_zone_one, .player_one_drone_zone_two, .player_one_drone_zone_three, .player_one_drone_zone_none{
+  position: absolute;
+  width: 20%;
+  height: 80px;
+  border-radius: 0 0 0 0;
+  border: 2px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 4vw;
+  transition: all 0.1s;
+}
+.player_one_drone_zone_none{
+  border-radius: 10px 0px 0px 10px;
+  left: 10%;
+}
+.player_one_drone_zone_one{
+  left: 30%;
+}
+.player_one_drone_zone_two{
+  left: 50%; 
+}
+.player_one_drone_zone_three{
+  border-radius: 0px 10px 10px 0px;
+  left: 70%;
+}
+.player_one_drone_zone_one:hover, .player_one_drone_zone_two:hover, .player_one_drone_zone_three:hover, .player_one_drone_zone_none:hover{
+  border-color: #0464cc;
+}
+.player_one_prop{
+  position: absolute;
+  width: 100%;
+  top: 40px;
+}
+.player_one_prop_no, .player_one_prop_yes{
+  position: absolute;
+  width: 40%;
+  height: 80px;
+  border-radius: 0 0 0 0;
+  border: 2px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 4vw;
+  transition: all 0.1s;
+}
+.player_one_prop_no{
+  left: 10%;
+  border-radius: 10px 0px 0px 10px;
+}
+.player_one_prop_yes{
+  left: 50%;
+  border-radius: 0px 10px 10px 0px;
+}
+.player_one_prop_no:hover, .player_one_prop_yes:hover{
+  border-color: #0464cc;
+}
+
 /* .team_one_backstage_pixels_minus{
 
 } */

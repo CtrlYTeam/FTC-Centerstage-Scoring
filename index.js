@@ -30,8 +30,21 @@ for(let j=0; j < rowCount/2; j++) {
   }
 }
 
-//pixels on backboard, mozaiacs, pixels in backstage, team prop, auto spike, auto pixel, auto park, suspension, park, drone, minor penalties, major pentalites
-const teamOne = [0,0,0,0,0,0,0,0,0,0,0,0]
+const teamOne = [
+  0,//(0) pixels on backboard
+  0,//(1) mozaiacs
+  0,//(2) pixel in backstage
+  //player one left player 2 right
+  [0,0],//(3) player prop
+  [0,0],//(4) auto spike
+  [0,0],//(5) auto pixel
+  [0,0],//(6) auto park
+  [0,0],//(7) suspension
+  [0,0],//(8) park
+  [0,0],//(9) drone
+  0,//(10) minor penalties
+  0//(11) major penalties
+]
 
 function teamOnePoints () {
   
@@ -87,3 +100,62 @@ teamOnebackstagePixels[1].addEventListener("click", () => {
 teamOnebackstagePixels[2].addEventListener("click", () => {
   teamOnebackstagePixelsChange(-1)
 })
+
+let playerOneDroneZone = [
+document.getElementById("playerOneDroneZoneNone"),
+document.getElementById("playerOneDroneZoneOne"),
+document.getElementById("playerOneDroneZoneTwo"),
+document.getElementById("playerOneDroneZoneThree")
+]
+
+function playerOneDroneZoneChange(change){
+  teamOne[9][0] = change
+  for(let i = 0; i < 4 ;i++){
+    playerOneDroneZone[i].style.backgroundColor = "aliceblue"
+  }
+  playerOneDroneZone[change].style.backgroundColor = "red"
+}
+
+playerOneDroneZone[0].addEventListener("click", () => {
+  playerOneDroneZoneChange(0)
+})
+
+playerOneDroneZone[1].addEventListener("click", () => {
+  playerOneDroneZoneChange(1)
+})
+
+playerOneDroneZone[2].addEventListener("click", () => {
+  playerOneDroneZoneChange(2)
+})
+
+playerOneDroneZone[3].addEventListener("click", () => {
+  playerOneDroneZoneChange(3)
+})
+
+playerOneProp = [
+  document.getElementById("playerOnePropNo"),
+  document.getElementById("playerOnePropYes")
+]
+
+function playerOnePropChange(change) {
+  teamOne[3][0] = change
+  playerOneProp[0].style.backgroundColor = "aliceblue"
+  playerOneProp[1].style.backgroundColor = "aliceblue"
+  playerOneProp[change].style.backgroundColor = "red"
+}
+playerOneProp[0].addEventListener("click", () => {
+  playerOnePropChange(0)
+})
+playerOneProp[1].addEventListener("click", () => {
+  playerOnePropChange(1)
+})
+
+//player prop
+//auto spike
+//auto pixel
+//auto park
+//suspension
+//park
+//drone done
+
+
