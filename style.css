@@ -126,7 +126,7 @@ html, body {
   width: 50%;
   left: -20px;
   top: 1450px;
-  height: 800px;
+  height: 1050px;
   background-color: #D2DAFF; 
   position: absolute;
   border: 5px solid red;
@@ -138,8 +138,8 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  height: 800px; 
   right: -20px;
+  height: 1050px; 
   top: 1450px;
   background-color: #D2DAFF;
   position: absolute;
@@ -158,7 +158,7 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  height: 400px; 
+  height: 650px; 
   left: -20px;
   background-color: #D2DAFF;
   position: absolute;
@@ -168,7 +168,51 @@ html, body {
   display: flex;
   justify-content: center;
 }
-.team_one_backstage_pixels_minus, .team_one_minor_penalties_minus, .team_one_major_penalties_minus{
+.player_two{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: 50%;
+  height: 650px; 
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.player_three{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  height: 650px;  
+  left: -20px;
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+.player_four{
+  top: 400px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 50%;
+  left: 50%;
+  height: 650px; 
+  background-color: #D2DAFF;
+  position: absolute;
+  border: 5px solid blue;
+  border-radius: 10px;
+  margin: 10px;
+}
+.team_one_backstage_pixels_minus, .team_one_minor_penalties_minus, .team_one_major_penalties_minus, .team_two_backstage_pixels_minus, .team_two_minor_penalties_minus, .team_two_major_penalties_minus{
   margin-left: 10px;
   margin-right: -13px;
   margin-top: 35px;
@@ -181,7 +225,7 @@ html, body {
   text-align: center;
   font-family: verdana;
 }
-.team_one_backstage_pixels_plus, .team_one_minor_penalties_plus, .team_one_major_penalties_plus{
+.team_one_backstage_pixels_plus, .team_one_minor_penalties_plus, .team_one_major_penalties_plus ,.team_two_backstage_pixels_plus, .team_two_minor_penalties_plus, .team_two_major_penalties_plus{
   width: 10%;
   height: 70px;
   border-radius: 0px 10px 10px 0px;
@@ -193,7 +237,7 @@ html, body {
   text-align: center;
   font-family: verdana;
 }
-.team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number{
+.team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number, .team_two_backstage_pixels_number, .team_two_minor_penalties_number, .team_two_major_penalties_number{
   width: 15%;
   height: 66px;
   margin-top: 35px;
@@ -206,6 +250,11 @@ html, body {
   font-family: verdana;
   appearance: none;
   appearance: textfield;
+}
+.team_two_backstage_pixels, .team_two_minor_penalties, .team_two_major_penalties{
+  display: flex;
+  justify-content: right;
+  margin-right: 13px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -242,56 +291,9 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: monospace;
   text-align: center;
 }
-.player_two{
-  top: 400px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  width: 50%;
-  left: 50%;
-  height: 400px;
-  background-color: #D2DAFF;
-  position: absolute;
-  border: 5px solid red;
-  border-radius: 10px;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-}
-.player_three{
-  top: 400px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  width: 50%;
-  height: 400px; 
-  left: -20px;
-  background-color: #D2DAFF;
-  position: absolute;
-  border: 5px solid blue;
-  border-radius: 10px;
-  margin: 10px;
-}
-.player_four{
-  top: 400px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  width: 50%;
-  left: 50%;
-  height: 400px;
-  background-color: #D2DAFF;
-  position: absolute;
-  border: 5px solid blue;
-  border-radius: 10px;
-  margin: 10px;
-}
 .player_one_drone_zone{
   position: absolute;
   top: 75px;
-}
-input[type="radio"] {
-  display: none;
 }
 .player_one_drone_zone{
   width: 100%;
@@ -302,12 +304,12 @@ input[type="radio"] {
   width: 20%;
   height: 80px;
   border-radius: 0 0 0 0;
-  border: 2px solid gray;
+  border: 5px solid gray;
   background-color:aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
-  font-size: 4vw;
+  font-size: 3vw;
   transition: all 0.1s;
 }
 .player_one_drone_zone_none{
@@ -337,12 +339,12 @@ input[type="radio"] {
   width: 40%;
   height: 80px;
   border-radius: 0 0 0 0;
-  border: 2px solid gray;
+  border: 5px solid gray;
   background-color:aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
-  font-size: 4vw;
+  font-size: 1.3vw;
   transition: all 0.1s;
 }
 .player_one_prop_no{
@@ -356,10 +358,126 @@ input[type="radio"] {
 .player_one_prop_no:hover, .player_one_prop_yes:hover{
   border-color: #0464cc;
 }
-
-/* .team_one_backstage_pixels_minus{
-
-} */
+.player_one_endgame_park{
+  position: absolute;
+  width: 100%;
+  top: 250px;
+}
+.player_one_park_none, .player_one_park_park, .player_one_park_suspend{
+  position: absolute;
+  margin: 0;
+  width: 25%;
+  height: 80px;
+  border-radius: 0 0 0 0;
+  border: 5px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 1.3vw;
+  transition: all 0.1s;
+}
+.player_one_park_none:hover, .player_one_park_park:hover, .player_one_park_suspend:hover{
+  border-color: #0464cc;
+}
+.player_one_park_none{
+  left: 12.5%;
+  border-radius: 10px 0px 0px 10px;
+}
+.player_one_park_park{
+  left: 37.5%;
+}
+.player_one_park_suspend{
+  left: 62.5%;
+  border-radius: 0px 10px 10px 0px;
+}
+.player_one_auto_spike{
+  position: absolute;
+  width: 100%;
+  top: 350px;
+}
+.player_one_auto_spike_no, .player_one_auto_spike_yes{
+  position: absolute;
+  margin: 0;
+  width: 40%;
+  height: 80px;
+  border: 5px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 1.3vw;
+  transition: all 0.1s;
+}
+.player_one_auto_spike_no:hover, .player_one_auto_spike_yes:hover{
+  border-color: #0464cc;
+}
+.player_one_auto_spike_no{
+  left: 10%;
+  border-radius: 10px 0 0 10px;
+}
+.player_one_auto_spike_yes{
+  left: 50%;
+  border-radius: 0 10px 10px 0;
+}
+.player_one_auto_pixel{
+  position: absolute;
+  width: 100%;
+  top: 450px;
+}
+.player_one_auto_pixel_no, .player_one_auto_pixel_yes{
+  position: absolute;
+  margin: 0;
+  width: 40%;
+  height: 80px;
+  border: 5px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 1.3vw;
+  transition: all 0.1s;
+}
+.player_one_auto_pixel_no:hover, .player_one_auto_pixel_yes:hover{
+  border-color: #0464cc;
+}
+.player_one_auto_pixel_no{
+  left: 10%;
+  border-radius: 10px 0 0 10px;
+}
+.player_one_auto_pixel_yes{
+  left: 50%;
+  border-radius: 0 10px 10px 0;
+}
+.player_one_auto_park{
+  position: absolute;
+  width: 100%;
+  top: 550px;
+}
+.player_one_auto_park_no, .player_one_auto_park_yes{
+  position: absolute;
+  margin: 0;
+  width: 40%;
+  height: 80px;
+  border: 5px solid gray;
+  background-color:aliceblue;
+  font-size: 150%;
+  text-align: center;
+  font-family: verdana;
+  font-size: 1.3vw;
+  transition: all 0.1s;
+}
+.player_one_auto_park_no:hover, .player_one_auto_park_yes:hover{
+  border-color: #0464cc;
+}
+.player_one_auto_park_no{
+  left: 10%;
+  border-radius: 10px 0 0 10px;
+}
+.player_one_auto_park_yes{
+  left: 50%;
+  border-radius: 0 10px 10px 0;
+}
 
 .hexagon_top {
   width: 0;
