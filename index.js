@@ -239,6 +239,8 @@ teamTwoMajorPenalties[2].addEventListener("click", () => {
   teamTwoMajorPenaltiesChange(-1)
 })
 
+//player One Team One
+
 let playerOneDroneZone = [
   document.getElementById("playerOneDroneZoneNone"),
   document.getElementById("playerOneDroneZoneOne"),
@@ -247,6 +249,7 @@ let playerOneDroneZone = [
 ]
 
 function playerOneDroneZoneChange(change){
+  console.log(teamOne);
   teamOne[9][0] = change
   for(let i = 0; i < 4 ;i++){
     playerOneDroneZone[i].style.backgroundColor = "aliceblue"
@@ -295,13 +298,14 @@ let playerOneEndgamePark = [
 ]
 
 function playerOneEndgameParkChange(change){  
-  teamOne[3][0] = change
   switch(change) {
     case 1:
       teamOne[8][0] = 1
+      teamOne[7][0] = 0
       break;
     case 2:
       teamOne[7][0] = 1
+      teamOne[8][0] = 0
       break;
     default:
       teamOne[7][0] = 0
@@ -373,7 +377,7 @@ let playerOneAutoPark = [
 ]
 
 function playerOneAutoParkChange(change){
-teamOne[4][0] = change
+teamOne[6][0] = change
 for(let i = 0; i < 2 ;i++){
 playerOneAutoPark[i].style.backgroundColor = "aliceblue"
 }
@@ -386,4 +390,461 @@ playerOneAutoParkChange(0)
 
 playerOneAutoPark[1].addEventListener("click", () => {
 playerOneAutoParkChange(1)
+})
+
+//player Two Team One
+
+let playerTwoDroneZone = [
+  document.getElementById("playerTwoDroneZoneNone"),
+  document.getElementById("playerTwoDroneZoneOne"),
+  document.getElementById("playerTwoDroneZoneTwo"),
+  document.getElementById("playerTwoDroneZoneThree")
+]
+
+function playerTwoDroneZoneChange(change){
+  teamOne[9][1] = change
+  for(let i = 0; i < 4 ;i++){
+    playerTwoDroneZone[i].style.backgroundColor = "aliceblue"
+  }
+  playerTwoDroneZone[change].style.backgroundColor = "red"
+}
+
+playerTwoDroneZone[0].addEventListener("click", () => {
+  playerTwoDroneZoneChange(0)
+})
+
+playerTwoDroneZone[1].addEventListener("click", () => {
+  playerTwoDroneZoneChange(1)
+})
+
+playerTwoDroneZone[2].addEventListener("click", () => {
+  playerTwoDroneZoneChange(2)
+})
+
+playerTwoDroneZone[3].addEventListener("click", () => {
+  playerTwoDroneZoneChange(3)
+})
+
+let playerTwoProp = [
+  document.getElementById("playerTwoPropNo"),
+  document.getElementById("playerTwoPropYes")
+]
+
+function playerTwoPropChange(change) {
+  teamOne[3][1] = change
+  playerTwoProp[0].style.backgroundColor = "aliceblue"
+  playerTwoProp[1].style.backgroundColor = "aliceblue"
+  playerTwoProp[change].style.backgroundColor = "red"
+}
+playerTwoProp[0].addEventListener("click", () => {
+  playerTwoPropChange(0)
+})
+playerTwoProp[1].addEventListener("click", () => {
+  playerTwoPropChange(1)
+})
+
+let playerTwoEndgamePark = [
+  document.getElementById("playerTwoParkNone"),
+  document.getElementById("playerTwoParkPark"),
+  document.getElementById("playerTwoParkSuspend")
+]
+
+function playerTwoEndgameParkChange(change){  
+  switch(change) {
+    case 1:
+      teamOne[8][1] = 1
+      teamOne[7][1] = 0
+      break;
+    case 2:
+      teamOne[7][1] = 1
+      teamOne[8][1] = 0
+      break;
+    default:
+      teamOne[7][1] = 0
+      teamOne[8][1] = 0
+  }
+  for(let i = 0; i < 3 ;i++){
+    playerTwoEndgamePark[i].style.backgroundColor = "aliceblue"
+  }
+  playerTwoEndgamePark[change].style.backgroundColor = "red"
+}
+
+playerTwoEndgamePark[0].addEventListener("click", () => {
+  playerTwoEndgameParkChange(0)
+})
+
+playerTwoEndgamePark[1].addEventListener("click", () => {
+  playerTwoEndgameParkChange(1)
+})
+
+playerTwoEndgamePark[2].addEventListener("click", () => {
+  playerTwoEndgameParkChange(2)
+})
+
+let playerTwoAutoSpike = [
+  document.getElementById("playerTwoAutoSpikeNo"),
+  document.getElementById("playerTwoAutoSpikeYes")
+]
+
+function playerTwoAutoSpikeChange(change){
+  teamOne[4][1] = change
+  for(let i = 0; i < 2 ;i++){
+    playerTwoAutoSpike[i].style.backgroundColor = "aliceblue"
+  }
+  playerTwoAutoSpike[change].style.backgroundColor = "red"
+}
+
+playerTwoAutoSpike[0].addEventListener("click", () => {
+  playerTwoAutoSpikeChange(0)
+})
+
+playerTwoAutoSpike[1].addEventListener("click", () => {
+  playerTwoAutoSpikeChange(1)
+})
+
+let playerTwoAutoPixel = [
+  document.getElementById("playerTwoAutoPixelNo"),
+  document.getElementById("playerTwoAutoPixelYes")
+]
+
+function playerTwoAutoPixelChange(change){
+teamOne[5][1] = change
+for(let i = 0; i < 2 ;i++){
+playerTwoAutoPixel[i].style.backgroundColor = "aliceblue"
+}
+playerTwoAutoPixel[change].style.backgroundColor = "red"
+}
+
+playerTwoAutoPixel[0].addEventListener("click", () => {
+playerTwoAutoPixelChange(0)
+})
+
+playerTwoAutoPixel[1].addEventListener("click", () => {
+playerTwoAutoPixelChange(1)
+})
+
+let playerTwoAutoPark = [
+  document.getElementById("playerTwoAutoParkNo"),
+  document.getElementById("playerTwoAutoParkYes")
+]
+
+function playerTwoAutoParkChange(change){
+teamOne[6][1] = change
+for(let i = 0; i < 2 ;i++){
+playerTwoAutoPark[i].style.backgroundColor = "aliceblue"
+}
+playerTwoAutoPark[change].style.backgroundColor = "red"
+}
+
+playerTwoAutoPark[0].addEventListener("click", () => {
+playerTwoAutoParkChange(0)
+})
+
+playerTwoAutoPark[1].addEventListener("click", () => {
+playerTwoAutoParkChange(1)
+})
+
+//player Three Team Two
+
+let playerThreeDroneZone = [
+  document.getElementById("playerThreeDroneZoneNone"),
+  document.getElementById("playerThreeDroneZoneOne"),
+  document.getElementById("playerThreeDroneZoneTwo"),
+  document.getElementById("playerThreeDroneZoneThree")
+]
+
+function playerThreeDroneZoneChange(change){
+  teamTwo[9][0] = change
+  for(let i = 0; i < 4 ;i++){
+    playerThreeDroneZone[i].style.backgroundColor = "aliceblue"
+  }
+  playerThreeDroneZone[change].style.backgroundColor = "red"
+}
+
+playerThreeDroneZone[0].addEventListener("click", () => {
+  playerThreeDroneZoneChange(0)
+})
+
+playerThreeDroneZone[1].addEventListener("click", () => {
+  playerThreeDroneZoneChange(1)
+})
+
+playerThreeDroneZone[2].addEventListener("click", () => {
+  playerThreeDroneZoneChange(2)
+})
+
+playerThreeDroneZone[3].addEventListener("click", () => {
+  playerThreeDroneZoneChange(3)
+})
+
+let playerThreeProp = [
+  document.getElementById("playerThreePropNo"),
+  document.getElementById("playerThreePropYes")
+]
+
+function playerThreePropChange(change) {
+  teamTwo[3][0] = change
+  playerThreeProp[0].style.backgroundColor = "aliceblue"
+  playerThreeProp[1].style.backgroundColor = "aliceblue"
+  playerThreeProp[change].style.backgroundColor = "red"
+}
+playerThreeProp[0].addEventListener("click", () => {
+  playerThreePropChange(0)
+})
+playerThreeProp[1].addEventListener("click", () => {
+  playerThreePropChange(1)
+})
+
+let playerThreeEndgamePark = [
+  document.getElementById("playerThreeParkNone"),
+  document.getElementById("playerThreeParkPark"),
+  document.getElementById("playerThreeParkSuspend")
+]
+
+function playerThreeEndgameParkChange(change){  
+  switch(change) {
+    case 1:
+      teamTwo[8][0] = 1
+      teamTwo[7][0] = 0
+      break;
+    case 2:
+      teamTwo[7][0] = 1
+      teamTwo[8][0] = 0
+      break;
+    default:
+      teamTwo[7][0] = 0
+      teamTwo[8][0] = 0
+  }
+  for(let i = 0; i < 3 ;i++){
+    playerThreeEndgamePark[i].style.backgroundColor = "aliceblue"
+  }
+  playerThreeEndgamePark[change].style.backgroundColor = "red"
+}
+
+playerThreeEndgamePark[0].addEventListener("click", () => {
+  playerThreeEndgameParkChange(0)
+})
+
+playerThreeEndgamePark[1].addEventListener("click", () => {
+  playerThreeEndgameParkChange(1)
+})
+
+playerThreeEndgamePark[2].addEventListener("click", () => {
+  playerThreeEndgameParkChange(2)
+})
+
+let playerThreeAutoSpike = [
+  document.getElementById("playerThreeAutoSpikeNo"),
+  document.getElementById("playerThreeAutoSpikeYes")
+]
+
+function playerThreeAutoSpikeChange(change){
+  teamTwo[4][0] = change
+  for(let i = 0; i < 2 ;i++){
+    playerThreeAutoSpike[i].style.backgroundColor = "aliceblue"
+  }
+  playerThreeAutoSpike[change].style.backgroundColor = "red"
+}
+
+playerThreeAutoSpike[0].addEventListener("click", () => {
+  playerThreeAutoSpikeChange(0)
+})
+
+playerThreeAutoSpike[1].addEventListener("click", () => {
+  playerThreeAutoSpikeChange(1)
+})
+
+let playerThreeAutoPixel = [
+  document.getElementById("playerThreeAutoPixelNo"),
+  document.getElementById("playerThreeAutoPixelYes")
+]
+
+function playerThreeAutoPixelChange(change){
+  teamTwo[5][0] = change
+  for(let i = 0; i < 2 ;i++){
+    playerThreeAutoPixel[i].style.backgroundColor = "aliceblue"
+  }
+  playerThreeAutoPixel[change].style.backgroundColor = "red"
+}
+
+playerThreeAutoPixel[0].addEventListener("click", () => {
+  playerThreeAutoPixelChange(0)
+})
+
+playerThreeAutoPixel[1].addEventListener("click", () => {
+  playerThreeAutoPixelChange(1)
+})
+
+let playerThreeAutoPark = [
+  document.getElementById("playerThreeAutoParkNo"),
+  document.getElementById("playerThreeAutoParkYes")
+]
+
+function playerThreeAutoParkChange(change){
+  teamTwo[6][0] = change
+  for(let i = 0; i < 2 ;i++){
+    playerThreeAutoPark[i].style.backgroundColor = "aliceblue"
+  }
+  playerThreeAutoPark[change].style.backgroundColor = "red"
+}
+
+playerThreeAutoPark[0].addEventListener("click", () => {
+  playerThreeAutoParkChange(0)
+})
+
+playerThreeAutoPark[1].addEventListener("click", () => {
+  playerThreeAutoParkChange(1)
+})
+
+//player four team two
+
+let playerFourDroneZone = [
+  document.getElementById("playerFourDroneZoneNone"),
+  document.getElementById("playerFourDroneZoneOne"),
+  document.getElementById("playerFourDroneZoneTwo"),
+  document.getElementById("playerFourDroneZoneThree")
+]
+
+function playerFourDroneZoneChange(change){
+  console.log(teamTwo);
+  teamTwo[9][1] = change
+  for(let i = 0; i < 4 ;i++){
+    playerFourDroneZone[i].style.backgroundColor = "aliceblue"
+  }
+  playerFourDroneZone[change].style.backgroundColor = "red"
+}
+
+playerFourDroneZone[0].addEventListener("click", () => {
+  playerFourDroneZoneChange(0)
+})
+
+playerFourDroneZone[1].addEventListener("click", () => {
+  playerFourDroneZoneChange(1)
+})
+
+playerFourDroneZone[2].addEventListener("click", () => {
+  playerFourDroneZoneChange(2)
+})
+
+playerFourDroneZone[3].addEventListener("click", () => {
+  playerFourDroneZoneChange(3)
+})
+
+let playerFourProp = [
+  document.getElementById("playerFourPropNo"),
+  document.getElementById("playerFourPropYes")
+]
+
+function playerFourPropChange(change) {
+  teamTwo[3][1] = change
+  playerFourProp[0].style.backgroundColor = "aliceblue"
+  playerFourProp[1].style.backgroundColor = "aliceblue"
+  playerFourProp[change].style.backgroundColor = "red"
+}
+playerFourProp[0].addEventListener("click", () => {
+  playerFourPropChange(0)
+})
+playerFourProp[1].addEventListener("click", () => {
+  playerFourPropChange(1)
+})
+
+let playerFourEndgamePark = [
+  document.getElementById("playerFourParkNone"),
+  document.getElementById("playerFourParkPark"),
+  document.getElementById("playerFourParkSuspend")
+]
+
+function playerFourEndgameParkChange(change){  
+  switch(change) {
+    case 1:
+      teamTwo[8][1] = 1
+      teamTwo[7][1] = 0
+      break;
+    case 2:
+      teamTwo[7][1] = 1
+      teamTwo[8][1] = 0
+      break;
+    default:
+      teamTwo[7][1] = 0
+      teamTwo[8][1] = 0
+  }
+  for(let i = 0; i < 3 ;i++){
+    playerFourEndgamePark[i].style.backgroundColor = "aliceblue"
+  }
+  playerFourEndgamePark[change].style.backgroundColor = "red"
+}
+
+playerFourEndgamePark[0].addEventListener("click", () => {
+  playerFourEndgameParkChange(0)
+})
+
+playerFourEndgamePark[1].addEventListener("click", () => {
+  playerFourEndgameParkChange(1)
+})
+
+playerFourEndgamePark[2].addEventListener("click", () => {
+  playerFourEndgameParkChange(2)
+})
+
+let playerFourAutoSpike = [
+  document.getElementById("playerFourAutoSpikeNo"),
+  document.getElementById("playerFourAutoSpikeYes")
+]
+
+function playerFourAutoSpikeChange(change){
+  teamTwo[4][1] = change
+  for(let i = 0; i < 2 ;i++){
+    playerFourAutoSpike[i].style.backgroundColor = "aliceblue"
+  }
+  playerFourAutoSpike[change].style.backgroundColor = "red"
+}
+
+playerFourAutoSpike[0].addEventListener("click", () => {
+  playerFourAutoSpikeChange(0)
+})
+
+playerFourAutoSpike[1].addEventListener("click", () => {
+  playerFourAutoSpikeChange(1)
+})
+
+let playerFourAutoPixel = [
+  document.getElementById("playerFourAutoPixelNo"),
+  document.getElementById("playerFourAutoPixelYes")
+]
+
+function playerFourAutoPixelChange(change){
+teamTwo[5][1] = change
+for(let i = 0; i < 2 ;i++){
+playerFourAutoPixel[i].style.backgroundColor = "aliceblue"
+}
+playerFourAutoPixel[change].style.backgroundColor = "red"
+}
+
+playerFourAutoPixel[0].addEventListener("click", () => {
+playerFourAutoPixelChange(0)
+})
+
+playerFourAutoPixel[1].addEventListener("click", () => {
+playerFourAutoPixelChange(1)
+})
+
+let playerFourAutoPark = [
+  document.getElementById("playerFourAutoParkNo"),
+  document.getElementById("playerFourAutoParkYes")
+]
+
+function playerFourAutoParkChange(change){
+teamTwo[6][1] = change
+for(let i = 0; i < 2 ;i++){
+playerFourAutoPark[i].style.backgroundColor = "aliceblue"
+}
+playerFourAutoPark[change].style.backgroundColor = "red"
+}
+
+playerFourAutoPark[0].addEventListener("click", () => {
+playerFourAutoParkChange(0)
+})
+
+playerFourAutoPark[1].addEventListener("click", () => {
+playerFourAutoParkChange(1)
 })

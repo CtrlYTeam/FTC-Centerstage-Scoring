@@ -291,192 +291,245 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: monospace;
   text-align: center;
 }
-.player_one_drone_zone{
+.player_one_drone_zone, .player_two_drone_zone, .player_three_drone_zone, .player_four_drone_zone {
   position: absolute;
   top: 75px;
 }
-.player_one_drone_zone{
+
+.player_one_drone_zone, .player_two_drone_zone, .player_three_drone_zone, .player_four_drone_zone {
   width: 100%;
   top: 140px;
 }
-.player_one_drone_zone_one, .player_one_drone_zone_two, .player_one_drone_zone_three, .player_one_drone_zone_none{
+
+.player_one_drone_zone_one, .player_one_drone_zone_two, .player_one_drone_zone_three, .player_one_drone_zone_none,
+.player_two_drone_zone_one, .player_two_drone_zone_two, .player_two_drone_zone_three, .player_two_drone_zone_none,
+.player_three_drone_zone_one, .player_three_drone_zone_two, .player_three_drone_zone_three, .player_three_drone_zone_none,
+.player_four_drone_zone_one, .player_four_drone_zone_two, .player_four_drone_zone_three, .player_four_drone_zone_none {
   position: absolute;
   width: 20%;
   height: 80px;
   border-radius: 0 0 0 0;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 3vw;
   transition: all 0.1s;
 }
-.player_one_drone_zone_none{
+
+.player_one_drone_zone_none, .player_two_drone_zone_none, .player_three_drone_zone_none, .player_four_drone_zone_none {
   border-radius: 10px 0px 0px 10px;
   left: 10%;
 }
-.player_one_drone_zone_one{
+
+.player_one_drone_zone_one, .player_two_drone_zone_one, .player_three_drone_zone_one, .player_four_drone_zone_one {
   left: 30%;
 }
-.player_one_drone_zone_two{
-  left: 50%; 
+
+.player_one_drone_zone_two, .player_two_drone_zone_two, .player_three_drone_zone_two, .player_four_drone_zone_two {
+  left: 50%;
 }
-.player_one_drone_zone_three{
+
+.player_one_drone_zone_three, .player_two_drone_zone_three, .player_three_drone_zone_three, .player_four_drone_zone_three {
   border-radius: 0px 10px 10px 0px;
   left: 70%;
 }
-.player_one_drone_zone_one:hover, .player_one_drone_zone_two:hover, .player_one_drone_zone_three:hover, .player_one_drone_zone_none:hover{
+
+.player_one_drone_zone_one:hover, .player_one_drone_zone_two:hover, .player_one_drone_zone_three:hover, .player_one_drone_zone_none:hover,
+.player_two_drone_zone_one:hover, .player_two_drone_zone_two:hover, .player_two_drone_zone_three:hover, .player_two_drone_zone_none:hover,
+.player_three_drone_zone_one:hover, .player_three_drone_zone_two:hover, .player_three_drone_zone_three:hover, .player_three_drone_zone_none:hover,
+.player_four_drone_zone_one:hover, .player_four_drone_zone_two:hover, .player_four_drone_zone_three:hover, .player_four_drone_zone_none:hover {
   border-color: #0464cc;
 }
-.player_one_prop{
+
+.player_one_prop, .player_two_prop, .player_three_prop, .player_four_prop {
   position: absolute;
   width: 100%;
   top: 40px;
 }
-.player_one_prop_no, .player_one_prop_yes{
+
+.player_one_prop_no, .player_one_prop_yes, .player_two_prop_no, .player_two_prop_yes,
+.player_three_prop_no, .player_three_prop_yes, .player_four_prop_no, .player_four_prop_yes {
   position: absolute;
   width: 40%;
   height: 80px;
   border-radius: 0 0 0 0;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
   transition: all 0.1s;
 }
-.player_one_prop_no{
+
+.player_one_prop_no, .player_two_prop_no, .player_three_prop_no, .player_four_prop_no {
   left: 10%;
   border-radius: 10px 0px 0px 10px;
 }
-.player_one_prop_yes{
+
+.player_one_prop_yes, .player_two_prop_yes, .player_three_prop_yes, .player_four_prop_yes {
   left: 50%;
   border-radius: 0px 10px 10px 0px;
 }
-.player_one_prop_no:hover, .player_one_prop_yes:hover{
+
+.player_one_prop_no:hover, .player_one_prop_yes:hover, .player_two_prop_no:hover, .player_two_prop_yes:hover,
+.player_three_prop_no:hover, .player_three_prop_yes:hover, .player_four_prop_no:hover, .player_four_prop_yes:hover {
   border-color: #0464cc;
 }
-.player_one_endgame_park{
+
+.player_one_endgame_park, .player_two_endgame_park, .player_three_endgame_park, .player_four_endgame_park {
   position: absolute;
   width: 100%;
   top: 250px;
 }
-.player_one_park_none, .player_one_park_park, .player_one_park_suspend{
+
+.player_one_park_none, .player_one_park_park, .player_one_park_suspend,
+.player_two_park_none, .player_two_park_park, .player_two_park_suspend,
+.player_three_park_none, .player_three_park_park, .player_three_park_suspend,
+.player_four_park_none, .player_four_park_park, .player_four_park_suspend {
   position: absolute;
   margin: 0;
   width: 25%;
   height: 80px;
   border-radius: 0 0 0 0;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
   transition: all 0.1s;
 }
-.player_one_park_none:hover, .player_one_park_park:hover, .player_one_park_suspend:hover{
+
+.player_one_park_none:hover, .player_one_park_park:hover, .player_one_park_suspend:hover,
+.player_two_park_none:hover, .player_two_park_park:hover, .player_two_park_suspend:hover,
+.player_three_park_none:hover, .player_three_park_park:hover, .player_three_park_suspend:hover,
+.player_four_park_none:hover, .player_four_park_park:hover, .player_four_park_suspend:hover {
   border-color: #0464cc;
 }
-.player_one_park_none{
+
+.player_one_park_none, .player_two_park_none, .player_three_park_none, .player_four_park_none {
   left: 12.5%;
   border-radius: 10px 0px 0px 10px;
 }
-.player_one_park_park{
+
+.player_one_park_park, .player_two_park_park, .player_three_park_park, .player_four_park_park {
   left: 37.5%;
 }
-.player_one_park_suspend{
+
+.player_one_park_suspend, .player_two_park_suspend, .player_three_park_suspend, .player_four_park_suspend {
   left: 62.5%;
   border-radius: 0px 10px 10px 0px;
 }
-.player_one_auto_spike{
+
+.player_one_auto_spike, .player_two_auto_spike, .player_three_auto_spike, .player_four_auto_spike {
   position: absolute;
   width: 100%;
   top: 350px;
 }
-.player_one_auto_spike_no, .player_one_auto_spike_yes{
+
+.player_one_auto_spike_no, .player_one_auto_spike_yes, .player_two_auto_spike_no, .player_two_auto_spike_yes,
+.player_three_auto_spike_no, .player_three_auto_spike_yes, .player_four_auto_spike_no, .player_four_auto_spike_yes {
   position: absolute;
   margin: 0;
   width: 40%;
   height: 80px;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
   transition: all 0.1s;
 }
-.player_one_auto_spike_no:hover, .player_one_auto_spike_yes:hover{
-  border-color: #0464cc;
-}
-.player_one_auto_spike_no{
+
+.player_one_auto_spike_no, .player_two_auto_spike_no, .player_three_auto_spike_no, .player_four_auto_spike_no {
   left: 10%;
   border-radius: 10px 0 0 10px;
 }
-.player_one_auto_spike_yes{
+
+.player_one_auto_spike_yes, .player_two_auto_spike_yes, .player_three_auto_spike_yes, .player_four_auto_spike_yes {
   left: 50%;
   border-radius: 0 10px 10px 0;
 }
-.player_one_auto_pixel{
+
+.player_one_auto_spike_no:hover, .player_one_auto_spike_yes:hover, .player_two_auto_spike_no:hover, .player_two_auto_spike_yes:hover,
+.player_three_auto_spike_no:hover, .player_three_auto_spike_yes:hover, .player_four_auto_spike_no:hover, .player_four_auto_spike_yes:hover {
+  border-color: #0464cc;
+}
+
+.player_one_auto_pixel, .player_two_auto_pixel, .player_three_auto_pixel, .player_four_auto_pixel {
   position: absolute;
   width: 100%;
   top: 450px;
 }
-.player_one_auto_pixel_no, .player_one_auto_pixel_yes{
+
+.player_one_auto_pixel_no, .player_one_auto_pixel_yes, .player_two_auto_pixel_no, .player_two_auto_pixel_yes,
+.player_three_auto_pixel_no, .player_three_auto_pixel_yes, .player_four_auto_pixel_no, .player_four_auto_pixel_yes {
   position: absolute;
   margin: 0;
   width: 40%;
   height: 80px;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
   transition: all 0.1s;
 }
-.player_one_auto_pixel_no:hover, .player_one_auto_pixel_yes:hover{
-  border-color: #0464cc;
-}
-.player_one_auto_pixel_no{
+
+.player_one_auto_pixel_no, .player_two_auto_pixel_no, .player_three_auto_pixel_no, .player_four_auto_pixel_no {
   left: 10%;
   border-radius: 10px 0 0 10px;
 }
-.player_one_auto_pixel_yes{
+
+.player_one_auto_pixel_yes, .player_two_auto_pixel_yes, .player_three_auto_pixel_yes, .player_four_auto_pixel_yes {
   left: 50%;
   border-radius: 0 10px 10px 0;
 }
-.player_one_auto_park{
+
+.player_one_auto_pixel_no:hover, .player_one_auto_pixel_yes:hover, .player_two_auto_pixel_no:hover, .player_two_auto_pixel_yes:hover,
+.player_three_auto_pixel_no:hover, .player_three_auto_pixel_yes:hover, .player_four_auto_pixel_no:hover, .player_four_auto_pixel_yes:hover {
+  border-color: #0464cc;
+}
+
+.player_one_auto_park, .player_two_auto_park, .player_three_auto_park, .player_four_auto_park {
   position: absolute;
   width: 100%;
   top: 550px;
 }
-.player_one_auto_park_no, .player_one_auto_park_yes{
+
+.player_one_auto_park_no, .player_one_auto_park_yes, .player_two_auto_park_no, .player_two_auto_park_yes,
+.player_three_auto_park_no, .player_three_auto_park_yes, .player_four_auto_park_no, .player_four_auto_park_yes {
   position: absolute;
   margin: 0;
   width: 40%;
   height: 80px;
   border: 5px solid gray;
-  background-color:aliceblue;
+  background-color: aliceblue;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
   transition: all 0.1s;
 }
-.player_one_auto_park_no:hover, .player_one_auto_park_yes:hover{
-  border-color: #0464cc;
-}
-.player_one_auto_park_no{
+
+.player_one_auto_park_no, .player_two_auto_park_no, .player_three_auto_park_no, .player_four_auto_park_no {
   left: 10%;
   border-radius: 10px 0 0 10px;
 }
-.player_one_auto_park_yes{
+
+.player_one_auto_park_yes, .player_two_auto_park_yes, .player_three_auto_park_yes, .player_four_auto_park_yes {
   left: 50%;
   border-radius: 0 10px 10px 0;
+}
+
+.player_one_auto_park_no:hover, .player_one_auto_park_yes:hover, .player_two_auto_park_no:hover, .player_two_auto_park_yes:hover,
+.player_three_auto_park_no:hover, .player_three_auto_park_yes:hover, .player_four_auto_park_no:hover, .player_four_auto_park_yes:hover {
+  border-color: #0464cc;
 }
 
 .hexagon_top {
