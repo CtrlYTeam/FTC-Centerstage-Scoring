@@ -30,6 +30,15 @@ for(let j=0; j < rowCount/2; j++) {
   }
 }
 
+let buttonDropdown = document.getElementById("buttonDropdown")
+let dropdownPanel = document.getElementById("dropdownPanel")
+let dropdownImg = document.getElementById("infoPanelImg")
+
+buttonDropdown.addEventListener('click', () => {
+  dropdownPanel.style.display = dropdownPanel.style.display == "block"? "none": "block"
+  dropdownImg.style.transform = dropdownPanel.style.display == "block"?"rotate(180deg)":"rotate(0deg)"
+})//transform: rotate(90deg);
+
 const teamOne = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
@@ -51,7 +60,7 @@ const teamTwo = [
   0,//(2) pixel in backstage done
   //player one left player 2 right
   [0,0],//(3) player prop    done
-  [0,0],//(4) auto spike
+  [0,0],//(4) auto spike    
   [0,0],//(5) auto pixel
   [0,0],//(6) auto park
   [0,0],//(7) suspension     done
@@ -61,38 +70,18 @@ const teamTwo = [
   0//(11) major penalties    done
 ]
 
-function teamOnePoints () {
+function teamOnePointsCalc () {
   
 }
 
+/**
+ *  Team 1
+ */
 let teamOnebackstagePixels = [
   document.getElementById("teamOneBackstagePixelsNumber"),
   document.getElementById("teamOneBackstagePixelsPlus"),
   document.getElementById("teamOneBackstagePixelsMinus")
 ]
-
-function teamOnebackstagePixelsChange(change) {
-  if(!(change < 0 && teamOnebackstagePixels[0].value === 0)) {
-    teamOne[2] = Number(teamOnebackstagePixels[0].value)
-    teamOne[2] += change
-    teamOnebackstagePixels[0].value = teamOne[2]
-    if (teamOnebackstagePixels[0].value.length > 4) {
-      teamOnebackstagePixels[0].value = teamOnebackstagePixels[0].value.slice(0, 4);
-    }
-  }
-}
-
-teamOnebackstagePixels[0].addEventListener('input', () => {
-  teamOnebackstagePixelsChange(0)
-})
-
-teamOnebackstagePixels[1].addEventListener("click", () => {
-  teamOnebackstagePixelsChange(1)
-})
-
-teamOnebackstagePixels[2].addEventListener("click", () => {
-  teamOnebackstagePixelsChange(-1)
-})
 
 let teamOneMinorPenalties = [
   document.getElementById("teamOneMinorPenaltiesPixelsNumber"),
@@ -100,86 +89,20 @@ let teamOneMinorPenalties = [
   document.getElementById("teamOneMinorPenaltiesPixelsMinus")
 ]
 
-function teamOneMinorPenaltiesChange(change) {
-  if(!(change < 0 && teamOneMinorPenalties[0].value == 0)) {
-    teamOne[10] = Number(teamOneMinorPenalties[0].value)
-    teamOne[10] += change
-    teamOneMinorPenalties[0].value = teamOne[10]
-    if (teamOneMinorPenalties[0].value.length > 4) {
-      teamOneMinorPenalties[0].value = teamOneMinorPenalties[0].value.slice(0, 4);
-    }
-  }
-}
-
-teamOneMinorPenalties[0].addEventListener('input', () => {
-  teamOneMinorPenaltiesChange(0)
-})
-
-teamOneMinorPenalties[1].addEventListener("click", () => {
-  teamOneMinorPenaltiesChange(1)
-})
-
-teamOneMinorPenalties[2].addEventListener("click", () => {
-  teamOneMinorPenaltiesChange(-1)
-})
-
 let teamOneMajorPenalties = [
   document.getElementById("teamOneMajorPenaltiesPixelsNumber"),
   document.getElementById("teamOneMajorPenaltiesPixelsPlus"),
   document.getElementById("teamOneMajorPenaltiesPixelsMinus")
 ]
-  
-function teamOneMajorPenaltiesChange(change) {
-  if(!(change < 0 && teamOneMajorPenalties[0].value == 0)) {
-    teamOne[11] = Number(teamOneMajorPenalties[0].value)
-    teamOne[11] += change
-    teamOneMajorPenalties[0].value = teamOne[11]
-    if (teamOneMajorPenalties[0].value.length > 4) {
-      teamOneMajorPenalties[0].value = teamOneMajorPenalties[0].value.slice(0, 4);
-    }
-  }
-}
 
-teamOneMajorPenalties[0].addEventListener('input', () => {
-  teamOneMajorPenaltiesChange(0)
-})
-
-teamOneMajorPenalties[1].addEventListener("click", () => {
-  teamOneMajorPenaltiesChange(1)
-})
-
-teamOneMajorPenalties[2].addEventListener("click", () => {
-  teamOneMajorPenaltiesChange(-1)
-})
-
+/**
+ * Team 2
+ */
 let teamTwobackstagePixels = [
   document.getElementById("teamTwoBackstagePixelsNumber"),
   document.getElementById("teamTwoBackstagePixelsPlus"),
   document.getElementById("teamTwoBackstagePixelsMinus")
 ]
-
-function teamTwobackstagePixelsChange(change) {
-  if (!(change < 0 && teamTwobackstagePixels[0].value === 0)) {
-    teamTwo[2] = Number(teamTwobackstagePixels[0].value)
-    teamTwo[2] += change
-    teamTwobackstagePixels[0].value = teamTwo[2]
-    if (teamTwobackstagePixels[0].value.length > 4) {
-      teamTwobackstagePixels[0].value = teamTwobackstagePixels[0].value.slice(0, 4);
-    }
-  }
-}
-
-teamTwobackstagePixels[0].addEventListener('input', () => {
-  teamTwobackstagePixelsChange(0)
-})
-
-teamTwobackstagePixels[1].addEventListener("click", () => {
-  teamTwobackstagePixelsChange(1)
-})
-
-teamTwobackstagePixels[2].addEventListener("click", () => {
-  teamTwobackstagePixelsChange(-1)
-})
 
 let teamTwoMinorPenalties = [
   document.getElementById("teamTwoMinorPenaltiesPixelsNumber"),
@@ -187,57 +110,63 @@ let teamTwoMinorPenalties = [
   document.getElementById("teamTwoMinorPenaltiesPixelsMinus")
 ]
 
-function teamTwoMinorPenaltiesChange(change) {
-  if (!(change < 0 && teamTwoMinorPenalties[0].value == 0)) {
-    teamTwo[10] = Number(teamTwoMinorPenalties[0].value)
-    teamTwo[10] += change
-    teamTwoMinorPenalties[0].value = teamTwo[10]
-    if (teamTwoMinorPenalties[0].value.length > 4) {
-      teamTwoMinorPenalties[0].value = teamTwoMinorPenalties[0].value.slice(0, 4);
-    }
-  }
-}
-
-teamTwoMinorPenalties[0].addEventListener('input', () => {
-  teamTwoMinorPenaltiesChange(0)
-})
-
-teamTwoMinorPenalties[1].addEventListener("click", () => {
-  teamTwoMinorPenaltiesChange(1)
-})
-
-teamTwoMinorPenalties[2].addEventListener("click", () => {
-  teamTwoMinorPenaltiesChange(-1)
-})
-
 let teamTwoMajorPenalties = [
   document.getElementById("teamTwoMajorPenaltiesPixelsNumber"),
   document.getElementById("teamTwoMajorPenaltiesPixelsPlus"),
   document.getElementById("teamTwoMajorPenaltiesPixelsMinus")
 ]
 
-function teamTwoMajorPenaltiesChange(change) {
-  if (!(change < 0 && teamTwoMajorPenalties[0].value == 0)) {
-    teamTwo[11] = Number(teamTwoMajorPenalties[0].value)
-    teamTwo[11] += change
-    teamTwoMajorPenalties[0].value = teamTwo[11]
-    if (teamTwoMajorPenalties[0].value.length > 4) {
-      teamTwoMajorPenalties[0].value = teamTwoMajorPenalties[0].value.slice(0, 4);
-    }
+
+let teamOnePoints = [teamOnebackstagePixels, teamOneMinorPenalties, teamOneMajorPenalties]
+let teamTwoPoints = [teamTwobackstagePixels, teamTwoMinorPenalties, teamTwoMajorPenalties]
+
+function teamChange(change, team, teamPoints, arrayPos, counter_idx) {
+  if(change > 0 || teamPoints[counter_idx][0].value != 0) 
+  {
+    team[arrayPos] = Number(teamPoints[counter_idx][0].value)
+    team[arrayPos] += change
+    teamPoints[counter_idx][0].value = team[arrayPos]
+
+    if (teamPoints[counter_idx][0].value.length > 4)
+      teamPoints[counter_idx][0].value = teamPoints[counter_idx][0].value.slice(0, 4)
   }
 }
 
-teamTwoMajorPenalties[0].addEventListener('input', () => {
-  teamTwoMajorPenaltiesChange(0)
-})
+/**
+ *  Change team 1 data
+ */
+for(let i=0; i < teamOnePoints.length; i++) 
+{
+  teamOnePoints[i][0].addEventListener('input', () => {
+    teamChange(0, teamOne, teamOnePoints, 2, i)
+  })
+  
+  teamOnePoints[i][1].addEventListener("click", () => {
+    teamChange(1, teamOne, teamOnePoints, 10, i)
+  })
+  
+  teamOnePoints[i][2].addEventListener("click", () => {
+    teamChange(-1, teamOne, teamOnePoints, 11, i)
+  })
+}
 
-teamTwoMajorPenalties[1].addEventListener("click", () => {
-  teamTwoMajorPenaltiesChange(1)
-})
-
-teamTwoMajorPenalties[2].addEventListener("click", () => {
-  teamTwoMajorPenaltiesChange(-1)
-})
+/**
+ *  Change team 2 data
+ */
+for(let i=0; i < teamTwoPoints.length; i++) 
+{
+  teamTwoPoints[i][0].addEventListener('input', () => {
+    teamChange(0, teamTwo, teamTwoPoints, 2, i)
+  })
+  
+  teamTwoPoints[i][1].addEventListener("click", () => {
+    teamChange(1, teamTwo, teamTwoPoints, 10, i)
+  })
+  
+  teamTwoPoints[i][2].addEventListener("click", () => {
+    teamChange(-1, teamTwo, teamTwoPoints, 11, i)
+  })
+}
 
 //player One Team One
 
@@ -251,7 +180,7 @@ let playerOneDroneZone = [
 function playerOneDroneZoneChange(change){
   console.log(teamOne);
   teamOne[9][0] = change
-  for(let i = 0; i < 4 ;i++){
+  for(let i = 0; i < 4; i++){
     playerOneDroneZone[i].style.backgroundColor = "aliceblue"
   }
   playerOneDroneZone[change].style.backgroundColor = "red"
@@ -377,19 +306,19 @@ let playerOneAutoPark = [
 ]
 
 function playerOneAutoParkChange(change){
-teamOne[6][0] = change
-for(let i = 0; i < 2 ;i++){
-playerOneAutoPark[i].style.backgroundColor = "aliceblue"
-}
-playerOneAutoPark[change].style.backgroundColor = "red"
+  teamOne[6][0] = change
+  for(let i = 0; i < 2; i++){
+    playerOneAutoPark[i].style.backgroundColor = "aliceblue"
+  }
+  playerOneAutoPark[change].style.backgroundColor = "red"
 }
 
 playerOneAutoPark[0].addEventListener("click", () => {
-playerOneAutoParkChange(0)
+  playerOneAutoParkChange(0)
 })
 
 playerOneAutoPark[1].addEventListener("click", () => {
-playerOneAutoParkChange(1)
+  playerOneAutoParkChange(1)
 })
 
 //player Two Team One

@@ -88,9 +88,30 @@ html, body {
   transform: translate(-50%, -50%);
   border: 0px solid transparent;
 }
+
+@keyframes dropdown_panel_anim {
+  from{
+    height: 0px;
+  }
+  to{
+    height: 400px;
+  }
+}
+
 .dropdown_panel{
   display: none;
+  width: 15%;
+  top: 75px;
+  background-color: #DD7230;
+  z-index: 1;
+  position: fixed;
+  right: 0;
+  border-radius: 0 0 0 30px;
+  animation: dropdown_panel_anim 0.3s ease-in-out 0s 1 normal both;
 }
+/* .info_panel_img{
+  transform: rotate(160deg);
+} */
 .red_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
