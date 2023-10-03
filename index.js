@@ -34,10 +34,21 @@ let buttonDropdown = document.getElementById("buttonDropdown")
 let dropdownPanel = document.getElementById("dropdownPanel")
 let dropdownImg = document.getElementById("infoPanelImg")
 
-buttonDropdown.addEventListener('click', () => {
-  dropdownPanel.style.display = dropdownPanel.style.display == "block"? "none": "block"
-  dropdownImg.style.transform = dropdownPanel.style.display == "block"?"rotate(180deg)":"rotate(0deg)"
-})//transform: rotate(90deg);
+// buttonDropdown.addEventListener('click', () => {
+//   dropdownPanel.classList.add('opened_panel')
+//   dropdownPanel.style.display = dropdownPanel.style.display == "block"? "none": "block"
+//   dropdownImg.style.transform = dropdownPanel.style.display == "block"?"rotate(180deg)":"rotate(0deg)"
+// })//transform: rotate(90deg);
+
+buttonDropdown.addEventListener("click", () => {
+  if (dropdownPanel.classList.contains("dropdown_panel")) {
+    dropdownPanel.classList.remove("dropdown_panel");
+    dropdownPanel.classList.add("panel_opened");
+  } else {
+    dropdownPanel.classList.remove("panel_opened");
+    dropdownPanel.classList.add("dropdown_panel");
+  }
+});
 
 const teamOne = [
   0,//(0) pixels on backboard

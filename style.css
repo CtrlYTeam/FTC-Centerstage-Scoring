@@ -89,17 +89,7 @@ html, body {
   border: 0px solid transparent;
 }
 
-@keyframes dropdown_panel_anim {
-  from{
-    height: 0px;
-  }
-  to{
-    height: 400px;
-  }
-}
-
-.dropdown_panel{
-  display: none;
+.dropdown_panel {
   width: 15%;
   top: 75px;
   background-color: #DD7230;
@@ -107,11 +97,46 @@ html, body {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 30px;
-  animation: dropdown_panel_anim 0.3s ease-in-out 0s 1 normal both;
+  transition: all 0.5s ease, opacity 0.5s ease;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
-/* .info_panel_img{
-  transform: rotate(160deg);
-} */
+
+.panel_opened {
+  width: 15%;
+  top: 75px;
+  background-color: #DD7230;
+  z-index: 1;
+  position: fixed;
+  right: 0;
+  border-radius: 0 0 0 30px;
+  transition: all 0.5s ease, opacity 0.5s ease;
+  height: 300px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.timer_toggle_button, .pro_toggle_button, .tooltips_toggle_button{
+  width: 20%;
+  aspect-ratio: 1/1;
+  border-radius: 1.2vw;
+  border:0.15vw solid #0464cc;
+  margin: 10px;
+}
+
+.label_dropdown{
+  font-family: monospace;
+  margin-left: -7%;
+}
+
+.credits_text{
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  text-align: center;
+}
+
 .red_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -237,7 +262,7 @@ html, body {
   margin-left: 10px;
   margin-right: -13px;
   margin-top: 35px;
-  width: 10%;
+  width: 15%;
   height: 70px;
   border-radius: 10px 0px 0px 10px;
   border: 2px solid gray;
@@ -247,7 +272,7 @@ html, body {
   font-family: verdana;
 }
 .team_one_backstage_pixels_plus, .team_one_minor_penalties_plus, .team_one_major_penalties_plus ,.team_two_backstage_pixels_plus, .team_two_minor_penalties_plus, .team_two_major_penalties_plus{
-  width: 10%;
+  width: 15%;
   height: 70px;
   border-radius: 0px 10px 10px 0px;
   margin-left: -13px;
@@ -259,7 +284,7 @@ html, body {
   font-family: verdana;
 }
 .team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number, .team_two_backstage_pixels_number, .team_two_minor_penalties_number, .team_two_major_penalties_number{
-  width: 15%;
+  width: 25%;
   height: 66px;
   margin-top: 35px;
   position: relative;
