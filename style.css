@@ -117,8 +117,19 @@ html, body {
   overflow: hidden;
 }
 
+.flexbox_dropdown{
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.dropdown_item{
+  display: flex;
+  align-items: center;
+}
+
 .timer_toggle_button, .pro_toggle_button, .tooltips_toggle_button{
-  width: 20%;
+  width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
   border:0.15vw solid #0464cc;
@@ -127,7 +138,7 @@ html, body {
 
 .label_dropdown{
   font-family: monospace;
-  margin-left: -7%;
+  white-space: nowrap;
 }
 
 .credits_text{

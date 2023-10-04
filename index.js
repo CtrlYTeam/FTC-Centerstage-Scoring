@@ -30,25 +30,88 @@ for(let j=0; j < rowCount/2; j++) {
   }
 }
 
+let userData = parseCookie()
+
+if(userData == undefined){
+  newCookie()
+  userData = parseCookie()
+}
+
+function newCookie(){
+  userData = {
+    timerCheck: 0,
+    proCheck: 0,
+    tooltipsCheck: 0,
+  }
+  let jsonData = JSON.stringify(userData);
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+}
+
+function updateCookie(){
+  console.log(userData)
+  let jsonData = JSON.stringify(userData);
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+}
+
+function parseCookie(){
+  let cookies = document.cookie
+  let cookieData = cookies
+    .split("; ")
+    .find((cookie) => cookie.startsWith("userData="))
+
+  if (cookieData) {
+    let jsonData = decodeURIComponent(cookieData.split("=")[1])
+    let userData = JSON.parse(jsonData)
+    console.log(userData)
+    return(userData)
+  }
+}
+
+let timerToggleButton = document.getElementById("timerToggleButton")
+let proToggleButton = document.getElementById("proToggleButton")
+let tooltipsToggleButton = document.getElementById("tooltipsToggleButton")
+
+if(userData.timerCheck == 0){
+  timerToggleButton.style.backgroundColor = "red"
+  userData.timerCheck = 1
+}else{
+  timerToggleButton.style.backgroundColor = "white"
+  userData.timerCheck = 0
+}
+
+timerToggleButton.addEventListener("click", () => {
+  console.log(userData.timerCheck)
+  if(userData.timerCheck == 0){
+    timerToggleButton.style.backgroundColor = "red"
+    userData.timerCheck = 1
+  }else{
+    timerToggleButton.style.backgroundColor = "white"
+    userData.timerCheck = 0
+  }
+  updateCookie()
+})
+
+proToggleButton.addEventListener("click", () => {
+  userData.proCheck = 0
+})
+
+tooltipsToggleButton.addEventListener("click", () => {
+  userData.tooltipsCheck = 0
+})
+
 let buttonDropdown = document.getElementById("buttonDropdown")
 let dropdownPanel = document.getElementById("dropdownPanel")
 let dropdownImg = document.getElementById("infoPanelImg")
 
-// buttonDropdown.addEventListener('click', () => {
-//   dropdownPanel.classList.add('opened_panel')
-//   dropdownPanel.style.display = dropdownPanel.style.display == "block"? "none": "block"
-//   dropdownImg.style.transform = dropdownPanel.style.display == "block"?"rotate(180deg)":"rotate(0deg)"
-// })//transform: rotate(90deg);
-
 buttonDropdown.addEventListener("click", () => {
   if (dropdownPanel.classList.contains("dropdown_panel")) {
-    dropdownPanel.classList.remove("dropdown_panel");
-    dropdownPanel.classList.add("panel_opened");
+    dropdownPanel.classList.remove("dropdown_panel")
+    dropdownPanel.classList.add("panel_opened")
   } else {
-    dropdownPanel.classList.remove("panel_opened");
-    dropdownPanel.classList.add("dropdown_panel");
+    dropdownPanel.classList.remove("panel_opened")
+    dropdownPanel.classList.add("dropdown_panel")
   }
-});
+})
 
 const teamOne = [
   0,//(0) pixels on backboard
