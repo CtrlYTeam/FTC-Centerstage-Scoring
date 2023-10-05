@@ -8,6 +8,11 @@ html, body {
   overflow-x: hidden;
 }
 
+@font-face {
+  font-family: "abel";
+  src: url("fonts/Abel.ttf");
+}
+
 .top_bar{
   position: fixed;
   width: 100%;
@@ -22,7 +27,7 @@ html, body {
 .player_one_input{
   width: 15%;
   height: 35px;
-  font-family: monospace;
+  font-family: abel;
   font-size: 2em;
   text-align: center;
   position: absolute;
