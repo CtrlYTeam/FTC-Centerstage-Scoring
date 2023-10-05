@@ -30,6 +30,28 @@ for(let j=0; j < rowCount/2; j++) {
   }
 }
 
+//dropdwon panel
+let buttonDropdown = document.getElementById("buttonDropdown")
+let dropdownPanel = document.getElementById("dropdownPanel")
+let dropdownImg = document.getElementById("infoPanelImg")
+
+buttonDropdown.addEventListener("click", () => {
+  if (dropdownPanel.classList.contains("dropdown_panel")) {
+    dropdownPanel.classList.remove("dropdown_panel")
+    dropdownPanel.classList.add("panel_opened")
+    dropdownImg.classList.remove("info_panel_img")
+    dropdownImg.classList.add("info_panel_img_opened")
+  } else {
+    dropdownPanel.classList.remove("panel_opened")
+    dropdownPanel.classList.add("dropdown_panel")
+    dropdownImg.classList.remove("info_panel_img_opened")
+    dropdownImg.classList.add("info_panel_img")
+  }
+})
+
+
+// //dropdown buttons
+//cookies for dropdown
 let userData = parseCookie()
 
 if(userData == undefined){
@@ -41,14 +63,13 @@ function newCookie(){
   userData = {
     timerCheck: 0,
     proCheck: 0,
-    tooltipsCheck: 0,
+    tooltipsCheck: 1,
   }
   let jsonData = JSON.stringify(userData);
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
 }
 
 function updateCookie(){
-  console.log(userData)
   let jsonData = JSON.stringify(userData);
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
 }
@@ -62,56 +83,43 @@ function parseCookie(){
   if (cookieData) {
     let jsonData = decodeURIComponent(cookieData.split("=")[1])
     let userData = JSON.parse(jsonData)
-    console.log(userData)
     return(userData)
   }
 }
 
-let timerToggleButton = document.getElementById("timerToggleButton")
-let proToggleButton = document.getElementById("proToggleButton")
-let tooltipsToggleButton = document.getElementById("tooltipsToggleButton")
+//toggle button
+let toggleButtons = [
+  document.getElementById("timerToggleButton"),
+  document.getElementById("proToggleButton"),
+  document.getElementById("tooltipsToggleButton")
+]
 
-if(userData.timerCheck == 0){
-  timerToggleButton.style.backgroundColor = "red"
-  userData.timerCheck = 1
-}else{
-  timerToggleButton.style.backgroundColor = "white"
-  userData.timerCheck = 0
+var jsonItems = ["timerCheck", "proCheck", "tooltipsCheck"]
+
+for(var i = 0; i<3; i++){
+  dropdownButtons(toggleButtons[i], jsonItems[i])
 }
 
-timerToggleButton.addEventListener("click", () => {
-  console.log(userData.timerCheck)
-  if(userData.timerCheck == 0){
-    timerToggleButton.style.backgroundColor = "red"
-    userData.timerCheck = 1
+function dropdownButtons (elementButton, jsonValue) {
+  if(userData.jsonValue == 0){
+    elementButton.style.backgroundColor = "white"
   }else{
-    timerToggleButton.style.backgroundColor = "white"
-    userData.timerCheck = 0
+    elementButton.style.backgroundColor = "red"
   }
-  updateCookie()
-})
-
-proToggleButton.addEventListener("click", () => {
-  userData.proCheck = 0
-})
-
-tooltipsToggleButton.addEventListener("click", () => {
-  userData.tooltipsCheck = 0
-})
-
-let buttonDropdown = document.getElementById("buttonDropdown")
-let dropdownPanel = document.getElementById("dropdownPanel")
-let dropdownImg = document.getElementById("infoPanelImg")
-
-buttonDropdown.addEventListener("click", () => {
-  if (dropdownPanel.classList.contains("dropdown_panel")) {
-    dropdownPanel.classList.remove("dropdown_panel")
-    dropdownPanel.classList.add("panel_opened")
-  } else {
-    dropdownPanel.classList.remove("panel_opened")
-    dropdownPanel.classList.add("dropdown_panel")
-  }
-})
+  let element_button_perm = elementButton
+  let element_button_value = jsonValue
+  elementButton.addEventListener("click", () => {
+    if(userData.element_button_value == 0){
+      element_button_perm.style.backgroundColor = "red"
+      userData.element_button_value = 1
+    }else{
+      element_button_perm.style.backgroundColor = "white"
+      userData.element_button_value = 0
+    }
+    console.log(userData.element_button_value)
+    updateCookie()
+  })
+}
 
 const teamOne = [
   0,//(0) pixels on backboard

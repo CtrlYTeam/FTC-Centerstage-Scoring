@@ -75,14 +75,11 @@ html, body {
   left: 76%;
   transform: translate(-50%, -50%);
 }
-.info_panel {
+.info_panel_button {
   width: 50px;
   aspect-ratio: 1/1;
-  font-family: monospace;
-  font-size: 3em;
-  text-align: center;
   position: absolute;
-  border-radius: 5px;
+  background-color: transparent;
   top: 35px;
   right: -10px;
   transform: translate(-50%, -50%);
@@ -97,7 +94,7 @@ html, body {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 30px;
-  transition: all 0.5s ease, opacity 0.5s ease;
+  transition: all 0.5s ease;
   height: 0;
   opacity: 0;
   overflow: hidden;
@@ -111,10 +108,19 @@ html, body {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 30px;
-  transition: all 0.5s ease, opacity 0.5s ease;
+  transition: all 0.5s ease;
   height: 300px;
   opacity: 1;
   overflow: hidden;
+}
+
+.info_panel_img{
+  transition: all 0.5s ease;
+  transform: scaleY(-1);
+}
+
+.info_panel_img_opened{
+  transition: all 0.5s ease;
 }
 
 .flexbox_dropdown{
