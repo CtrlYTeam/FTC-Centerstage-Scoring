@@ -87,7 +87,7 @@ function parseCookie(){
   }
 }
 
-//toggle button
+//toggle buttons
 let toggleButtons = [
   document.getElementById("timerToggleButton"),
   document.getElementById("proToggleButton"),
@@ -96,29 +96,28 @@ let toggleButtons = [
 
 var jsonItems = ["timerCheck", "proCheck", "tooltipsCheck"]
 
-for(var i = 0; i<3; i++){
-  dropdownButtons(toggleButtons[i], jsonItems[i])
+initializeButtonAppearances()
+
+function initializeButtonAppearances() {
+  for (let i = 0; i < toggleButtons.length; i++) {
+    if (userData[jsonItems[i]] === 1) {
+      toggleButtons[i].style.backgroundColor = "red"
+    } else {
+      toggleButtons[i].style.backgroundColor = "white"
+    }
+  }
 }
 
-function dropdownButtons (elementButton, jsonValue) {
-  if(userData.jsonValue == 0){
-    elementButton.style.backgroundColor = "white"
-  }else{
-    elementButton.style.backgroundColor = "red"
-  }
-  let element_button_perm = elementButton
-  let element_button_value = jsonValue
-  elementButton.addEventListener("click", () => {
-    if(userData.element_button_value == 0){
-      element_button_perm.style.backgroundColor = "red"
-      userData.element_button_value = 1
-    }else{
-      element_button_perm.style.backgroundColor = "white"
-      userData.element_button_value = 0
+for (let i = 0; i < toggleButtons.length; i++) {
+  toggleButtons[i].addEventListener("click", function () {
+    userData[jsonItems[i]] = userData[jsonItems[i]] === 1 ? 0 : 1
+    if (userData[jsonItems[i]] === 1) {
+      toggleButtons[i].style.backgroundColor = "red"
+    } else {
+      toggleButtons[i].style.backgroundColor = "white"
     }
-    console.log(userData.element_button_value)
     updateCookie()
-  })
+  });
 }
 
 const teamOne = [
