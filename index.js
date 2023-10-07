@@ -1,34 +1,92 @@
-const hexTop    = document.querySelector('.hexagon_top')
-const hexCenter = document.querySelector('.hexagon_center')
-const hexBottom = document.querySelector('.hexagon_bottom')
-const hexDiag   = parseInt(getComputedStyle(hexTop).borderBottom) + 
-                  parseInt(getComputedStyle(hexCenter).height)    + 
-                  parseInt(getComputedStyle(hexBottom).borderTop)
-const hex_x     = parseInt(getComputedStyle(hexCenter).width)
-const padding_x = 5
-const padding_y = 25
-const rowCount  = 11
-const hexInline = 6  // Lower
+createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
+createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
 
-const container = document.querySelector('.blue_backdrop')
-const hexagon   = document.querySelector('.hexagon')
-let   newHex
-
-for(let j=0; j < rowCount/2; j++) {
-  for(let i=1; i < hexInline+2; i++) {
-    if(!j && i === hexInline+1)
-      continue;
-
-    newHex = hexagon.cloneNode(true)                                                                                         // No clue about this term
-    newHex.style.transform = `translate(${i * (hex_x + padding_x) - (j? hex_x + padding_x: 0)}px, ${-2*j*hexDiag*(hexInline-1) - (j>1?(j-1)*hexDiag:0) - i*hexDiag - j*2*padding_y}px)`
-    container.appendChild(newHex)
+//Hexagon code
+function formatText(array) {
+  let finalString = ""
+  let currentIndex = 0
+  for(let i = 1; i <= 11; i++) {
+      for(let j = 1; j <= 7 - (i%2); j++) {
+          let currentItem = array[currentIndex]
+          let formattedCurrentItem = '<span style="color:'+ currentItem + ';">'+ currentItem +'</span> '
+          finalString += formattedCurrentItem
+          currentIndex++
+      }
+      finalString += "<br>"
   }
-  for(let i=1; i < hexInline+1; i++) {
-    newHex = hexagon.cloneNode(true)                                                                                                                     // No clue about this term
-    newHex.style.transform = `translate(${i * (hex_x + padding_x) - 0.5 * (hex_x + padding_x)}px, ${(-2*j*hexDiag*(hexInline-1) - hexDiag*(hexInline-1 + i) - j*hexDiag - padding_y*(j*2 + 1))}px)`
-    container.appendChild(newHex)
-  }
+  console.log(finalString)
+  return finalString
 }
+const blueHexagons = document.querySelectorAll(".hexagon_blue")
+const redHexagons = document.querySelectorAll(".hexagon_red")
+const blueColorStates = new Array(71)
+const redColorStates = new Array(71)
+for(let i = 0; i < 71; i++) {
+ blueColorStates[i] = "black"
+ redColorStates[i] = "black"
+}
+
+redHexagons.forEach((redHexagon, index) => {
+  let currentColorIndex = 0;
+  redHexagon.addEventListener("click", () => {
+      redHexagon.classList.remove("black","white", "green", "purple", "yellow")
+      currentColorIndex = (currentColorIndex + 1) % 5
+      switch(currentColorIndex)
+      {
+        case 0:
+          redHexagon.classList.add("black")
+          redColorStates[index] = "black"
+          break
+        case 1:
+          redHexagon.classList.add("white")
+          redColorStates[index] = "white"
+          break
+        case 2:
+          redHexagon.classList.add("green")
+          redColorStates[index] = "green"
+          break
+        case 3:
+          redHexagon.classList.add("purple")
+          redColorStates[index] = "purple"
+          break
+        case 4:
+          redHexagon.classList.add("yellow")
+          redColorStates[index] = "yellow"
+          break
+      }
+  });
+});
+
+blueHexagons.forEach((blueHexagon, index) => {
+  let currentColorIndex = 0;
+  blueHexagon.addEventListener("click", () => {
+      blueHexagon.classList.remove("black","white", "green", "purple", "yellow")
+      currentColorIndex = (currentColorIndex + 1) % 5
+      switch(currentColorIndex)
+      {
+        case 0:
+          blueHexagon.classList.add("black")
+          blueColorStates[index] = "black"
+          break
+        case 1:
+          blueHexagon.classList.add("white")
+          blueColorStates[index] = "white"
+          break
+        case 2:
+          blueHexagon.classList.add("green")
+          blueColorStates[index] = "green"
+          break
+        case 3:
+          blueHexagon.classList.add("purple")
+          blueColorStates[index] = "purple"
+          break
+        case 4:
+          blueHexagon.classList.add("yellow")
+          blueColorStates[index] = "yellow"
+          break
+      }
+  })
+})
 
 //dropdwon panel
 let buttonDropdown = document.getElementById("buttonDropdown")
@@ -49,8 +107,25 @@ buttonDropdown.addEventListener("click", () => {
   }
 })
 
+function createHexDivision(containerColor, hexRowColor, hexColor)
+{
+  const container = document.getElementsByClassName(containerColor)
+  for(let i=0; i < 11; i++)
+  {
+    const hexRow = document.createElement("div")
+    hexRow.classList.add(hexRowColor)
+    hexRow.setAttribute("id", 'r'+hexColor+i)
+    container[0].appendChild(hexRow)
+    for(let j=0; j < (!(i%2)?6:7); j++)
+    {
+      const hex = document.createElement("div")
+      hex.classList.add(hexColor)
+      hex.setAttribute("id", hexColor+i+j)
+      hexRow.appendChild(hex)
+    }
+  }
+}
 
-// //dropdown buttons
 //cookies for dropdown
 let userData = parseCookie()
 
@@ -120,16 +195,12 @@ initializeButtonAppearances()
 
 function initializeButtonAppearances() {
   for (let i = 0; i < toggleButtons.length; i++) {
-    if (userData[jsonItems[i]] === 1) {
-      toggleButtons[i].style.backgroundColor = "red"
-    } else {
-      toggleButtons[i].style.backgroundColor = "white"
-    }
+    toggleButtons[i].style.backgroundColor = userData[jsonItems[i]] === 1? "red": "white"
   }
 }
 
 for (let i = 0; i < toggleButtons.length; i++) {
-  toggleButtons[i].addEventListener("click", function () {
+  toggleButtons[i].addEventListener("click", () => {
     userData[jsonItems[i]] = userData[jsonItems[i]] === 1 ? 0 : 1
     if (userData[jsonItems[i]] === 1) {
       toggleButtons[i].style.backgroundColor = "red"
@@ -140,6 +211,7 @@ for (let i = 0; i < toggleButtons.length; i++) {
   });
 }
 
+// !!NEED TO ADD LINE POINTS!!
 const teamOne = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
@@ -279,7 +351,6 @@ let playerOneDroneZone = [
 ]
 
 function playerOneDroneZoneChange(change){
-  console.log(teamOne);
   teamOne[9][0] = change
   for(let i = 0; i < 4; i++){
     playerOneDroneZone[i].style.backgroundColor = "aliceblue"
@@ -736,7 +807,6 @@ let playerFourDroneZone = [
 ]
 
 function playerFourDroneZoneChange(change){
-  console.log(teamTwo);
   teamTwo[9][1] = change
   for(let i = 0; i < 4 ;i++){
     playerFourDroneZone[i].style.backgroundColor = "aliceblue"

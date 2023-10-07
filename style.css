@@ -13,6 +13,59 @@ html, body {
   src: url("fonts/Abel.ttf");
 }
 
+.redColorStateHeader, .blueColorStateHeader  {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.hex_container_blue, .hex_container_red {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.hex_row_blue, .hex_row_red {
+  display: flex;
+  margin-top: -1vw;
+}
+
+.hexagon_blue, .hexagon_red  {
+  width: 6vw;
+  aspect-ratio: 10/11.5;
+  background-color: black;
+  position: relative;
+  margin-left: 0.3vw;
+  margin-right: 0.3vw;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transition: background-color 0.3s ease;
+}
+
+@media screen and (min-width: 1700px) {
+  .hexagon_blue, .hexagon_red  {
+    width: 100px;
+  }
+}
+
+.hexagon_red.black, .hexagon_blue.black {
+  background-color: black;
+}
+.hexagon_red.white, .hexagon_blue.white {
+  background-color: white;
+}
+
+.hexagon_red.green, .hexagon_blue.green {
+  background-color: green;
+}
+
+.hexagon_red.purple, .hexagon_blue.purple {
+  background-color: purple;
+}
+
+.hexagon_red.yellow, .hexagon_blue.yellow {
+  background-color: yellow;
+}
+
 .top_bar{
   position: fixed;
   width: 100%;
@@ -114,7 +167,7 @@ html, body {
   right: 0;
   border-radius: 0 0 0 30px;
   transition: all 0.5s ease;
-  height: 300px;
+  height: fit-content;
   opacity: 1;
   overflow: hidden;
 }
@@ -166,19 +219,20 @@ html, body {
   width: 50%;
   top: 75px;
   left: -20px;
-  height: 1300px;
+  height: 1350px;
   background-color: #D2DAFF; 
   position: absolute;
   border: 5px solid red;
   border-radius: 10px;
   margin: 10px;
+  padding-bottom: 300px;
 }
 .blue_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  height: 1300px;
+  height: 1350px;
   top: 75px;
   background-color: #D2DAFF; 
   right: -20px;
@@ -186,6 +240,7 @@ html, body {
   border: 5px solid blue;
   border-radius: 10px;
   margin: 10px;
+  padding-bottom: 300px;
 }
 .team_one{
   box-sizing: border-box;
@@ -214,7 +269,6 @@ html, body {
   border: 5px solid blue;
   border-radius: 10px;
   margin: 10px;
-
 }
 .team_one_header, .team_two_header{
   font-family: abel;
@@ -626,18 +680,18 @@ input[type="number"]::-webkit-outer-spin-button {
   border-color: #0464cc;
 }
 
-.hexagon_top {
+.hexagon_blue_top {
   width: 0;
   border-bottom: 30px solid #18042b;
   border-left: 52px solid transparent;
   border-right: 52px solid transparent;
 }
-.hexagon_center {
+.hexagon_blue_center {
   width: 104px;
   height: 60px;
   background-color: #18042b;
 }
-.hexagon_bottom {
+.hexagon_blue_bottom {
   width: 0;
   border-top: 30px solid #18042b; 
   border-left: 52px solid transparent;
