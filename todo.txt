@@ -1,0 +1,24 @@
+linear gradient needs working on
+hexagon grid needs a sub pannel for statistics and reset button
+player scoring buttons need lables
+mosaiac detection
+tooltips add
+tooltips on/off
+timmer
+timmer on/off
+pro mode
+promod on/of
+link logo to ctrl-y Website
+minor css changes to alliance scoring elelments
+darkmode add to dropdown
+credits in dropdown
+sounds? timer, button clicks, scoring changes
+scale the webpage to better suit less scrolling
+major css changes (looks)
+import and export
+cookies for scoring
+lighthouse reports
+
+===later===
+fancy crown effect on score
+data visualization

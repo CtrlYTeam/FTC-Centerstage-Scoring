@@ -7,6 +7,21 @@
 html, body {
   overflow-x: hidden;
 }
+.background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to right, #F08080 30%, #87CEEB 70%);
+  /* z-index: -1; */
+}
+
+.inner_background{
+  background: rgba(0, 0, 0, 1);
+  /* z-index: -1; */
+  opacity: 0.5;
+}
+
+
 
 @font-face {
   font-family: "abel";
@@ -18,11 +33,23 @@ html, body {
   text-align: center;
 }
 
-.hex_container_blue, .hex_container_red {
+.hex_container_red{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 25px;
+  padding-top: 45px;
+  position: absolute;
+  left: 0;
+  margin-left: 40px;
+}
+.hex_container_blue{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 45px;
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
 }
 
 .hex_row_blue, .hex_row_red {
@@ -31,7 +58,7 @@ html, body {
 }
 
 .hexagon_blue, .hexagon_red  {
-  width: 6vw;
+  width: 3.7vw;
   aspect-ratio: 10/11.5;
   background-color: black;
   position: relative;
@@ -41,7 +68,7 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-@media screen and (min-width: 1700px) {
+@media screen and (min-width: 2000px) {
   .hexagon_blue, .hexagon_red  {
     width: 100px;
   }
@@ -259,28 +286,44 @@ html, body {
   width: 50%;
   top: 75px;
   left: -20px;
-  height: 1350px;
-  background-color: #D2DAFF; 
+  height: fit-content;
   position: absolute;
-  border: 5px solid red;
   border-radius: 10px;
   margin: 10px;
-  padding-bottom: 300px;
+  padding-bottom: 20px;
 }
 .blue_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  height: 1350px;
+  height: fit-content;
   top: 75px;
-  background-color: #D2DAFF; 
   right: -20px;
+  position: absolute;
+  border-radius: 10px;
+  margin: 10px;
+  padding-bottom: 20px;
+}
+.backpanel_info_box_red{
+  width: 20%;
+  height: 30vw;
+  top: 150px;
+  right: 0;
+  background-color: #D2DAFF; 
+  position: absolute;
+  border: 5px solid red;
+  border-radius: 10px;
+}
+.backpanel_info_box_blue{
+  width: 20%;
+  height: 30vw;
+  top: 150px;
+  left: 0;
+  background-color: #D2DAFF; 
   position: absolute;
   border: 5px solid blue;
   border-radius: 10px;
-  margin: 10px;
-  padding-bottom: 300px;
 }
 .red_alliance{
   box-sizing: border-box;
@@ -288,13 +331,14 @@ html, body {
   -webkit-box-sizing: border-box;
   width: 50%;
   left: -20px;
-  top: 1450px;
+  top: 55vw;
   height: 1050px;
   background-color: #D2DAFF; 
   position: absolute;
   border: 5px solid red;
   border-radius: 10px;
   margin: 10px;
+  
 }
 .blue_alliance{
   box-sizing: border-box;
@@ -303,16 +347,27 @@ html, body {
   width: 50%;
   right: -20px;
   height: 1050px; 
-  top: 1450px;
+  top: 55vw;
   background-color: #D2DAFF;
   position: absolute;
   border: 5px solid blue;
   border-radius: 10px;
   margin: 10px;
+  
 }
-.red_alliance_header, .blue_alliance_header{
+.red_alliance_header{
+  transform: translate(-50%, -50%);
   font-family: abel;
-  text-align: center;
+  left: 37%;
+  position: absolute;
+  margin-top: 10px;
+}
+.blue_alliance_header{
+  transform: translate(-50%, -50%);
+  font-family: abel;
+  right: 12%;
+  position: absolute;
+  margin-top: 10px;
 }
 .player_one{
   top: 400px;
@@ -424,7 +479,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: 1553px;
+  top: 1000px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
