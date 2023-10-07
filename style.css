@@ -18,7 +18,7 @@ html, body {
   width: 100%;
   height: 75px;
   background-color: #0464cc;
-  z-index: 2;
+  z-index: 3;
 }
 .logo{
   height: 60px;
@@ -80,22 +80,85 @@ html, body {
   left: 76%;
   transform: translate(-50%, -50%);
 }
-.info_panel {
+.info_panel_button {
   width: 50px;
   aspect-ratio: 1/1;
-  font-family: monospace;
-  font-size: 3em;
-  text-align: center;
   position: absolute;
-  border-radius: 5px;
+  background-color: transparent;
   top: 35px;
   right: -10px;
   transform: translate(-50%, -50%);
   border: 0px solid transparent;
 }
-.dropdown_panel{
-  display: none;
+
+.dropdown_panel {
+  width: 15%;
+  top: 75px;
+  background-color: #DD7230;
+  z-index: 1;
+  position: fixed;
+  right: 0;
+  border-radius: 0 0 0 30px;
+  transition: all 0.5s ease;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
+
+.panel_opened {
+  width: 15%;
+  top: 75px;
+  background-color: #DD7230;
+  z-index: 1;
+  position: fixed;
+  right: 0;
+  border-radius: 0 0 0 30px;
+  transition: all 0.5s ease;
+  height: 300px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.info_panel_img{
+  transition: all 0.5s ease;
+  transform: scaleY(-1);
+}
+
+.info_panel_img_opened{
+  transition: all 0.5s ease;
+}
+
+.flexbox_dropdown{
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.dropdown_item{
+  display: flex;
+  align-items: center;
+}
+
+.timer_toggle_button, .pro_toggle_button, .tooltips_toggle_button{
+  width: 3vw;
+  aspect-ratio: 1/1;
+  border-radius: 1.2vw;
+  border:0.15vw solid #0464cc;
+  margin: 10px;
+}
+
+.label_dropdown{
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+.credits_text{
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  text-align: center;
+}
+
 .red_backdrop{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -221,7 +284,7 @@ html, body {
   margin-left: 10px;
   margin-right: -13px;
   margin-top: 35px;
-  width: 10%;
+  width: 15%;
   height: 70px;
   border-radius: 10px 0px 0px 10px;
   border: 2px solid gray;
@@ -231,7 +294,7 @@ html, body {
   font-family: verdana;
 }
 .team_one_backstage_pixels_plus, .team_one_minor_penalties_plus, .team_one_major_penalties_plus ,.team_two_backstage_pixels_plus, .team_two_minor_penalties_plus, .team_two_major_penalties_plus{
-  width: 10%;
+  width: 15%;
   height: 70px;
   border-radius: 0px 10px 10px 0px;
   margin-left: -13px;
@@ -243,7 +306,7 @@ html, body {
   font-family: verdana;
 }
 .team_one_backstage_pixels_number, .team_one_minor_penalties_number, .team_one_major_penalties_number, .team_two_backstage_pixels_number, .team_two_minor_penalties_number, .team_two_major_penalties_number{
-  width: 15%;
+  width: 25%;
   height: 66px;
   margin-top: 35px;
   position: relative;
@@ -282,9 +345,35 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-bottom: 5px;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
   font-size: 2.5vw;
   font-family: adel;
+}
+.tooltip_backstage_pixel_image{
+  width: 1vw;
+  aspect-ratio: 1/1;
+  margin-top: -4%;
+  margin-left: 1%;
+  border: 0;
+  background-color: 0;
+}
+.toolbox_backstage_pixel{
+  transition: opacity 0.5s ease;
+  position: absolute;
+  left: 10vw;
+  top: -12vw;
+  z-index: 1;
+  width: 20vw;
+  height: 10vw;
+  border-radius: 1vw;
+  font-size: 0.65em;
+  display: block;
+  background-color: #DD7230;
+  border: 0.5vw solid #0464cc;
+  opacity: 0;
+}
+.tooltip_backstage_pixel_image:hover ~ .toolbox_backstage_pixel{
+  opacity: 1;
 }
 .minor_penalties_header{
   top: 1663px;

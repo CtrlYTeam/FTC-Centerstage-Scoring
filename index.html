@@ -16,10 +16,25 @@
     <h1 class = "vs_text">vs</h1>
     <input type = "text" id = "playerThree" class = "player_three_input" placeholder = "player 3" />
     <input type = "text" id = "playerFour" class = "player_four_input" placeholder = "player 4" />
-    <button type = "button" class = "info_panel"><img src = "images/arrow.svg" alt = "arrow SVG"></button>
+    <button type = "button" class = "info_panel_button" id = "buttonDropdown"><img class = "info_panel_img" id = "infoPanelImg" src = "images/arrow.svg" alt = "arrow SVG"></button>
   </div>
-  <div class = "dropdown_panel">
-    <a href = "http://www.onlinewebfonts.com">Web Fonts</a>
+  <div class = "dropdown_panel" id = "dropdownPanel" type = "button">
+    <div class = "flexbox_dropdown">
+      <!-- want to add timer feauture along side other feature like css changes or "pro mode", "tooltips" -->
+      <div class = "dropdown_item">
+        <button class = "timer_toggle_button" id = "timerToggleButton"></button> 
+        <label class = "label_dropdown">Timer?</label>
+      </div>
+      <div class = "dropdown_item">
+        <button class = "pro_toggle_button" id = "proToggleButton"></button>
+        <label class = "label_dropdown">Pro mode?</label>
+      </div>
+      <div class = "dropdown_item">
+        <button class = "tooltips_toggle_button" id = "tooltipsToggleButton"></button>
+        <label class = "label_dropdown">tooltips?</label>
+      </div>
+    </div>
+    <a class = "credits_text" href = "http://www.onlinewebfonts.com">Web Fonts</a>
   </div>
   <div class = "background">
     <div class = "red_backdrop">
@@ -32,10 +47,16 @@
         <div class = "hexagon_center"></div>
         <div class = "hexagon_bottom"></div>
       </div>
-
     </div>
-    <h1 class = "backstage_pixels_header">Backstage pixels</h1>
-    <h1 class = "minor_penalties_header">Minor penalties</h1>
+    <h1 class = "backstage_pixels_header">
+      Backstage pixels
+      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
+       <a class = "toolbox_backstage_pixel">
+        Backstage pixels are the pixels placed in the taped of area around the backboard
+        <img>
+      </a>
+    </h1>
+    <h1 class = "minor_penalties_header" title="Lmao u retarded">Minor penalties</h1>
     <h1 class = "major_penalties_header">Major penalties</h1>
     <div class = "team_one">
       <h1 class = "team_one_header">Team one</h1>
