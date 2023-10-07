@@ -87,6 +87,26 @@ function parseCookie(){
   }
 }
 
+let teamNames = [
+  document.getElementById("playerOne"),
+  document.getElementById("playerTwo"),
+  document.getElementById("playerThree"),
+  document.getElementById("playerFour")
+
+]
+
+ let teamNamer = [
+  document.getElementById("playerOneHeader"),
+  document.getElementById("playerTwoHeader"),
+  document.getElementById("playerThreeHeader"),
+  document.getElementById("playerFourHeader")
+ ]
+
+teamNames[0].addEventListener("input", ()=> {
+  teamNamer[0].innerHTML=(teamNames[0].value)
+  
+})
+
 //toggle buttons
 let toggleButtons = [
   document.getElementById("timerToggleButton"),
