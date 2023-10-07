@@ -28,7 +28,7 @@ html, body {
   width: 15%;
   height: 35px;
   font-family: abel;
-  font-size: 2em;
+  font-size: 1.85em;
   text-align: center;
   position: absolute;
   border-radius: 5px;
@@ -39,8 +39,8 @@ html, body {
 .player_two_input{
   width: 15%;
   height: 35px;
-  font-family: monospace;
-  font-size: 2em;
+  font-family: abel;
+  font-size: 1.85em;
   text-align: center;
   position: absolute;
   border-radius: 5px;
@@ -59,8 +59,8 @@ html, body {
 .player_three_input{
   width: 15%;
   height: 35px;
-  font-family: monospace;
-  font-size: 2em;
+  font-family: abel;
+  font-size: 1.85em;
   text-align: center;
   position: absolute;
   border-radius: 5px;
@@ -71,8 +71,8 @@ html, body {
 .player_four_input{
   width: 15%;
   height: 35px;
-  font-family: monospace;
-  font-size: 2em;
+  font-family: abel;
+  font-size: 1.85em;
   text-align: center;
   position: absolute;
   border-radius: 5px;
@@ -154,7 +154,7 @@ html, body {
 
 }
 .team_one_header, .team_two_header{
-  font-family: monospace;
+  font-family: abel;
   text-align: center;
 }
 .player_one{
@@ -284,7 +284,7 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   z-index: 1;
   font-size: 2.5vw;
-  font-family: monospace;
+  font-family: adel;
 }
 .minor_penalties_header{
   top: 1663px;
@@ -293,7 +293,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: 1765px;
 }
 .player_one_header, .player_two_header, .player_three_header, .player_four_header{
-  font-family: monospace;
+  font-family: abel;
   text-align: center;
 }
 .player_one_drone_zone, .player_two_drone_zone, .player_three_drone_zone, .player_four_drone_zone {
