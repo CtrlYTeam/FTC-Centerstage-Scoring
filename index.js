@@ -68,7 +68,7 @@ function changeColor(hexColor, colorStates)
           blueAlliance[0] = filteredColorStates.length;
         }
         updatePoints(hexColor);
-        document.getElementsByClassName("redColorStateHeader")[0].innerHTML = formatText(redColorStates); 
+        document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates); 
         document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates);
     })
   })
@@ -271,9 +271,6 @@ function updatePoints(color) {
     let total = parkPts + spikePts + autoPixelPts + pixelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[1].innerHTML = total;
   }
-
-  console.log(alliance[2], alliance[10], alliance[11])
-
 }
 
 let scoreElements = [

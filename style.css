@@ -11,7 +11,7 @@ html, body {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: linear-gradient(to right, #F08080 30%, #87CEEB 70%);
+  background: linear-gradient(to right, #F08080 35%, #87CEEB 65%);
   /* z-index: -1; */
 }
 
@@ -20,8 +20,6 @@ html, body {
   /* z-index: -1; */
   opacity: 0.5;
 }
-
-
 
 @font-face {
   font-family: "abel";
@@ -33,28 +31,15 @@ html, body {
   text-align: center;
 }
 
-.hex_container_red{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 45px;
-  position: absolute;
-  left: 0;
-  margin-left: 40px;
-}
-.hex_container_blue{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 45px;
-  position: absolute;
-  right: 0;
-  margin-right: 40px;
-}
-
 .hex_row_blue, .hex_row_red {
   display: flex;
   margin-top: -0.6vw;
+}
+.hex_row_blue{
+  transform: translateX(7vw) translateY(50px)
+}
+.hex_row_red{
+  transform: translateX(-7vw) translateY(50px)
 }
 
 .hexagon_blue, .hexagon_red  {
@@ -291,6 +276,9 @@ html, body {
   border-radius: 10px;
   margin: 10px;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .blue_backdrop{
   box-sizing: border-box;
@@ -304,26 +292,56 @@ html, body {
   border-radius: 10px;
   margin: 10px;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .backpanel_info_box_red{
   width: 20%;
-  height: 30vw;
+  height: fit-content;
   top: 150px;
   right: 0;
-  background-color: #D2DAFF; 
   position: absolute;
-  border: 5px solid red;
   border-radius: 10px;
 }
 .backpanel_info_box_blue{
   width: 20%;
-  height: 30vw;
+  height: fit-content;
   top: 150px;
   left: 0;
-  background-color: #D2DAFF; 
   position: absolute;
-  border: 5px solid blue;
   border-radius: 10px;
+}
+.reset_red_backpanel_button, .reset_blue_backpanel_button{
+  box-shadow: 0 0 5px orange,
+  0 0 25px orange,
+  0 0 50px orange,
+  0 0 200px;
+  border: 5px solid orange;
+  border-radius: 10px;
+  padding: 5px;
+  transform: translate(-50%);
+  left: 50%;
+  position: absolute;
+  transition: all 0.5s ease;
+  font-family: abel;
+  font-size: 1.7vw;
+}
+.reset_red_backpanel_button:hover, .reset_blue_backpanel_button:hover{
+  box-shadow: 0 0 5px yellow,
+  0 0 25px yellow,
+  0 0 50px yellow,
+  0 0 200px;
+  border: 3px solid yellow;
+  padding: 7px;
+}
+.total_mosaiacs_red, .total_pixels_red, .total_white_pixels_red, .total_green_pixels_red, .total_purple_pixels_red, .total_yellow_pixels_red,
+.total_mosaiacs_blue, .total_pixels_blue, .total_white_pixels_blue, .total_green_pixels_blue, .total_purple_pixels_blue, .total_yellow_pixels_blue{
+  margin: 10px;
+  font-family: abel;
+  font-size: 1.5vw;
+  text-align: center;
+  transform: translateY(70px);
 }
 .red_alliance{
   box-sizing: border-box;
@@ -331,7 +349,7 @@ html, body {
   -webkit-box-sizing: border-box;
   width: 50%;
   left: -20px;
-  top: 55vw;
+  top: 950px;
   height: 1050px;
   background-color: #D2DAFF; 
   position: absolute;
@@ -347,7 +365,7 @@ html, body {
   width: 50%;
   right: -20px;
   height: 1050px; 
-  top: 55vw;
+  top: 950px;
   background-color: #D2DAFF;
   position: absolute;
   border: 5px solid blue;
@@ -356,16 +374,20 @@ html, body {
   
 }
 .red_alliance_header{
-  transform: translate(-50%, -50%);
   font-family: abel;
-  left: 37%;
+  transform: translateY(-10px);
+  left: 0;
+  width: 73%;
+  text-align: center;
   position: absolute;
   margin-top: 10px;
 }
 .blue_alliance_header{
-  transform: translate(-50%, -50%);
   font-family: abel;
-  right: 12%;
+  transform: translateY(-10px);
+  right: 0;
+  width: 73%;
+  text-align: center;
   position: absolute;
   margin-top: 10px;
 }
@@ -479,7 +501,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: 1000px;
+  top: 1025px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -497,6 +519,12 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 2;
   font-size: 2.5vw;
   font-family: abel;
+}
+.minor_penalties_header{
+  top: 1130px;
+}
+.major_penalties_header{
+  top: 1234px;
 }
 .tooltip_backstage_pixel_image{
   width: 1vw;
@@ -523,12 +551,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .tooltip_backstage_pixel_image:hover ~ .toolbox_backstage_pixel{
   opacity: 1;
-}
-.minor_penalties_header{
-  top: 1663px;
-}
-.major_penalties_header{
-  top: 1765px;
 }
 .player_one_header, .player_two_header, .player_three_header, .player_four_header{
   font-family: abel;
