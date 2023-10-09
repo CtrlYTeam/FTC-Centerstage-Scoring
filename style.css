@@ -53,9 +53,9 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1700px) {
   .hexagon_blue, .hexagon_red  {
-    width: 100px;
+    width: 3vw;
   }
 }
 
@@ -115,9 +115,9 @@ html, body {
 }
 .vs_text{
   font-family: monospace;
-  font-size: 3.5vw;
+  font-size: 450%;
   position: absolute;
-  top: 35px;
+  top: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -145,7 +145,21 @@ html, body {
   left: 76%;
   transform: translate(-50%, -50%);
 }
-
+@media screen and (max-width: 1350px){
+  .vs_text{
+    font-size: 4vw;
+    left: 45%;
+  }
+  .logo{
+    height: 4.8vw;
+  }
+  .red_alliance_score{
+    left: 6%;
+  }
+  .blue_alliance_score{
+    right: 10%;
+  }
+}
 .red_alliance_score{
   position: absolute;
   left: 11%;
