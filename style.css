@@ -506,7 +506,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: 1043px;
+  top: calc(165px + 57vw);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -526,10 +526,10 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: abel;
 }
 .minor_penalties_header{
-  top: 1165px;
+  top: calc(290px + 57vw);
 }
 .major_penalties_header{
-  top: 1289px;
+  top: calc(415px + 57vw);
 }
 .tooltip_backstage_pixel_image{
   width: 1vw;
