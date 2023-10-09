@@ -703,7 +703,7 @@ for(let i=0; i < 4; i++)
   }
 }
 
-updateBackboardStats(redColorStates,redAlliance);
-updateBackboardStats(blueColorStates,blueAlliance);
+updateBackboardStats(redColorStates,"red");
+updateBackboardStats(blueColorStates,"blue");
 updatePoints("red");
 updatePoints("blue");
