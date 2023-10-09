@@ -136,6 +136,9 @@ function createHexDivision(containerColor, hexRowColor, hexColor)
   {
     const hexRow = document.createElement("div")
     hexRow.classList.add(hexRowColor)
+    if(i == 8 || i == 5 || i == 2) {
+      hexRow.classList.add("hex_row_setLine");
+    }
     hexRow.setAttribute("id", hexRowColor+i)
     container[0].appendChild(hexRow)
     for(let j=0; j < (!(i%2)?6:7); j++)

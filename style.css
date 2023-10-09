@@ -37,10 +37,13 @@ html, body {
 .hex_row_blue, .hex_row_red {
   display: flex;
   margin-top: -0.6vw;
+  width: 100%;
+  justify-content: center;
 }
-.hex_row_blue{
-  
+.hex_row_setLine{
+  background: linear-gradient(transparent 0%, transparent 33%, rgba(255, 255, 255, 0.61) 33%, rgba(255, 255, 255, 0.61) 66%, transparent 66%, transparent 100%);
 }
+
 .hex_row_red{
   
 }
@@ -55,6 +58,7 @@ html, body {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   transition: background-color 0.3s ease;
 }
+
 
 @media screen and (min-width: 1700px) {
   .hexagon_blue, .hexagon_red  {
