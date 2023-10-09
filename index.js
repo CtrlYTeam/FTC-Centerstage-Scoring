@@ -20,8 +20,8 @@ function formatText(array) {
 
 const blueHexagons = document.querySelectorAll(".hexagon_blue")
 const redHexagons  = document.querySelectorAll(".hexagon_red")
-const blueColorStates = new Array(71)
-const redColorStates  = new Array(71)
+let blueColorStates = new Array(71)
+let redColorStates  = new Array(71)
 for(let i = 0; i < 71; i++) {
  blueColorStates[i] = "black"
  redColorStates[i]  = "black"
@@ -65,9 +65,12 @@ function changeColor(hexColor, colorStates)
         let filteredColorStates = colorStates.filter(color => color !== "black");
         if(hexColor == "red") {
           redAlliance[0] = filteredColorStates.length
+          updateSetLines(redAlliance,colorStates);
           scoreMosaics(colorStates, redAlliance);
+
         } else {
           blueAlliance[0] = filteredColorStates.length
+          updateSetLines(blueAlliance,colorStates);
           scoreMosaics(colorStates, blueAlliance);
         }
         updatePoints(hexColor)
@@ -79,6 +82,25 @@ function changeColor(hexColor, colorStates)
         //document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates)
     })
   })
+}
+
+function updateSetLines(team, colorStates) {
+  let maxIndex = 0; 
+  for(let i = 0; i < 71;i++) {
+    if(colorStates[70-i] != "black") {
+      maxIndex = i; 
+    }
+  }
+  team[12] = 0;
+  if(maxIndex >= 50) {
+    team[12] = 3;
+  }
+  else if(maxIndex >= 32) {
+    team[12] = 2;
+  }
+  else if(maxIndex >= 13 ) {
+    team[12] = 1;
+  }
 }
 
 //dropdown panel
@@ -107,7 +129,8 @@ let redAllianceBackboard = [
   document.getElementById("totalWhitePixelsRed"),
   document.getElementById("totalGreenPixelsRed"),
   document.getElementById("totalPurplePixelsRed"),
-  document.getElementById("totalYellowPixelsRed")
+  document.getElementById("totalYellowPixelsRed"),
+  document.getElementById("setLinesRed")
 ]
 let blueAllianceBackboard = [
   document.getElementById("totalMosaiacsBlue"),
@@ -115,7 +138,8 @@ let blueAllianceBackboard = [
   document.getElementById("totalWhitePixelsBlue"),
   document.getElementById("totalGreenPixelsBlue"),
   document.getElementById("totalPurplePixelsBlue"),
-  document.getElementById("totalYellowPixelsBlue")
+  document.getElementById("totalYellowPixelsBlue"),
+  document.getElementById("setLinesBlue")
 ]
 
 function updateBackboardStats(colorStates, team)
@@ -125,9 +149,12 @@ function updateBackboardStats(colorStates, team)
   const colorArr = ["White", "Green", "Purple", "Yellow"]
   allianceBackboard[0].innerHTML = "Total mosaics: " + alliance[1]
   allianceBackboard[1].innerHTML = "Total pixels: "  + colorStates.filter(color => color !== "black").length
+  allianceBackboard[6].innerHTML = "Set lines <br> crossed: " + alliance[12];
   for(let i=0; i < 4; i++)
     allianceBackboard[i+2].innerHTML = colorArr[i] + " pixels: " + colorStates.filter(color => color == colorArr[i].toLowerCase()).length
 }
+
+
 
 function createHexDivision(containerColor, hexRowColor, hexColor)
 {
@@ -275,7 +302,7 @@ for (let i = 0; i < toggleButtons.length; i++) {
   });
 }
 
-const redAlliance = [
+let redAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
   0,//(2) pixel in backstage done
@@ -291,7 +318,7 @@ const redAlliance = [
   0,//(11) major penalties    done
   0 //(12) set lines crossed
 ]
-const blueAlliance = [
+let blueAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
   0,//(2) pixel in backstage done
@@ -746,3 +773,82 @@ updateBackboardStats(redColorStates,"red");
 updateBackboardStats(blueColorStates,"blue");
 updatePoints("red");
 updatePoints("blue");
+
+const resetButtons = [
+  document.getElementsByClassName("reset_red_backpanel_button")[0],
+  document.getElementsByClassName("reset_blue_backpanel_button")[0]
+]
+
+resetButtons[0].addEventListener("click" , () => {
+    const colorString = "red"
+    console.log("reset red");
+    redAlliance = [
+        0,//(0) pixels on backboard
+        0,//(1) mozaiacs
+        0,//(2) pixel in backstage done
+        //player one left player 2 right
+        [0,0],//(3) player prop    done
+        [0,0],//(4) auto spike
+        [0,0],//(5) auto pixel
+        [0,0],//(6) auto park
+        [0,0],//(7) suspension     done
+        [0,0],//(8) park           done
+        [0,0],//(9) drone          done
+        0,//(10) minor penalties   done
+        0,//(11) major penalties    done
+        0 //(12) set lines crossed
+    ]
+    for(let i = 0; i < 71; i++) {
+      redColorStates[i] = "black"
+    } 
+    console.log("reset2" + colorString);
+    let color = redAlliance;
+    let colorStates = redColorStates;
+    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+    for(i = 0; i < hexagons.length; i++) {
+      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+      hexagons[i].classList.add("black");
+    }
+    updateSetLines(color,colorStates);
+    scoreMosaics(colorStates,color);
+    updateBackboardStats(colorStates,colorString);
+    updatePoints("red");
+    updatePoints("blue");
+  });
+
+  resetButtons[1].addEventListener("click" , () => {
+    const colorString = "blue";
+    console.log("reset blue");
+    blueAlliance = [
+      0,//(0) pixels on backboard
+      0,//(1) mozaiacs
+      0,//(2) pixel in backstage done
+      //player one left player 2 right
+      [0,0],//(3) player prop    done
+      [0,0],//(4) auto spike
+      [0,0],//(5) auto pixel
+      [0,0],//(6) auto park
+      [0,0],//(7) suspension     done
+      [0,0],//(8) park           done
+      [0,0],//(9) drone          done
+      0,//(10) minor penalties   done
+      0,//(11) major penalties    done
+      0 //(12) set lines crossed
+    ]
+    for(let i = 0; i < 71; i++) {
+      blueColorStates[i] = "black"
+    }
+    console.log("reset2" + colorString);
+    let color = blueAlliance;
+    let colorStates = blueColorStates;
+    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+    for(i = 0; i < hexagons.length; i++) {
+      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+      hexagons[i].classList.add("black");
+    }
+    updateSetLines(color,colorStates);
+    scoreMosaics(colorStates,color);
+    updateBackboardStats(colorStates,colorString);
+    updatePoints("red");
+    updatePoints("blue");
+  });
