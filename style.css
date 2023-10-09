@@ -380,7 +380,7 @@ html, body {
   right: -20px;
   height: 1050px; 
   /* top: 950px; */
-  top: calc(450px + 25vw);
+  top: calc(400px + 26vw);
   background-color: #D2DAFF;
   position: absolute;
   border: 5px solid blue;
