@@ -36,7 +36,7 @@ html, body {
 
 .hex_row_blue, .hex_row_red {
   display: flex;
-  margin-top: -10px;
+  margin-top: -0.6vw;
   width: 100%;
   justify-content: center;
 }
@@ -338,7 +338,7 @@ html, body {
 }
 
 .backpanel_info_box_red{
-  width: 30%;
+  width: fit-content;
   height: fit-content;
   top: 150px;
   right: 0;
@@ -347,7 +347,7 @@ html, body {
   border-radius: 10px;
 }
 .backpanel_info_box_blue{
-  width: 30%;
+  width: fit-content;
   height: fit-content;
   top: 150px;
   margin-right: 4%;
@@ -355,12 +355,19 @@ html, body {
   position: absolute;
   border-radius: 10px;
 }
+
+.image_div_red, .image_div_blue {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-items: center;
+}
 .reset_red_backpanel_button, .reset_blue_backpanel_button{
-  box-shadow: 0 0 5px orange,
-  0 0 25px orange,
-  0 0 50px orange,
-  0 0 200px;
-  border: 5px solid orange;
+  box-shadow: 0 0 5px red,
+  0 0 25px red,
+  0 0 50px red,
+  0 0 80px;
+  border: 5px solid red;
   border-radius: 10px;
   padding: 5px;
   transform: translate(-50%);
@@ -369,6 +376,13 @@ html, body {
   transition: all 0.5s ease;
   font-family: abel;
   font-size: 1.7vw;
+}
+.reset_blue_backpanel_button{
+  box-shadow: 0 0 5px blue,
+  0 0 25px blue,
+  0 0 50px blue,
+  0 0 80px;
+  border: 5px solid blue;
 }
 .reset_red_backpanel_button:hover, .reset_blue_backpanel_button:hover{
   box-shadow: 0 0 5px yellow,
@@ -422,11 +436,21 @@ html, body {
   width: 15%;
   height: 70px;
   border-radius: 10px 0px 0px 10px;
-  border: 2px solid gray;
-  background-color:antiquewhite;
+  border: 4px solid rgb(0, 0, 0);
+  background-color:rgb(255, 95, 95);
   font-size: 150%;
   text-align: center;
   font-family: verdana;
+}
+
+.red_alliance_backstage_pixels_minus:hover, 
+.red_alliance_minor_penalties_minus:hover, 
+.red_alliance_major_penalties_minus:hover, 
+.blue_alliance_backstage_pixels_minus:hover, 
+.blue_alliance_minor_penalties_minus:hover, 
+.blue_alliance_major_penalties_minus:hover {
+  background-color:rgb(221, 43, 43);
+  transition: ease 0.4s;
 }
 .red_alliance_backstage_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
   width: 15%;
@@ -434,18 +458,28 @@ html, body {
   border-radius: 0px 10px 10px 0px;
   margin-left: -13px;
   margin-top: 53px;
-  border: 2px solid gray;
-  background-color:antiquewhite;
-  font-size: 150%;
+  border: 4px solid rgb(0, 0, 0);
+  background-color:rgb(105, 218, 29);
+  font-size: 150%;                                                            
   text-align: center;
   font-family: verdana;
 }
+
+.red_alliance_backstage_pixels_plus:hover, 
+.red_alliance_minor_penalties_plus:hover, 
+.red_alliance_major_penalties_plus:hover, 
+.blue_alliance_backstage_pixels_plus:hover, 
+.blue_alliance_minor_penalties_plus:hover, 
+.blue_alliance_major_penalties_plus:hover {
+  background-color:rgb(88, 185, 23);
+  transition: ease 0.4s;
+}
 .red_alliance_backstage_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
   width: 25%;
-  height: 66px;
+  height: 62px;
   margin-top: 53px;
   position: relative;
-  border: 2px solid gray;
+  border: 4px solid rgb(0, 0, 0);
   background-color:white;
   outline: none;
   font-size: 150%;
@@ -703,5 +737,10 @@ input[type="number"]::-webkit-outer-spin-button {
 {
   border-radius: 0px 10px 10px 0px;
   border-right: 4px solid #000;
+}
+
+.red_button:hover, .blue_button:hover {
+  background-color: #93a7ff;
+  transition: ease 0.3s;
 }
 
