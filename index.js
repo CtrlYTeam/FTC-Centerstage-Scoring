@@ -147,7 +147,7 @@ function updateBackboardStats(colorStates, team)
   const allianceBackboard = team == "red"? redAllianceBackboard: blueAllianceBackboard
   const alliance = team == "red"? redAlliance: blueAlliance
   const colorArr = ["White", "Green", "Purple", "Yellow"]
-  allianceBackboard[0].innerHTML = "Total mosaics: " + alliance[1]
+  allianceBackboard[0].innerHTML = "Mosaics: " + alliance[1]
   allianceBackboard[1].innerHTML = "Total pixels: "  + colorStates.filter(color => color !== "black").length
   allianceBackboard[6].innerHTML = "Set lines <br> crossed: " + alliance[12];
   for(let i=0; i < 4; i++)
@@ -507,18 +507,17 @@ function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
   for(let i=0; i < 4; i++) {
-      teamDroneZone[teamNumber][i].style.backgroundColor = "aliceblue"
-      teamDroneZone[teamNumber][i].style.color = "black"
+      teamDroneZone[teamNumber][i].style = "";
   }
   teamDroneZone[teamNumber][change].style.color = "white"
   if(change == 0)
     teamDroneZone[teamNumber][change].style.backgroundColor = "red"
   else if(change == 1)
-    teamDroneZone[teamNumber][change].style.backgroundColor = "orange"
+    teamDroneZone[teamNumber][change].style.backgroundColor = "green"
   else if(change == 2)
     teamDroneZone[teamNumber][change].style.backgroundColor = "#D5D817"
   else
-    teamDroneZone[teamNumber][change].style.backgroundColor = "green"
+    teamDroneZone[teamNumber][change].style.backgroundColor = "orange"
 }
 
 /*
@@ -550,8 +549,8 @@ function propChange(alliance, teamNumber, change)
   alliance[3][teamNumber%2] = change
   teamProps[teamNumber][0].style.backgroundColor = "aliceblue"
   teamProps[teamNumber][1].style.backgroundColor = "aliceblue"
-  teamProps[teamNumber][0].style.color = "black"
-  teamProps[teamNumber][1].style.color = "black"
+  teamProps[teamNumber][0].style= ""
+  teamProps[teamNumber][1].style= ""
   teamProps[teamNumber][change].style.color = "white"
   if(change == 0)
     teamProps[teamNumber][change].style.backgroundColor = "red"
@@ -602,8 +601,7 @@ function endgameParkChange(alliance, teamNumber, change)
           break
   }
   for(let i=0; i < 3; i++) {
-      teamEndgamePark[teamNumber][i].style.backgroundColor = "aliceblue"
-      teamEndgamePark[teamNumber][i].style.color = "black"
+      teamEndgamePark[teamNumber][i].style.color = ""
   }
 
   teamEndgamePark[teamNumber][change].style.color = "white"
@@ -643,8 +641,7 @@ function autoSpikeChange(alliance, teamNumber, change)
 {
   alliance[4][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
-      teamAutoSpike[teamNumber][i].style.backgroundColor = "aliceblue"
-      teamAutoSpike[teamNumber][i].style.color = "black"
+      teamAutoSpike[teamNumber][i].style = ""
   }
 
   teamAutoSpike[teamNumber][change].style.color = "white"
@@ -682,8 +679,7 @@ function autoPixelChange(alliance, teamNumber, change)
 {
   alliance[5][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
-      teamAutoPixel[teamNumber][i].style.backgroundColor = "aliceblue"
-      teamAutoPixel[teamNumber][i].style.color = "black"
+      teamAutoPixel[teamNumber][i].style = "";
   }
   teamAutoPixel[teamNumber][change].style.color = "white"
   if(change == 0)
@@ -720,8 +716,7 @@ function autoParkChange(alliance, teamNumber, change)
 {
   alliance[6][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
-      teamAutoPark[teamNumber][i].style.backgroundColor = "aliceblue"
-      teamAutoPark[teamNumber][i].style.color = "black"
+      teamAutoPark[teamNumber][i].style = ""
   }
   teamAutoPark[teamNumber][change].style.color = "white"
   if(change == 0)
@@ -812,6 +807,11 @@ resetButtons[0].addEventListener("click" , () => {
     redAlliancebackstagePixels[0].value="";
     redAllianceMinorPenalties[0].value="";
     redAllianceMajorPenalties[0].value="";
+    let buttons = document.getElementsByClassName("red_button");
+    for(let i = 0; i < buttons.length;i++) {
+      buttons[i].style.backgroundColor="aliceblue";
+      buttons[i].style.color="black";
+    }
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
     updateBackboardStats(colorStates,colorString);
@@ -852,6 +852,12 @@ resetButtons[0].addEventListener("click" , () => {
     blueAlliancebackstagePixels[0].value="";
     blueAllianceMinorPenalties[0].value="";
     blueAllianceMajorPenalties[0].value="";
+    let buttons = document.getElementsByClassName("blue_button");
+    console.log(buttons.length);
+    for(let i = 0; i < buttons.length;i++) {
+      buttons[i].style.backgroundColor="aliceblue";
+      buttons[i].style.color="black";
+    }
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
     updateBackboardStats(colorStates,colorString);
