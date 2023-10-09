@@ -1,7 +1,8 @@
 linear gradient needs working on                 Done
 hexagon grid needs a sub pannel for statistics   Done
 reset button for hexagon grid 
-player scoring buttons need lables
+player scoring buttons need lables               Done
+lables need to scale properly
 mosaiac detection                                Done
 tooltips add
 tooltips on/off
@@ -11,7 +12,7 @@ pro mode
 promod on/of
 link logo to ctrl-y Website                      Done
 minor css changes to alliance scoring elelments  Done
-credits in dropdown
+credits in dropdown                              Done
 sounds? timer, button clicks, scoring changes
 scale the webpage to better suit less scrolling
 major css changes (looks and scale)

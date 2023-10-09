@@ -12,11 +12,11 @@
   <div class = "top_bar">
     <a href = "https://ftc.ctrlyrobotics.org/home"><img src = "images/logo.png" alt = "Website Logo" class = "logo"></a>
     <a class = "red_alliance_score" id = "redAllianceScore">000</a>
-    <input type = "text" id = "playerOne" class = "player_one_input" placeholder = "player 1" />
-    <input type = "text" id = "playerTwo" class = "player_two_input" placeholder = "player 2" />
+    <input type = "text" id = "playerOne" class = "player_one_input" placeholder = "Team 1" />
+    <input type = "text" id = "playerTwo" class = "player_two_input" placeholder = "Team 2" />
     <h1 class = "vs_text">vs</h1>
-    <input type = "text" id = "playerThree" class = "player_three_input" placeholder = "player 3" />
-    <input type = "text" id = "playerFour" class = "player_four_input" placeholder = "player 4" />
+    <input type = "text" id = "playerThree" class = "player_three_input" placeholder = "Team 3" />
+    <input type = "text" id = "playerFour" class = "player_four_input" placeholder = "Team 4" />
     <a class = "blue_alliance_score" id = "blueAllianceScore">000</a>
     <button type = "button" class = "info_panel_button" id = "buttonDropdown"><img class = "info_panel_img" id = "infoPanelImg" src = "images/arrow.svg" alt = "arrow SVG"></button>
   </div>
@@ -36,12 +36,16 @@
         <label class = "label_dropdown">tooltips?</label>
       </div>
     </div>
-    <a class = "credits_text" href = "http://www.onlinewebfonts.com">Web Fonts</a>
+    <div class = "credits_box">
+      <a class = "credits_text" href = "http://www.onlinewebfonts.com">Web Fonts</a>
+    <br>
+    <a class = "credits_text" href = "https://github.com/CtrlYTeam/FTC-Centerstage-Scoring">Github repo</a>
+    <br>
+    <a class = "credits_text" href = "https://ftc-scoring.firstinspires.org/resources/">First robotics</a>
+    </div>
   </div>
 
   <div class = "background">
-
-  <div class="innerBackground">
     <div class = "red_backdrop hex_container_red">
       <h1 class = "red_alliance_header">Red Alliance</h1>
       <div class = "backpanel_info_box_red">
@@ -94,8 +98,14 @@
         <input type = "number" class = "red_alliance_major_penalties_number" id = "redAllianceMajorPenaltiesPixelsNumber" placeholder = "0">
         <button type = "button" class = "red_alliance_major_penalties_plus" id = "redAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
       </div>
+      <h2 class = "team_prop_header">Team prop</h2>
+      <h2 class = "drone_zone_header">Drone zone</h2>
+      <h2 class = "endgame_park_header">Endgame park</h2>
+      <h2 class = "team_auto_spike">Auto spike</h2>
+      <h2 class = "team_auto_pixel">Auto pixel</h2>
+      <h2 class = "team_auto_park">Auto park</h2>
       <div class = "player_one">
-        <h1 class = "player_one_header" id = playerOneHeader>player one</h1>
+        <h1 class = "player_one_header" id = playerOneHeader>Team one</h1>
         <div class = "player_one_prop">
           <button class = "player_one_prop_no" id = "playerOnePropNo" type = "button">no</button>
           <button class = "player_one_prop_yes" id = "playerOnePropYes" type = "button">yes</button>
@@ -125,7 +135,7 @@
         </div>
       </div>
       <div class = "player_two">
-        <h1 class = "player_two_header" id = playerTwoHeader>player two</h1>
+        <h1 class = "player_two_header" id = playerTwoHeader>Team two</h1>
         <div class="player_two_prop">
           <button class="player_two_prop_no" id="playerTwoPropNo" type="button">no</button>
           <button class="player_two_prop_yes" id="playerTwoPropYes" type="button">yes</button>
@@ -171,8 +181,14 @@
         <input type="number" class="blue_alliance_major_penalties_number" id="blueAllianceMajorPenaltiesPixelsNumber" placeholder="0">
         <button type="button" class="blue_alliance_major_penalties_plus" id="blueAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
       </div>
+      <h2 class = "team_prop_header">Team prop</h2>
+      <h2 class = "drone_zone_header">Drone zone</h2>
+      <h2 class = "endgame_park_header">Endgame park</h2>
+      <h2 class = "team_auto_spike">Auto spike</h2>
+      <h2 class = "team_auto_pixel">Auto pixel</h2>
+      <h2 class = "team_auto_park">Auto park</h2>
       <div class = "player_three">
-        <h1 class = "player_three_header" id = playerThreeHeader>player three</h1>
+        <h1 class = "player_three_header" id = playerThreeHeader>Team three</h1>
         <div class="player_three_prop">
           <button class="player_three_prop_no" id="playerThreePropNo" type="button">no</button>
           <button class="player_three_prop_yes" id="playerThreePropYes" type="button">yes</button>
@@ -202,7 +218,7 @@
         </div>
       </div>
       <div class = "player_four">
-        <h1 class = "player_four_header" id = playerFourHeader>player four</h1>
+        <h1 class = "player_four_header" id = playerFourHeader>Team four</h1>
         <div class="player_four_prop">
           <button class="player_four_prop_no" id="playerFourPropNo" type="button">no</button>
           <button class="player_four_prop_yes" id="playerFourPropYes" type="button">yes</button>
@@ -231,7 +247,6 @@
           <button class="player_four_auto_park_yes" id="playerFourAutoParkYes" type="button">yes</button>
         </div>
       </div>
-    </div>
     </div>
   </div>
   <script defer src = "index.js"></script>

@@ -228,7 +228,7 @@ html, body {
   right: 0;
   border-radius: 0 0 0 30px;
   transition: all 0.5s ease;
-  height: 16vw;
+  height: calc(16vw + 55px);
   opacity: 1;
   overflow: hidden;
 }
@@ -266,8 +266,12 @@ html, body {
   white-space: nowrap;
 }
 
+.credits_box{
+  display: flex;
+  align-items: center;
+}
 .credits_text{
-  position: absolute;
+  font-family: abel;
   width: 90%;
   left: 5%;
   text-align: center;
@@ -590,6 +594,13 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2vw;
 }
 
+.team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
+  font-family: abel;
+  text-align: center;
+  font-size: 1.5vw;
+  margin-top: 80px;
+}
+
 .player_one_prop, .player_two_prop, .player_three_prop, .player_four_prop {
   position: absolute;
   width: 100%;
@@ -600,7 +611,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_three_prop_no, .player_three_prop_yes, .player_four_prop_no, .player_four_prop_yes {
   position: absolute;
   width: 40%;
-  height: 80px;
+  height: 70px;
   border: 3px solid #0464cc;
   background-color: #f9812c;
   font-size: 150%;
@@ -635,7 +646,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_drone_zone, .player_two_drone_zone, .player_three_drone_zone, .player_four_drone_zone {
   width: 100%;
-  top: 140px;
+  top: 130px;
 }
 
 .player_one_drone_zone_one, .player_one_drone_zone_two, .player_one_drone_zone_three, .player_one_drone_zone_none,
@@ -644,19 +655,19 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_drone_zone_one, .player_four_drone_zone_two, .player_four_drone_zone_three, .player_four_drone_zone_none {
   position: absolute;
   width: 20%;
-  height: 80px;
-  border-radius: 0 0 0 0;
-  border: 5px solid gray;
-  background-color: aliceblue;
+  height: 70px;
+  border: 3px solid #0464cc;
+  background-color: #f9812c;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
-  font-size: 3vw;
-  transition: all 0.1s;
+  font-size: 2vw;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .player_one_drone_zone_none, .player_two_drone_zone_none, .player_three_drone_zone_none, .player_four_drone_zone_none {
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 50% 0px 0px 50%;
   left: 10%;
 }
 
@@ -669,7 +680,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_drone_zone_three, .player_two_drone_zone_three, .player_three_drone_zone_three, .player_four_drone_zone_three {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 50% 50% 0px;
   left: 70%;
 }
 
@@ -683,7 +694,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_one_endgame_park, .player_two_endgame_park, .player_three_endgame_park, .player_four_endgame_park {
   position: absolute;
   width: 100%;
-  top: 250px;
+  top: 220px;
 }
 
 .player_one_park_none, .player_one_park_park, .player_one_park_suspend,
@@ -691,17 +702,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_three_park_none, .player_three_park_park, .player_three_park_suspend,
 .player_four_park_none, .player_four_park_park, .player_four_park_suspend {
   position: absolute;
-  margin: 0;
   width: 26.666666%;
-  height: 80px;
-  border-radius: 0 0 0 0;
-  border: 5px solid gray;
-  background-color: aliceblue;
+  height: 70px;
+  border: 3px solid #0464cc;
+  background-color: #f9812c;
   font-size: 150%;
   text-align: center;
-  font-family: verdana;
-  font-size: 1.3vw;
-  transition: all 0.1s;
+  font-family: abel;
+  font-size: 1.5vw;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .player_one_park_none:hover, .player_one_park_park:hover, .player_one_park_suspend:hover,
@@ -712,7 +722,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_park_none, .player_two_park_none, .player_three_park_none, .player_four_park_none {
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 50% 0px 0px 50%;
   left: 10%;
 }
 
@@ -721,39 +731,39 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_park_suspend, .player_two_park_suspend, .player_three_park_suspend, .player_four_park_suspend {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 50% 50% 0px;
   left: 63.333333%;
 }
 
 .player_one_auto_spike, .player_two_auto_spike, .player_three_auto_spike, .player_four_auto_spike {
   position: absolute;
   width: 100%;
-  top: 350px;
+  top: 320px;
 }
 
 .player_one_auto_spike_no, .player_one_auto_spike_yes, .player_two_auto_spike_no, .player_two_auto_spike_yes,
 .player_three_auto_spike_no, .player_three_auto_spike_yes, .player_four_auto_spike_no, .player_four_auto_spike_yes {
   position: absolute;
-  margin: 0;
   width: 40%;
-  height: 80px;
-  border: 5px solid gray;
-  background-color: aliceblue;
+  height: 70px;
+  border: 3px solid #0464cc;
+  background-color: #f9812c;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
-  transition: all 0.1s;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .player_one_auto_spike_no, .player_two_auto_spike_no, .player_three_auto_spike_no, .player_four_auto_spike_no {
   left: 10%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 50% 0 0 50%;
 }
 
 .player_one_auto_spike_yes, .player_two_auto_spike_yes, .player_three_auto_spike_yes, .player_four_auto_spike_yes {
   left: 50%;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 50% 50% 0;
 }
 
 .player_one_auto_spike_no:hover, .player_one_auto_spike_yes:hover, .player_two_auto_spike_no:hover, .player_two_auto_spike_yes:hover,
@@ -764,32 +774,32 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_one_auto_pixel, .player_two_auto_pixel, .player_three_auto_pixel, .player_four_auto_pixel {
   position: absolute;
   width: 100%;
-  top: 450px;
+  top: 420px;
 }
 
 .player_one_auto_pixel_no, .player_one_auto_pixel_yes, .player_two_auto_pixel_no, .player_two_auto_pixel_yes,
 .player_three_auto_pixel_no, .player_three_auto_pixel_yes, .player_four_auto_pixel_no, .player_four_auto_pixel_yes {
   position: absolute;
-  margin: 0;
   width: 40%;
-  height: 80px;
-  border: 5px solid gray;
-  background-color: aliceblue;
+  height: 70px;
+  border: 3px solid #0464cc;
+  background-color: #f9812c;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
-  transition: all 0.1s;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .player_one_auto_pixel_no, .player_two_auto_pixel_no, .player_three_auto_pixel_no, .player_four_auto_pixel_no {
   left: 10%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 50% 0 0 50%;
 }
 
 .player_one_auto_pixel_yes, .player_two_auto_pixel_yes, .player_three_auto_pixel_yes, .player_four_auto_pixel_yes {
   left: 50%;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 50% 50% 0;
 }
 
 .player_one_auto_pixel_no:hover, .player_one_auto_pixel_yes:hover, .player_two_auto_pixel_no:hover, .player_two_auto_pixel_yes:hover,
@@ -800,32 +810,32 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_one_auto_park, .player_two_auto_park, .player_three_auto_park, .player_four_auto_park {
   position: absolute;
   width: 100%;
-  top: 550px;
+  top: 520px;
 }
 
 .player_one_auto_park_no, .player_one_auto_park_yes, .player_two_auto_park_no, .player_two_auto_park_yes,
 .player_three_auto_park_no, .player_three_auto_park_yes, .player_four_auto_park_no, .player_four_auto_park_yes {
   position: absolute;
-  margin: 0;
   width: 40%;
-  height: 80px;
-  border: 5px solid gray;
-  background-color: aliceblue;
+  height: 70px;
+  border: 3px solid #0464cc;
+  background-color: #f9812c;
   font-size: 150%;
   text-align: center;
   font-family: verdana;
   font-size: 1.3vw;
-  transition: all 0.1s;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .player_one_auto_park_no, .player_two_auto_park_no, .player_three_auto_park_no, .player_four_auto_park_no {
   left: 10%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 50% 0 0 50%;
 }
 
 .player_one_auto_park_yes, .player_two_auto_park_yes, .player_three_auto_park_yes, .player_four_auto_park_yes {
   left: 50%;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 50% 50% 0;
 }
 
 .player_one_auto_park_no:hover, .player_one_auto_park_yes:hover, .player_two_auto_park_no:hover, .player_two_auto_park_yes:hover,
