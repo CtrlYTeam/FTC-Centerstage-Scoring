@@ -809,6 +809,9 @@ resetButtons[0].addEventListener("click" , () => {
       hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
       hexagons[i].classList.add("black");
     }
+    redAlliancebackstagePixels[0].value="";
+    redAllianceMinorPenalties[0].value="";
+    redAllianceMajorPenalties[0].value="";
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
     updateBackboardStats(colorStates,colorString);
@@ -838,7 +841,7 @@ resetButtons[0].addEventListener("click" , () => {
     for(let i = 0; i < 71; i++) {
       blueColorStates[i] = "black"
     }
-    console.log("reset2" + colorString);
+    //console.log("reset2" + colorString);
     let color = blueAlliance;
     let colorStates = blueColorStates;
     let hexagons = document.getElementsByClassName("hexagon_" + colorString);
@@ -846,6 +849,9 @@ resetButtons[0].addEventListener("click" , () => {
       hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
       hexagons[i].classList.add("black");
     }
+    blueAlliancebackstagePixels[0].value="";
+    blueAllianceMinorPenalties[0].value="";
+    blueAllianceMajorPenalties[0].value="";
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
     updateBackboardStats(colorStates,colorString);
