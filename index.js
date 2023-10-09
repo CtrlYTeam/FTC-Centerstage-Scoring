@@ -17,6 +17,7 @@ function formatText(array) {
   //console.log(finalString)
   return finalString
 }
+
 const blueHexagons = document.querySelectorAll(".hexagon_blue")
 const redHexagons  = document.querySelectorAll(".hexagon_red")
 const blueColorStates = new Array(71)
@@ -31,7 +32,7 @@ changeColor("blue", blueColorStates)
 
 function changeColor(hexColor, colorStates) 
 {
-  let hexagons = (hexColor == "red")? redHexagons : blueHexagons;
+  let hexagons = hexColor == "red"? redHexagons : blueHexagons;
   hexagons.forEach((hex, index) => {
     let currentColorIndex = 0
     hex.addEventListener("click", () => {
@@ -64,10 +65,10 @@ function changeColor(hexColor, colorStates)
         let filteredColorStates = colorStates.filter(color => color !== "black");
         if(hexColor == "red") {
           redAlliance[0] = filteredColorStates.length
-          scoreMosaics(colorStates,redAlliance);
+          scoreMosaics(colorStates, redAlliance);
         } else {
           blueAlliance[0] = filteredColorStates.length
-          scoreMosaics(colorStates,blueAlliance);
+          scoreMosaics(colorStates, blueAlliance);
         }
         updatePoints(hexColor)
         
@@ -119,22 +120,13 @@ let blueAllianceBackboard = [
 
 function updateBackboardStats(colorStates, team)
 {
-  if(team == "red") {
-    redAllianceBackboard[0].innerHTML = "Total mosaics: "+ redAlliance[1];
-    redAllianceBackboard[1].innerHTML = "Total pixels: "+ colorStates.filter(color => color !== "black").length;
-    redAllianceBackboard[2].innerHTML = "White pixels: "+colorStates.filter(color => color == "white").length;
-    redAllianceBackboard[3].innerHTML = "Green pixels: "+colorStates.filter(color => color == "green").length;
-    redAllianceBackboard[4].innerHTML = "Purple pixels: "+colorStates.filter(color => color == "purple").length;
-    redAllianceBackboard[5].innerHTML = "Yellow pixels: "+colorStates.filter(color => color == "yellow").length;
-  } else {
-    blueAllianceBackboard[0].innerHTML = "Total mosaics: "+ blueAlliance[1];
-    blueAllianceBackboard[1].innerHTML = "Total pixels: "+colorStates.filter(color => color !== "black").length;
-    blueAllianceBackboard[2].innerHTML = "White pixels: "+colorStates.filter(color => color == "white").length;
-    blueAllianceBackboard[3].innerHTML = "Green pixels: "+colorStates.filter(color => color == "green").length;
-    blueAllianceBackboard[4].innerHTML = "Purple pixels: "+colorStates.filter(color => color == "purple").length;
-    blueAllianceBackboard[5].innerHTML = "Yellow pixels: "+colorStates.filter(color => color == "yellow").length;
-  }
-
+  const allianceBackboard = team == "red"? redAllianceBackboard: blueAllianceBackboard
+  const alliance = team == "red"? redAlliance: blueAlliance
+  const colorArr = ["White", "Green", "Purple", "Yellow"]
+  allianceBackboard[0].innerHTML = "Total mosaics: " + alliance[1]
+  allianceBackboard[1].innerHTML = "Total pixels: "  + colorStates.filter(color => color !== "black").length
+  for(let i=0; i < 4; i++)
+    allianceBackboard[i+2].innerHTML = colorArr[i] + " pixels: " + colorStates.filter(color => color == colorArr[i].toLowerCase()).length
 }
 
 function createHexDivision(containerColor, hexRowColor, hexColor)
@@ -484,9 +476,19 @@ let teamDroneZone = [playerOneDroneZone, playerTwoDroneZone, playerThreeDroneZon
 function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
-  for(let i=0; i < 4; i++)
+  for(let i=0; i < 4; i++) {
       teamDroneZone[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamDroneZone[teamNumber][change].style.backgroundColor = "red"
+      teamDroneZone[teamNumber][i].style.color = "black"
+  }
+  teamDroneZone[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamDroneZone[teamNumber][change].style.backgroundColor = "red"
+  else if(change == 1)
+    teamDroneZone[teamNumber][change].style.backgroundColor = "orange"
+  else if(change == 2)
+    teamDroneZone[teamNumber][change].style.backgroundColor = "#D5D817"
+  else
+    teamDroneZone[teamNumber][change].style.backgroundColor = "green"
 }
 
 /*
@@ -518,7 +520,13 @@ function propChange(alliance, teamNumber, change)
   alliance[3][teamNumber%2] = change
   teamProps[teamNumber][0].style.backgroundColor = "aliceblue"
   teamProps[teamNumber][1].style.backgroundColor = "aliceblue"
-  teamProps[teamNumber][change].style.backgroundColor = "red"
+  teamProps[teamNumber][0].style.color = "black"
+  teamProps[teamNumber][1].style.color = "black"
+  teamProps[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamProps[teamNumber][change].style.backgroundColor = "red"
+  else
+    teamProps[teamNumber][change].style.backgroundColor = "green"
 }
 
 /*
@@ -563,9 +571,18 @@ function endgameParkChange(alliance, teamNumber, change)
           alliance[7][teamNumber%2] = 1
           break
   }
-  for(let i=0; i < 3; i++)
+  for(let i=0; i < 3; i++) {
       teamEndgamePark[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamEndgamePark[teamNumber][change].style.backgroundColor = "red"
+      teamEndgamePark[teamNumber][i].style.color = "black"
+  }
+
+  teamEndgamePark[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamEndgamePark[teamNumber][change].style.backgroundColor = "red"
+  else if(change == 1)
+    teamEndgamePark[teamNumber][change].style.backgroundColor = "#D5D817"
+  else
+    teamEndgamePark[teamNumber][change].style.backgroundColor = "green"
 }
 
 /*
@@ -595,9 +612,16 @@ let teamAutoSpike = [playerOneAutoSpike, playerTwoAutoSpike, playerThreeAutoSpik
 function autoSpikeChange(alliance, teamNumber, change)
 {
   alliance[4][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
+  for(let i=0; i < 2; i++) {
       teamAutoSpike[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoSpike[teamNumber][change].style.backgroundColor = "red"
+      teamAutoSpike[teamNumber][i].style.color = "black"
+  }
+
+  teamAutoSpike[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoSpike[teamNumber][change].style.backgroundColor = "red"
+  else
+    teamAutoSpike[teamNumber][change].style.backgroundColor = "green"
 }
 
 /*
@@ -627,9 +651,15 @@ let teamAutoPixel = [playerOneAutoPixel, playerTwoAutoPixel, playerThreeAutoPixe
 function autoPixelChange(alliance, teamNumber, change)
 {
   alliance[5][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
+  for(let i=0; i < 2; i++) {
       teamAutoPixel[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoPixel[teamNumber][change].style.backgroundColor = "red"
+      teamAutoPixel[teamNumber][i].style.color = "black"
+  }
+  teamAutoPixel[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoPixel[teamNumber][change].style.backgroundColor = "red"
+  else
+    teamAutoPixel[teamNumber][change].style.backgroundColor = "green"
 }
 
 /*
@@ -659,9 +689,15 @@ let teamAutoPark = [playerOneAutoPark, playerTwoAutoPark, playerThreeAutoPark, p
 function autoParkChange(alliance, teamNumber, change)
 {
   alliance[6][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
+  for(let i=0; i < 2; i++) {
       teamAutoPark[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoPark[teamNumber][change].style.backgroundColor = "red"
+      teamAutoPark[teamNumber][i].style.color = "black"
+  }
+  teamAutoPark[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoPark[teamNumber][change].style.backgroundColor = "red"
+  else 
+    teamAutoPark[teamNumber][change].style.backgroundColor = "green"
 }
 
 for(let i=0; i < 4; i++)
