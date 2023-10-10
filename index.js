@@ -485,8 +485,12 @@ function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
   for(let i=0; i < 4; i++)
-      teamDroneZone[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamDroneZone[teamNumber][change].style.backgroundColor = "red"
+  {
+    teamDroneZone[teamNumber][i].style.borderWidth = "3px"
+    teamDroneZone[teamNumber][i].style.backgroundColor = "#f9812c"
+  }
+  teamDroneZone[teamNumber][change].style.borderWidth = "6px"
+  teamDroneZone[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 /*
@@ -516,9 +520,12 @@ let teamProps = [playerOneProp, playerTwoProp, playerThreeProp, playerFourProp]
 function propChange(alliance, teamNumber, change)
 {
   alliance[3][teamNumber%2] = change
-  teamProps[teamNumber][0].style.backgroundColor = "aliceblue"
-  teamProps[teamNumber][1].style.backgroundColor = "aliceblue"
-  teamProps[teamNumber][change].style.backgroundColor = "red"
+  teamProps[teamNumber][0].style.borderWidth = "3px"
+  teamProps[teamNumber][0].style.backgroundColor = "#f9812c"
+  teamProps[teamNumber][1].style.borderWidth = "3px"
+  teamProps[teamNumber][1].style.backgroundColor = "#f9812c"
+  teamProps[teamNumber][change].style.borderWidth = "6px"
+  teamProps[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 /*
@@ -564,8 +571,12 @@ function endgameParkChange(alliance, teamNumber, change)
           break
   }
   for(let i=0; i < 3; i++)
-      teamEndgamePark[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamEndgamePark[teamNumber][change].style.backgroundColor = "red"
+  {
+    teamEndgamePark[teamNumber][i].style.borderWidth = "3px"
+    teamEndgamePark[teamNumber][i].style.backgroundColor = "#f9812c"
+  }
+  teamEndgamePark[teamNumber][change].style.borderWidth = "6px"
+  teamEndgamePark[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 /*
@@ -596,8 +607,12 @@ function autoSpikeChange(alliance, teamNumber, change)
 {
   alliance[4][teamNumber%2] = change
   for(let i=0; i < 2; i++)
-      teamAutoSpike[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoSpike[teamNumber][change].style.backgroundColor = "red"
+  {
+    teamAutoSpike[teamNumber][i].style.borderWidth = "3px"
+    teamAutoSpike[teamNumber][i].style.backgroundColor = "#f9812c"
+  }
+  teamAutoSpike[teamNumber][change].style.borderWidth = "6px"
+  teamAutoSpike[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 /*
@@ -628,8 +643,12 @@ function autoPixelChange(alliance, teamNumber, change)
 {
   alliance[5][teamNumber%2] = change
   for(let i=0; i < 2; i++)
-      teamAutoPixel[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoPixel[teamNumber][change].style.backgroundColor = "red"
+  {
+    teamAutoPixel[teamNumber][i].style.borderWidth = "3px"
+    teamAutoPixel[teamNumber][i].style.backgroundColor = "#f9812c"
+  }
+  teamAutoPixel[teamNumber][change].style.borderWidth = "6px"
+  teamAutoPixel[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 /*
@@ -660,8 +679,12 @@ function autoParkChange(alliance, teamNumber, change)
 {
   alliance[6][teamNumber%2] = change
   for(let i=0; i < 2; i++)
-      teamAutoPark[teamNumber][i].style.backgroundColor = "aliceblue"
-  teamAutoPark[teamNumber][change].style.backgroundColor = "red"
+  {
+    teamAutoPark[teamNumber][i].style.borderWidth = "3px"
+    teamAutoPark[teamNumber][i].style.backgroundColor = "#f9812c"
+  }
+  teamAutoPark[teamNumber][change].style.borderWidth = "6px"
+  teamAutoPark[teamNumber][change].style.backgroundColor = "#fe9346"
 }
 
 for(let i=0; i < 4; i++)

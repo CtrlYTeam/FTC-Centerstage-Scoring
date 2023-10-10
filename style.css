@@ -634,9 +634,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_prop_yes:hover, .player_two_prop_yes:hover, .player_three_prop_yes:hover, .player_four_prop_yes:hover {
   box-shadow: 10px 0 0 #0464cc;
+  background-color:#fe9346;
 }
 .player_one_prop_no:hover, .player_two_prop_no:hover, .player_three_prop_no:hover, .player_four_prop_no:hover{
   box-shadow: -10px 0 0 #0464cc;
+  background-color:#fe9346;
 }
 
 .player_one_drone_zone, .player_two_drone_zone, .player_three_drone_zone, .player_four_drone_zone {
@@ -684,11 +686,23 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 70%;
 }
 
-.player_one_drone_zone_one:hover, .player_one_drone_zone_two:hover, .player_one_drone_zone_three:hover, .player_one_drone_zone_none:hover,
-.player_two_drone_zone_one:hover, .player_two_drone_zone_two:hover, .player_two_drone_zone_three:hover, .player_two_drone_zone_none:hover,
-.player_three_drone_zone_one:hover, .player_three_drone_zone_two:hover, .player_three_drone_zone_three:hover, .player_three_drone_zone_none:hover,
-.player_four_drone_zone_one:hover, .player_four_drone_zone_two:hover, .player_four_drone_zone_three:hover, .player_four_drone_zone_none:hover {
-  border-color: #0464cc;
+.player_one_drone_zone_none:hover, .player_two_drone_zone_none:hover, .player_three_drone_zone_none:hover, .player_four_drone_zone_none:hover{
+  box-shadow: -3px 0 0 3px #0464cc;
+  background-color:#fe9346;
+}
+.player_four_drone_zone_three:hover, .player_three_drone_zone_three:hover, .player_two_drone_zone_three:hover, .player_one_drone_zone_three:hover{
+  box-shadow: 3px 0 0 3px #0464cc;
+  background-color:#fe9346;
+}
+
+.player_four_drone_zone_two:hover, .player_three_drone_zone_two:hover, .player_two_drone_zone_two:hover, .player_one_drone_zone_two:hover{
+  box-shadow: 0 -3px 0 #0464cc, 0 3px 0 #0464cc;
+  background-color: #fe9346;
+}
+
+.player_four_drone_zone_one:hover, .player_three_drone_zone_one:hover, .player_two_drone_zone_one:hover, .player_one_drone_zone_one:hover{
+  box-shadow: 0 -3px 0 #0464cc, 0 3px 0 #0464cc;
+  background-color: #fe9346;
 }
 
 .player_one_endgame_park, .player_two_endgame_park, .player_three_endgame_park, .player_four_endgame_park {
@@ -714,13 +728,18 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: all 0.3s ease-in-out;
 }
 
-.player_one_park_none:hover, .player_one_park_park:hover, .player_one_park_suspend:hover,
-.player_two_park_none:hover, .player_two_park_park:hover, .player_two_park_suspend:hover,
-.player_three_park_none:hover, .player_three_park_park:hover, .player_three_park_suspend:hover,
-.player_four_park_none:hover, .player_four_park_park:hover, .player_four_park_suspend:hover {
-  border-color: #0464cc;
+.player_one_park_none:hover, .player_two_park_none:hover, .player_three_park_none:hover, .player_four_park_none:hover{
+  box-shadow: -3px 0 0 3px #0464cc;
+  background-color:#fe9346;
 }
-
+.player_one_park_park:hover, .player_two_park_park:hover, .player_three_park_park:hover, .player_four_park_park:hover{
+  box-shadow: 0 -3px 0 #0464cc, 0 3px 0 #0464cc;
+  background-color: #fe9346;
+}
+.player_one_park_suspend:hover, .player_two_park_suspend:hover ,.player_three_park_suspend:hover, .player_four_park_suspend:hover{
+  box-shadow: 3px 0 0 3px #0464cc;
+  background-color:#fe9346;
+}
 .player_one_park_none, .player_two_park_none, .player_three_park_none, .player_four_park_none {
   border-radius: 50% 0px 0px 50%;
   left: 10%;
@@ -766,11 +785,14 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 0 50% 50% 0;
 }
 
-.player_one_auto_spike_no:hover, .player_one_auto_spike_yes:hover, .player_two_auto_spike_no:hover, .player_two_auto_spike_yes:hover,
-.player_three_auto_spike_no:hover, .player_three_auto_spike_yes:hover, .player_four_auto_spike_no:hover, .player_four_auto_spike_yes:hover {
-  border-color: #0464cc;
+.player_one_auto_spike_no:hover, .player_two_auto_spike_no:hover, .player_three_auto_spike_no:hover, .player_four_auto_spike_no:hover{
+  box-shadow: -10px 0 0 #0464cc;
+  background-color:#fe9346;
 }
-
+.player_one_auto_spike_yes:hover, .player_three_auto_spike_yes:hover, .player_two_auto_spike_yes:hover, .player_four_auto_spike_yes:hover{
+  box-shadow: 10px 0 0 #0464cc;
+  background-color:#fe9346;
+}
 .player_one_auto_pixel, .player_two_auto_pixel, .player_three_auto_pixel, .player_four_auto_pixel {
   position: absolute;
   width: 100%;
@@ -802,11 +824,14 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 0 50% 50% 0;
 }
 
-.player_one_auto_pixel_no:hover, .player_one_auto_pixel_yes:hover, .player_two_auto_pixel_no:hover, .player_two_auto_pixel_yes:hover,
-.player_three_auto_pixel_no:hover, .player_three_auto_pixel_yes:hover, .player_four_auto_pixel_no:hover, .player_four_auto_pixel_yes:hover {
-  border-color: #0464cc;
+.player_one_auto_pixel_no:hover, .player_two_auto_pixel_no:hover, .player_three_auto_pixel_no:hover, .player_four_auto_pixel_no:hover{
+  box-shadow: -10px 0 0 #0464cc;
+  background-color:#fe9346;
 }
-
+.player_three_auto_pixel_yes:hover, .player_one_auto_pixel_yes:hover, .player_two_auto_pixel_yes:hover, .player_four_auto_pixel_yes:hover{
+  box-shadow: 10px 0 0 #0464cc;
+  background-color:#fe9346;
+}
 .player_one_auto_park, .player_two_auto_park, .player_three_auto_park, .player_four_auto_park {
   position: absolute;
   width: 100%;
@@ -838,9 +863,13 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 0 50% 50% 0;
 }
 
-.player_one_auto_park_no:hover, .player_one_auto_park_yes:hover, .player_two_auto_park_no:hover, .player_two_auto_park_yes:hover,
-.player_three_auto_park_no:hover, .player_three_auto_park_yes:hover, .player_four_auto_park_no:hover, .player_four_auto_park_yes:hover {
-  border-color: #0464cc;
+.player_one_auto_park_no:hover, .player_two_auto_park_no:hover, .player_three_auto_park_no:hover, .player_four_auto_park_no:hover{
+  box-shadow: -10px 0 0 #0464cc;
+  background-color:#fe9346;
+}
+.player_one_auto_park_yes:hover, .player_three_auto_park_yes:hover, .player_two_auto_park_yes:hover, .player_four_auto_park_yes:hover{
+  box-shadow: 10px 0 0 #0464cc;
+  background-color:#fe9346;
 }
 
 .hexagon_blue_top {

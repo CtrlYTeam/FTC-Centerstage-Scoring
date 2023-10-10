@@ -16,6 +16,7 @@ credits in dropdown                              Done
 sounds? timer, button clicks, scoring changes
 scale the webpage to better suit less scrolling
 major css changes (looks and scale)
+add backpanel to hex array
 import and export
 cookies for scoring
 lighthouse reports
