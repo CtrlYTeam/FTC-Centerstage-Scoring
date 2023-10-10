@@ -407,7 +407,7 @@ html, body {
   -webkit-box-sizing: border-box;
   width: 50%;
   left: -20px;
-  top: calc(75px + 57vw);
+  top: calc(70px + 58vw);
   height: 950px;
   background: linear-gradient(to right, #f82b2b, #ff8b8b);
   position: absolute;
@@ -420,7 +420,7 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  top: calc(75px + 57vw);
+  top: calc(70px + 58vw);
   right: -20px;
   height: 950px; 
   background: linear-gradient(to left, #3358ff, #93a7ff);

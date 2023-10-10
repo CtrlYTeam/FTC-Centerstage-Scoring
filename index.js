@@ -93,7 +93,7 @@ function updateSetLines(team, colorStates) {
     }
   }
   team[12] = 0;
-  if(maxIndex >= 50) {
+  if(maxIndex >= 52) {
     team[12] = 3;
   }
   else if(maxIndex >= 32) {
