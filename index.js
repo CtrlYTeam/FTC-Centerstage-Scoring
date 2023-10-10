@@ -1,6 +1,7 @@
 createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
 createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
-
+const universalGreen = "#58b917";
+const universalRed = "red"
 //Hexagon code
 function formatText(array) {
   let finalString = ""
@@ -511,9 +512,9 @@ function droneZoneChange(alliance, teamNumber, change)
   }
   teamDroneZone[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamDroneZone[teamNumber][change].style.backgroundColor = "red"
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalRed
   else if(change == 1)
-    teamDroneZone[teamNumber][change].style.backgroundColor = "green"
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalGreen
   else if(change == 2)
     teamDroneZone[teamNumber][change].style.backgroundColor = "#D5D817"
   else
@@ -553,9 +554,9 @@ function propChange(alliance, teamNumber, change)
   teamProps[teamNumber][1].style= ""
   teamProps[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamProps[teamNumber][change].style.backgroundColor = "red"
+    teamProps[teamNumber][change].style.backgroundColor = universalRed
   else
-    teamProps[teamNumber][change].style.backgroundColor = "green"
+    teamProps[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -589,28 +590,32 @@ let teamEndgamePark = [playerOneEndgamePark, playerTwoEndgamePark, playerThreeEn
 function endgameParkChange(alliance, teamNumber, change)
 {
   switch(change)
-  {
+  { 
+      case 0:
+          alliance[8][teamNumber%2] = 0
+          alliance[7][teamNumber%2] = 0
+          break
       case 1:
           alliance[8][teamNumber%2] = 1
           alliance[7][teamNumber%2] = 0
           break
       case 2:
-      default:
           alliance[8][teamNumber%2] = 0
           alliance[7][teamNumber%2] = 1
           break
+          
   }
   for(let i=0; i < 3; i++) {
-      teamEndgamePark[teamNumber][i].style.color = ""
+      teamEndgamePark[teamNumber][i].style = ""
   }
 
   teamEndgamePark[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamEndgamePark[teamNumber][change].style.backgroundColor = "red"
+    teamEndgamePark[teamNumber][change].style.backgroundColor = universalRed
   else if(change == 1)
     teamEndgamePark[teamNumber][change].style.backgroundColor = "#D5D817"
   else
-    teamEndgamePark[teamNumber][change].style.backgroundColor = "green"
+    teamEndgamePark[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -646,9 +651,9 @@ function autoSpikeChange(alliance, teamNumber, change)
 
   teamAutoSpike[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamAutoSpike[teamNumber][change].style.backgroundColor = "red"
+    teamAutoSpike[teamNumber][change].style.backgroundColor = universalRed
   else
-    teamAutoSpike[teamNumber][change].style.backgroundColor = "green"
+    teamAutoSpike[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -683,9 +688,9 @@ function autoPixelChange(alliance, teamNumber, change)
   }
   teamAutoPixel[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamAutoPixel[teamNumber][change].style.backgroundColor = "red"
+    teamAutoPixel[teamNumber][change].style.backgroundColor = universalRed
   else
-    teamAutoPixel[teamNumber][change].style.backgroundColor = "green"
+    teamAutoPixel[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -720,9 +725,9 @@ function autoParkChange(alliance, teamNumber, change)
   }
   teamAutoPark[teamNumber][change].style.color = "white"
   if(change == 0)
-    teamAutoPark[teamNumber][change].style.backgroundColor = "red"
+    teamAutoPark[teamNumber][change].style.backgroundColor = universalRed
   else 
-    teamAutoPark[teamNumber][change].style.backgroundColor = "green"
+    teamAutoPark[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 for(let i=0; i < 4; i++)
