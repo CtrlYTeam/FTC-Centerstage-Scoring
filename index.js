@@ -590,11 +590,7 @@ let teamEndgamePark = [playerOneEndgamePark, playerTwoEndgamePark, playerThreeEn
 function endgameParkChange(alliance, teamNumber, change)
 {
   switch(change)
-  { 
-      case 0:
-          alliance[8][teamNumber%2] = 0
-          alliance[7][teamNumber%2] = 0
-          break
+  {
       case 1:
           alliance[8][teamNumber%2] = 1
           alliance[7][teamNumber%2] = 0
