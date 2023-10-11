@@ -548,7 +548,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
   top: calc(150px + 55vw);
-  width: 35%;
+  width: 27%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
