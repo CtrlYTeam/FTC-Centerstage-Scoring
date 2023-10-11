@@ -96,6 +96,9 @@ html, body {
   top: 35px;
   left: 24%;
   transform: translate(-50%, -50%);
+  outline: none;
+  border: 0px;
+  transition: all 0.3s ease-in-out;
 }
 .player_two_input{
   width: 15%;
@@ -108,6 +111,9 @@ html, body {
   top: 35px;
   left: 40%;
   transform: translate(-50%, -50%);
+  outline: none;
+  border: 0px;
+  transition: all 0.3s ease-in-out;
 }
 .vs_text{
   font-family: monospace;
@@ -128,6 +134,9 @@ html, body {
   top: 35px;
   left: 60%;
   transform: translate(-50%, -50%);
+  outline: none;
+  border: 0px;
+  transition: all 0.3s ease-in-out;
 }
 .player_four_input{
   width: 15%;
@@ -140,6 +149,15 @@ html, body {
   top: 35px;
   left: 76%;
   transform: translate(-50%, -50%);
+  outline: none;
+  border: 0px;
+  transition: all 0.3s ease-in-out;
+}
+.player_four_input:hover, .player_three_input:hover, .player_two_input:hover, .player_one_input:hover{
+  box-shadow: 0 0 0 5px #034388;
+}
+.player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
+  box-shadow: 0 0 0 5px #034388;
 }
 @media screen and (max-width: 1350px){
   .vs_text{
@@ -400,13 +418,9 @@ html, body {
 }
 .player_one{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   height: 650px; 
   position: absolute;
-  border-radius: 10px;
   margin: 10px;
   margin-left:25px;
   display: flex;
@@ -414,42 +428,29 @@ html, body {
 }
 .player_two{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   left: 50%;
   height: 650px; 
   position: absolute;
-  border-radius: 10px;
   margin: 10px;
   display: flex;
   justify-content: center;
 }
 .player_three{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   height: 650px;  
   right:50%;
   position: absolute;
   justify-content: center;
-  border-radius: 10px;
   margin: 10px;
 }
 .player_four{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   right: 0px;
   height: 650px; 
   position: absolute;
-  
-  border-radius: 10px;
   margin: 10px;
   margin-right: 25px;
 }
@@ -555,6 +556,7 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   font-size: 2.5vw;
   font-family: abel;
+  z-index: 1;
 }
 .minor_penalties_header{
   top: calc(255px + 55vw);
@@ -573,12 +575,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .toolbox_backstage_pixel{
   transition: opacity 0.5s ease;
   position: absolute;
+  padding: 10px;
   left: 10vw;
   top: -12vw;
   z-index: 1;
   width: 20vw;
   height: 10vw;
   border-radius: 1vw;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   font-size: 0.85em;
   background-color: #f9812c;
   border: 0.18svw solid #0464cc;
