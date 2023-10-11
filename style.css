@@ -11,9 +11,11 @@ html, body {
 .background{
   box-sizing: content-box;
   width: 100%;
-  min-height: 2050px;
+  height: 100%;
+  background-size: cover;
   position: relative;
   background: linear-gradient(to right, #F08080 35%, #87CEEB 65%);
+  position: fixed;
 }
 
 .inner_background{
@@ -459,7 +461,7 @@ html, body {
   margin-top: 35px;
   width: 15%;
   height: 70px;
-  border-radius: 50% 0px 0px 50%;
+  border-radius: 30vw 0 0 30vw;
   border: 2px solid #0464cc;
   background-color:#f9812c;
   font-size: 150%;
@@ -471,7 +473,7 @@ html, body {
 .red_alliance_backstage_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
   width: 15%;
   height: 70px;
-  border-radius: 0px 50% 50% 0px;
+  border-radius: 0px 30vw 30vw 0px;
   margin-left: -13px;
   margin-top: 35px;
   border: 2px solid #0464cc;
@@ -595,10 +597,35 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
+  position: absolute;
   font-family: abel;
-  text-align: center;
-  font-size: 1.5vw;
-  margin-top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4vw;
+  max-font-size: 24px; 
+}
+@media screen and (min-width: 2060px) {
+  .team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
+    font-size: 1vw;
+  }
+}
+.team_prop_header{
+  top: 400px;
+}
+.drone_zone_header{
+  top: 500px;
+}
+.endgame_park_header{
+  top: 590px;
+}
+.team_auto_spike{
+  top: 685px;
+}
+.team_auto_pixel{
+  top: 785px;
+}
+.team_auto_park{
+  top: 885px;
 }
 
 .player_one_prop, .player_two_prop, .player_three_prop, .player_four_prop {
@@ -624,12 +651,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_prop_no, .player_two_prop_no, .player_three_prop_no, .player_four_prop_no {
   left: 10%;
-  border-radius: 50% 0px 0px 50%;
+  border-radius: 30vw 0 0 30vw;
 }
 
 .player_one_prop_yes, .player_two_prop_yes, .player_three_prop_yes, .player_four_prop_yes {
   left: 50%;
-  border-radius: 0px 50% 50% 0px;
+  border-radius: 0px 30vw 30vw 0px;
 }
 
 .player_one_prop_yes:hover, .player_two_prop_yes:hover, .player_three_prop_yes:hover, .player_four_prop_yes:hover {
@@ -669,7 +696,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_drone_zone_none, .player_two_drone_zone_none, .player_three_drone_zone_none, .player_four_drone_zone_none {
-  border-radius: 50% 0px 0px 50%;
+  border-radius: 30vw 0 0 30vw;
   left: 10%;
 }
 
@@ -682,7 +709,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_drone_zone_three, .player_two_drone_zone_three, .player_three_drone_zone_three, .player_four_drone_zone_three {
-  border-radius: 0px 50% 50% 0px;
+  border-radius: 0px 30vw 30vw 0px;
   left: 70%;
 }
 
@@ -741,7 +768,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color:#fe9346;
 }
 .player_one_park_none, .player_two_park_none, .player_three_park_none, .player_four_park_none {
-  border-radius: 50% 0px 0px 50%;
+  border-radius: 30vw 0 0 30vw;
   left: 10%;
 }
 
@@ -750,7 +777,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one_park_suspend, .player_two_park_suspend, .player_three_park_suspend, .player_four_park_suspend {
-  border-radius: 0px 50% 50% 0px;
+  border-radius: 0px 30vw 30vw 0px;
   left: 63.333333%;
 }
 
@@ -777,12 +804,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_auto_spike_no, .player_two_auto_spike_no, .player_three_auto_spike_no, .player_four_auto_spike_no {
   left: 10%;
-  border-radius: 50% 0 0 50%;
+  border-radius: 30vw 0 0 30vw;
 }
 
 .player_one_auto_spike_yes, .player_two_auto_spike_yes, .player_three_auto_spike_yes, .player_four_auto_spike_yes {
   left: 50%;
-  border-radius: 0 50% 50% 0;
+  border-radius: 0px 30vw 30vw 0px;
 }
 
 .player_one_auto_spike_no:hover, .player_two_auto_spike_no:hover, .player_three_auto_spike_no:hover, .player_four_auto_spike_no:hover{
@@ -816,12 +843,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_auto_pixel_no, .player_two_auto_pixel_no, .player_three_auto_pixel_no, .player_four_auto_pixel_no {
   left: 10%;
-  border-radius: 50% 0 0 50%;
+  border-radius: 30vw 0 0 30vw;
 }
 
 .player_one_auto_pixel_yes, .player_two_auto_pixel_yes, .player_three_auto_pixel_yes, .player_four_auto_pixel_yes {
   left: 50%;
-  border-radius: 0 50% 50% 0;
+  border-radius: 0px 30vw 30vw 0px;
 }
 
 .player_one_auto_pixel_no:hover, .player_two_auto_pixel_no:hover, .player_three_auto_pixel_no:hover, .player_four_auto_pixel_no:hover{
@@ -855,12 +882,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one_auto_park_no, .player_two_auto_park_no, .player_three_auto_park_no, .player_four_auto_park_no {
   left: 10%;
-  border-radius: 50% 0 0 50%;
+  border-radius: 30vw 0 0 30vw;
 }
 
 .player_one_auto_park_yes, .player_two_auto_park_yes, .player_three_auto_park_yes, .player_four_auto_park_yes {
   left: 50%;
-  border-radius: 0 50% 50% 0;
+  border-radius: 0px 30vw 30vw 0px;
 }
 
 .player_one_auto_park_no:hover, .player_two_auto_park_no:hover, .player_three_auto_park_no:hover, .player_four_auto_park_no:hover{
