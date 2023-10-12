@@ -93,7 +93,7 @@ function changeColor(hexColor, colorStates)
         
         //run scoreMosaiacs(mosaicsArr, team)
         
-        updateBackboardStats(colorStates,hexColor);
+        updateBackboardStats();
         //document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates)
         //document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates)
     })
@@ -139,39 +139,31 @@ buttonDropdown.addEventListener("click", () => {
   }
 })
 
-let redAllianceBackboard = [
-  document.getElementById("totalMosaiacsRed"),
-  document.getElementById("totalPixelsRed"),
-  document.getElementById("totalWhitePixelsRed"),
-  document.getElementById("totalGreenPixelsRed"),
-  document.getElementById("totalPurplePixelsRed"),
-  document.getElementById("totalYellowPixelsRed"),
-  document.getElementById("setLinesRed")
-]
-let blueAllianceBackboard = [
-  document.getElementById("totalMosaiacsBlue"),
-  document.getElementById("totalPixelsBlue"),
-  document.getElementById("totalWhitePixelsBlue"),
-  document.getElementById("totalGreenPixelsBlue"),
-  document.getElementById("totalPurplePixelsBlue"),
-  document.getElementById("totalYellowPixelsBlue"),
-  document.getElementById("setLinesBlue")
+let backboard = [
+  document.getElementById("totalMosaiacs"),
+  document.getElementById("totalPixels"),
+  document.getElementById("totalWhitePixels"),
+  document.getElementById("totalGreenPixels"),
+  document.getElementById("totalPurplePixels"),
+  document.getElementById("totalYellowPixels"),
+  document.getElementById("setLines")
 ]
 
-function updateBackboardStats(colorStates, team)
+
+function updateBackboardStats()
 {
-  const allianceBackboard = team == "red"? redAllianceBackboard: blueAllianceBackboard
-  const alliance = team == "red"? redAlliance: blueAlliance
-  const colorArr = ["White", "Green", "Purple", "Yellow"]
-  allianceBackboard[0].innerHTML = "Mosaics: " + alliance[1]
-  allianceBackboard[1].innerHTML = "Total pixels: "  + colorStates.filter(color => color !== "black").length
-  allianceBackboard[6].innerHTML = "Set lines <br> crossed: " + alliance[12];
-  for(let i=0; i < 4; i++)
-    allianceBackboard[i+2].innerHTML = colorArr[i] + " pixels: " + colorStates.filter(color => color == colorArr[i].toLowerCase()).length
+  //console.log("infobox updated")
+  let red = redAlliance; let blue = blueAlliance;
+  const colorArr = ["White", "Green", "Purple", "Yellow"];
+  backboard[0].innerHTML = red[1] + " - Mosaics - " + blue[1];
+  backboard[1].innerHTML = redColorStates.filter(color => color !== "black").length + "- Total Pixels - " + blueColorStates.filter(color => color !== "black").length;
+  backboard[6].innerHTML = red[12] + " - Set Lines Crossed - " + blue[12];
+  for(let i=0; i < 4; i++) {
+    backboard[i+2].innerHTML = redColorStates.filter(color => color == colorArr[i].toLowerCase()).length
+    + " - " + colorArr[i] + " Pixels - " 
+    + blueColorStates.filter(color => color == colorArr[i].toLowerCase()).length;
+  }
 }
-
-
-
 function createHexDivision(containerColor, hexRowColor, hexColor)
 {
   const container = document.getElementsByClassName(containerColor)
@@ -192,6 +184,11 @@ function createHexDivision(containerColor, hexRowColor, hexColor)
       hexRow.appendChild(hex)
     }
   }
+  const resetBtn = document.createElement("button");
+  let resetClass = hexColor == "hexagon_red"? "reset_red_backpanel_button" : "reset_blue_backpanel_button";
+  resetBtn.classList.add(resetClass);
+  resetBtn.innerHTML = "Reset"
+  container[0].appendChild(resetBtn);
 }
 
 const getRow = n => {
@@ -785,8 +782,8 @@ for(let i=0; i < 4; i++)
   }
 }
 
-updateBackboardStats(redColorStates,"red");
-updateBackboardStats(blueColorStates,"blue");
+updateBackboardStats();
+updateBackboardStats();
 updatePoints("red");
 updatePoints("blue");
 
@@ -835,7 +832,7 @@ resetButtons[0].addEventListener("click" , () => {
     }
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
-    updateBackboardStats(colorStates,colorString);
+    updateBackboardStats();
     updatePoints("red");
     updatePoints("blue");
     redReset.fill(true);
@@ -882,7 +879,7 @@ resetButtons[0].addEventListener("click" , () => {
     }
     updateSetLines(color,colorStates);
     scoreMosaics(colorStates,color);
-    updateBackboardStats(colorStates,colorString);
+    updateBackboardStats();
     updatePoints("red");
     updatePoints("blue");
     blueReset.fill(true);
