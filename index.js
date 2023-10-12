@@ -1,5 +1,9 @@
 createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
 createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
+let redReset = new Array(71);
+let blueReset = new Array(71)
+redReset.fill(false);
+blueReset.fill(false);
 const universalGreen = "#58b917";
 const universalRed = "red"
 //Hexagon code
@@ -19,14 +23,14 @@ function formatText(array) {
   return finalString
 }
 
-const blueHexagons = document.querySelectorAll(".hexagon_blue")
 const redHexagons  = document.querySelectorAll(".hexagon_red")
-let blueColorStates = new Array(71)
+const blueHexagons = document.querySelectorAll(".hexagon_blue")
+
 let redColorStates  = new Array(71)
-for(let i = 0; i < 71; i++) {
- blueColorStates[i] = "black"
- redColorStates[i]  = "black"
-}
+let blueColorStates = new Array(71)
+
+redColorStates.fill("black")
+blueColorStates.fill("black")
 
 changeColor("red", redColorStates)
 changeColor("blue", blueColorStates)
@@ -37,6 +41,17 @@ function changeColor(hexColor, colorStates)
   hexagons.forEach((hex, index) => {
     let currentColorIndex = 0
     hex.addEventListener("click", () => {
+      if(hexColor == "red") {
+        if(redReset[index]) {
+          currentColorIndex = 0
+          redReset[index] = false
+        }
+      } else {
+        if(blueReset[index]) {
+          currentColorIndex = 0
+          blueReset[index] = false
+        }
+      }
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
         switch(currentColorIndex)
@@ -591,14 +606,19 @@ function endgameParkChange(alliance, teamNumber, change)
 {
   switch(change)
   {
-      case 1:
-          alliance[8][teamNumber%2] = 1
-          alliance[7][teamNumber%2] = 0
-          break
-      case 2:
-          alliance[8][teamNumber%2] = 0
-          alliance[7][teamNumber%2] = 1
-          break
+    
+    case 1:
+      alliance[8][teamNumber%2] = 1
+      alliance[7][teamNumber%2] = 0
+      break
+    case 2:
+      alliance[8][teamNumber%2] = 0
+      alliance[7][teamNumber%2] = 1
+      break
+    default:
+      alliance[8][teamNumber%2] = 0
+      alliance[7][teamNumber%2] = 0
+      break
           
   }
   for(let i=0; i < 3; i++) {
@@ -818,6 +838,7 @@ resetButtons[0].addEventListener("click" , () => {
     updateBackboardStats(colorStates,colorString);
     updatePoints("red");
     updatePoints("blue");
+    redReset.fill(true);
   });
 
   resetButtons[1].addEventListener("click" , () => {
@@ -864,4 +885,5 @@ resetButtons[0].addEventListener("click" , () => {
     updateBackboardStats(colorStates,colorString);
     updatePoints("red");
     updatePoints("blue");
+    blueReset.fill(true);
   });
