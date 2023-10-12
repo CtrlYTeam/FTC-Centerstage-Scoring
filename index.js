@@ -1,6 +1,11 @@
 createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
 createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
-
+let redReset = new Array(71);
+let blueReset = new Array(71)
+redReset.fill(false);
+blueReset.fill(false);
+const universalGreen = "#58b917";
+const universalRed = "red"
 //Hexagon code
 function formatText(array) {
   let finalString = ""
@@ -17,24 +22,36 @@ function formatText(array) {
   //console.log(finalString)
   return finalString
 }
-const blueHexagons = document.querySelectorAll(".hexagon_blue")
+
 const redHexagons  = document.querySelectorAll(".hexagon_red")
-const blueColorStates = new Array(71)
-const redColorStates  = new Array(71)
-for(let i = 0; i < 71; i++) {
- blueColorStates[i] = "black"
- redColorStates[i]  = "black"
-}
+const blueHexagons = document.querySelectorAll(".hexagon_blue")
+
+let redColorStates  = new Array(71)
+let blueColorStates = new Array(71)
+
+redColorStates.fill("black")
+blueColorStates.fill("black")
 
 changeColor("red", redColorStates)
 changeColor("blue", blueColorStates)
 
 function changeColor(hexColor, colorStates) 
 {
-  let hexagons = (hexColor == "red")? redHexagons : blueHexagons;
+  let hexagons = hexColor == "red"? redHexagons : blueHexagons;
   hexagons.forEach((hex, index) => {
     let currentColorIndex = 0
     hex.addEventListener("click", () => {
+      if(hexColor == "red") {
+        if(redReset[index]) {
+          currentColorIndex = 0
+          redReset[index] = false
+        }
+      } else {
+        if(blueReset[index]) {
+          currentColorIndex = 0
+          blueReset[index] = false
+        }
+      }
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
         switch(currentColorIndex)
@@ -64,10 +81,13 @@ function changeColor(hexColor, colorStates)
         let filteredColorStates = colorStates.filter(color => color !== "black");
         if(hexColor == "red") {
           redAlliance[0] = filteredColorStates.length
-          scoreMosaics(colorStates,redAlliance);
+          updateSetLines(redAlliance,colorStates);
+          scoreMosaics(colorStates, redAlliance);
+
         } else {
           blueAlliance[0] = filteredColorStates.length
-          scoreMosaics(colorStates,blueAlliance);
+          updateSetLines(blueAlliance,colorStates);
+          scoreMosaics(colorStates, blueAlliance);
         }
         updatePoints(hexColor)
         
@@ -78,6 +98,25 @@ function changeColor(hexColor, colorStates)
         //document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates)
     })
   })
+}
+
+function updateSetLines(team, colorStates) {
+  let maxIndex = 0; 
+  for(let i = 0; i < 71;i++) {
+    if(colorStates[70-i] != "black") {
+      maxIndex = i; 
+    }
+  }
+  team[12] = 0;
+  if(maxIndex >= 52) {
+    team[12] = 3;
+  }
+  else if(maxIndex >= 32) {
+    team[12] = 2;
+  }
+  else if(maxIndex >= 13 ) {
+    team[12] = 1;
+  }
 }
 
 //dropdown panel
@@ -106,7 +145,8 @@ let redAllianceBackboard = [
   document.getElementById("totalWhitePixelsRed"),
   document.getElementById("totalGreenPixelsRed"),
   document.getElementById("totalPurplePixelsRed"),
-  document.getElementById("totalYellowPixelsRed")
+  document.getElementById("totalYellowPixelsRed"),
+  document.getElementById("setLinesRed")
 ]
 let blueAllianceBackboard = [
   document.getElementById("totalMosaiacsBlue"),
@@ -114,28 +154,23 @@ let blueAllianceBackboard = [
   document.getElementById("totalWhitePixelsBlue"),
   document.getElementById("totalGreenPixelsBlue"),
   document.getElementById("totalPurplePixelsBlue"),
-  document.getElementById("totalYellowPixelsBlue")
+  document.getElementById("totalYellowPixelsBlue"),
+  document.getElementById("setLinesBlue")
 ]
 
 function updateBackboardStats(colorStates, team)
 {
-  if(team == "red") {
-    redAllianceBackboard[0].innerHTML = "Total mosaics: "+ redAlliance[1];
-    redAllianceBackboard[1].innerHTML = "Total pixels: "+ colorStates.filter(color => color !== "black").length;
-    redAllianceBackboard[2].innerHTML = "White pixels: "+colorStates.filter(color => color == "white").length;
-    redAllianceBackboard[3].innerHTML = "Green pixels: "+colorStates.filter(color => color == "green").length;
-    redAllianceBackboard[4].innerHTML = "Purple pixels: "+colorStates.filter(color => color == "purple").length;
-    redAllianceBackboard[5].innerHTML = "Yellow pixels: "+colorStates.filter(color => color == "yellow").length;
-  } else {
-    blueAllianceBackboard[0].innerHTML = "Total mosaics: "+ blueAlliance[1];
-    blueAllianceBackboard[1].innerHTML = "Total pixels: "+colorStates.filter(color => color !== "black").length;
-    blueAllianceBackboard[2].innerHTML = "White pixels: "+colorStates.filter(color => color == "white").length;
-    blueAllianceBackboard[3].innerHTML = "Green pixels: "+colorStates.filter(color => color == "green").length;
-    blueAllianceBackboard[4].innerHTML = "Purple pixels: "+colorStates.filter(color => color == "purple").length;
-    blueAllianceBackboard[5].innerHTML = "Yellow pixels: "+colorStates.filter(color => color == "yellow").length;
-  }
-
+  const allianceBackboard = team == "red"? redAllianceBackboard: blueAllianceBackboard
+  const alliance = team == "red"? redAlliance: blueAlliance
+  const colorArr = ["White", "Green", "Purple", "Yellow"]
+  allianceBackboard[0].innerHTML = "Mosaics: " + alliance[1]
+  allianceBackboard[1].innerHTML = "Total pixels: "  + colorStates.filter(color => color !== "black").length
+  allianceBackboard[6].innerHTML = "Set lines <br> crossed: " + alliance[12];
+  for(let i=0; i < 4; i++)
+    allianceBackboard[i+2].innerHTML = colorArr[i] + " pixels: " + colorStates.filter(color => color == colorArr[i].toLowerCase()).length
 }
+
+
 
 function createHexDivision(containerColor, hexRowColor, hexColor)
 {
@@ -144,6 +179,9 @@ function createHexDivision(containerColor, hexRowColor, hexColor)
   {
     const hexRow = document.createElement("div")
     hexRow.classList.add(hexRowColor)
+    if(i == 8 || i == 5 || i == 2) {
+      hexRow.classList.add("hex_row_setLine");
+    }
     hexRow.setAttribute("id", hexRowColor+i)
     container[0].appendChild(hexRow)
     for(let j=0; j < (!(i%2)?6:7); j++)
@@ -280,7 +318,7 @@ for (let i = 0; i < toggleButtons.length; i++) {
   });
 }
 
-const redAlliance = [
+let redAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
   0,//(2) pixel in backstage done
@@ -296,7 +334,7 @@ const redAlliance = [
   0,//(11) major penalties    done
   0 //(12) set lines crossed
 ]
-const blueAlliance = [
+let blueAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
   0,//(2) pixel in backstage done
@@ -484,13 +522,18 @@ let teamDroneZone = [playerOneDroneZone, playerTwoDroneZone, playerThreeDroneZon
 function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
-  for(let i=0; i < 4; i++)
-  {
-    teamDroneZone[teamNumber][i].style.borderWidth = "3px"
-    teamDroneZone[teamNumber][i].style.backgroundColor = "#f9812c"
+  for(let i=0; i < 4; i++) {
+      teamDroneZone[teamNumber][i].style = "";
   }
-  teamDroneZone[teamNumber][change].style.borderWidth = "6px"
-  teamDroneZone[teamNumber][change].style.backgroundColor = "#fe9346"
+  teamDroneZone[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalRed
+  else if(change == 1)
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalGreen
+  else if(change == 2)
+    teamDroneZone[teamNumber][change].style.backgroundColor = "#D5D817"
+  else
+    teamDroneZone[teamNumber][change].style.backgroundColor = "orange"
 }
 
 /*
@@ -520,12 +563,15 @@ let teamProps = [playerOneProp, playerTwoProp, playerThreeProp, playerFourProp]
 function propChange(alliance, teamNumber, change)
 {
   alliance[3][teamNumber%2] = change
-  teamProps[teamNumber][0].style.borderWidth = "3px"
-  teamProps[teamNumber][0].style.backgroundColor = "#f9812c"
-  teamProps[teamNumber][1].style.borderWidth = "3px"
-  teamProps[teamNumber][1].style.backgroundColor = "#f9812c"
-  teamProps[teamNumber][change].style.borderWidth = "6px"
-  teamProps[teamNumber][change].style.backgroundColor = "#fe9346"
+  teamProps[teamNumber][0].style.backgroundColor = "aliceblue"
+  teamProps[teamNumber][1].style.backgroundColor = "aliceblue"
+  teamProps[teamNumber][0].style= ""
+  teamProps[teamNumber][1].style= ""
+  teamProps[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamProps[teamNumber][change].style.backgroundColor = universalRed
+  else
+    teamProps[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -560,23 +606,32 @@ function endgameParkChange(alliance, teamNumber, change)
 {
   switch(change)
   {
-      case 1:
-          alliance[8][teamNumber%2] = 1
-          alliance[7][teamNumber%2] = 0
-          break
-      case 2:
-      default:
-          alliance[8][teamNumber%2] = 0
-          alliance[7][teamNumber%2] = 1
-          break
+    
+    case 1:
+      alliance[8][teamNumber%2] = 1
+      alliance[7][teamNumber%2] = 0
+      break
+    case 2:
+      alliance[8][teamNumber%2] = 0
+      alliance[7][teamNumber%2] = 1
+      break
+    default:
+      alliance[8][teamNumber%2] = 0
+      alliance[7][teamNumber%2] = 0
+      break
+          
   }
-  for(let i=0; i < 3; i++)
-  {
-    teamEndgamePark[teamNumber][i].style.borderWidth = "3px"
-    teamEndgamePark[teamNumber][i].style.backgroundColor = "#f9812c"
+  for(let i=0; i < 3; i++) {
+      teamEndgamePark[teamNumber][i].style = ""
   }
-  teamEndgamePark[teamNumber][change].style.borderWidth = "6px"
-  teamEndgamePark[teamNumber][change].style.backgroundColor = "#fe9346"
+
+  teamEndgamePark[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamEndgamePark[teamNumber][change].style.backgroundColor = universalRed
+  else if(change == 1)
+    teamEndgamePark[teamNumber][change].style.backgroundColor = "#D5D817"
+  else
+    teamEndgamePark[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -606,13 +661,15 @@ let teamAutoSpike = [playerOneAutoSpike, playerTwoAutoSpike, playerThreeAutoSpik
 function autoSpikeChange(alliance, teamNumber, change)
 {
   alliance[4][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
-  {
-    teamAutoSpike[teamNumber][i].style.borderWidth = "3px"
-    teamAutoSpike[teamNumber][i].style.backgroundColor = "#f9812c"
+  for(let i=0; i < 2; i++) {
+      teamAutoSpike[teamNumber][i].style = ""
   }
-  teamAutoSpike[teamNumber][change].style.borderWidth = "6px"
-  teamAutoSpike[teamNumber][change].style.backgroundColor = "#fe9346"
+
+  teamAutoSpike[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoSpike[teamNumber][change].style.backgroundColor = universalRed
+  else
+    teamAutoSpike[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -642,13 +699,14 @@ let teamAutoPixel = [playerOneAutoPixel, playerTwoAutoPixel, playerThreeAutoPixe
 function autoPixelChange(alliance, teamNumber, change)
 {
   alliance[5][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
-  {
-    teamAutoPixel[teamNumber][i].style.borderWidth = "3px"
-    teamAutoPixel[teamNumber][i].style.backgroundColor = "#f9812c"
+  for(let i=0; i < 2; i++) {
+      teamAutoPixel[teamNumber][i].style = "";
   }
-  teamAutoPixel[teamNumber][change].style.borderWidth = "6px"
-  teamAutoPixel[teamNumber][change].style.backgroundColor = "#fe9346"
+  teamAutoPixel[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoPixel[teamNumber][change].style.backgroundColor = universalRed
+  else
+    teamAutoPixel[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 /*
@@ -678,13 +736,14 @@ let teamAutoPark = [playerOneAutoPark, playerTwoAutoPark, playerThreeAutoPark, p
 function autoParkChange(alliance, teamNumber, change)
 {
   alliance[6][teamNumber%2] = change
-  for(let i=0; i < 2; i++)
-  {
-    teamAutoPark[teamNumber][i].style.borderWidth = "3px"
-    teamAutoPark[teamNumber][i].style.backgroundColor = "#f9812c"
+  for(let i=0; i < 2; i++) {
+      teamAutoPark[teamNumber][i].style = ""
   }
-  teamAutoPark[teamNumber][change].style.borderWidth = "6px"
-  teamAutoPark[teamNumber][change].style.backgroundColor = "#fe9346"
+  teamAutoPark[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamAutoPark[teamNumber][change].style.backgroundColor = universalRed
+  else 
+    teamAutoPark[teamNumber][change].style.backgroundColor = universalGreen
 }
 
 for(let i=0; i < 4; i++)
@@ -730,3 +789,101 @@ updateBackboardStats(redColorStates,"red");
 updateBackboardStats(blueColorStates,"blue");
 updatePoints("red");
 updatePoints("blue");
+
+const resetButtons = [
+  document.getElementsByClassName("reset_red_backpanel_button")[0],
+  document.getElementsByClassName("reset_blue_backpanel_button")[0]
+]
+
+resetButtons[0].addEventListener("click" , () => {
+    const colorString = "red"
+    console.log("reset red");
+    redAlliance = [
+        0,//(0) pixels on backboard
+        0,//(1) mozaiacs
+        0,//(2) pixel in backstage done
+        //player one left player 2 right
+        [0,0],//(3) player prop    done
+        [0,0],//(4) auto spike
+        [0,0],//(5) auto pixel
+        [0,0],//(6) auto park
+        [0,0],//(7) suspension     done
+        [0,0],//(8) park           done
+        [0,0],//(9) drone          done
+        0,//(10) minor penalties   done
+        0,//(11) major penalties    done
+        0 //(12) set lines crossed
+    ]
+    for(let i = 0; i < 71; i++) {
+      redColorStates[i] = "black"
+    } 
+    console.log("reset2" + colorString);
+    let color = redAlliance;
+    let colorStates = redColorStates;
+    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+    for(i = 0; i < hexagons.length; i++) {
+      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+      hexagons[i].classList.add("black");
+    }
+    redAlliancebackstagePixels[0].value="";
+    redAllianceMinorPenalties[0].value="";
+    redAllianceMajorPenalties[0].value="";
+    let buttons = document.getElementsByClassName("red_button");
+    for(let i = 0; i < buttons.length;i++) {
+      buttons[i].style.backgroundColor="aliceblue";
+      buttons[i].style.color="black";
+    }
+    updateSetLines(color,colorStates);
+    scoreMosaics(colorStates,color);
+    updateBackboardStats(colorStates,colorString);
+    updatePoints("red");
+    updatePoints("blue");
+    redReset.fill(true);
+  });
+
+  resetButtons[1].addEventListener("click" , () => {
+    const colorString = "blue";
+    console.log("reset blue");
+    blueAlliance = [
+      0,//(0) pixels on backboard
+      0,//(1) mozaiacs
+      0,//(2) pixel in backstage done
+      //player one left player 2 right
+      [0,0],//(3) player prop    done
+      [0,0],//(4) auto spike
+      [0,0],//(5) auto pixel
+      [0,0],//(6) auto park
+      [0,0],//(7) suspension     done
+      [0,0],//(8) park           done
+      [0,0],//(9) drone          done
+      0,//(10) minor penalties   done
+      0,//(11) major penalties    done
+      0 //(12) set lines crossed
+    ]
+    for(let i = 0; i < 71; i++) {
+      blueColorStates[i] = "black"
+    }
+    //console.log("reset2" + colorString);
+    let color = blueAlliance;
+    let colorStates = blueColorStates;
+    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+    for(i = 0; i < hexagons.length; i++) {
+      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+      hexagons[i].classList.add("black");
+    }
+    blueAlliancebackstagePixels[0].value="";
+    blueAllianceMinorPenalties[0].value="";
+    blueAllianceMajorPenalties[0].value="";
+    let buttons = document.getElementsByClassName("blue_button");
+    console.log(buttons.length);
+    for(let i = 0; i < buttons.length;i++) {
+      buttons[i].style.backgroundColor="aliceblue";
+      buttons[i].style.color="black";
+    }
+    updateSetLines(color,colorStates);
+    scoreMosaics(colorStates,color);
+    updateBackboardStats(colorStates,colorString);
+    updatePoints("red");
+    updatePoints("blue");
+    blueReset.fill(true);
+  });
