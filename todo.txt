@@ -1,5 +1,6 @@
 linear gradient needs working on                 Done
 hexagon grid needs a sub pannel for statistics   Done
+change dropdown to hamburger button
 reset button for hexagon grid 
 player scoring buttons need lables               Done
 lables need to scale properly
