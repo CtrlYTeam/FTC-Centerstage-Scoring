@@ -359,7 +359,7 @@ html, body {
   border-radius: 10px;
 }
 .backpanel_info_box_blue{
-  width: 30%;
+  width: fit-content;
   height: fit-content;
   top: 50%;
   transform: translate(0, -50%);
