@@ -606,7 +606,6 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.4vw;
-  max-font-size: 24px; 
 }
 @media screen and (min-width: 2060px) {
   .team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
