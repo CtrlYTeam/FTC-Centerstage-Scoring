@@ -728,7 +728,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_three_park_none,
 .player_four_park_none
 {
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 1vw 0% 0% 1vw;
   border-left: 4px solid #000;
 }
 
@@ -742,7 +742,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_three_park_suspend,
 .player_four_park_suspend
 {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0% 1vw 1vw 0%;
   border-right: 4px solid #000;
 }
 
