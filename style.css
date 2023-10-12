@@ -57,13 +57,6 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-
-@media screen and (min-width: 1700px) {
-  .hexagon_blue, .hexagon_red  {
-    width: 60px;
-  }
-}
-
 .hexagon_red.black, .hexagon_blue.black {
   background-color: black;
 }
@@ -317,8 +310,8 @@ html, body {
 .hex_container_red, .hex_container_blue {
   background: linear-gradient(to right,#2e2b2b,#3d3939);
   padding-top: 5%;
-  border-radius: 20px;
-  border: solid 5px #000;
+  border-radius: 5%;
+  border: solid 0.5vw #000;
   padding-bottom: 12%;
   padding-left: 3%;
   padding-right: 3%;
@@ -341,7 +334,8 @@ html, body {
 .backpanel_info_box_red{
   width: fit-content;
   height: fit-content;
-  top: 150px;
+  top: 50%;
+  transform: translate(-20%, -50%);
   right: 0;
   margin-left: 4%;
   position: absolute;
@@ -350,8 +344,9 @@ html, body {
 .backpanel_info_box_blue{
   width: fit-content;
   height: fit-content;
-  top: 150px;
+  top: 50%;
   margin-right: 4%;
+  transform: translate(20%, -50%);
   left: 0;
   position: absolute;
   border-radius: 10px;
@@ -407,8 +402,8 @@ html, body {
   -webkit-box-sizing: border-box;
   width: 50%;
   left: -20px;
-  top: calc(70px + 58vw);
-  height: 950px;
+  top: calc(75px + 58vw);
+  height: 1300px;
   background: linear-gradient(to right, #f82b2b, #ff8b8b);
   position: absolute;
   border: 5px solid red;
@@ -420,9 +415,9 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: 50%;
-  top: calc(70px + 58vw);
+  top: calc(75px + 58vw);
   right: -20px;
-  height: 950px; 
+  height: 1300px; 
   background: linear-gradient(to left, #3358ff, #93a7ff);
   position: absolute;
   border: 5px solid blue;
@@ -582,6 +577,16 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   margin-top: 10px;
 }
+
+.team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
+  font-family: abel;
+  font-size: 1.4vw;
+  max-font-size: 24px; 
+  position: absolute;
+  text-align: center;
+  width: 208.5%;
+}
+
 .player_one{
   top: 370px;
   box-sizing: border-box;
@@ -643,6 +648,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_prop, .player_four_drone_zone, .player_four_endgame_park, .player_four_auto_spike, .player_four_auto_pixel, .player_four_auto_park {
   justify-content: center;
   display: flex;
+  margin-top: 8%;
 }
 
 /*All yes no buttons*/
