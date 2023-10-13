@@ -45,7 +45,7 @@ html, body {
   margin-left: 0.3vw;
   margin-right: 0.3vw;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .hexagon_red.black, .hexagon_blue.black {
@@ -90,7 +90,7 @@ html, body {
   left: 24%;
   transform: translate(-50%, -50%);
   outline: none;
-  border: 5px solid black;
+  border: 3px solid black;
   transition: all 0.5s ease-in-out;
 }
 .player_two_input{
@@ -105,7 +105,7 @@ html, body {
   left: 40%;
   transform: translate(-50%, -50%);
   outline: none;
-  border: 5px solid black;
+  border: 3px solid black;
   transition: all 0.5s ease-in-out;
 }
 .vs_text{
@@ -128,7 +128,7 @@ html, body {
   left: 60%;
   transform: translate(-50%, -50%);
   outline: none;
-  border: 5px solid black;
+  border: 3px solid black;
   transition: all 0.5s ease-in-out;
 }
 .player_four_input{
@@ -143,7 +143,7 @@ html, body {
   left: 76%;
   transform: translate(-50%, -50%);
   outline: none;
-  border: 5px solid black;
+  border: 3px solid black;
   transition: all 0.5s ease-in-out;
 }
 .player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
@@ -157,7 +157,7 @@ html, body {
 
 @media screen and (max-width: 1350px){
   .vs_text{
-    font-size: 4vw;
+    font-size: 3vw;
   }
   .logo{
     height: 4.8vw;
@@ -241,19 +241,19 @@ html, body {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 30px;
-  transition: all 0.5s ease;
   height: 16vw;
   opacity: 1;
   overflow: hidden;
+  transition: all 0.5s ease-in-out;
 }
 
 .info_panel_img{
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
   transform: scaleY(-1);
 }
 
 .info_panel_img_opened{
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 .flexbox_dropdown{
@@ -293,9 +293,6 @@ html, body {
 }
 
 .red_backdrop{
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 50%;
   top: 75px;
   left: -20px;
@@ -309,9 +306,6 @@ html, body {
   
 }
 .blue_backdrop{
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 50%;
   height: fit-content;
   top: 75px;
@@ -339,12 +333,10 @@ html, body {
 }
 .hex_container_red {
   margin-left: 50px;
-  left: 0px;
   transform: translateX(-7vw) translateY(50px)
 }
 .hex_container_blue {
   margin-right: 50px;
-  right: 0px;
   transform: translateX(7vw) translateY(50px)
 }
 
@@ -379,11 +371,10 @@ html, body {
   border: 5px solid red;
   border-radius: 10px;
   padding: 2% 10% 2% 10%;
-  left: 50%;
   margin-top: 5%;
-  transition: all 0.5s ease;
   font-family: abel;
   font-size: 1.7vw;
+  transition: all 0.3s ease-in-out;
 }
 .reset_blue_backpanel_button{
   box-shadow: 0 0 5px blue,
@@ -397,8 +388,7 @@ html, body {
   0 0 25px yellow,
   0 0 50px yellow,
   0 0 200px;
-  border: 5px solid yellow;
-  padding: 2% 5% 2% 5%;
+  border: 2px solid yellow;
 }
 .total_mosaiacs, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines
 {
@@ -411,8 +401,8 @@ html, body {
 .red_alliance{
   width: 50%;
   left: -20px;
-  top: calc(75px + 58vw);
-  height: 1300px;
+  top: calc(35px + 58vw + 10%);
+  height: calc(750px + 20vw);
   background: linear-gradient(to right, #f82b2b, #ff8b8b);
   position: absolute;
   border: 5px solid red;
@@ -420,9 +410,9 @@ html, body {
 }
 .blue_alliance{
   width: 50%;
-  top: calc(75px + 58vw);
+  top: calc(35px + 58vw + 10%);
   right: -20px;
-  height: 1300px; 
+  height: calc(750px + 20vw);
   background: linear-gradient(to left, #3358ff, #93a7ff);
   position: absolute;
   border: 5px solid blue;
@@ -441,6 +431,7 @@ html, body {
   font-size: 150%;
   text-align: center;
   font-family: verdana;
+  transition: all 0.3s ease-in-out;
 }
 
 .red_alliance_backstage_pixels_minus:hover, 
@@ -450,7 +441,6 @@ html, body {
 .blue_alliance_minor_penalties_minus:hover, 
 .blue_alliance_major_penalties_minus:hover {
   background-color:rgb(221, 43, 43);
-  transition: ease 0.4s;
 }
 .red_alliance_backstage_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
   width: 15%;
@@ -463,6 +453,7 @@ html, body {
   font-size: 150%;                                                            
   text-align: center;
   font-family: verdana;
+  transition: all 0.3s ease-in-out;
 }
 
 .red_alliance_backstage_pixels_plus:hover, 
@@ -472,7 +463,6 @@ html, body {
 .blue_alliance_minor_penalties_plus:hover, 
 .blue_alliance_major_penalties_plus:hover {
   background-color:rgb(88, 185, 23);
-  transition: ease 0.4s;
 }
 .red_alliance_backstage_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
   width: 25%;
@@ -487,6 +477,7 @@ html, body {
   font-family: verdana;
   appearance: none;
   appearance: textfield;
+  transition: all 0.3s ease-in-out;
 }
 .red_alliance_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
   display: flex;
@@ -506,7 +497,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 .backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: calc(165px + 57vw);
+  top: calc(115px + 58vw + 10%);
   width: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -523,10 +514,12 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: abel;
 }
 .minor_penalties_header{
-  top: calc(290px + 57vw);
+  top: calc(239px + 58vw + 10%);
+  /* top: calc(290px + 57vw); */
 }
 .major_penalties_header{
-  top: calc(415px + 57vw);
+  top: calc(365px + 58vw + 10%);
+  /* top: calc(415px + 57vw); */
 }
 .tooltip_backstage_pixel_image{
   width: 1vw;
@@ -535,9 +528,9 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: 1%;
   border: 0;
   background-color: 0;
+  z-index: 1;
 }
 .toolbox_backstage_pixel{
-  transition: opacity 0.5s ease;
   position: absolute;
   left: 10vw;
   top: -12vw;
@@ -550,6 +543,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #DD7230;
   border: 0.5vw solid #0464cc;
   opacity: 0;
+  transition: opacity 0.5s ease;
 }
 .tooltip_backstage_pixel_image:hover ~ .toolbox_backstage_pixel{
   opacity: 1;
@@ -589,9 +583,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .player_one{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   height: 650px; 
   position: absolute;
@@ -602,9 +593,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .player_two{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   left: 50%;
   height: 650px; 
@@ -615,9 +603,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .player_three{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   height: 650px;  
   right:50%;
@@ -628,9 +613,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .player_four{
   top: 370px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   width: 45%;
   right: 0px;
   height: 650px; 
@@ -670,7 +652,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 1.5vw;
   font-family: abel;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 /*Drone zone buttons*/
@@ -692,7 +674,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #f0f0f0;
   color: #333;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 /*Park buttons*/
@@ -714,7 +696,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
   color: #333;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -748,6 +730,5 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .red_button:hover, .blue_button:hover {
   background-color: #93a7ff;
-  transition: ease 0.3s;
 }
 

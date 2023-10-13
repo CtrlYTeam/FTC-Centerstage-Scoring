@@ -1,10 +1,11 @@
 linear gradient needs working on                 Done
 hexagon grid needs a sub pannel for statistics   Done
 change dropdown to hamburger button
-reset button for hexagon grid 
+reset button for hexagon grid                    Done
 player scoring buttons need lables               Done
-lables need to scale properly
+lables need to scale properly                    Done
 mosaiac detection                                Done
+need to fix hoving mouse over toolbox (hitbox)
 tooltips add
 tooltips on/off
 timmer
@@ -15,9 +16,9 @@ link logo to ctrl-y Website                      Done
 minor css changes to alliance scoring elelments  Done
 credits in dropdown                              Done
 sounds? timer, button clicks, scoring changes
-scale the webpage to better suit less scrolling
-major css changes (looks and scale)
-add backpanel to hex array
+scale the webpage to better suit less scrolling  Done
+major css changes (looks and scale)              Done
+add backpanel to hex array                       Done
 import and export
 cookies for scoring
 lighthouse reports
