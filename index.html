@@ -22,15 +22,11 @@
   </div>
   <div class = "dropdown_panel" id = "dropdownPanel" type = "button">
     <div class = "flexbox_dropdown">
-      <!-- want to add timer feauture along side other feature like css changes or "pro mode", "tooltips" -->
-      <div class = "dropdown_item">
+      <!-- want to add timer feauture along side other feature like css changes "tooltips" -->
+      <!-- <div class = "dropdown_item">
         <button class = "timer_toggle_button" id = "timerToggleButton"></button> 
         <label for = "timerToggleButton" class = "label_dropdown">Timer?</label>
-      </div>
-      <div class = "dropdown_item">
-        <button class = "pro_toggle_button" id = "proToggleButton"></button>
-        <label for = "proToggleButton" class = "label_dropdown">Pro mode?</label>
-      </div>
+      </div> -->
       <div class = "dropdown_item">
         <button class = "tooltips_toggle_button" id = "tooltipsToggleButton"></button>
         <label for = "tooltipsToggleButton" class = "label_dropdown">tooltips?</label>
@@ -59,12 +55,12 @@
     <div class="info_box">
       <div class="info_box_inner">
         <h4 class = "total_mosaiacs" id = "totalMosaiacs">Mosaiacs:</h4>
-        <h4 class = "total_pixels" id = "totalPixels">Total pixels:</h4>
-        <h4 class = "total_white_pixels" id = "totalWhitePixels">White pixels:</h4>
-        <h4 class = "total_green_pixels" id = "totalGreenPixels">Green pixels:</h4>
-        <h4 class = "total_purple_pixels" id = "totalPurplePixels">Purple pixels:</h4>
-        <h4 class = "total_yellow_pixels" id = "totalYellowPixels">Yellow pixels:</h4>
-        <h4 class = "setLines" id = "setLines">Set lines crossed: </h4>
+        <h4 class = "total_pixels" id = "totalPixels">Total Pixels:</h4>
+        <h4 class = "total_white_pixels" id = "totalWhitePixels">White Pixels:</h4>
+        <h4 class = "total_green_pixels" id = "totalGreenPixels">Green Pixels:</h4>
+        <h4 class = "total_purple_pixels" id = "totalPurplePixels">Purple Pixels:</h4>
+        <h4 class = "total_yellow_pixels" id = "totalYellowPixels">Yellow Pixels:</h4>
+        <h4 class = "setLines" id = "setLines">Set Lines Crossed: </h4>
       </div>
     </div>
   <div class = "blue_backdrop">
@@ -75,29 +71,29 @@
     </div>
     <div class="hex_container_blue"></div>
   </div>
-  <h1 class = "backstage_pixels_header">
-    Backstage pixels
-    <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-    <a class = "toolbox_backstage_pixel">
-      Backstage pixels are the pixels placed in the taped of area around the backboard
-    </a>
-  </h1>
-  <h1 class = "minor_penalties_header">
-    Minor penalties
-    <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-    <a class = "toolbox_backstage_pixel">
-      Backstage pixels are the pixels placed in the taped of area around the backboard
-    </a>
-  </h1>
-  <h1 class = "major_penalties_header">
-    Major penalties
-    <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-    <a class = "toolbox_backstage_pixel">
-      Backstage pixels are the pixels placed in the taped of area around the backboard
-    </a>  
-  </h1>
+
   <div class = "red_alliance">
-    <h1 class = "red_alliance_header">Red Alliance</h1>
+    <h1 class = "backstage_pixels_header">
+      Backstage Pixels
+      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_backstage_pixel">
+        Backstage pixels are the pixels placed in the taped of area around the backboard
+      </a>
+    </h1>
+    <h1 class = "minor_penalties_header">
+      Minor Penalties
+      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_backstage_pixel">
+        Minor penalties that do not seriously affect the gameplay or the progress of other teams
+      </a>
+    </h1>
+    <h1 class = "major_penalties_header">
+      Major Penalties
+      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_backstage_pixel">
+        Major penalties that seriously affect the gameplay or the progress of other teams
+      </a>  
+    </h1>
     <div class = "red_alliance_backstage_pixels">
       <button type = "button" class = "red_alliance_backstage_pixels_minus" id = "redAllianceBackstagePixelsMinus"><b>-</b></button>
       <input type = "number" class = "red_alliance_backstage_pixels_number red_button" id = "redAllianceBackstagePixelsNumber" placeholder = "0">
@@ -117,10 +113,10 @@
     <div class = "player_one">
       <h1 class = "player_one_header" id = playerOneHeader>Team one</h1>
       <h2 class = "team_prop_header">
-        Team prop
+        Team Prop
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether or not the team is using a team prop in place of a pixel on the spike mark
         </a>
       </h2>
       <div class = "player_one_prop">
@@ -128,10 +124,10 @@
         <button class = "player_one_prop_yes red_button" id = "playerOnePropYes" type = "button">Yes</button>
       </div>
       <h2 class = "drone_zone_header">
-        Drone zone
+        Drone Zone
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          What zone the team's drone lands in
         </a>
       </h2>
       <div class = "player_one_drone_zone">
@@ -141,10 +137,10 @@
         <button  class = "player_one_drone_zone_three red_button" id = "playerOneDroneZoneThree" type = "button">3</button>
       </div>
       <h2 class = "endgame_park_header">
-        Endgame park
+        Endgame Park
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the robot is parked, suspended, or neither, at the end of the buzzer
         </a>
       </h2>
       <div class = "player_one_endgame_park">
@@ -153,10 +149,10 @@
         <button  class = "player_one_park_suspend red_button" id = "playerOneParkSuspend" type = "button">Suspend</button>
       </div>
       <h2 class = "team_auto_spike">
-        Auto spike
+        Auto Spike
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
         </a>
       </h2>
       <div class = "player_one_auto_spike">
@@ -164,10 +160,10 @@
         <button class = "player_one_auto_spike_yes red_button" id = "playerOneAutoSpikeYes" type = "button">Yes</button>
       </div>
       <h2 class = "team_auto_pixel">
-        Auto pixel
+        Auto Pixel
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
         </a>
       </h2>
       <div class = "player_one_auto_pixel">
@@ -175,10 +171,10 @@
         <button class = "player_one_auto_pixel_yes red_button" id = "playerOneAutoPixelYes" type = "button">Yes</button>
       </div>
       <h2 class = "team_auto_park">
-        Auto park
+        Auto Park
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the robot is parked in the backstage at the end of autonomous
         </a>
       </h2>
       <div class = "player_one_auto_park">
@@ -219,7 +215,6 @@
     
   </div>
   <div class = "blue_alliance">
-    <h1 class = "blue_alliance_header">Blue Alliance</h1>
     <div class="blue_alliance_backstage_pixels">
       <button type="button" class="blue_alliance_backstage_pixels_minus" id="blueAllianceBackstagePixelsMinus"><b>-</b></button>
       <input type="number" class="blue_alliance_backstage_pixels_number blue_button" id="blueAllianceBackstagePixelsNumber" placeholder="0">
@@ -236,12 +231,12 @@
       <button type="button" class="blue_alliance_major_penalties_plus" id="blueAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
     </div>
     <div class = "player_three">
-      <h1 class = "player_three_header" id = playerThreeHeader>Team three</h1>
+      <h1 class = "player_three_header" id = playerThreeHeader>Team Three</h1>
       <h2 class = "team_prop_header">
-        Team prop
+        Team Prop
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether or not the team is using a team prop in place of a pixel on the spike mark
         </a>
       </h2>
       <div class="player_three_prop">
@@ -249,10 +244,10 @@
         <button class="player_three_prop_yes blue_button" id="playerThreePropYes" type="button">Yes</button>
       </div>
       <h2 class = "drone_zone_header">
-        Drone zone
+        Drone Zone
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          What zone the team's drone lands in
         </a>
       </h2>
       <div class="player_three_drone_zone">
@@ -262,10 +257,10 @@
         <button class="player_three_drone_zone_three blue_button" id="playerThreeDroneZoneThree" type="button">3</button>
       </div>
       <h2 class = "endgame_park_header">
-        Endgame park
+        Endgame Park
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the robot is parked, suspended, or neither, at the end of the buzzer
         </a>
       </h2>
       <div class="player_three_endgame_park">
@@ -274,10 +269,10 @@
         <button class="player_three_park_suspend blue_button" id="playerThreeParkSuspend" type="button">Suspend</button>
       </div>
       <h2 class = "team_auto_spike">
-        Auto spike
+        Auto Spike
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
         </a>
       </h2>
       <div class="player_three_auto_spike">
@@ -285,10 +280,10 @@
         <button class="player_three_auto_spike_yes blue_button" id="playerThreeAutoSpikeYes" type="button">Yes</button>
       </div>
       <h2 class = "team_auto_pixel">
-        Auto pixel
+        Auto Pixel
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
         </a>
       </h2>
       <div class="player_three_auto_pixel">
@@ -296,10 +291,10 @@
         <button class="player_three_auto_pixel_yes blue_button" id="playerThreeAutoPixelYes" type="button">Yes</button>
       </div>
       <h2 class = "team_auto_park">
-        Auto park
+        Auto Park
         <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
         <a class = "toolbox_backstage_pixel">
-          Backstage pixels are the pixels placed in the taped of area around the backboard
+          Whether the robot is parked in the backstage at the end of autonomous
         </a>
       </h2>
       <div class="player_three_auto_park">

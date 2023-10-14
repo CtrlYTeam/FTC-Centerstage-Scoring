@@ -240,8 +240,7 @@ if(userData == undefined){
 
 function newCookie(){
   userData = {
-    timerCheck: 0,
-    proCheck: 0,
+    // timerCheck: 0,
     tooltipsCheck: 1,
   }
   let jsonData = JSON.stringify(userData);
@@ -288,12 +287,11 @@ for(let i = 0; i<4; i++){
 
 //toggle buttons
 let toggleButtons = [
-  document.getElementById("timerToggleButton"),
-  document.getElementById("proToggleButton"),
+  // document.getElementById("timerToggleButton"),
   document.getElementById("tooltipsToggleButton")
 ]
 
-var jsonItems = ["timerCheck", "proCheck", "tooltipsCheck"]
+var jsonItems = ["timerCheck", "tooltipsCheck"]
 
 initializeButtonAppearances()
 
