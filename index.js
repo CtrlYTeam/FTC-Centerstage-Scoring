@@ -1,3 +1,17 @@
+//landscape prefrence
+
+let alertElements = [
+  document.getElementById("landscapeWarning"),
+  document.getElementById("alertButton")
+]
+
+if(window.innerHeight > window.innerWidth){
+  alertElements[0].style.display = "block"
+  alertElements[1].addEventListener("click", () => {
+    alertElements[0].style = ""
+  });
+}
+
 createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
 createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
 let redReset = new Array(71);

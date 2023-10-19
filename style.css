@@ -67,6 +67,37 @@ html, body {
   background-color: yellow;
 }
 
+.landscape_warning{
+  display: none;
+  z-index: 3;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  width: 63vw;
+  font-family: abel;
+  font-size: 3vw;
+  transform: translate(-50%,-50%);
+  padding: 5px;
+  background-color: #0464cc;
+  border-radius: 4vw;
+  border: 5px solid #ff0000;
+}
+.alert_button{
+  position: absolute;
+  right: 1.5vw;
+  aspect-ratio: 1/1;
+  border-radius: 1vw;
+  border:5px solid #8b0000;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+}
+.alert_button_image{
+  width: 3vw;
+  aspect-ratio: 1/1;
+}
+
 .top_bar{
   position: fixed;
   width: 100%;

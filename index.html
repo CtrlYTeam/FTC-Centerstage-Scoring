@@ -6,10 +6,16 @@
   <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
   <title>FTC Centerstage Scoring</title>
   <link href = "style.css?v=1.2" rel = "stylesheet" type = "text/css">
-  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
 </head>
 
 <body>
+  <div class = "landscape_warning" id="landscapeWarning">
+    <button type="button" class="alert_button" id="alertButton"><img src = "images/x.svg" alt = "x button" class = "alert_button_image"></button>
+    <h1 class = "alert_text">Please use landscape mode for best experience!</h1>
+    <p class = "alert_text">rotate the phone 90 degres.</p>
+    <p class = "alert_text">if you are not using mobile you can probably ignore this!</p>
+  </div>
   <div class = "top_bar">
     <a href = "https://ftc.ctrlyrobotics.org/home"><img src = "images/logo.svg" alt = "Website Logo" class = "logo"></a>
     <a class = "red_alliance_score" id = "redAllianceScore">000</a>
