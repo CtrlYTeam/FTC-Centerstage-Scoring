@@ -15,6 +15,7 @@ scale the webpage to better suit less scrolling  Done
 major css changes (looks and scale)              Done
 add backpanel to hex array                       Done
 lighthouse reports
+delete ids of tooltips
 
 ===later===
 import and export
@@ -25,3 +26,4 @@ timmer on/off
 fancy crown effect on score
 data visualization
 darkmode add to dropdown (idk)
+
