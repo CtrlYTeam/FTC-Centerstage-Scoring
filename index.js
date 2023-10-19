@@ -19,7 +19,6 @@ function formatText(array) {
       }
       finalString += "<br>"
   }
-  //console.log(finalString)
   return finalString
 }
 
@@ -152,7 +151,6 @@ let backboard = [
 
 function updateBackboardStats()
 {
-  //console.log("infobox updated")
   let red = redAlliance; let blue = blueAlliance;
   const colorArr = ["White", "Green", "Purple", "Yellow"];
   backboard[0].innerHTML = red[1] + " - Mosaics - " + blue[1];
@@ -295,6 +293,7 @@ var jsonItems = ["timerCheck", "tooltipsCheck"]
 
 initializeButtonAppearances()
 
+
 function initializeButtonAppearances() {
   for (let i = 0; i < toggleButtons.length; i++) {
     toggleButtons[i].style.backgroundColor = userData[jsonItems[i]] === 1? "red": "white"
@@ -306,11 +305,33 @@ for (let i = 0; i < toggleButtons.length; i++) {
     userData[jsonItems[i]] = userData[jsonItems[i]] === 1 ? 0 : 1
     if (userData[jsonItems[i]] === 1) {
       toggleButtons[i].style.backgroundColor = "red"
+      updateTooltips()
     } else {
       toggleButtons[i].style.backgroundColor = "white"
+      updateTooltips()
     }
     updateCookie()
   });
+}
+
+function updateTooltips(){
+  var elements = document.querySelectorAll('.toolbox_backstage_pixel');
+  var elements2 = document.querySelectorAll('.tooltip_backstage_pixel_image');
+    //console.log(elements2)
+    //console.log(userData)
+  if(userData[jsonItems[0]] == 0){
+    for(let i = 0; i <elements.length; i++){
+      console.log("test")
+      elements[i].style.display = 'none';
+      elements2[i].style.display = 'none';
+    }
+  }else{
+    for(let i = 0; i <elements.length; i++){
+      elements[i].style = "";
+      elements2[i].style = "";
+    }
+  }
+
 }
 
 let redAlliance = [
@@ -373,7 +394,7 @@ function updatePoints(color) {
     scoreElements[1].innerHTML = total;
   }
 
-  console.log("Number of mosaics:", alliance[1])
+  // console.log("Number of mosaics:", alliance[1])
 }
 
 let scoreElements = [
@@ -792,7 +813,6 @@ const resetButtons = [
 
 resetButtons[0].addEventListener("click" , () => {
     const colorString = "red"
-    console.log("reset red");
     redAlliance = [
         0,//(0) pixels on backboard
         0,//(1) mozaiacs
@@ -812,7 +832,6 @@ resetButtons[0].addEventListener("click" , () => {
     for(let i = 0; i < 71; i++) {
       redColorStates[i] = "black"
     } 
-    console.log("reset2" + colorString);
     let color = redAlliance;
     let colorStates = redColorStates;
     let hexagons = document.getElementsByClassName("hexagon_" + colorString);
@@ -838,7 +857,6 @@ resetButtons[0].addEventListener("click" , () => {
 
   resetButtons[1].addEventListener("click" , () => {
     const colorString = "blue";
-    console.log("reset blue");
     blueAlliance = [
       0,//(0) pixels on backboard
       0,//(1) mozaiacs
@@ -858,7 +876,6 @@ resetButtons[0].addEventListener("click" , () => {
     for(let i = 0; i < 71; i++) {
       blueColorStates[i] = "black"
     }
-    //console.log("reset2" + colorString);
     let color = blueAlliance;
     let colorStates = blueColorStates;
     let hexagons = document.getElementsByClassName("hexagon_" + colorString);
@@ -870,7 +887,6 @@ resetButtons[0].addEventListener("click" , () => {
     blueAllianceMinorPenalties[0].value="";
     blueAllianceMajorPenalties[0].value="";
     let buttons = document.getElementsByClassName("blue_button");
-    console.log(buttons.length);
     for(let i = 0; i < buttons.length;i++) {
       buttons[i].style.backgroundColor="aliceblue";
       buttons[i].style.color="black";
