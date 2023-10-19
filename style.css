@@ -70,13 +70,13 @@ html, body {
 .top_bar{
   position: fixed;
   width: 100%;
-  height: 4vw;
+  height: 5vw;
   background-color: #0464cc;
   z-index: 3;
 }
 .logo{
-  height: 3.5vw;
-  margin: 0.25vw;
+  height: 5vw;
+  margin: 0.085vw;
 }
 .player_one_input{
   width: 15%;
@@ -155,25 +155,11 @@ html, body {
   border-radius: 5px;
 }
 
-/* @media screen and (max-width: 1350px){
-  .vs_text{
-    font-size: 3vw;
-  }
-  .logo{
-    height: 4.8vw;
-  }
-  .red_alliance_score{
-    left: 6%;
-  }
-  .blue_alliance_score{
-    right: 10%;
-  }
-} */
 
 .red_alliance_score{
   position: absolute;
   left: 11%;
-  top: 2vw;
+  top: 2.5vw;
   background-color: aliceblue;
   width: fit-content;
   height: fit-content;
@@ -192,7 +178,7 @@ html, body {
 .blue_alliance_score{
   position: absolute;
   right: 5%;
-  top: 2vw;
+  top: 2.5vw;
   background-color: aliceblue;
   padding: 0.1vw;
   padding-right: 0.4vw;
@@ -208,13 +194,6 @@ html, body {
   border-radius: 1vw;
 }
 
-/* @media screen and (min-width: 1500px) {
-  .red_alliance_score, .blue_alliance_score  {
-    width: 100px;
-    font-size: 2em;
-  }
-} */
-
 .info_panel_button {
   width: 2.5vw;
   aspect-ratio: 1/1;
@@ -228,7 +207,7 @@ html, body {
 
 .dropdown_panel {
   width: 15%;
-  top: 4vw;
+  top: 5vw;
   background-color: #DD7230;
   z-index: 1;
   position: fixed;
@@ -242,7 +221,7 @@ html, body {
 
 .panel_opened {
   width: 15%;
-  top: 4vw;
+  top: 5vw;
   background-color: #DD7230;
   z-index: 1;
   position: fixed;
@@ -547,7 +526,8 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 10vw;
   top: -12vw;
   z-index: 1;
-  width: 20vw;
+  width: fit-content;
+  max-width: 20vw;
   height: 10vw;
   border-radius: 1vw;
   font-size: 1.7vw;
