@@ -8,22 +8,22 @@ mosaiac detection                                Done
 need to fix hoving mouse over toolbox (hitbox)
 tooltips add
 tooltips on/off
-timmer
-timmer on/off
-pro mode
-promod on/of
 link logo to ctrl-y Website                      Done
 minor css changes to alliance scoring elelments  Done
 credits in dropdown                              Done
-sounds? timer, button clicks, scoring changes
 scale the webpage to better suit less scrolling  Done
 major css changes (looks and scale)              Done
 add backpanel to hex array                       Done
-import and export
-cookies for scoring
 lighthouse reports
+delete ids of tooltips
 
 ===later===
+import and export
+cookies for scoring
+sounds? timer, button clicks, scoring changes
+timmer
+timmer on/off
 fancy crown effect on score
 data visualization
 darkmode add to dropdown (idk)
+
