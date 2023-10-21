@@ -306,6 +306,7 @@ let toggleButtons = [
 var jsonItems = ["timerCheck", "tooltipsCheck"]
 
 initializeButtonAppearances()
+updateTooltips()
 
 
 function initializeButtonAppearances() {
@@ -329,8 +330,8 @@ for (let i = 0; i < toggleButtons.length; i++) {
 }
 
 function updateTooltips(){
-  var elements = document.querySelectorAll('.toolbox_backstage_pixel');
-  var elements2 = document.querySelectorAll('.tooltip_backstage_pixel_image');
+  var elements = document.querySelectorAll('.toolbox_info');
+  var elements2 = document.querySelectorAll('.toolbox_info_image');
     //console.log(elements2)
     //console.log(userData)
   if(userData[jsonItems[0]] == 0){
@@ -351,34 +352,43 @@ function updateTooltips(){
 let redAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
-  0,//(2) pixel in backstage done
+  0,//(2) pixel in backstage
   //player one left player 2 right
-  [0,0],//(3) player prop    done
+  [0,0],//(3) player prop
   [0,0],//(4) auto spike
   [0,0],//(5) auto pixel
   [0,0],//(6) auto park
-  [0,0],//(7) suspension     done
-  [0,0],//(8) park           done
-  [0,0],//(9) drone          done
-  0,//(10) minor penalties   done
-  0,//(11) major penalties    done
-  0 //(12) set lines crossed
+  [0,0],//(7) suspension
+  [0,0],//(8) park
+  [0,0],//(9) drone
+  0,//(10) minor penalties
+  0,//(11) major penalties
+  0,//(12) set lines crossed
+  0,//(13) auto backstage pixel
+  0//(14) auto backpanel pixel
 ]
 let blueAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
-  0,//(2) pixel in backstage done
+  0,//(2) pixel in backstage
   //player one left player 2 right
-  [0,0],//(3) player prop    done
+  [0,0],//(3) player prop
   [0,0],//(4) auto spike    
   [0,0],//(5) auto pixel
   [0,0],//(6) auto park
-  [0,0],//(7) suspension     done
-  [0,0],//(8) park           done
-  [0,0],//(9) drone          done
-  0,//(10) minor penalties   done
-  0,//(11) major penalties    done
-  0 //(12) set lines crossed
+  [0,0],//(7) suspension
+  [0,0],//(8) park
+  [0,0],//(9) drone
+  0,//(10) minor penalties
+  0,//(11) major penalties
+  0,//(12) set lines crossed
+  0,//(13) auto backstage pixel
+  0//(14) auto backpanel pixel
+]
+
+let scoreElements = [
+  document.getElementById("redAllianceScore"),
+  document.getElementById("blueAllianceScore")
 ]
 
 //Function to calculate points
@@ -389,6 +399,8 @@ function updatePoints(color) {
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
   let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10);
+  let autoBackstagePts = (alliance[13] * 2);
+  let autoBackpanelPts = (alliance[14] * 3);
   //Driver control period
   let pixelPts = (alliance[0] * 3) + (alliance[1] * 10) + (alliance[2]) + (alliance[12]*10);
   //Endgame
@@ -404,30 +416,32 @@ function updatePoints(color) {
 
   } else {
     penaltyPts = (redAlliance[10] * 10) + (redAlliance[11]*30);
-    let total = parkPts + spikePts + autoPixelPts + pixelPts + endgamePts + dronePts + penaltyPts;
+    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[1].innerHTML = total;
   }
-
   // console.log("Number of mosaics:", alliance[1])
-}
-
-let scoreElements = [
-  document.getElementById("redAllianceScore"),
-  document.getElementById("blueAllianceScore")
-]
-
-function redAlliancePointsCalc () {
-  
 }
 
 /**
  *  Team 1
  */
-let redAlliancebackstagePixels = [
+let redAllianceBackstagePixels = [
   document.getElementById("redAllianceBackstagePixelsNumber"),
   document.getElementById("redAllianceBackstagePixelsPlus"),
   document.getElementById("redAllianceBackstagePixelsMinus")
 ]
+
+let redAllianceAutoBackstagePixels = [
+  document.getElementById("redAllianceAutoBackstagePixelsNumber"),
+  document.getElementById("redAllianceAutoBackstagePixelsPlus"),
+  document.getElementById("redAllianceAutoBackstagePixelsMinus")
+];
+
+let redAllianceAutoBackpanelPixels = [
+  document.getElementById("redAllianceAutoBackpanelPixelsNumber"),
+  document.getElementById("redAllianceAutoBackpanelPixelsPlus"),
+  document.getElementById("redAllianceAutoBackpanelPixelsMinus")
+];
 
 let redAllianceMinorPenalties = [
   document.getElementById("redAllianceMinorPenaltiesPixelsNumber"),
@@ -450,6 +464,18 @@ let blueAlliancebackstagePixels = [
   document.getElementById("blueAllianceBackstagePixelsMinus")
 ]
 
+let blueAllianceAutoBackstagePixels = [
+  document.getElementById("blueAllianceAutoBackstagePixelsNumber"),
+  document.getElementById("blueAllianceAutoBackstagePixelsPlus"),
+  document.getElementById("blueAllianceAutoBackstagePixelsMinus")
+]
+
+let blueAllianceAutoBackpanelPixels = [
+  document.getElementById("blueAllianceAutoBackpanelPixelsNumber"),
+  document.getElementById("blueAllianceAutoBackpanelPixelsPlus"),
+  document.getElementById("blueAllianceAutoBackpanelPixelsMinus")
+]
+
 let blueAllianceMinorPenalties = [
   document.getElementById("blueAllianceMinorPenaltiesPixelsNumber"),
   document.getElementById("blueAllianceMinorPenaltiesPixelsPlus"),
@@ -462,8 +488,8 @@ let blueAllianceMajorPenalties = [
   document.getElementById("blueAllianceMajorPenaltiesPixelsMinus")
 ]
 
-let redAlliancePoints  = [redAlliancebackstagePixels, redAllianceMinorPenalties, redAllianceMajorPenalties]
-let blueAlliancePoints = [blueAlliancebackstagePixels, blueAllianceMinorPenalties, blueAllianceMajorPenalties]
+let redAlliancePoints  = [redAllianceBackstagePixels, redAllianceAutoBackstagePixels, redAllianceAutoBackpanelPixels, redAllianceMinorPenalties, redAllianceMajorPenalties]
+let blueAlliancePoints = [blueAlliancebackstagePixels, blueAllianceAutoBackstagePixels, blueAllianceAutoBackpanelPixels, blueAllianceMinorPenalties, blueAllianceMajorPenalties]
 
 function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   if(change > 0 || teamPoints[pointType][0].value != 0) 
@@ -478,8 +504,8 @@ function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   updatePoints("blue")
   updatePoints("red")
 }
-
-const teamIndices = [2, 10, 11]
+// doing commas like 1 ,2 ,3 is a crime
+const teamIndices = [2, 13, 14, 10, 11]
 
 /**
  *  Change team 1 data
@@ -830,18 +856,20 @@ resetButtons[0].addEventListener("click" , () => {
     redAlliance = [
         0,//(0) pixels on backboard
         0,//(1) mozaiacs
-        0,//(2) pixel in backstage done
+        0,//(2) pixel in backstage
         //player one left player 2 right
-        [0,0],//(3) player prop    done
+        [0,0],//(3) player prop
         [0,0],//(4) auto spike
         [0,0],//(5) auto pixel
         [0,0],//(6) auto park
-        [0,0],//(7) suspension     done
-        [0,0],//(8) park           done
-        [0,0],//(9) drone          done
-        0,//(10) minor penalties   done
-        0,//(11) major penalties    done
-        0 //(12) set lines crossed
+        [0,0],//(7) suspension
+        [0,0],//(8) park
+        [0,0],//(9) drone
+        0,//(10) minor penalties
+        0,//(11) major penalties
+        0,//(12) set lines crossed
+        0,//(13) auto backstage pixel
+        0//(14) auto backpanel pixel
     ]
     for(let i = 0; i < 71; i++) {
       redColorStates[i] = "black"
@@ -853,9 +881,11 @@ resetButtons[0].addEventListener("click" , () => {
       hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
       hexagons[i].classList.add("black");
     }
-    redAlliancebackstagePixels[0].value="";
-    redAllianceMinorPenalties[0].value="";
-    redAllianceMajorPenalties[0].value="";
+    redAllianceBackstagePixels[0].value=0;
+    redAllianceAutoBackpanelPixels[0].value=0;
+    redAllianceAutoBackstagePixels[0].value=0;
+    redAllianceMinorPenalties[0].value=0;
+    redAllianceMajorPenalties[0].value=0;
     let buttons = document.getElementsByClassName("red_button");
     for(let i = 0; i < buttons.length;i++) {
       buttons[i].style.backgroundColor="aliceblue";
@@ -874,18 +904,20 @@ resetButtons[0].addEventListener("click" , () => {
     blueAlliance = [
       0,//(0) pixels on backboard
       0,//(1) mozaiacs
-      0,//(2) pixel in backstage done
+      0,//(2) pixel in backstage
       //player one left player 2 right
-      [0,0],//(3) player prop    done
+      [0,0],//(3) player prop
       [0,0],//(4) auto spike
       [0,0],//(5) auto pixel
       [0,0],//(6) auto park
-      [0,0],//(7) suspension     done
-      [0,0],//(8) park           done
-      [0,0],//(9) drone          done
-      0,//(10) minor penalties   done
-      0,//(11) major penalties    done
-      0 //(12) set lines crossed
+      [0,0],//(7) suspension
+      [0,0],//(8) park
+      [0,0],//(9) drone
+      0,//(10) minor penalties
+      0,//(11) major penalties
+      0,//(12) set lines crossed
+      0,//(13) auto backstage pixel
+      0//(14) auto backpanel pixel
     ]
     for(let i = 0; i < 71; i++) {
       blueColorStates[i] = "black"
@@ -897,9 +929,11 @@ resetButtons[0].addEventListener("click" , () => {
       hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
       hexagons[i].classList.add("black");
     }
-    blueAlliancebackstagePixels[0].value="";
-    blueAllianceMinorPenalties[0].value="";
-    blueAllianceMajorPenalties[0].value="";
+    blueAlliancebackstagePixels[0].value=0;
+    blueAllianceAutoBackpanelPixels[0].value=0;
+    blueAllianceAutoBackstagePixels[0].value=0;
+    blueAllianceMinorPenalties[0].value=0;
+    blueAllianceMajorPenalties[0].value=0;
     let buttons = document.getElementsByClassName("blue_button");
     for(let i = 0; i < buttons.length;i++) {
       buttons[i].style.backgroundColor="aliceblue";

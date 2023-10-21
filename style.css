@@ -422,9 +422,8 @@ html, body {
 .red_alliance{
   width: 50%;
   left: -20px;
-  /* top: calc(18vw + 45px); */
   top: calc(35px + 58vw + 10%);
-  height: calc(400px + 42vw);
+  height: calc(400px + 54vw);
   background: linear-gradient(to right, #f82b2b, #ff8b8b);
   position: absolute;
   border: 5px solid red;
@@ -434,84 +433,96 @@ html, body {
   width: 50%;
   top: calc(35px + 58vw + 10%);
   right: -20px;
-  height: calc(400px + 42vw);
+  height: calc(400px + 54vw);
   background: linear-gradient(to left, #3358ff, #93a7ff);
   position: absolute;
   border: 5px solid blue;
   border-radius: 10px;
 }
 
-.red_alliance_backstage_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus, .blue_alliance_backstage_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus{
-  margin-left: 10px;
-  margin-right: -13px;
-  margin-top: calc(2vw + 15px);
-  width: 15%;
-  height: 4vw;
-  border-radius: 10px 0px 0px 10px;
-  border: 4px solid rgb(0, 0, 0);
-  background-color:rgb(255, 95, 95);
-  font-size: 2vw;
+/* Textboxes */
+.red_alliance_backstage_pixels_number, .red_alliance_auto_backstage_pixels_number, .red_alliance_auto_backpanel_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_auto_backstage_pixels_number, .blue_alliance_auto_backpanel_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
+  width: 25%;
+  /* bro the height of this css is so wacky and frustrating have fun getting it right */
+  /* height: calc(3.9vw - 5.8px); */
+  height: fit-content;
+  position: relative;
+  border: 0.3vw solid rgb(0, 0, 0);
+  background-color:white;
+  outline: none;
+  font-size: 3vw;
   text-align: center;
-  font-family: verdana;
+  font-family: abel;
+  appearance: textfield;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Plus Buttons */
+.red_alliance_backstage_pixels_minus, .red_alliance_auto_backstage_pixels_minus, .red_alliance_auto_backpanel_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus, .blue_alliance_backstage_pixels_minus, .blue_alliance_auto_backstage_pixels_minus, .blue_alliance_auto_backpanel_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus{
+  width: 15%;
+  height: fit-content;
+  border-radius: 10px 0px 0px 10px;
+  border: 0.3vw solid rgb(0, 0, 0);
+  border-width: 0.3vw 0 0.3vw 0.3vw;
+  background-color:rgb(255, 95, 95);
+  font-size: 3vw;
+  text-align: center;
+  font-family: abel;
   transition: all 0.3s ease-in-out;
 }
 
 .red_alliance_backstage_pixels_minus:hover, 
+.red_alliance_auto_backstage_pixels_minus:hover,
+.red_alliance_auto_backpanel_pixels_minus:hover,
 .red_alliance_minor_penalties_minus:hover, 
 .red_alliance_major_penalties_minus:hover, 
 .blue_alliance_backstage_pixels_minus:hover, 
+.blue_alliance_auto_backstage_pixels_minus:hover,
+.blue_alliance_auto_backpanel_pixels_minus:hover,
 .blue_alliance_minor_penalties_minus:hover, 
 .blue_alliance_major_penalties_minus:hover {
   background-color:rgb(221, 43, 43);
 }
-.red_alliance_backstage_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
-  width: 15%;
-  height: 4vw;
+
+/* Plus buttons */
+.red_alliance_backstage_pixels_plus, .red_alliance_auto_backstage_pixels_plus, .red_alliance_auto_backpanel_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_auto_backstage_pixels_plus, .blue_alliance_auto_backpanel_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
+  width: 20%;
+  height: fit-content;
   border-radius: 0px 10px 10px 0px;
-  margin-left: -13px;
-  margin-top: calc(2vw + 15px);
-  border: 4px solid rgb(0, 0, 0);
+  border: 0.3vw solid rgb(0, 0, 0);
+  border-width: 0.3vw 0.3vw 0.3vw 0;
   background-color:rgb(105, 218, 29);
-  font-size: 2vw;                                                           
+  font-size: 3vw;                                                           
   text-align: center;
-  font-family: verdana;
+  font-family: abel;
   transition: all 0.3s ease-in-out;
 }
 
 .red_alliance_backstage_pixels_plus:hover, 
+.red_alliance_auto_backstage_pixels_plus:hover,
+.red_alliance_auto_backpanel_pixels_plus:hover,
 .red_alliance_minor_penalties_plus:hover, 
 .red_alliance_major_penalties_plus:hover, 
 .blue_alliance_backstage_pixels_plus:hover, 
+.blue_alliance_auto_backstage_pixels_plus:hover,
+.blue_alliance_auto_backpanel_pixels_plus:hover,
 .blue_alliance_minor_penalties_plus:hover, 
 .blue_alliance_major_penalties_plus:hover {
   background-color:rgb(88, 185, 23);
 }
-.red_alliance_backstage_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
-  width: 25%;
-  /* bro the height of this css is so wacky and frustrating have fun getting it right */
-  height: calc(3.9vw - 5.8px);
-  margin-top: calc(2vw + 15px);
-  position: relative;
-  border: 4px solid rgb(0, 0, 0);
-  background-color:white;
-  outline: none;
-  font-size: 2vw;
-  text-align: center;
-  font-family: verdana;
-  appearance: none;
-  appearance: textfield;
-  transition: all 0.3s ease-in-out;
-}
-.red_alliance_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
+
+.red_alliance_backstage_pixels, .red_alliance_auto_backpanel_pixels, .red_alliance_auto_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
   display: flex;
   justify-content: left;
   margin-left: 67px;
+  margin-top: 3vw;
 }
 
-.blue_alliance_backstage_pixels, .blue_alliance_minor_penalties, .blue_alliance_major_penalties{
+.blue_alliance_backstage_pixels, .blue_alliance_auto_backpanel_pixels, .blue_alliance_auto_backstage_pixels, .blue_alliance_minor_penalties, .blue_alliance_major_penalties{
   display: flex;
   justify-content: right;
   margin-right: 67px;
+  margin-top: 3vw;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -519,14 +530,14 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
-.backstage_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: 4vw;
-  width: 70%;
-  left: calc(100% + 15px);
+.backstage_pixels_header, .auto_backstage_pixels_header, .auto_backpanel_pixels_header, .minor_penalties_header, .major_penalties_header{
+  top: 3.6vw;
+  width: 55%;
+  left: calc(100%);
   transform: translate(-50%, -50%);
   background: aliceblue;
   position: absolute;
-  border: 5px solid black;
+  border: 0.3vw solid black;
   border-radius: 10px;
   margin: 10px;
   padding-bottom: 5px;
@@ -535,15 +546,20 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 1;
   font-size: 2.5vw;
   font-family: abel;
-  /*ignore this*/
+}
+.auto_backstage_pixels_header{
+  top: 10.8vw;
+}
+.auto_backpanel_pixels_header{
+  top: 18vw
 }
 .minor_penalties_header{
-  top: calc(10vw + 20px);
+  top: 25.2vw
 }
 .major_penalties_header{
-  top: calc(16vw + 30px);
+  top: 32.4vw
 }
-.tooltip_backstage_pixel_image{
+.toolbox_info_image{
   width: 1vw;
   aspect-ratio: 1/1;
   margin-top: -4%;
@@ -552,7 +568,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: 0;
   z-index: 1;
 }
-.toolbox_backstage_pixel{
+.toolbox_info{
   position: absolute;
   left: 10vw;
   top: -12vw;
@@ -580,7 +596,7 @@ input[type="number"]::-webkit-outer-spin-button {
     pointer-events: auto;
   }
 }
-.tooltip_backstage_pixel_image:hover ~ .toolbox_backstage_pixel{
+.toolbox_info_image:hover ~ .toolbox_info{
   animation: showOnHover 0.3s ease-in-out;
   opacity: 1;
 }
@@ -625,7 +641,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .player_one{
-  top: calc(18vw + 45px);
+  top: calc(28vw + 110px);
   width: 45%;
   height: 650px; 
   position: absolute;
@@ -635,7 +651,7 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 .player_two{
-  top: calc(18vw + 45px);
+  top: calc(28vw + 110px);
   width: 45%;
   left: 50%;
   height: 650px; 
@@ -645,7 +661,7 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 .player_three{
-  top: calc(18vw + 45px);
+  top: calc(28vw + 110px);
   width: 45%;
   height: 650px;  
   right:50%;
@@ -655,7 +671,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 10px;
 }
 .player_four{
-  top: calc(18vw + 45px);
+  top: calc(28vw + 110px);
   width: 45%;
   right: 0px;
   height: 650px; 

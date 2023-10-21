@@ -81,22 +81,43 @@
   <div class = "red_alliance">
     <h1 class = "backstage_pixels_header">
       Backstage Pixels
-      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_backstage_pixel">
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
+        Backstage pixels are the pixels placed in the taped of area around the backboard
+      </a>
+    </h1>
+    <h1 class = "auto_backstage_pixels_header">
+      Auto Backstage Pixels
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
+        Pixels placed in the backstage during autonomous will count as double aslong as they remain there
+      </a>
+    </h1>
+    <h1 class = "auto_backpanel_pixels_header">
+      Auto Backpanel Pixels
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
+        Pixels placed in the backpanel during autonomous will count as double aslong as they remain there.
+      </a>
+    </h1>
+    <h1 class = "backstage_pixels_header">
+      Backstage Pixels
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
         Backstage pixels are the pixels placed in the taped of area around the backboard
       </a>
     </h1>
     <h1 class = "minor_penalties_header">
       Minor Penalties
-      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_backstage_pixel">
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
         Minor penalties that do not seriously affect the gameplay or the progress of other teams
       </a>
     </h1>
     <h1 class = "major_penalties_header">
       Major Penalties
-      <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_backstage_pixel">
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <a class = "toolbox_info">
         Major penalties that seriously affect the gameplay or the progress of other teams
       </a>  
     </h1>
@@ -105,7 +126,16 @@
       <input type = "number" class = "red_alliance_backstage_pixels_number red_button" id = "redAllianceBackstagePixelsNumber" placeholder = "0">
       <button type = "button" class = "red_alliance_backstage_pixels_plus" id = "redAllianceBackstagePixelsPlus"><b>+</b></button>
     </div>
-    
+    <div class = "red_alliance_auto_backpanel_pixels">
+      <button type = "button" class = "red_alliance_auto_backstage_pixels_minus" id = "redAllianceAutoBackstagePixelsMinus"><b>-</b></button>
+      <input type = "number" class = "red_alliance_auto_backstage_pixels_number red_button" id = "redAllianceAutoBackstagePixelsNumber" placeholder = "0">
+      <button type = "button" class = "red_alliance_auto_backstage_pixels_plus" id = "redAllianceAutoBackstagePixelsPlus"><b>+</b></button>
+    </div>
+    <div class = "red_alliance_auto_backstage_pixels">
+      <button type = "button" class = "red_alliance_auto_backpanel_pixels_minus" id = "redAllianceAutoBackpanelPixelsMinus"><b>-</b></button>
+      <input type = "number" class = "red_alliance_auto_backpanel_pixels_number red_button" id = "redAllianceAutoBackpanelPixelsNumber" placeholder = "0">
+      <button type = "button" class = "red_alliance_auto_backpanel_pixels_plus" id = "redAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
+    </div>
     <div class = "red_alliance_minor_penalties">
       <button type = "button" class = "red_alliance_minor_penalties_minus" id = "redAllianceMinorPenaltiesPixelsMinus"><b>-</b></button>
       <input type = "number" class = "red_alliance_minor_penalties_number red_button" id = "redAllianceMinorPenaltiesPixelsNumber" placeholder = "0">
@@ -120,8 +150,8 @@
       <h1 class = "player_one_header" id = playerOneHeader>Team one</h1>
       <h2 class = "team_prop_header">
         Team Prop
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether or not the team is using a team prop in place of a pixel on the spike mark
         </a>
       </h2>
@@ -131,8 +161,8 @@
       </div>
       <h2 class = "drone_zone_header">
         Drone Zone
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           What zone the team's drone lands in
         </a>
       </h2>
@@ -144,8 +174,8 @@
       </div>
       <h2 class = "endgame_park_header">
         Endgame Park
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the robot is parked, suspended, or neither, at the end of the buzzer
         </a>
       </h2>
@@ -156,8 +186,8 @@
       </div>
       <h2 class = "team_auto_spike">
         Auto Spike
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
         </a>
       </h2>
@@ -167,8 +197,8 @@
       </div>
       <h2 class = "team_auto_pixel">
         Auto Pixel
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
         </a>
       </h2>
@@ -178,8 +208,8 @@
       </div>
       <h2 class = "team_auto_park">
         Auto Park
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the robot is parked in the backstage at the end of autonomous
         </a>
       </h2>
@@ -226,6 +256,16 @@
       <input type="number" class="blue_alliance_backstage_pixels_number blue_button" id="blueAllianceBackstagePixelsNumber" placeholder="0">
       <button type="button" class="blue_alliance_backstage_pixels_plus" id="blueAllianceBackstagePixelsPlus"><b>+</b></button>
     </div>
+    <div class="blue_alliance_auto_backpanel_pixels">
+      <button type="button" class="blue_alliance_auto_backstage_pixels_minus" id="blueAllianceAutoBackstagePixelsMinus"><b>-</b></button>
+      <input type="number" class="blue_alliance_auto_backstage_pixels_number blue_button" id="blueAllianceAutoBackstagePixelsNumber" placeholder="0">
+      <button type="button" class="blue_alliance_auto_backstage_pixels_plus" id="blueAllianceAutoBackstagePixelsPlus"><b>+</b></button>
+    </div>
+    <div class="blue_alliance_auto_backstage_pixels">
+      <button type="button" class="blue_alliance_auto_backpanel_pixels_minus" id="blueAllianceAutoBackpanelPixelsMinus"><b>-</b></button>
+      <input type="number" class="blue_alliance_auto_backpanel_pixels_number blue_button" id="blueAllianceAutoBackpanelPixelsNumber" placeholder="0">
+      <button type="button" class="blue_alliance_auto_backpanel_pixels_plus" id="blueAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
+    </div>
     <div class="blue_alliance_minor_penalties">
       <button type="button" class="blue_alliance_minor_penalties_minus" id="blueAllianceMinorPenaltiesPixelsMinus"><b>-</b></button>
       <input type="number" class="blue_alliance_minor_penalties_number blue_button" id="blueAllianceMinorPenaltiesPixelsNumber" placeholder="0">
@@ -240,8 +280,8 @@
       <h1 class = "player_three_header" id = playerThreeHeader>Team Three</h1>
       <h2 class = "team_prop_header">
         Team Prop
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether or not the team is using a team prop in place of a pixel on the spike mark
         </a>
       </h2>
@@ -251,8 +291,8 @@
       </div>
       <h2 class = "drone_zone_header">
         Drone Zone
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           What zone the team's drone lands in
         </a>
       </h2>
@@ -264,8 +304,8 @@
       </div>
       <h2 class = "endgame_park_header">
         Endgame Park
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the robot is parked, suspended, or neither, at the end of the buzzer
         </a>
       </h2>
@@ -276,8 +316,8 @@
       </div>
       <h2 class = "team_auto_spike">
         Auto Spike
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
         </a>
       </h2>
@@ -287,8 +327,8 @@
       </div>
       <h2 class = "team_auto_pixel">
         Auto Pixel
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
         </a>
       </h2>
@@ -298,8 +338,8 @@
       </div>
       <h2 class = "team_auto_park">
         Auto Park
-        <img class = "tooltip_backstage_pixel_image" id = "tooltipBackstagePixelImage" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_backstage_pixel">
+        <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+        <a class = "toolbox_info">
           Whether the robot is parked in the backstage at the end of autonomous
         </a>
       </h2>
