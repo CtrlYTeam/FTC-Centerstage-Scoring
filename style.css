@@ -639,7 +639,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_drone_zone_none, .player_four_drone_zone_one, .player_four_drone_zone_two, .player_four_drone_zone_three {
   width: 25%;
   text-align: center;
-  padding: 1.5vw;
+  padding: 1.5vw 0vw 1.5vw 0vw;
   background-color: #f0f0f0;
   color: #333;
   border-top: 0.4vw solid #000;
@@ -660,7 +660,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_none, .player_four_park_park, .player_four_park_suspend {
   width: 33.33%;
   text-align: center;
-  padding: 1.5vw;
+  padding: 1.5vw 0vw 1.5vw 0vw;
   background-color: #f0f0f0;
   color: #333;
   border-top: 0.4vw solid #000;
