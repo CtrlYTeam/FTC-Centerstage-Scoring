@@ -284,16 +284,26 @@ let teamNames = [
   document.getElementById("playerThree"),
   document.getElementById("playerFour")
 ]
- let teamNameHeader = [
+let teamNameHeader = [
   document.getElementById("playerOneHeader"),
   document.getElementById("playerTwoHeader"),
   document.getElementById("playerThreeHeader"),
   document.getElementById("playerFourHeader")
- ]
+]
+let teamNamesString = [
+  "Team One",
+  "Team Two",
+  "Team Three",
+  "Team Four"
+]
 
 for(let i = 0; i<4; i++){
   teamNames[i].addEventListener("input", ()=> {
-    teamNameHeader[i].innerHTML=(teamNames[i].value)
+    if(teamNames[i].value.length == 0){
+      teamNameHeader[i].innerHTML = teamNamesString[i]
+    }else{
+      teamNameHeader[i].innerHTML = (teamNames[i].value)
+    }
   })
 }
 
@@ -336,7 +346,6 @@ function updateTooltips(){
     //console.log(userData)
   if(userData[jsonItems[0]] == 0){
     for(let i = 0; i <elements.length; i++){
-      console.log("test")
       elements[i].style.display = 'none';
       elements2[i].style.display = 'none';
     }
@@ -393,14 +402,12 @@ let scoreElements = [
 
 //Function to calculate points
 function updatePoints(color) {
-  console.log("test")
   let alliance = [];
   alliance = (color == "red")? redAlliance: blueAlliance
   //Auto
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
   let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10);
-  console.log((alliance[13] * 2), (alliance[14] * 3))
   let autoBackstagePts = (alliance[13] * 2);
   let autoBackpanelPts = (alliance[14] * 3);
   //Driver control period

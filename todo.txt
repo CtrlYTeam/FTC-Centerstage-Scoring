@@ -14,15 +14,17 @@ credits in dropdown                              Done
 scale the webpage to better suit less scrolling  Done
 major css changes (looks and scale)              Done
 add backpanel to hex array                       Done
-lighthouse reports
+lighthouse reports                               Done
 delete ids of tooltips                           Done
-
-===later===
+basic limits and checks for scoring
+reverse travel right clicks for hexagons
 import and export
 cookies for scoring
-sounds? timer, button clicks, scoring changes
 timmer
 timmer on/off
+
+===later===
+sounds? timer, button clicks, scoring changes
 fancy crown effect on score
 data visualization
 darkmode add to dropdown (idk)
