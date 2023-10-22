@@ -19,6 +19,7 @@ html, body {
 @font-face {
   font-family: "abel";
   src: url("fonts/Abel.ttf");
+  font-display: swap;
 }
 
 .redColorStateHeader, .blueColorStateHeader  {
@@ -74,14 +75,18 @@ html, body {
   text-align: center;
   left: 50%;
   top: 50%;
-  width: 63vw;
+  width: 60vw;
   font-family: abel;
   font-size: 3vw;
   transform: translate(-50%,-50%);
-  padding: 5px;
-  background-color: #0464cc;
+  padding: 1vw;
+  background-color: #f9812c;
   border-radius: 4vw;
-  border: 5px solid #ff0000;
+  border: 5px solid #0464cc;
+  box-shadow: 0 0 0.5vw black,
+  0 0 2.5vw black,
+  0 0 5vw black,
+  0 0 8vw;
 }
 .alert_button{
   position: absolute;
@@ -109,120 +114,72 @@ html, body {
   height: 5vw;
   margin: 0.085vw;
 }
-.player_one_input{
-  width: 15%;
+.player_one_input, .player_two_input, .player_three_input, .player_four_input{
+  width: 14%;
   height: 1.5vw;
   font-family: abel;
   font-size: 1.4vw;
+  padding: 0.2vw;
   text-align: center;
   position: absolute;
-  border-radius: 5px;
+  border-radius: 0.5vw;
   top: 50%;
   left: 16.5%;
   transform: translate(0, -50%);
   outline: none;
-  border: 3px solid black;
+  border: 0.3vw solid black;
   transition: all 0.5s ease-in-out;
 }
 .player_two_input{
-  width: 15%;
-  height: 1.5vw;
-  font-family: abel;
-  font-size: 1.4vw;
-  text-align: center;
-  position: absolute;
-  border-radius: 5px;
-  top: 50%;
   left: 32.5%;
-  transform: translate(0, -50%);
-  outline: none;
-  border: 3px solid black;
-  transition: all 0.5s ease-in-out;
 }
 .vs_text{
-  font-family: monospace;
+  font-family: abel;
   font-size: 3vw;
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: #FFFFFF;
 }
 .player_three_input{
-  width: 15%;
-  height: 1.5vw;
-  font-family: abel;
-  font-size: 1.4vw;
-  text-align: center;
-  position: absolute;
-  border-radius: 5px;
-  top: 50%;
   left: 52.5%;
-  transform: translate(0, -50%);
-  outline: none;
-  border: 3px solid black;
-  transition: all 0.5s ease-in-out;
 }
 .player_four_input{
-  width: 15%;
-  height: 1.5vw;
-  font-family: abel;
-  font-size: 1.4vw;
-  text-align: center;
-  position: absolute;
-  border-radius: 5px;
-  top: 50%;
   left: 68.5%;
-  transform: translate(0, -50%);
-  outline: none;
-  border: 3px solid black;
-  transition: all 0.5s ease-in-out;
 }
 .player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
-  border: 5px solid #0464cc;
-  border-radius: 15px;
+  border: 0.5vw solid #0464cc;
+  border-radius: 2vw;
 }
 .player_one_input:hover, .player_two_input:hover, .player_three_input:hover, .player_four_input:hover{
-  box-shadow: 0 0 0 5px #034388;
+  box-shadow: 0 0 0 0.5vw #034388;
   border-radius: 5px;
 }
 
 
-.red_alliance_score{
+.red_alliance_score, .blue_alliance_score{
   position: absolute;
-  left: 11%;
-  top: 2.5vw;
-  background-color: aliceblue;
+  background-color: #f0f8ff;
   width: fit-content;
-  height: fit-content;
-  padding: 0.1vw;
   padding-right: 0.4vw;
   padding-left: 0.4vw;
   z-index: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -50%);
   text-align: center;
   font-family: abel;
   font-size: 2vw;
   font-weight: bold;
   border-radius: 1vw;
 }
-
-.blue_alliance_score{
-  position: absolute;
-  right: 5%;
+.red_alliance_score{
+  left: 9%;
   top: 2.5vw;
-  background-color: aliceblue;
-  padding: 0.1vw;
-  padding-right: 0.4vw;
-  padding-left: 0.4vw;
-  width: fit-content;
-  height: fit-content;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: abel;
-  font-size: 2vw;
-  font-weight: bold;
-  border-radius: 1vw;
+}
+.blue_alliance_score{
+  right: 9%;
+  top: 2.5vw;
 }
 
 .info_panel_button {
@@ -315,62 +272,53 @@ html, body {
 
 .red_backdrop{
   width: 50%;
-  top: 6vw;
-  left: -20px;
+  top: 5vw;
   height: fit-content;
   position: absolute;
-  border-radius: 10px;
-  margin: 10px;
-  padding-bottom: 20px;
   display: flex;
   justify-content: center;
   
 }
 .blue_backdrop{
   width: 50%;
+  top: 5vw;
+  right: 0;
   height: fit-content;
-  top: 6vw;
-  right: -20px;
   position: absolute;
-  border-radius: 10px;
-  margin: 10px;
-  padding-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 
 .hex_container_red, .hex_container_blue {
   background: linear-gradient(to right,#2e2b2b,#3d3939);
-  padding-top: 5%;
-  border-radius: 5%;
+  padding: 1vw;
+  border-radius: 2vw;
   border: solid 0.5vw #000;
-  padding-bottom: 7%;
-  padding-left: 3%;
-  padding-right: 3%;
   width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .hex_container_red {
-  margin-left: 50px;
-  transform: translateX(-7vw) translateY(50px)
+  margin-top: 4vw;
+  left: 4vw;
+  position: absolute;
 }
 .hex_container_blue {
-  margin-right: 50px;
-  transform: translateX(7vw) translateY(50px)
+  margin-top: 4vw;
+  right: 4vw;
+  position: absolute;
 }
 
 .info_box{
   width: 100%;
   align-self: center;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .info_box_inner{
-  margin-top: 20%;
+  margin-top: 11.245652173921vw;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -385,24 +333,24 @@ html, body {
   justify-items: center;
 }
 .reset_red_backpanel_button, .reset_blue_backpanel_button{
-  box-shadow: 0 0 5px red,
-  0 0 25px red,
-  0 0 50px red,
-  0 0 80px;
-  border: 5px solid red;
-  border-radius: 10px;
-  padding: 2% 10% 2% 10%;
-  margin-top: 5%;
+  box-shadow: 0 0 0.5vw red,
+  0 0 2.5vw red,
+  0 0 5vw red,
+  0 0 8vw;
+  border: 0.5vw solid red;
+  border-radius: 1.5vw;
+  padding: 0.5vw 2vw 0.5vw 2vw;
+  margin-top: 0.5vw;
   font-family: abel;
   font-size: 1.7vw;
   transition: all 0.3s ease-in-out;
 }
 .reset_blue_backpanel_button{
-  box-shadow: 0 0 5px blue,
-  0 0 25px blue,
-  0 0 50px blue,
-  0 0 80px;
-  border: 5px solid blue;
+  box-shadow: 0 0 0.5vw blue,
+  0 0 2.5vw blue,
+  0 0 5vw blue,
+  0 0 8vw;
+  border: 0.5vw solid blue;
 }
 .reset_red_backpanel_button:hover, .reset_blue_backpanel_button:hover{
   box-shadow: 0 0 5px #f9812c,
@@ -411,40 +359,39 @@ html, body {
   0 0 200px;
   border: 2px solid #f9812c;
 }
-.total_mosaiacs, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines
-{
-  margin-top: 10%;
+.total_mosaiacs, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines{
+  margin-top: 2vw;
   font-family: abel;
-  font-size: 1.5vw;
+  font-size: 2vw;
   text-align: center;
-  transform: translateY(70px);
+  transform: translateY(10px);
 }
 .red_alliance{
-  width: 50%;
-  left: -20px;
-  top: calc(35px + 58vw + 10%);
-  height: calc(400px + 54vw);
+  width: 48%;
+  top: 59.5vw;
+  left: 0;
+  height: 92vw;
   background: linear-gradient(to right, #f82b2b, #ff8b8b);
   position: absolute;
-  border: 5px solid red;
-  border-radius: 10px;
+  border: 0.5vw solid red;
+  border-width: 0.5vw 0.5vw 0.5vw 0;
+  border-radius: 0 1vw 1vw 0;
 }
 .blue_alliance{
-  width: 50%;
-  top: calc(35px + 58vw + 10%);
-  right: -20px;
-  height: calc(400px + 54vw);
+  width: 48%;
+  top: 59.5vw;
+  right: 0;
+  height: 92vw;
   background: linear-gradient(to left, #3358ff, #93a7ff);
   position: absolute;
-  border: 5px solid blue;
-  border-radius: 10px;
+  border: 0.5vw solid blue;
+  border-width: 0.5vw 0 0.5vw 0.5vw;
+  border-radius: 1vw 0 0 1vw;
 }
 
 /* Textboxes */
 .red_alliance_backstage_pixels_number, .red_alliance_auto_backstage_pixels_number, .red_alliance_auto_backpanel_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_auto_backstage_pixels_number, .blue_alliance_auto_backpanel_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
   width: 25%;
-  /* bro the height of this css is so wacky and frustrating have fun getting it right */
-  /* height: calc(3.9vw - 5.8px); */
   height: fit-content;
   position: relative;
   border: 0.3vw solid rgb(0, 0, 0);
@@ -459,9 +406,9 @@ html, body {
 
 /* Plus Buttons */
 .red_alliance_backstage_pixels_minus, .red_alliance_auto_backstage_pixels_minus, .red_alliance_auto_backpanel_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus, .blue_alliance_backstage_pixels_minus, .blue_alliance_auto_backstage_pixels_minus, .blue_alliance_auto_backpanel_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus{
-  width: 15%;
+  width: 20%;
   height: fit-content;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 1vw 0px 0px 1vw;
   border: 0.3vw solid rgb(0, 0, 0);
   border-width: 0.3vw 0 0.3vw 0.3vw;
   background-color:rgb(255, 95, 95);
@@ -488,11 +435,11 @@ html, body {
 .red_alliance_backstage_pixels_plus, .red_alliance_auto_backstage_pixels_plus, .red_alliance_auto_backpanel_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_auto_backstage_pixels_plus, .blue_alliance_auto_backpanel_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
   width: 20%;
   height: fit-content;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 1vw 1vw 0px;
   border: 0.3vw solid rgb(0, 0, 0);
   border-width: 0.3vw 0.3vw 0.3vw 0;
   background-color:rgb(105, 218, 29);
-  font-size: 3vw;                                                           
+  font-size: 3vw;                                                   
   text-align: center;
   font-family: abel;
   transition: all 0.3s ease-in-out;
@@ -514,14 +461,14 @@ html, body {
 .red_alliance_backstage_pixels, .red_alliance_auto_backpanel_pixels, .red_alliance_auto_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
   display: flex;
   justify-content: left;
-  margin-left: 67px;
+  margin-left: 10%;
   margin-top: 3vw;
 }
 
 .blue_alliance_backstage_pixels, .blue_alliance_auto_backpanel_pixels, .blue_alliance_auto_backstage_pixels, .blue_alliance_minor_penalties, .blue_alliance_major_penalties{
   display: flex;
   justify-content: right;
-  margin-right: 67px;
+  margin-right: 10%;
   margin-top: 3vw;
 }
 
@@ -531,53 +478,51 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 .backstage_pixels_header, .auto_backstage_pixels_header, .auto_backpanel_pixels_header, .minor_penalties_header, .major_penalties_header{
-  top: 3.6vw;
+  top: 3.3vw;
   width: 55%;
-  left: calc(100%);
-  transform: translate(-50%, -50%);
+  left: calc(100% + 2vw);
+  transform: translate(-50%, 0);
   background: aliceblue;
   position: absolute;
   border: 0.3vw solid black;
-  border-radius: 10px;
-  margin: 10px;
-  padding-bottom: 5px;
-  display: flex;
-  justify-content: center;
+  border-radius: 1vw;
+  text-align: center;
   z-index: 1;
   font-size: 2.5vw;
   font-family: abel;
 }
 .auto_backstage_pixels_header{
-  top: 10.8vw;
+  top: 10.5vw;
 }
 .auto_backpanel_pixels_header{
   top: 18vw
 }
 .minor_penalties_header{
-  top: 25.2vw
+  top: 25.5vw
 }
 .major_penalties_header{
-  top: 32.4vw
+  top: 32.7vw
 }
 .toolbox_info_image{
-  width: 1vw;
+  width: 1.3vw;
   aspect-ratio: 1/1;
-  margin-top: -4%;
-  margin-left: 1%;
+  position: absolute;
+  margin-top: 0.2vw;
+  margin-left: 0.2vw;
   border: 0;
-  background-color: 0;
+  background-color: transparent;
   z-index: 1;
 }
 .toolbox_info{
   position: absolute;
   left: 10vw;
-  top: -12vw;
+  top: -14vw;
   z-index: 1;
-  width: fit-content;
-  max-width: 20vw;
-  height: 10vw;
+  width: 16vw;
+  height: 12vw;
   border-radius: 1vw;
   font-size: 1.7vw;
+  font-family: abel;
   display: block;
   background-color: #DD7230;
   border: 0.5vw solid #0464cc;
@@ -610,76 +555,49 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .red_alliance_header{
   font-family: abel;
-  transform: translateY(-2vw);
-  left: 0;
-  width: 73%;
+  left: 14.9vw;
   text-align: center;
   position: absolute;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   font-size: 2vw;
 }
 .blue_alliance_header{
   font-family: abel;
-  transform: translateY(-2vw);
-  right: 0;
-  width: 73%;
+  right: 14.9vw;
   text-align: center;
   position: absolute;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   font-size: 2vw;
 }
 
 .team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
   font-family: abel;
-  font-size: 1.4vw;
+  font-size: 1.8vw;
   position: absolute;
   text-align: center;
   width: 208.5%;
   z-index: 1;
 }
 
-.player_one{
-  top: calc(28vw + 110px);
+.player_one, .player_two ,.player_three, .player_four{
+  top: 38vw;
   width: 45%;
-  height: 650px; 
   position: absolute;
-  border-radius: 10px;
-  margin: 10px;
-  margin-left:25px;
   align-items: center;
+}
+.player_one{
+  left: 1.5vw;
 }
 .player_two{
-  top: calc(28vw + 110px);
-  width: 45%;
-  left: 50%;
-  height: 650px; 
-  position: absolute;
-  border-radius: 10px;
-  margin: 10px;
-  align-items: center;
+  right: 1.5vw;
 }
 .player_three{
-  top: calc(28vw + 110px);
-  width: 45%;
-  height: 650px;  
-  right:50%;
-  position: absolute;
-  align-items: center;
-  border-radius: 10px;
-  margin: 10px;
+  left:1.5vw;
 }
 .player_four{
-  top: calc(28vw + 110px);
-  width: 45%;
-  right: 0px;
-  height: 650px; 
-  position: absolute;
-  border-radius: 10px;
-  margin: 10px;
-  align-items: center;
-  margin-right: 25px;
+  right: 1.5vw;
 }
 
 /*Divs containing each button*/
@@ -689,7 +607,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_prop, .player_four_drone_zone, .player_four_endgame_park, .player_four_auto_spike, .player_four_auto_pixel, .player_four_auto_park {
   justify-content: center;
   display: flex;
-  margin-top: 8%;
+  margin-top: 2.5vw;
+  margin-bottom: 0.3vw;
 }
 
 /*All yes no buttons*/
@@ -699,16 +618,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_prop_no, .player_four_prop_yes, .player_four_prop_no, .player_four_prop_yes, .player_four_auto_spike_no, .player_four_auto_spike_yes, .player_four_auto_pixel_no, .player_four_auto_pixel_yes, .player_four_auto_park_no, .player_four_auto_park_yes {
   width: 50%;
   text-align: center;
-  padding: 17px 0px;
-  margin-top: 5px;
+  padding: 1.1vw;
   background-color: #f0f0f0;
   color: #333;
-  border-top: 4px solid #000;;
-  border-bottom: 4px solid #000;
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
+  border-top: 0.4vw solid #000;
+  border-bottom: 0.4vw solid #000;
+  border-left: 0.2vw solid #000;
+  border-right: 0.2vw solid #000;
   
-  font-size: 1.5vw;
+  font-size: 2.5vw;
   font-family: abel;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -721,17 +639,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_drone_zone_none, .player_four_drone_zone_one, .player_four_drone_zone_two, .player_four_drone_zone_three {
   width: 25%;
   text-align: center;
-  padding: 17px 0px;
-  margin-top: 5px;
-  font-size: 1.5vw;
-  font-family: abel;
-  border-top: 4px solid #000;;
-  border-bottom: 4px solid #000;
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
-
+  padding: 1.5vw;
   background-color: #f0f0f0;
   color: #333;
+  border-top: 0.4vw solid #000;
+  border-bottom: 0.4vw solid #000;
+  border-left: 0.2vw solid #000;
+  border-right: 0.2vw solid #000;
+
+  font-size: 1.5vw;
+  font-family: abel;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -743,17 +660,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_none, .player_four_park_park, .player_four_park_suspend {
   width: 33.33%;
   text-align: center;
-  padding: 17px 0px; 
-  margin-top: 5px;
+  padding: 1.5vw;
   background-color: #f0f0f0;
+  color: #333;
+  border-top: 0.4vw solid #000;
+  border-bottom: 0.4vw solid #000;
+  border-left: 0.2vw solid #000;
+  border-right: 0.2vw solid #000;
+
   font-size: 1.5vw;
   font-family: abel;
-  border-top: 4px solid #000;;
-  border-bottom: 4px solid #000;
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
-
-  color: #333;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -770,7 +686,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_none
 {
   border-radius: 1vw 0% 0% 1vw;
-  border-left: 4px solid #000;
+  border-left: 0.4vw solid #000;
 }
 
 /*Right buttons */
@@ -784,7 +700,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_suspend
 {
   border-radius: 0% 1vw 1vw 0%;
-  border-right: 4px solid #000;
+  border-right: 0.4vw solid #000;
 }
 
 .red_button:hover, .blue_button:hover {

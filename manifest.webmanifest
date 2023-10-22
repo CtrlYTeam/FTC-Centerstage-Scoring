@@ -1,0 +1,45 @@
+{
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "short_name": "FTC",
+    "name": "FIRST Tech Challenge",
+    "theme_color": "#0464cc",
+    "background_color": "#317EFB",
+    "display": "standalone",
+    "description": "FIRST Tech Challenge Scoring Tool",
+    "icons": [
+      {
+        "src": "images/logo.svg",
+        "type": "image/svg+xml",
+        "sizes": "512x512",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "images/favicon.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "images/favicon.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "any maskable"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "images/favicon.png",
+        "type": "image/png",
+        "sizes": "540x720",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "images/favicon.png",
+        "type": "image/jpg",
+        "sizes": "720x540",
+        "form_factor": "wide"
+      }
+    ]
+}

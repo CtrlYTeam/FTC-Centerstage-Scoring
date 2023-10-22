@@ -393,12 +393,14 @@ let scoreElements = [
 
 //Function to calculate points
 function updatePoints(color) {
+  console.log("test")
   let alliance = [];
   alliance = (color == "red")? redAlliance: blueAlliance
   //Auto
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
   let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10);
+  console.log((alliance[13] * 2), (alliance[14] * 3))
   let autoBackstagePts = (alliance[13] * 2);
   let autoBackpanelPts = (alliance[14] * 3);
   //Driver control period
@@ -411,7 +413,7 @@ function updatePoints(color) {
   let penaltyPts = 0;
   if(color == "red") {
     penaltyPts = (blueAlliance[10] * 10) + (blueAlliance[11]*30);
-    let total = parkPts + spikePts + autoPixelPts + pixelPts + endgamePts + dronePts + penaltyPts;
+    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[0].innerHTML = total;
 
   } else {
@@ -419,7 +421,6 @@ function updatePoints(color) {
     let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[1].innerHTML = total;
   }
-  // console.log("Number of mosaics:", alliance[1])
 }
 
 /**

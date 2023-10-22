@@ -4,9 +4,13 @@
 <head>
   <meta charset = "UTF-8">
   <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+  <meta name="theme-color" media="f0f8ff" content="f0f8ff">
+  <meta name="description" content="an intuitive scoring tool for FTC FIRST tech challenge, centerstage 2023-2024">
   <title>FTC Centerstage Scoring</title>
-  <link href = "style.css?v=1.3" rel = "stylesheet" type = "text/css">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+  <link href = "style.css?v=1.4" rel = "stylesheet" type = "text/css">
+  <script defer src = "index.js?v=1.4"></script>
 </head>
 
 <body>
@@ -35,8 +39,8 @@
         <label for = "timerToggleButton" class = "label_dropdown">Timer?</label>
       </div> -->
       <div class = "dropdown_item">
-        <button class = "tooltips_toggle_button" id = "tooltipsToggleButton"></button>
-        <label for = "tooltipsToggleButton" class = "label_dropdown">tooltips?</label>
+        <button class = "tooltips_toggle_button" id = "tooltipsToggleButton" aria-labelledby="labelDropdown"></button>
+        <label  id = "labelDropdown" for = "tooltipsToggleButton" class = "label_dropdown">tooltips?</label>
       </div>
     </div>
     <div class = "credits_box">
@@ -51,76 +55,62 @@
   <div class = "background"></div>
   <div class = "red_backdrop">
     <h1 class = "red_alliance_header">Red Alliance</h1>
-    <div class = "backpanel_info_box_red">
-      
-      
-    </div>
     <div class="hex_container_red">
       
     </div>
   </div>
     <div class="info_box">
       <div class="info_box_inner">
-        <h4 class = "total_mosaiacs" id = "totalMosaiacs">Mosaiacs:</h4>
-        <h4 class = "total_pixels" id = "totalPixels">Total Pixels:</h4>
-        <h4 class = "total_white_pixels" id = "totalWhitePixels">White Pixels:</h4>
-        <h4 class = "total_green_pixels" id = "totalGreenPixels">Green Pixels:</h4>
-        <h4 class = "total_purple_pixels" id = "totalPurplePixels">Purple Pixels:</h4>
-        <h4 class = "total_yellow_pixels" id = "totalYellowPixels">Yellow Pixels:</h4>
-        <h4 class = "setLines" id = "setLines">Set Lines Crossed: </h4>
+        <h2 class = "total_mosaiacs" id = "totalMosaiacs">Mosaiacs:</h2>
+        <h2 class = "total_pixels" id = "totalPixels">Total Pixels:</h2>
+        <h2 class = "total_white_pixels" id = "totalWhitePixels">White Pixels:</h2>
+        <h2 class = "total_green_pixels" id = "totalGreenPixels">Green Pixels:</h2>
+        <h2 class = "total_purple_pixels" id = "totalPurplePixels">Purple Pixels:</h2>
+        <h2 class = "total_yellow_pixels" id = "totalYellowPixels">Yellow Pixels:</h2>
+        <h2 class = "setLines" id = "setLines">Set Lines Crossed: </h2>
       </div>
     </div>
   <div class = "blue_backdrop">
     <h1 class = "blue_alliance_header">Blue Alliance</h1>
-    <div class = "backpanel_info_box_blue">
-      
-    </div>
     <div class="hex_container_blue"></div>
   </div>
 
   <div class = "red_alliance">
-    <h1 class = "backstage_pixels_header">
+    <h2 class = "backstage_pixels_header">
       Backstage Pixels
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
+      <p class = "toolbox_info">
         Backstage pixels are the pixels placed in the taped of area around the backboard
-      </a>
-    </h1>
-    <h1 class = "auto_backstage_pixels_header">
+      </p>
+    </h2>
+    <h2 class = "auto_backstage_pixels_header">
       Auto Backstage Pixels
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
+      <p class = "toolbox_info">
         Pixels placed in the backstage during autonomous will count as double aslong as they remain there
-      </a>
-    </h1>
-    <h1 class = "auto_backpanel_pixels_header">
+      </p>
+    </h2>
+    <h2 class = "auto_backpanel_pixels_header">
       Auto Backpanel Pixels
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
+      <p class = "toolbox_info">
         Pixels placed in the backpanel during autonomous will count as double aslong as they remain there.
-      </a>
-    </h1>
-    <h1 class = "backstage_pixels_header">
-      Backstage Pixels
-      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
-        Backstage pixels are the pixels placed in the taped of area around the backboard
-      </a>
-    </h1>
-    <h1 class = "minor_penalties_header">
+      </p>
+    </h2>
+    <h2 class = "minor_penalties_header">
       Minor Penalties
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
+      <p class = "toolbox_info">
         Minor penalties that do not seriously affect the gameplay or the progress of other teams
-      </a>
-    </h1>
-    <h1 class = "major_penalties_header">
+      </p>
+    </h2>
+    <h2 class = "major_penalties_header">
       Major Penalties
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <a class = "toolbox_info">
+      <p class = "toolbox_info">
         Major penalties that seriously affect the gameplay or the progress of other teams
-      </a>  
-    </h1>
+      </p>  
+    </h2>
     <div class = "red_alliance_backstage_pixels">
       <button type = "button" class = "red_alliance_backstage_pixels_minus" id = "redAllianceBackstagePixelsMinus"><b>-</b></button>
       <input type = "number" class = "red_alliance_backstage_pixels_number red_button" id = "redAllianceBackstagePixelsNumber" placeholder = "0">
@@ -151,9 +141,9 @@
       <h2 class = "team_prop_header">
         Team Prop
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether or not the team is using a team prop in place of a pixel on the spike mark
-        </a>
+        </p>
       </h2>
       <div class = "player_one_prop">
         <button class = "player_one_prop_no red_button" id = "playerOnePropNo" type = "button">No</button>
@@ -162,9 +152,9 @@
       <h2 class = "drone_zone_header">
         Drone Zone
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           What zone the team's drone lands in
-        </a>
+        </p>
       </h2>
       <div class = "player_one_drone_zone">
         <button  class = "player_one_drone_zone_none red_button" id = "playerOneDroneZoneNone" type = "button">None</button>
@@ -175,9 +165,9 @@
       <h2 class = "endgame_park_header">
         Endgame Park
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the robot is parked, suspended, or neither, at the end of the buzzer
-        </a>
+        </p>
       </h2>
       <div class = "player_one_endgame_park">
         <button  class = "player_one_park_none red_button" id = "playerOneParkNone" type = "button">None</button>
@@ -187,9 +177,9 @@
       <h2 class = "team_auto_spike">
         Auto Spike
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
-        </a>
+        </p>
       </h2>
       <div class = "player_one_auto_spike">
         <button class = "player_one_auto_spike_no red_button" id = "playerOneAutoSpikeNo" type = "button">No</button>
@@ -198,9 +188,9 @@
       <h2 class = "team_auto_pixel">
         Auto Pixel
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
-        </a>
+        </p>
       </h2>
       <div class = "player_one_auto_pixel">
         <button class = "player_one_auto_pixel_no red_button" id = "playerOneAutoPixelNo" type = "button">No</button>
@@ -209,9 +199,9 @@
       <h2 class = "team_auto_park">
         Auto Park
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the robot is parked in the backstage at the end of autonomous
-        </a>
+        </p>
       </h2>
       <div class = "player_one_auto_park">
         <button class = "player_one_auto_park_no red_button" id = "playerOneAutoParkNo" type = "button">No</button>
@@ -281,9 +271,9 @@
       <h2 class = "team_prop_header">
         Team Prop
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether or not the team is using a team prop in place of a pixel on the spike mark
-        </a>
+        </p>
       </h2>
       <div class="player_three_prop">
         <button class="player_three_prop_no blue_button" id="playerThreePropNo" type="button">No</button>
@@ -292,9 +282,9 @@
       <h2 class = "drone_zone_header">
         Drone Zone
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           What zone the team's drone lands in
-        </a>
+        </p>
       </h2>
       <div class="player_three_drone_zone">
         <button class="player_three_drone_zone_none blue_button" id="playerThreeDroneZoneNone" type="button">None</button>
@@ -305,9 +295,9 @@
       <h2 class = "endgame_park_header">
         Endgame Park
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the robot is parked, suspended, or neither, at the end of the buzzer
-        </a>
+        </p>
       </h2>
       <div class="player_three_endgame_park">
         <button class="player_three_park_none blue_button" id="playerThreeParkNone" type="button">None</button>
@@ -317,9 +307,9 @@
       <h2 class = "team_auto_spike">
         Auto Spike
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the preloaded purple pixel is placed on the spike mark indicated by the randomized element
-        </a>
+        </p>
       </h2>
       <div class="player_three_auto_spike">
         <button class="player_three_auto_spike_no blue_button" id="playerThreeAutoSpikeNo" type="button">No</button>
@@ -328,9 +318,9 @@
       <h2 class = "team_auto_pixel">
         Auto Pixel
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the preloaded yellow pixel is placed on the backboard location indicated by the randomized element
-        </a>
+        </p>
       </h2>
       <div class="player_three_auto_pixel">
         <button class="player_three_auto_pixel_no blue_button" id="playerThreeAutoPixelNo" type="button">No</button>
@@ -339,9 +329,9 @@
       <h2 class = "team_auto_park">
         Auto Park
         <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-        <a class = "toolbox_info">
+        <p class = "toolbox_info">
           Whether the robot is parked in the backstage at the end of autonomous
-        </a>
+        </p>
       </h2>
       <div class="player_three_auto_park">
         <button class="player_three_auto_park_no blue_button" id="playerThreeAutoParkNo" type="button">No</button>
@@ -379,7 +369,6 @@
       </div>
     </div>
   </div>
-  <script defer src = "index.js?v=1.3"></script>
 </body>
 
 </html>
