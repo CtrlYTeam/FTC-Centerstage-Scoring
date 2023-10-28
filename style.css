@@ -277,12 +277,14 @@ h1, p, h1, a, h2    {
 .timer_time{
   font-size: 4.5vw;
   font-family: abel;
+  color: var(--textcolor);
 }
 .start_button{
   font-size: 1.5vw;
   border-radius: 1vw;
   border: 0 solid var(--border);
-  background-color: green;
+  background-color: #62e862;
+  color: var(black);
   padding: 0.4vw 0.8vw 0.4vw 0.8vw;
   transition: all 0.3s ease-in-out;
 }
@@ -290,7 +292,8 @@ h1, p, h1, a, h2    {
   font-size: 1.5vw;
   border-radius: 1vw;
   border: 0 solid var(--border);
-  background-color: red;
+  color: var(black);
+  background-color: #ff6161;
   padding: 0.4vw 0.8vw 0.4vw 0.8vw;
   transition: all 0.3s ease-in-out;
 }
@@ -298,7 +301,8 @@ h1, p, h1, a, h2    {
   font-size: 1.5vw;
   border-radius: 1vw;
   border: 0 solid var(--border);
-  background-color: yellow;
+  color: var(black);
+  background-color: #e8e850;
   padding: 0.4vw 0.8vw 0.4vw 0.8vw;
   transition: all 0.3s ease-in-out;
 }
@@ -321,6 +325,7 @@ h1, p, h1, a, h2    {
 .import_button, .export_button{
   width: 30%;
   font-size: 1.3vw;
+  color: var(--textcolor);
   border: 0px solid;
   border-radius: 1vw;
   padding-left: 0.4vw;
@@ -330,7 +335,7 @@ h1, p, h1, a, h2    {
   background-color: var(--buttonbackground);
 }
 .import_button:hover, .export_button:hover{
-  /* background-color: var(NEED NAME); */
+  background-color: var(--buttonbackground); 
 }
 
 .flexbox_dropdown{
