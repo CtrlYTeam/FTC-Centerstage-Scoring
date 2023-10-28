@@ -314,21 +314,72 @@ let toggleButtons = [
   document.getElementById("tooltipsToggleButton"),
   document.getElementById("darkmodeToggleButton")
 ]
+
+let timerElements = [
+  document.getElementById("timerContainer"),
+  document.getElementById("timerTime"),
+  document.getElementById("startButton"),
+  document.getElementById("stopButton"),
+  document.getElementById("restartButton")
+]
+
+
+let timer;
+let running = false;
+let totalSeconds = 180;
+
+function updateTimer() {
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  timerElements[1].innerText = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  totalSeconds--;
+
+  if (totalSeconds < 0) {
+    clearInterval(timer);
+    running = false;
+    // put anything here to execute after the time runs out
+    timerElements[1].innerText = "0:00";
+  }
+}
+
+function startTimer() {
+  if (!running) {
+    running = true;
+    timer = setInterval(updateTimer, 1000);
+  }
+}
+
+function stopTimer() {
+  running = false;
+  clearInterval(timer);
+}
+
+function restartTimer() {
+  stopTimer();
+  totalSeconds = 180; // Reset to 3 minutes
+  updateTimer();
+}
+
+timerElements[2].addEventListener('click', startTimer);
+timerElements[3].addEventListener('click', stopTimer);
+timerElements[4].addEventListener('click', restartTimer);
+
+const timerContainer = document.getElementById("timerContainer");
+
 const root = document.documentElement;
 
 var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck"]
 
 initializeButtonAppearances()
+updateTimmer()
 updateTooltips()
 updateDarkmode()
-
 
 function initializeButtonAppearances() {
   for (let i = 0; i < toggleButtons.length; i++) {
     toggleButtons[i].style.backgroundColor = userData[jsonItems[i]] === 1? "red": "white"
   }
 }
-
 
 
 for (let i = 0; i < toggleButtons.length; i++) {
@@ -342,11 +393,10 @@ for (let i = 0; i < toggleButtons.length; i++) {
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
-      updateDarkmode()
       updateTimmer()
+      updateDarkmode()
     }
     updateCookie()
-    console.log(userData)
   });
 }
 
@@ -366,47 +416,38 @@ function updateTooltips(){
   }
 }
 
-dragElement(document.getElementById("timerContainer"));
+let isDragging = false;
+let initialX;
+let initialY;
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
+timerContainer.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  initialX = e.clientX - timerContainer.getBoundingClientRect().left;
+  initialY = e.clientY - timerContainer.getBoundingClientRect().top;
+});
 
-  function dragMouseDown(e) {
-    e = e || window.event;
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
     e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
+    const offsetX = e.clientX - initialX;
+    const offsetY = e.clientY - initialY;
+    timerContainer.style.left = offsetX + 'px';
+    timerContainer.style.top = offsetY + 'px';
   }
+});
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
+document.addEventListener('mouseup', function() {
+  isDragging = false;
+});
 
 function updateTimmer(){
   if(userData[jsonItems[0]] == 0){
-
+    timerElements[0].style.display = "none"
+    restartTimer()
+    timerContainer.style.left = 0 + 'px';
+    timerContainer.style.top = 0 + 'px';
   }else{
-
+    timerElements[0].style.display = "block"
   }
 }
 
@@ -427,6 +468,74 @@ function updateDarkmode(){
     root.style.setProperty("--textcolor", "#000000");
     root.style.setProperty("--userinputboxcolor", "#f0f0f0");
   }
+}
+
+
+//need to work on this
+let importData = null
+
+function exportScoreGame (){
+  const csvString = convertArrayToCSV(importData)
+  const blob = new Blob([csvString], { type: 'text/csv' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url;
+  link.download = 'data.csv'
+  link.click()
+  URL.revokeObjectURL(url)
+}
+//input input
+function importScoreGame (file){
+  oldListLength = importData.length
+  const reader = new FileReader()
+  //reader.onload is async
+  reader.onload = function(event) {
+      const csvContent = event.target.result
+      importData = csvToArray(csvContent)
+      document.getElementById('textSearch').value = ''
+      var dropdownIndex = document.getElementById('dropdown')
+      dropdownIndex.selectedIndex = 0
+  }
+
+  reader.readAsText(file)
+}
+//csv shinanigans
+function csvToArray(csvString) {
+  const rows = csvString.split('\n')
+  const result = []
+  for (const row of rows) {
+      const values = []
+      let currentValue = ''
+      let insideQuotes = false
+      for (let i = 0; i < row.length; i++) {
+          const char = row[i]
+          if (char === '"') {
+              insideQuotes = !insideQuotes
+          } else if (char === ',' && !insideQuotes) {
+              values.push(currentValue)
+              currentValue = ''
+          } else {
+              currentValue += char
+          }
+      }
+      values.push(currentValue)
+      result.push(values)
+  }
+  return result;
+}
+function convertArrayToCSV(data) {
+  const csvRows = []
+  for (const row of data) {
+      const csvRow = row.map(value => {
+          if (typeof value === 'string' && value.includes(',')) {
+              return `"${value.replace(/"/g, '""')}"`
+          } else {
+              return value
+          }
+      }).join(",")
+      csvRows.push(csvRow)
+  }
+  return csvRows.join("\n")
 }
 
 let redAlliance = [

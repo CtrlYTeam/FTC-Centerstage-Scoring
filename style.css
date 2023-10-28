@@ -246,7 +246,7 @@ h1, p, h1, a, h2    {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 3vw;
-  height: 16vw;
+  height: 20vw;
   opacity: 1;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
@@ -261,6 +261,76 @@ h1, p, h1, a, h2    {
 .info_panel_img_opened{
   transition: all 0.5s ease-in-out;
   width: 3vw;
+}
+
+.timer_container{
+  width: 20vw;
+  height: 9vw;
+  border-radius: 1vw;
+  border: 0.4vw solid var(--border);
+  background-color: var(--mainbackground);
+  box-shadow: 0 0 0.5vw black,
+  0 0 2.5vw black,
+  0 0 5vw black,
+  0 0 8vw;
+}
+.timer_time{
+  font-size: 4.5vw;
+  font-family: abel;
+}
+.start_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  background-color: green;
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.stop_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  background-color: red;
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.restart_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  background-color: yellow;
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.start_button:hover{
+  background-color: darkgreen;
+}
+.stop_button:hover{
+  background-color: darkred;
+}
+.restart_button:hover{
+  background-color: rgb(145, 145, 0);
+}
+
+.import_export_box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+}
+.import_button, .export_button{
+  width: 30%;
+  font-size: 1.3vw;
+  border: 0px solid;
+  border-radius: 1vw;
+  padding-left: 0.4vw;
+  padding-right: 0.4vw;
+  transition: all 0.3s ease-in-out;
+  margin-left: 15%;
+  background-color: var(--buttonbackground);
+}
+.import_button:hover, .export_button:hover{
+  /* background-color: var(NEED NAME); */
 }
 
 .flexbox_dropdown{

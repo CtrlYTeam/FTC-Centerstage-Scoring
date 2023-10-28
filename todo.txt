@@ -19,9 +19,10 @@ delete ids of tooltips                           Done
 basic limits and checks for scoring
 reverse travel right clicks for hexagons
 import and export
-cookies for scoring
-timmer
-timmer on/off
+fix import css
+update elements according to the import
+timmer                                           Done
+timmer on/off                                    Done
 
 ===later===
 ctrl + p css
@@ -30,4 +31,5 @@ sounds? timer, button clicks, scoring changes
 fancy crown effect on score
 data visualization
 darkmode add to dropdown (idk) - zihaar
+cookies for scoring (idk)
 
