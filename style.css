@@ -11,6 +11,7 @@
   --gradientredlight:#ff8b8b;
   --gradientbluedark:#3358ff;
   --gradientbluelight:#93a7ff;
+
 }
 * {
   margin: 0;
@@ -254,7 +255,7 @@ html, body {
   align-items: center;
 }
 
-.timer_toggle_button, .tooltips_toggle_button{
+.timer_toggle_button, .tooltips_toggle_button, .darkmode_toggle_button{
   width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
