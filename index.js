@@ -415,10 +415,17 @@ function updateDarkmode(){
     root.style.setProperty("--mainbackground", "#242528");
     root.style.setProperty("--buttonbackground", "#242528");
     root.style.setProperty("--border", "#d2daff");
+    root.style.setProperty("--textcolor", "#f0f0f0");
+    root.style.setProperty("--userinputboxcolor", "#313135");
+  
+
+
   }else{
     root.style.setProperty("--mainbackground", "#f0f0f0");
     root.style.setProperty("--buttonbackground", "#f0f0f0");
     root.style.setProperty("--border", "#000000");
+    root.style.setProperty("--textcolor", "#000000");
+    root.style.setProperty("--userinputboxcolor", "#f0f0f0");
   }
 }
 
