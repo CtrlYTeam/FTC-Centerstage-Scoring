@@ -412,12 +412,14 @@ function updateTimmer(){
 
 function updateDarkmode(){
   if(userData[jsonItems[2]] == 1){
-    root.style.setProperty("--border", "red");
+    root.style.setProperty("--mainbackground", "#242528");
+    root.style.setProperty("--buttonbackground", "#242528");
+    root.style.setProperty("--border", "#d2daff");
   }else{
-    root.style.setProperty("--border", "black");
-    
+    root.style.setProperty("--mainbackground", "#f0f0f0");
+    root.style.setProperty("--buttonbackground", "#f0f0f0");
+    root.style.setProperty("--border", "#000000");
   }
-
 }
 
 let redAlliance = [
