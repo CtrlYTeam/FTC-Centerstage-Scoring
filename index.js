@@ -314,11 +314,17 @@ let toggleButtons = [
   document.getElementById("tooltipsToggleButton"),
   document.getElementById("darkmodeToggleButton")
 ]
+
+let timerElements = [
+  document.getElementById("timerContainer")
+]
+
 const root = document.documentElement;
 
 var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck"]
 
 initializeButtonAppearances()
+updateTimmer()
 updateTooltips()
 updateDarkmode()
 
@@ -342,11 +348,10 @@ for (let i = 0; i < toggleButtons.length; i++) {
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
-      updateDarkmode()
       updateTimmer()
+      updateDarkmode()
     }
     updateCookie()
-    console.log(userData)
   });
 }
 
@@ -403,10 +408,11 @@ function dragElement(elmnt) {
 }
 
 function updateTimmer(){
+  console.log("test")
   if(userData[jsonItems[0]] == 0){
-
+    timerElements[0].style.display = "none"
   }else{
-
+    timerElements[0].style.display = "block"
   }
 }
 
