@@ -27,5 +27,5 @@ timmer on/off
 sounds? timer, button clicks, scoring changes
 fancy crown effect on score
 data visualization
-darkmode add to dropdown (idk)
+darkmode add to dropdown (idk) - zihaar
 
