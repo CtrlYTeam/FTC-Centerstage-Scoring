@@ -254,6 +254,7 @@ function newCookie(){
   userData = {
     timerCheck: 0,
     tooltipsCheck: 1,
+    darkmodeToggleCheck: 0,
   }
   let jsonData = JSON.stringify(userData);
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
@@ -310,13 +311,16 @@ for(let i = 0; i<4; i++){
 //toggle buttons
 let toggleButtons = [
   document.getElementById("timerToggleButton"),
-  document.getElementById("tooltipsToggleButton")
+  document.getElementById("tooltipsToggleButton"),
+  document.getElementById("darkmodeToggleButton")
 ]
+const root = document.documentElement;
 
-var jsonItems = ["timerCheck", "tooltipsCheck"]
+var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck"]
 
 initializeButtonAppearances()
 updateTooltips()
+updateDarkmode()
 
 
 function initializeButtonAppearances() {
@@ -334,9 +338,11 @@ for (let i = 0; i < toggleButtons.length; i++) {
       toggleButtons[i].style.backgroundColor = "red"
       updateTooltips()
       updateTimmer()
+      updateDarkmode()
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
+      updateDarkmode()
       updateTimmer()
     }
     updateCookie()
@@ -402,6 +408,16 @@ function updateTimmer(){
   }else{
 
   }
+}
+
+function updateDarkmode(){
+  if(userData[jsonItems[2]] == 1){
+    root.style.setProperty("--border", "red");
+  }else{
+    root.style.setProperty("--border", "black");
+    
+  }
+
 }
 
 let redAlliance = [
