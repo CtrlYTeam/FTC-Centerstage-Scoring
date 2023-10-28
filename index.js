@@ -252,7 +252,7 @@ if(userData == undefined){
 
 function newCookie(){
   userData = {
-    // timerCheck: 0,
+    timerCheck: 0,
     tooltipsCheck: 1,
   }
   let jsonData = JSON.stringify(userData);
@@ -309,7 +309,7 @@ for(let i = 0; i<4; i++){
 
 //toggle buttons
 let toggleButtons = [
-  // document.getElementById("timerToggleButton"),
+  document.getElementById("timerToggleButton"),
   document.getElementById("tooltipsToggleButton")
 ]
 
@@ -325,26 +325,29 @@ function initializeButtonAppearances() {
   }
 }
 
+
+
 for (let i = 0; i < toggleButtons.length; i++) {
   toggleButtons[i].addEventListener("click", () => {
     userData[jsonItems[i]] = userData[jsonItems[i]] === 1 ? 0 : 1
     if (userData[jsonItems[i]] === 1) {
       toggleButtons[i].style.backgroundColor = "red"
       updateTooltips()
+      updateTimmer()
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
+      updateTimmer()
     }
     updateCookie()
+    console.log(userData)
   });
 }
 
 function updateTooltips(){
   var elements = document.querySelectorAll('.toolbox_info');
   var elements2 = document.querySelectorAll('.toolbox_info_image');
-    //console.log(elements2)
-    //console.log(userData)
-  if(userData[jsonItems[0]] == 0){
+  if(userData[jsonItems[1]] == 0){
     for(let i = 0; i <elements.length; i++){
       elements[i].style.display = 'none';
       elements2[i].style.display = 'none';
@@ -355,7 +358,50 @@ function updateTooltips(){
       elements2[i].style = "";
     }
   }
+}
 
+dragElement(document.getElementById("timerContainer"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+function updateTimmer(){
+  if(userData[jsonItems[0]] == 0){
+
+  }else{
+
+  }
 }
 
 let redAlliance = [

@@ -24,6 +24,8 @@ timmer
 timmer on/off
 
 ===later===
+ctrl + p css
+ctrl + p crashing on brave browser
 sounds? timer, button clicks, scoring changes
 fancy crown effect on score
 data visualization

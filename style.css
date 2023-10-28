@@ -48,7 +48,6 @@ html, body {
   background: linear-gradient(transparent 0%, transparent 35%, rgba(255, 255, 255, 0.61) 35%, rgba(255, 255, 255, 0.61) 65%, transparent 65%, transparent 100%);
 }
 
-
 .hexagon_blue, .hexagon_red  {
   width: 3.7vw;
   aspect-ratio: 10/11.5;
@@ -112,6 +111,15 @@ html, body {
 .alert_button_image{
   width: 3vw;
   aspect-ratio: 1/1;
+}
+
+.timer_container {
+  cursor: move;
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
 }
 
 .top_bar{
