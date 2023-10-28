@@ -47,6 +47,11 @@
         <label  id = "labelDropdown" for = "darkmodeToggleButton" class = "label_dropdown">darkmode?!?</label>
       </div>
     </div>
+    <div class = "import_export_box">
+      <input type = "file" id = "importButton" accept = ".csv" class = "import_button" onchange = "importScoreGame(this.files[0])">
+      <!-- <button class = "import_button" id = "import_button">Import</button> -->
+      <button class = "export_button" id = "export_button">Export</button>
+    </div>
     <div class = "credits_box">
       <a class = "credits_text" href = "http://www.onlinewebfonts.com">Web Fonts</a>
       <br>
@@ -57,10 +62,10 @@
   </div>
 
   <div class = "timer_container" id="timerContainer">
-    <h3>3:00</h3>
-    <button class="start_button">start</button>
-    <button class="stop_button">stop</button>
-    <button class="restart_button">restart</button>
+    <h2 class = "timer_time" id = "timerTime">3:00</h2>
+    <button class="start_button" id = "startButton">start</button>
+    <button class="stop_button" id = "stopButton">stop</button>
+    <button class="restart_button"id = "restartButton">restart</button>
   </div>
 
   <div class = "background"></div>
