@@ -96,15 +96,14 @@ function changeColor(hexColor, colorStates)
           redAlliance[0] = filteredColorStates.length
           updateSetLines(redAlliance,colorStates);
           scoreMosaics(colorStates, redAlliance);
-
         } else {
           blueAlliance[0] = filteredColorStates.length
           updateSetLines(blueAlliance,colorStates);
           scoreMosaics(colorStates, blueAlliance);
         }
         updatePoints(hexColor)
-        
-        //run scoreMosaiacs(mosaicsArr, team)
+        //pirate?
+        //run scoreMosaics(mosaicsArr, team)
         
         updateBackboardStats();
         //document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates)
@@ -153,7 +152,7 @@ buttonDropdown.addEventListener("click", () => {
 })
 
 let backboard = [
-  document.getElementById("totalMosaiacs"),
+  document.getElementById("totalMosaics"),
   document.getElementById("totalPixels"),
   document.getElementById("totalWhitePixels"),
   document.getElementById("totalGreenPixels"),
@@ -458,11 +457,8 @@ function updateDarkmode(){
     root.style.setProperty("--border", "#d2daff");
     root.style.setProperty("--textcolor", "#f0f0f0");
     root.style.setProperty("--userinputboxcolor", "#313135");
-  
-
-
   }else{
-    root.style.setProperty("--mainbackground", "#f0f0f0");
+    root.style.setProperty("--mainbackground", "#d2daff");
     root.style.setProperty("--buttonbackground", "#f0f0f0");
     root.style.setProperty("--border", "#000000");
     root.style.setProperty("--textcolor", "#000000");
@@ -470,12 +466,20 @@ function updateDarkmode(){
   }
 }
 
+let importExportButtons = [
+  document.getElementById("export_button"),
+  document.getElementById("import_button")
+]
 
+importExportButtons[0].addEventListener("click", () => {
+  exportScoreGame();
+})
 //need to work on this
 let importData = null
 
 function exportScoreGame (){
-  const csvString = convertArrayToCSV(importData)
+  console.log(redAlliance.concat(redColorStates, blueAlliance, blueColorStates));
+  const csvString = convertArrayToCSV([redAlliance.concat(redColorStates), blueAlliance.concat(blueColorStates)]);
   const blob = new Blob([csvString], { type: 'text/csv' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
@@ -486,17 +490,12 @@ function exportScoreGame (){
 }
 //input input
 function importScoreGame (file){
-  oldListLength = importData.length
   const reader = new FileReader()
   //reader.onload is async
   reader.onload = function(event) {
       const csvContent = event.target.result
       importData = csvToArray(csvContent)
-      document.getElementById('textSearch').value = ''
-      var dropdownIndex = document.getElementById('dropdown')
-      dropdownIndex.selectedIndex = 0
   }
-
   reader.readAsText(file)
 }
 //csv shinanigans
@@ -526,6 +525,7 @@ function csvToArray(csvString) {
 function convertArrayToCSV(data) {
   const csvRows = []
   for (const row of data) {
+    console.log
       const csvRow = row.map(value => {
           if (typeof value === 'string' && value.includes(',')) {
               return `"${value.replace(/"/g, '""')}"`

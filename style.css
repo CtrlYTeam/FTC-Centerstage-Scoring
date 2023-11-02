@@ -13,7 +13,6 @@
   --gradientbluelight:#93a7ff;
   --textcolor: #000000;
   --userinputboxcolor: #f0f0f0;
-
 }
 * {
   margin: 0;
@@ -25,7 +24,7 @@ html, body {
 }
 
 h1, p, h1, a, h2    {
-  color: var(--textcolor)
+  color: var(--textcolor);
 }
 
 
@@ -347,6 +346,7 @@ h1, p, h1, a, h2    {
 .dropdown_item{
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 .timer_toggle_button, .tooltips_toggle_button, .darkmode_toggle_button{
