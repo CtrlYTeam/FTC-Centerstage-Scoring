@@ -12,7 +12,7 @@
   --gradientbluedark:#3358ff;
   --gradientbluelight:#93a7ff;
   --textcolor: #000000;
-  --userinputboxcolor: #f0f0f0;
+  --hoverbackground: #93a7ff;
 }
 * {
   margin: 0;
@@ -152,7 +152,7 @@ h1, p, h1, a, h2    {
   position: absolute;
   border-radius: 0.5vw;
   color: var(--textcolor);
-  background-color: var(--mainbackground);
+  background-color: var(--buttonbackground);
   top: 50%;
   left: 16.5%;
   transform: translate(0, -50%);
@@ -815,5 +815,5 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .red_button:hover, .blue_button:hover {
-  background-color: #93a7ff;
+  background-color: var(--hoverbackground);
 }

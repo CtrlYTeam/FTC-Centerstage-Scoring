@@ -457,12 +457,22 @@ function updateDarkmode(){
     root.style.setProperty("--border", "#d2daff");
     root.style.setProperty("--textcolor", "#f0f0f0");
     root.style.setProperty("--userinputboxcolor", "#313135");
+    root.style.setProperty("--gradientreddark", "#8c0404");
+    root.style.setProperty("--gradientredlight", "#c40000");
+    root.style.setProperty("--gradientbluedark", "#001b99");
+    root.style.setProperty("--gradientbluelight", "#0025c9");
+    root.style.setProperty("--hoverbackground", "#8c8f98");
   }else{
     root.style.setProperty("--mainbackground", "#d2daff");
     root.style.setProperty("--buttonbackground", "#f0f0f0");
     root.style.setProperty("--border", "#000000");
     root.style.setProperty("--textcolor", "#000000");
     root.style.setProperty("--userinputboxcolor", "#f0f0f0");
+    root.style.setProperty("--gradientreddark", "#f82b2b");
+    root.style.setProperty("--gradientredlight", "#ff8b8b");
+    root.style.setProperty("--gradientbluedark", "#3358ff");
+    root.style.setProperty("--gradientbluelight", "#93a7ff");
+    root.style.setProperty("--hoverbackground", "#93a7ff");
   }
 }
 
