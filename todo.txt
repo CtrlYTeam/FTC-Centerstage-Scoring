@@ -25,6 +25,7 @@ update elements according to the import
 timmer                                           Done
 timmer on/off                                    Done
 !!Fix + - buttons. update not propigating properly!!
+need to change color for tooltips on dark mode
 
 ===later===
 ctrl + p css
