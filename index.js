@@ -301,8 +301,18 @@ for(let i = 0; i<4; i++){
   teamNames[i].addEventListener("input", ()=> {
     if(teamNames[i].value.length == 0){
       teamNameHeader[i].innerHTML = teamNamesString[i]
+      if(i > 2){
+        redAlliance[15][i] = teamNamesString[i]
+      }else{
+        blueAlliance[15][i-2] = teamNamesString[i]
+      }
     }else{
       teamNameHeader[i].innerHTML = (teamNames[i].value)
+      if(i > 2){
+        redAlliance[15][i] = teamNames[i].value
+      }else{
+        blueAlliance[15][i-2] = teamNames[i].value
+      }
     }
   })
 }
@@ -374,7 +384,8 @@ let redAlliance = [
   0,//(11) major penalties
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
-  0//(14) auto backpanel pixel
+  0,//(14) auto backpanel pixel
+  [0,0]//(15) team name 
 ]
 let blueAlliance = [
   0,//(0) pixels on backboard
@@ -392,7 +403,8 @@ let blueAlliance = [
   0,//(11) major penalties
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
-  0//(14) auto backpanel pixel
+  0,//(14) auto backpanel pixel
+  [0,0]//(15) team name 
 ]
 
 let scoreElements = [
