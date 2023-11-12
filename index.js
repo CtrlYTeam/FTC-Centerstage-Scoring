@@ -96,15 +96,14 @@ function changeColor(hexColor, colorStates)
           redAlliance[0] = filteredColorStates.length
           updateSetLines(redAlliance,colorStates);
           scoreMosaics(colorStates, redAlliance);
-
         } else {
           blueAlliance[0] = filteredColorStates.length
           updateSetLines(blueAlliance,colorStates);
           scoreMosaics(colorStates, blueAlliance);
         }
         updatePoints(hexColor)
-        
-        //run scoreMosaiacs(mosaicsArr, team)
+        //pirate?
+        //run scoreMosaics(mosaicsArr, team)
         
         updateBackboardStats();
         //document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates)
@@ -153,7 +152,7 @@ buttonDropdown.addEventListener("click", () => {
 })
 
 let backboard = [
-  document.getElementById("totalMosaiacs"),
+  document.getElementById("totalMosaics"),
   document.getElementById("totalPixels"),
   document.getElementById("totalWhitePixels"),
   document.getElementById("totalGreenPixels"),
@@ -252,8 +251,9 @@ if(userData == undefined){
 
 function newCookie(){
   userData = {
-    // timerCheck: 0,
+    timerCheck: 0,
     tooltipsCheck: 1,
+    darkmodeToggleCheck: 0,
   }
   let jsonData = JSON.stringify(userData);
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
@@ -319,15 +319,70 @@ for(let i = 0; i<4; i++){
 
 //toggle buttons
 let toggleButtons = [
-  // document.getElementById("timerToggleButton"),
-  document.getElementById("tooltipsToggleButton")
+  document.getElementById("timerToggleButton"),
+  document.getElementById("tooltipsToggleButton"),
+  document.getElementById("darkmodeToggleButton")
 ]
 
-var jsonItems = ["timerCheck", "tooltipsCheck"]
+let timerElements = [
+  document.getElementById("timerContainer"),
+  document.getElementById("timerTime"),
+  document.getElementById("startButton"),
+  document.getElementById("stopButton"),
+  document.getElementById("restartButton")
+]
+
+
+let timer;
+let running = false;
+let totalSeconds = 180;
+
+function updateTimer() {
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  timerElements[1].innerText = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  totalSeconds--;
+
+  if (totalSeconds < 0) {
+    clearInterval(timer);
+    running = false;
+    // put anything here to execute after the time runs out
+    timerElements[1].innerText = "0:00";
+  }
+}
+
+function startTimer() {
+  if (!running) {
+    running = true;
+    timer = setInterval(updateTimer, 1000);
+  }
+}
+
+function stopTimer() {
+  running = false;
+  clearInterval(timer);
+}
+
+function restartTimer() {
+  stopTimer();
+  totalSeconds = 180; // Reset to 3 minutes
+  updateTimer();
+}
+
+timerElements[2].addEventListener('click', startTimer);
+timerElements[3].addEventListener('click', stopTimer);
+timerElements[4].addEventListener('click', restartTimer);
+
+const timerContainer = document.getElementById("timerContainer");
+
+const root = document.documentElement;
+
+var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck"]
 
 initializeButtonAppearances()
+updateTimmer()
 updateTooltips()
-
+updateDarkmode()
 
 function initializeButtonAppearances() {
   for (let i = 0; i < toggleButtons.length; i++) {
@@ -335,15 +390,20 @@ function initializeButtonAppearances() {
   }
 }
 
+
 for (let i = 0; i < toggleButtons.length; i++) {
   toggleButtons[i].addEventListener("click", () => {
     userData[jsonItems[i]] = userData[jsonItems[i]] === 1 ? 0 : 1
     if (userData[jsonItems[i]] === 1) {
       toggleButtons[i].style.backgroundColor = "red"
       updateTooltips()
+      updateTimmer()
+      updateDarkmode()
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
+      updateTimmer()
+      updateDarkmode()
     }
     updateCookie()
   });
@@ -352,9 +412,7 @@ for (let i = 0; i < toggleButtons.length; i++) {
 function updateTooltips(){
   var elements = document.querySelectorAll('.toolbox_info');
   var elements2 = document.querySelectorAll('.toolbox_info_image');
-    //console.log(elements2)
-    //console.log(userData)
-  if(userData[jsonItems[0]] == 0){
+  if(userData[jsonItems[1]] == 0){
     for(let i = 0; i <elements.length; i++){
       elements[i].style.display = 'none';
       elements2[i].style.display = 'none';
@@ -365,7 +423,139 @@ function updateTooltips(){
       elements2[i].style = "";
     }
   }
+}
 
+let isDragging = false;
+let initialX;
+let initialY;
+
+timerContainer.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  initialX = e.clientX - timerContainer.getBoundingClientRect().left;
+  initialY = e.clientY - timerContainer.getBoundingClientRect().top;
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    e.preventDefault();
+    const offsetX = e.clientX - initialX;
+    const offsetY = e.clientY - initialY;
+    timerContainer.style.left = offsetX + 'px';
+    timerContainer.style.top = offsetY + 'px';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  isDragging = false;
+});
+
+function updateTimmer(){
+  if(userData[jsonItems[0]] == 0){
+    timerElements[0].style.display = "none"
+    restartTimer()
+    timerContainer.style.left = 0 + 'px';
+    timerContainer.style.top = 0 + 'px';
+  }else{
+    timerElements[0].style.display = "block"
+  }
+}
+
+function updateDarkmode(){
+  if(userData[jsonItems[2]] == 1){
+    root.style.setProperty("--mainbackground", "#242528");
+    root.style.setProperty("--buttonbackground", "#242528");
+    root.style.setProperty("--border", "#d2daff");
+    root.style.setProperty("--textcolor", "#f0f0f0");
+    root.style.setProperty("--userinputboxcolor", "#313135");
+    root.style.setProperty("--gradientreddark", "#8c0404");
+    root.style.setProperty("--gradientredlight", "#c40000");
+    root.style.setProperty("--gradientbluedark", "#001b99");
+    root.style.setProperty("--gradientbluelight", "#0025c9");
+    root.style.setProperty("--hoverbackground", "#8c8f98");
+  }else{
+    root.style.setProperty("--mainbackground", "#d2daff");
+    root.style.setProperty("--buttonbackground", "#f0f0f0");
+    root.style.setProperty("--border", "#000000");
+    root.style.setProperty("--textcolor", "#000000");
+    root.style.setProperty("--userinputboxcolor", "#f0f0f0");
+    root.style.setProperty("--gradientreddark", "#f82b2b");
+    root.style.setProperty("--gradientredlight", "#ff8b8b");
+    root.style.setProperty("--gradientbluedark", "#3358ff");
+    root.style.setProperty("--gradientbluelight", "#93a7ff");
+    root.style.setProperty("--hoverbackground", "#93a7ff");
+  }
+}
+
+let importExportButtons = [
+  document.getElementById("export_button"),
+  document.getElementById("import_button")
+]
+
+importExportButtons[0].addEventListener("click", () => {
+  exportScoreGame();
+})
+//need to work on this
+let importData = null
+
+function exportScoreGame (){
+  console.log(redAlliance.concat(redColorStates, blueAlliance, blueColorStates));
+  const csvString = convertArrayToCSV([redAlliance.concat(redColorStates), blueAlliance.concat(blueColorStates)]);
+  const blob = new Blob([csvString], { type: 'text/csv' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url;
+  link.download = 'data.csv'
+  link.click()
+  URL.revokeObjectURL(url)
+}
+//input input
+function importScoreGame (file){
+  const reader = new FileReader()
+  //reader.onload is async
+  reader.onload = function(event) {
+      const csvContent = event.target.result
+      importData = csvToArray(csvContent)
+  }
+  reader.readAsText(file)
+}
+//csv shinanigans
+function csvToArray(csvString) {
+  const rows = csvString.split('\n')
+  const result = []
+  for (const row of rows) {
+      const values = []
+      let currentValue = ''
+      let insideQuotes = false
+      for (let i = 0; i < row.length; i++) {
+          const char = row[i]
+          if (char === '"') {
+              insideQuotes = !insideQuotes
+          } else if (char === ',' && !insideQuotes) {
+              values.push(currentValue)
+              currentValue = ''
+          } else {
+              currentValue += char
+          }
+      }
+      values.push(currentValue)
+      result.push(values)
+  }
+  return result;
+}
+function convertArrayToCSV(data) {
+  const csvRows = []
+  for (const row of data) {
+    console.log
+      const csvRow = row.map(value => {
+          if (typeof value === 'string' && value.includes(',')) {
+              return `"${value.replace(/"/g, '""')}"`
+          } else {
+              return value
+          }
+      }).join(",")
+      csvRows.push(csvRow)
+  }
+  return csvRows.join("\n")
 }
 
 let redAlliance = [

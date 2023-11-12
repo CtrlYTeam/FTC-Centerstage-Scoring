@@ -1,6 +1,19 @@
 /* #f9812c oranage */
 /* #0464cc blue */
 
+:root {
+  --oranage: #f9812c;
+  --blue: #0464cc;
+  --border: #000000;
+  --mainbackground: #d2daff;
+  --buttonbackground:#f0f0f0;
+  --gradientreddark:#f82b2b;
+  --gradientredlight:#ff8b8b;
+  --gradientbluedark:#3358ff;
+  --gradientbluelight:#93a7ff;
+  --textcolor: #000000;
+  --hoverbackground: #93a7ff;
+}
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +22,18 @@ html, body {
   overflow-x: hidden;
   height: 100%;
 }
+
+h1, p, h1, a, h2    {
+  color: var(--textcolor);
+}
+
+
+
 .background{
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: #d2daff;
+  background-color: var(--mainbackground);
 }
 
 @font-face {
@@ -36,7 +56,6 @@ html, body {
 .hex_row_setLine{
   background: linear-gradient(transparent 0%, transparent 35%, rgba(255, 255, 255, 0.61) 35%, rgba(255, 255, 255, 0.61) 65%, transparent 65%, transparent 100%);
 }
-
 
 .hexagon_blue, .hexagon_red  {
   width: 3.7vw;
@@ -80,9 +99,9 @@ html, body {
   font-size: 3vw;
   transform: translate(-50%,-50%);
   padding: 1vw;
-  background-color: #f9812c;
+  background-color: var(--oranage);
   border-radius: 4vw;
-  border: 5px solid #0464cc;
+  border: 5px solid var(--blue);
   box-shadow: 0 0 0.5vw black,
   0 0 2.5vw black,
   0 0 5vw black,
@@ -103,11 +122,20 @@ html, body {
   aspect-ratio: 1/1;
 }
 
+.timer_container {
+  cursor: move;
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
 .top_bar{
   position: fixed;
   width: 100%;
   height: 5vw;
-  background-color: #0464cc;
+  background-color: var(--blue);
   z-index: 3;
 }
 .logo{
@@ -123,11 +151,13 @@ html, body {
   text-align: center;
   position: absolute;
   border-radius: 0.5vw;
+  color: var(--textcolor);
+  background-color: var(--buttonbackground);
   top: 50%;
   left: 16.5%;
   transform: translate(0, -50%);
   outline: none;
-  border: 0.3vw solid black;
+  border: 0.3vw solid var(--border);
   transition: all 0.5s ease-in-out;
 }
 .player_two_input{
@@ -150,7 +180,7 @@ html, body {
   left: 68.5%;
 }
 .player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
-  border: 0.5vw solid #0464cc;
+  border: 0.5vw solid var(--blue);
   border-radius: 2vw;
 }
 .player_one_input:hover, .player_two_input:hover, .player_three_input:hover, .player_four_input:hover{
@@ -161,7 +191,7 @@ html, body {
 
 .red_alliance_score, .blue_alliance_score{
   position: absolute;
-  background-color: #f0f8ff;
+  background-color: var(--mainbackground);
   width: fit-content;
   padding-right: 0.4vw;
   padding-left: 0.4vw;
@@ -196,7 +226,7 @@ html, body {
 .dropdown_panel {
   width: 15%;
   top: 5vw;
-  background-color: #DD7230;
+  background-color: var(--oranage);
   z-index: 1;
   position: fixed;
   right: 0;
@@ -210,12 +240,12 @@ html, body {
 .panel_opened {
   width: 15%;
   top: 5vw;
-  background-color: #DD7230;
+  background-color: var(--oranage);
   z-index: 1;
   position: fixed;
   right: 0;
   border-radius: 0 0 0 3vw;
-  height: 16vw;
+  height: 20vw;
   opacity: 1;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
@@ -232,6 +262,81 @@ html, body {
   width: 3vw;
 }
 
+.timer_container{
+  width: 20vw;
+  height: 9vw;
+  border-radius: 1vw;
+  border: 0.4vw solid var(--border);
+  background-color: var(--mainbackground);
+  box-shadow: 0 0 0.5vw black,
+  0 0 2.5vw black,
+  0 0 5vw black,
+  0 0 8vw;
+}
+.timer_time{
+  font-size: 4.5vw;
+  font-family: abel;
+  color: var(--textcolor);
+}
+.start_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  background-color: #62e862;
+  color: var(black);
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.stop_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  color: var(black);
+  background-color: #ff6161;
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.restart_button{
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0 solid var(--border);
+  color: var(black);
+  background-color: #e8e850;
+  padding: 0.4vw 0.8vw 0.4vw 0.8vw;
+  transition: all 0.3s ease-in-out;
+}
+.start_button:hover{
+  background-color: darkgreen;
+}
+.stop_button:hover{
+  background-color: darkred;
+}
+.restart_button:hover{
+  background-color: rgb(145, 145, 0);
+}
+
+.import_export_box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+}
+.import_button, .export_button{
+  width: 30%;
+  font-size: 1.3vw;
+  color: var(--textcolor);
+  border: 0px solid;
+  border-radius: 1vw;
+  padding-left: 0.4vw;
+  padding-right: 0.4vw;
+  transition: all 0.3s ease-in-out;
+  margin-left: 15%;
+  background-color: var(--buttonbackground);
+}
+.import_button:hover, .export_button:hover{
+  background-color: var(--buttonbackground); 
+}
+
 .flexbox_dropdown{
   display: flex;
   flex-direction: column;
@@ -241,13 +346,14 @@ html, body {
 .dropdown_item{
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
-.timer_toggle_button, .tooltips_toggle_button{
+.timer_toggle_button, .tooltips_toggle_button, .darkmode_toggle_button{
   width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
-  border:0.15vw solid #0464cc;
+  border:0.15vw solid var(--blue);
   margin: 1vw;
 }
 
@@ -293,7 +399,7 @@ html, body {
   background: linear-gradient(to right,#2e2b2b,#3d3939);
   padding: 1vw;
   border-radius: 2vw;
-  border: solid 0.5vw #000;
+  border: solid 0.5vw var(--border);
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -337,12 +443,14 @@ html, body {
   0 0 2.5vw red,
   0 0 5vw red,
   0 0 8vw;
+  background-color: var(--buttonbackground);
   border: 0.5vw solid red;
   border-radius: 1.5vw;
   padding: 0.5vw 2vw 0.5vw 2vw;
   margin-top: 0.5vw;
   font-family: abel;
   font-size: 1.7vw;
+  color: var(--textcolor);
   transition: all 0.3s ease-in-out;
 }
 .reset_blue_backpanel_button{
@@ -353,11 +461,11 @@ html, body {
   border: 0.5vw solid blue;
 }
 .reset_red_backpanel_button:hover, .reset_blue_backpanel_button:hover{
-  box-shadow: 0 0 5px #f9812c,
-  0 0 25px #f9812c,
-  0 0 50px #f9812c,
+  box-shadow: 0 0 5px var(--oranage),
+  0 0 25px var(--oranage),
+  0 0 50px var(--oranage),
   0 0 200px;
-  border: 2px solid #f9812c;
+  border: 2px solid var(--oranage);
 }
 .total_mosaiacs, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines{
   margin-top: 2vw;
@@ -371,7 +479,7 @@ html, body {
   top: 59.5vw;
   left: 0;
   height: 92vw;
-  background: linear-gradient(to right, #f82b2b, #ff8b8b);
+  background: linear-gradient(to right, var(--gradientreddark), var(--gradientredlight));
   position: absolute;
   border: 0.5vw solid red;
   border-width: 0.5vw 0.5vw 0.5vw 0;
@@ -382,7 +490,7 @@ html, body {
   top: 59.5vw;
   right: 0;
   height: 92vw;
-  background: linear-gradient(to left, #3358ff, #93a7ff);
+  background: linear-gradient(to left, var(--gradientbluedark), var(--gradientbluelight));
   position: absolute;
   border: 0.5vw solid blue;
   border-width: 0.5vw 0 0.5vw 0.5vw;
@@ -394,11 +502,12 @@ html, body {
   width: 25%;
   height: fit-content;
   position: relative;
-  border: 0.3vw solid rgb(0, 0, 0);
-  background-color:white;
+  border: 0.3vw solid var(--border);
+  background-color: var(--buttonbackground);
   outline: none;
   font-size: 3vw;
   text-align: center;
+  color: var(--textcolor);
   font-family: abel;
   appearance: textfield;
   transition: all 0.3s ease-in-out;
@@ -409,7 +518,7 @@ html, body {
   width: 20%;
   height: fit-content;
   border-radius: 1vw 0px 0px 1vw;
-  border: 0.3vw solid rgb(0, 0, 0);
+  border: 0.3vw solid var(--border);
   border-width: 0.3vw 0 0.3vw 0.3vw;
   background-color:rgb(255, 95, 95);
   font-size: 3vw;
@@ -436,7 +545,7 @@ html, body {
   width: 20%;
   height: fit-content;
   border-radius: 0px 1vw 1vw 0px;
-  border: 0.3vw solid rgb(0, 0, 0);
+  border: 0.3vw solid var(--border);
   border-width: 0.3vw 0.3vw 0.3vw 0;
   background-color:rgb(105, 218, 29);
   font-size: 3vw;                                                   
@@ -482,9 +591,9 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 55%;
   left: calc(100% + 2vw);
   transform: translate(-50%, 0);
-  background: aliceblue;
+  background: var(--buttonbackground);  
   position: absolute;
-  border: 0.3vw solid black;
+  border: 0.3vw solid var(--border);
   border-radius: 1vw;
   text-align: center;
   z-index: 1;
@@ -524,8 +633,8 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 1.7vw;
   font-family: abel;
   display: block;
-  background-color: #DD7230;
-  border: 0.5vw solid #0464cc;
+  background-color: var(--oranage);
+  border: 0.5vw solid var(--blue);
   opacity: 0;
   transition: all 0.5s ease;
   pointer-events: none;
@@ -619,13 +728,13 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 50%;
   text-align: center;
   padding: 1.1vw;
-  background-color: #f0f0f0;
+  background-color: var(--buttonbackground);
   color: #333;
-  border-top: 0.4vw solid #000;
-  border-bottom: 0.4vw solid #000;
-  border-left: 0.2vw solid #000;
-  border-right: 0.2vw solid #000;
-  
+  border-top: 0.4vw solid var(--border);
+  border-bottom: 0.4vw solid var(--border);
+  border-left: 0.2vw solid var(--border);
+  border-right: 0.2vw solid var(--border);
+  color: var(--textcolor);
   font-size: 2.5vw;
   font-family: abel;
   cursor: pointer;
@@ -640,12 +749,13 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 25%;
   text-align: center;
   padding: 1.5vw 0vw 1.5vw 0vw;
-  background-color: #f0f0f0;
+  background-color: var(--buttonbackground);
   color: #333;
-  border-top: 0.4vw solid #000;
-  border-bottom: 0.4vw solid #000;
-  border-left: 0.2vw solid #000;
-  border-right: 0.2vw solid #000;
+  border-top: 0.4vw solid var(--border);
+  border-bottom: 0.4vw solid var(--border);
+  border-left: 0.2vw solid var(--border);
+  border-right: 0.2vw solid var(--border);
+  color: var(--textcolor);
 
   font-size: 1.5vw;
   font-family: abel;
@@ -661,12 +771,13 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 33.33%;
   text-align: center;
   padding: 1.5vw 0vw 1.5vw 0vw;
-  background-color: #f0f0f0;
+  background-color: var(--buttonbackground);
   color: #333;
-  border-top: 0.4vw solid #000;
-  border-bottom: 0.4vw solid #000;
-  border-left: 0.2vw solid #000;
-  border-right: 0.2vw solid #000;
+  border-top: 0.4vw solid var(--border);
+  border-bottom: 0.4vw solid var(--border);
+  border-left: 0.2vw solid var(--border);
+  border-right: 0.2vw solid var(--border);
+  color: var(--textcolor);
 
   font-size: 1.5vw;
   font-family: abel;
@@ -686,7 +797,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_none
 {
   border-radius: 1vw 0% 0% 1vw;
-  border-left: 0.4vw solid #000;
+  border-left: 0.4vw solid var(--border);
 }
 
 /*Right buttons */
@@ -700,10 +811,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .player_four_park_suspend
 {
   border-radius: 0% 1vw 1vw 0%;
-  border-right: 0.4vw solid #000;
+  border-right: 0.4vw solid var(--border);
 }
 
 .red_button:hover, .blue_button:hover {
-  background-color: #93a7ff;
+  background-color: var(--hoverbackground);
 }
-
