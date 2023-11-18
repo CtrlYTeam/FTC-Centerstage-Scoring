@@ -297,14 +297,26 @@ let teamNamesString = [
   "Team Four"
 ]
 
-for(let i = 0; i<4; i++){
-  teamNames[i].addEventListener("input", ()=> {
-    if(teamNames[i].value.length == 0){
-      teamNameHeader[i].innerHTML = teamNamesString[i]
-    }else{
-      teamNameHeader[i].innerHTML = (teamNames[i].value)
-    }
-  })
+for (let i = 0; i < 4; i++) {
+  teamNames[i].addEventListener("input", (function (index) {
+    return function () {
+      if (teamNames[index].value.length === 0) {
+        teamNameHeader[index].innerHTML = teamNamesString[index];
+        if (index > 1) {
+          redAlliance[15][index - 2] = teamNamesString[index];
+        } else {
+          blueAlliance[15][index] = teamNamesString[index];
+        }
+      } else {
+        teamNameHeader[index].innerHTML = teamNames[index].value;
+        if (index > 1) {
+          redAlliance[15][index - 2] = teamNames[index].value;
+        } else {
+          blueAlliance[15][index] = teamNames[index].value;
+        }
+      }
+    };
+  })(i));
 }
 
 //toggle buttons
@@ -486,26 +498,30 @@ function updateDarkmode(){
 let importExportButtons = [
   document.getElementById("export_button"),
   document.getElementById("import_button")
-]
+];
 
 importExportButtons[0].addEventListener("click", () => {
   exportScoreGame();
-})
-//need to work on this
-let importData = null
+});
 
-function exportScoreGame (){
-  console.log(redAlliance.concat(redColorStates, blueAlliance, blueColorStates));
-  const csvString = convertArrayToCSV([redAlliance.concat(redColorStates), blueAlliance.concat(blueColorStates)]);
-  const blob = new Blob([csvString], { type: 'text/csv' })
-  const url = URL.createObjectURL(blob)
-  const link = document.createElement('a')
+function exportScoreGame() {
+  const data = {
+    redAlliance: redAlliance,
+    blueAlliance: blueAlliance,
+    redBackpanel: redColorStates,
+    blueBackpanel: blueColorStates,
+  };
+
+  const jsonString = JSON.stringify(data, null, 2); // The third parameter (2) is for indentation spaces
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
   link.href = url;
-  link.download = 'data.csv'
-  link.click()
-  URL.revokeObjectURL(url)
+  link.download = 'data.json';
+  link.click();
+  URL.revokeObjectURL(url);
 }
-//input input
+//input input needs to be reworked
 function importScoreGame (file){
   const reader = new FileReader()
   //reader.onload is async
@@ -552,11 +568,6 @@ function importScoreGame (file){
   }
   reader.readAsText(file)
 }
-
-function updateInputValues(){
-  
-}
-
 //csv shinanigans
 function csvToArray(csvString) {
   const rows = csvString.split('\n')
@@ -584,6 +595,7 @@ function csvToArray(csvString) {
 function convertArrayToCSV(data) {
   const csvRows = []
   for (const row of data) {
+    console.log
       const csvRow = row.map(value => {
           if (typeof value === 'string' && value.includes(',')) {
               return `"${value.replace(/"/g, '""')}"`
@@ -612,7 +624,8 @@ let redAlliance = [
   0,//(11) major penalties
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
-  0//(14) auto backpanel pixel
+  0,//(14) auto backpanel pixel
+  [0,0]//(15) team name 
 ]
 let blueAlliance = [
   0,//(0) pixels on backboard
@@ -630,7 +643,8 @@ let blueAlliance = [
   0,//(11) major penalties
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
-  0//(14) auto backpanel pixel
+  0,//(14) auto backpanel pixel
+  [0,0]//(15) team name 
 ]
 
 let scoreElements = [
