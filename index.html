@@ -33,7 +33,6 @@
   </div>
   <div class = "dropdown_panel" id = "dropdownPanel" type = "button">
     <div class = "flexbox_dropdown">
-      <!-- want to add timer feauture along side other feature like css changes "tooltips" -->
       <div class = "dropdown_item">
         <button class = "timer_toggle_button" id = "timerToggleButton"></button> 
         <label for = "timerToggleButton" class = "label_dropdown">Timer?</label>
@@ -69,9 +68,9 @@
   </div>
 
   <div class = "background"></div>
-  <div class = "red_backdrop">
-    <h1 class = "red_alliance_header">Red Alliance</h1>
-    <div class="hex_container_red">
+  <div class = "blue_backdrop">
+    <h1 class = "blue_alliance_header">Blue Alliance</h1>
+    <div class="hex_container_blue">
       
     </div>
   </div>
@@ -86,19 +85,13 @@
         <h2 class = "setLines" id = "setLines">Set Lines Crossed: </h2>
       </div>
     </div>
-  <div class = "blue_backdrop">
-    <h1 class = "blue_alliance_header">Blue Alliance</h1>
-    <div class="hex_container_blue"></div>
+  <div class = "red_backdrop">
+    <h1 class = "red_alliance_header">Red Alliance</h1>
+    <div class="hex_container_red"></div>
   </div>
 
-  <div class = "red_alliance">
-    <h2 class = "backstage_pixels_header">
-      Backstage Pixels
-      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
-      <p class = "toolbox_info">
-        Backstage pixels are the pixels placed in the taped of area around the backboard
-      </p>
-    </h2>
+  <div class = "blue_alliance">
+
     <h2 class = "auto_backstage_pixels_header">
       Auto Backstage Pixels
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
@@ -107,10 +100,17 @@
       </p>
     </h2>
     <h2 class = "auto_backpanel_pixels_header">
-      Auto Backpanel Pixels
+      Auto Backboard Pixels
       <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
       <p class = "toolbox_info">
         Pixels placed on the backboard during autonomous that remain there throughout the match
+      </p>
+    </h2>
+    <h2 class = "backstage_pixels_header">
+      Backstage Pixels
+      <img class = "toolbox_info_image" src = "images/questionMark.svg" alt = "question mark SVG">
+      <p class = "toolbox_info">
+        Backstage pixels are the pixels placed in the taped of area around the backboard
       </p>
     </h2>
     <h2 class = "minor_penalties_header">
@@ -127,30 +127,31 @@
         Major penalties that seriously affect the gameplay or the progress of other teams
       </p>  
     </h2>
-    <div class = "red_alliance_backstage_pixels">
-      <button type = "button" class = "red_alliance_backstage_pixels_minus" id = "redAllianceBackstagePixelsMinus"><b>—</b></button>
-      <input type = "number" class = "red_alliance_backstage_pixels_number red_button" id = "redAllianceBackstagePixelsNumber" placeholder = "0">
-      <button type = "button" class = "red_alliance_backstage_pixels_plus" id = "redAllianceBackstagePixelsPlus"><b>+</b></button>
+
+    <div class = "blue_alliance_auto_backpanel_pixels">
+      <button type = "button" class = "blue_alliance_auto_backstage_pixels_minus" id = "blueAllianceAutoBackstagePixelsMinus"><b>—</b></button>
+      <input type = "number" class = "blue_alliance_auto_backstage_pixels_number blue_button" id = "blueAllianceAutoBackstagePixelsNumber" placeholder = "0" value="0">
+      <button type = "button" class = "blue_alliance_auto_backstage_pixels_plus" id = "blueAllianceAutoBackstagePixelsPlus"><b>+</b></button>
     </div>
-    <div class = "red_alliance_auto_backpanel_pixels">
-      <button type = "button" class = "red_alliance_auto_backstage_pixels_minus" id = "redAllianceAutoBackstagePixelsMinus"><b>—</b></button>
-      <input type = "number" class = "red_alliance_auto_backstage_pixels_number red_button" id = "redAllianceAutoBackstagePixelsNumber" placeholder = "0">
-      <button type = "button" class = "red_alliance_auto_backstage_pixels_plus" id = "redAllianceAutoBackstagePixelsPlus"><b>+</b></button>
+    <div class = "blue_alliance_auto_backstage_pixels">
+      <button type = "button" class = "blue_alliance_auto_backpanel_pixels_minus" id = "blueAllianceAutoBackpanelPixelsMinus"><b>—</b></button>
+      <input type = "number" class = "blue_alliance_auto_backpanel_pixels_number blue_button" id = "blueAllianceAutoBackpanelPixelsNumber" placeholder = "0" value="0">
+      <button type = "button" class = "blue_alliance_auto_backpanel_pixels_plus" id = "blueAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
     </div>
-    <div class = "red_alliance_auto_backstage_pixels">
-      <button type = "button" class = "red_alliance_auto_backpanel_pixels_minus" id = "redAllianceAutoBackpanelPixelsMinus"><b>—</b></button>
-      <input type = "number" class = "red_alliance_auto_backpanel_pixels_number red_button" id = "redAllianceAutoBackpanelPixelsNumber" placeholder = "0">
-      <button type = "button" class = "red_alliance_auto_backpanel_pixels_plus" id = "redAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
+    <div class = "blue_alliance_backstage_pixels">
+      <button type = "button" class = "blue_alliance_backstage_pixels_minus" id = "blueAllianceBackstagePixelsMinus"><b>—</b></button>
+      <input type = "number" class = "blue_alliance_backstage_pixels_number blue_button" id = "blueAllianceBackstagePixelsNumber" placeholder = "0" value="0">
+      <button type = "button" class = "blue_alliance_backstage_pixels_plus" id = "blueAllianceBackstagePixelsPlus"><b>+</b></button>
     </div>
-    <div class = "red_alliance_minor_penalties">
-      <button type = "button" class = "red_alliance_minor_penalties_minus" id = "redAllianceMinorPenaltiesPixelsMinus"><b>—</b></button>
-      <input type = "number" class = "red_alliance_minor_penalties_number red_button" id = "redAllianceMinorPenaltiesPixelsNumber" placeholder = "0">
-      <button type = "button" class = "red_alliance_minor_penalties_plus" id = "redAllianceMinorPenaltiesPixelsPlus"><b>+</b></button>
+    <div class = "blue_alliance_minor_penalties">
+      <button type = "button" class = "blue_alliance_minor_penalties_minus" id = "blueAllianceMinorPenaltiesPixelsMinus"><b>—</b></button>
+      <input type = "number" class = "blue_alliance_minor_penalties_number blue_button" id = "blueAllianceMinorPenaltiesPixelsNumber" placeholder = "0" value="0">
+      <button type = "button" class = "blue_alliance_minor_penalties_plus" id = "blueAllianceMinorPenaltiesPixelsPlus"><b>+</b></button>
     </div>
-    <div class = "red_alliance_major_penalties">
-      <button type = "button" class = "red_alliance_major_penalties_minus" id = "redAllianceMajorPenaltiesPixelsMinus"><b>—</b></button>
-      <input type = "number" class = "red_alliance_major_penalties_number red_button" id = "redAllianceMajorPenaltiesPixelsNumber" placeholder = "0">
-      <button type = "button" class = "red_alliance_major_penalties_plus" id = "redAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
+    <div class = "blue_alliance_major_penalties">
+      <button type = "button" class = "blue_alliance_major_penalties_minus" id = "blueAllianceMajorPenaltiesPixelsMinus"><b>—</b></button>
+      <input type = "number" class = "blue_alliance_major_penalties_number blue_button" id = "blueAllianceMajorPenaltiesPixelsNumber" placeholder = "0" value="0">
+      <button type = "button" class = "blue_alliance_major_penalties_plus" id = "blueAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
     </div>
     <div class = "player_one">
       <h1 class = "player_one_header" id = playerOneHeader>Team One</h1>
@@ -162,8 +163,8 @@
         </p>
       </h2>
       <div class = "player_one_prop">
-        <button class = "player_one_prop_no red_button" id = "playerOnePropNo" type = "button">No</button>
-        <button class = "player_one_prop_yes red_button" id = "playerOnePropYes" type = "button">Yes</button>
+        <button class = "player_one_prop_no blue_button" id = "playerOnePropNo" type = "button">No</button>
+        <button class = "player_one_prop_yes blue_button" id = "playerOnePropYes" type = "button">Yes</button>
       </div>
       <h2 class = "drone_zone_header">
         Drone Zone
@@ -173,10 +174,10 @@
         </p>
       </h2>
       <div class = "player_one_drone_zone">
-        <button  class = "player_one_drone_zone_none red_button" id = "playerOneDroneZoneNone" type = "button">None</button>
-        <button  class = "player_one_drone_zone_one red_button" id = "playerOneDroneZoneOne" type = "button">1</button>
-        <button  class = "player_one_drone_zone_two red_button" id = "playerOneDroneZoneTwo" type = "button">2</button>
-        <button  class = "player_one_drone_zone_three red_button" id = "playerOneDroneZoneThree" type = "button">3</button>
+        <button  class = "player_one_drone_zone_none blue_button" id = "playerOneDroneZoneNone" type = "button">None</button>
+        <button  class = "player_one_drone_zone_one blue_button" id = "playerOneDroneZoneOne" type = "button">1</button>
+        <button  class = "player_one_drone_zone_two blue_button" id = "playerOneDroneZoneTwo" type = "button">2</button>
+        <button  class = "player_one_drone_zone_three blue_button" id = "playerOneDroneZoneThree" type = "button">3</button>
       </div>
       <h2 class = "endgame_park_header">
         Endgame Park
@@ -186,9 +187,9 @@
         </p>
       </h2>
       <div class = "player_one_endgame_park">
-        <button  class = "player_one_park_none red_button" id = "playerOneParkNone" type = "button">None</button>
-        <button  class = "player_one_park_park red_button" id = "playerOneParkPark" type = "button">Park</button>
-        <button  class = "player_one_park_suspend red_button" id = "playerOneParkSuspend" type = "button">Suspend</button>
+        <button  class = "player_one_park_none blue_button" id = "playerOneParkNone" type = "button">None</button>
+        <button  class = "player_one_park_park blue_button" id = "playerOneParkPark" type = "button">Park</button>
+        <button  class = "player_one_park_suspend blue_button" id = "playerOneParkSuspend" type = "button">Suspend</button>
       </div>
       <h2 class = "team_auto_spike">
         Auto Spike
@@ -198,8 +199,8 @@
         </p>
       </h2>
       <div class = "player_one_auto_spike">
-        <button class = "player_one_auto_spike_no red_button" id = "playerOneAutoSpikeNo" type = "button">No</button>
-        <button class = "player_one_auto_spike_yes red_button" id = "playerOneAutoSpikeYes" type = "button">Yes</button>
+        <button class = "player_one_auto_spike_no blue_button" id = "playerOneAutoSpikeNo" type = "button">No</button>
+        <button class = "player_one_auto_spike_yes blue_button" id = "playerOneAutoSpikeYes" type = "button">Yes</button>
       </div>
       <h2 class = "team_auto_pixel">
         Auto Pixel
@@ -209,8 +210,8 @@
         </p>
       </h2>
       <div class = "player_one_auto_pixel">
-        <button class = "player_one_auto_pixel_no red_button" id = "playerOneAutoPixelNo" type = "button">No</button>
-        <button class = "player_one_auto_pixel_yes red_button" id = "playerOneAutoPixelYes" type = "button">Yes</button>
+        <button class = "player_one_auto_pixel_no blue_button" id = "playerOneAutoPixelNo" type = "button">No</button>
+        <button class = "player_one_auto_pixel_yes blue_button" id = "playerOneAutoPixelYes" type = "button">Yes</button>
       </div>
       <h2 class = "team_auto_park">
         Auto Park
@@ -220,67 +221,68 @@
         </p>
       </h2>
       <div class = "player_one_auto_park">
-        <button class = "player_one_auto_park_no red_button" id = "playerOneAutoParkNo" type = "button">No</button>
-        <button class = "player_one_auto_park_yes red_button" id = "playerOneAutoParkYes" type = "button">Yes</button>
+        <button class = "player_one_auto_park_no blue_button" id = "playerOneAutoParkNo" type = "button">No</button>
+        <button class = "player_one_auto_park_yes blue_button" id = "playerOneAutoParkYes" type = "button">Yes</button>
       </div>
     </div>
     <div class = "player_two">
       <h1 class = "player_two_header" id = playerTwoHeader>Team Two</h1>
       <div class="player_two_prop">
-        <button class="player_two_prop_no red_button" id="playerTwoPropNo" type="button">No</button>
-        <button class="player_two_prop_yes red_button" id="playerTwoPropYes" type="button">Yes</button>
+        <button class="player_two_prop_no blue_button" id="playerTwoPropNo" type="button">No</button>
+        <button class="player_two_prop_yes blue_button" id="playerTwoPropYes" type="button">Yes</button>
       </div>
       <div class="player_two_drone_zone">
-        <button class="player_two_drone_zone_none red_button" id="playerTwoDroneZoneNone" type="button">None</button>
-        <button class="player_two_drone_zone_one red_button" id="playerTwoDroneZoneOne" type="button">1</button>
-        <button class="player_two_drone_zone_two red_button" id="playerTwoDroneZoneTwo" type="button">2</button>
-        <button class="player_two_drone_zone_three red_button" id="playerTwoDroneZoneThree" type="button">3</button>
+        <button class="player_two_drone_zone_none blue_button" id="playerTwoDroneZoneNone" type="button">None</button>
+        <button class="player_two_drone_zone_one blue_button" id="playerTwoDroneZoneOne" type="button">1</button>
+        <button class="player_two_drone_zone_two blue_button" id="playerTwoDroneZoneTwo" type="button">2</button>
+        <button class="player_two_drone_zone_three blue_button" id="playerTwoDroneZoneThree" type="button">3</button>
       </div>
       <div class="player_two_endgame_park">
-        <button class="player_two_park_none red_button" id="playerTwoParkNone" type="button">None</button>
-        <button class="player_two_park_park red_button" id="playerTwoParkPark" type="button">Park</button>
-        <button class="player_two_park_suspend red_button" id="playerTwoParkSuspend" type="button">Suspend</button>
+        <button class="player_two_park_none blue_button" id="playerTwoParkNone" type="button">None</button>
+        <button class="player_two_park_park blue_button" id="playerTwoParkPark" type="button">Park</button>
+        <button class="player_two_park_suspend blue_button" id="playerTwoParkSuspend" type="button">Suspend</button>
       </div>
       <div class="player_two_auto_spike">
-        <button class="player_two_auto_spike_no red_button" id="playerTwoAutoSpikeNo" type="button">No</button>
-        <button class="player_two_auto_spike_yes red_button" id="playerTwoAutoSpikeYes" type="button">Yes</button>
+        <button class="player_two_auto_spike_no blue_button" id="playerTwoAutoSpikeNo" type="button">No</button>
+        <button class="player_two_auto_spike_yes blue_button" id="playerTwoAutoSpikeYes" type="button">Yes</button>
       </div>
       <div class="player_two_auto_pixel">
-        <button class="player_two_auto_pixel_no red_button" id="playerTwoAutoPixelNo" type="button">No</button>
-        <button class="player_two_auto_pixel_yes red_button" id="playerTwoAutoPixelYes" type="button">Yes</button>
+        <button class="player_two_auto_pixel_no blue_button" id="playerTwoAutoPixelNo" type="button">No</button>
+        <button class="player_two_auto_pixel_yes blue_button" id="playerTwoAutoPixelYes" type="button">Yes</button>
       </div>
       <div class="player_two_auto_park">
-        <button class="player_two_auto_park_no red_button" id="playerTwoAutoParkNo" type="button">No</button>
-        <button class="player_two_auto_park_yes red_button" id="playerTwoAutoParkYes" type="button">Yes</button>
+        <button class="player_two_auto_park_no blue_button" id="playerTwoAutoParkNo" type="button">No</button>
+        <button class="player_two_auto_park_yes blue_button" id="playerTwoAutoParkYes" type="button">Yes</button>
       </div>
     </div>
     
   </div>
-  <div class = "blue_alliance">
-    <div class="blue_alliance_backstage_pixels">
-      <button type="button" class="blue_alliance_backstage_pixels_minus" id="blueAllianceBackstagePixelsMinus"><b>—</b></button>
-      <input type="number" class="blue_alliance_backstage_pixels_number blue_button" id="blueAllianceBackstagePixelsNumber" placeholder="0">
-      <button type="button" class="blue_alliance_backstage_pixels_plus" id="blueAllianceBackstagePixelsPlus"><b>+</b></button>
+  <div class = "red_alliance">
+
+    <div class="red_alliance_auto_backpanel_pixels">
+      <button type="button" class="red_alliance_auto_backstage_pixels_minus" id="redAllianceAutoBackstagePixelsMinus"><b>—</b></button>
+      <input type="number" class="red_alliance_auto_backstage_pixels_number red_button" id="redAllianceAutoBackstagePixelsNumber" placeholder="0" value="0">
+      <button type="button" class="red_alliance_auto_backstage_pixels_plus" id="redAllianceAutoBackstagePixelsPlus"><b>+</b></button>
     </div>
-    <div class="blue_alliance_auto_backpanel_pixels">
-      <button type="button" class="blue_alliance_auto_backstage_pixels_minus" id="blueAllianceAutoBackstagePixelsMinus"><b>—</b></button>
-      <input type="number" class="blue_alliance_auto_backstage_pixels_number blue_button" id="blueAllianceAutoBackstagePixelsNumber" placeholder="0">
-      <button type="button" class="blue_alliance_auto_backstage_pixels_plus" id="blueAllianceAutoBackstagePixelsPlus"><b>+</b></button>
+    <div class="red_alliance_auto_backstage_pixels">
+      <button type="button" class="red_alliance_auto_backpanel_pixels_minus" id="redAllianceAutoBackpanelPixelsMinus"><b>—</b></button>
+      <input type="number" class="red_alliance_auto_backpanel_pixels_number red_button" id="redAllianceAutoBackpanelPixelsNumber" placeholder="0" value="0">
+      <button type="button" class="red_alliance_auto_backpanel_pixels_plus" id="redAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
     </div>
-    <div class="blue_alliance_auto_backstage_pixels">
-      <button type="button" class="blue_alliance_auto_backpanel_pixels_minus" id="blueAllianceAutoBackpanelPixelsMinus"><b>—</b></button>
-      <input type="number" class="blue_alliance_auto_backpanel_pixels_number blue_button" id="blueAllianceAutoBackpanelPixelsNumber" placeholder="0">
-      <button type="button" class="blue_alliance_auto_backpanel_pixels_plus" id="blueAllianceAutoBackpanelPixelsPlus"><b>+</b></button>
+    <div class="red_alliance_backstage_pixels">
+      <button type="button" class="red_alliance_backstage_pixels_minus" id="redAllianceBackstagePixelsMinus"><b>—</b></button>
+      <input type="number" class="red_alliance_backstage_pixels_number red_button" id="redAllianceBackstagePixelsNumber" placeholder="0" value="0">
+      <button type="button" class="red_alliance_backstage_pixels_plus" id="redAllianceBackstagePixelsPlus"><b>+</b></button>
     </div>
-    <div class="blue_alliance_minor_penalties">
-      <button type="button" class="blue_alliance_minor_penalties_minus" id="blueAllianceMinorPenaltiesPixelsMinus"><b>—</b></button>
-      <input type="number" class="blue_alliance_minor_penalties_number blue_button" id="blueAllianceMinorPenaltiesPixelsNumber" placeholder="0">
-      <button type="button" class="blue_alliance_minor_penalties_plus" id="blueAllianceMinorPenaltiesPixelsPlus"><b>+</b></button>
+    <div class="red_alliance_minor_penalties">
+      <button type="button" class="red_alliance_minor_penalties_minus" id="redAllianceMinorPenaltiesPixelsMinus"><b>—</b></button>
+      <input type="number" class="red_alliance_minor_penalties_number red_button" id="redAllianceMinorPenaltiesPixelsNumber" placeholder="0" value="0">
+      <button type="button" class="red_alliance_minor_penalties_plus" id="redAllianceMinorPenaltiesPixelsPlus"><b>+</b></button>
     </div>
-    <div class="blue_alliance_major_penalties">
-      <button type="button" class="blue_alliance_major_penalties_minus" id="blueAllianceMajorPenaltiesPixelsMinus"><b>—</b></button>
-      <input type="number" class="blue_alliance_major_penalties_number blue_button" id="blueAllianceMajorPenaltiesPixelsNumber" placeholder="0">
-      <button type="button" class="blue_alliance_major_penalties_plus" id="blueAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
+    <div class="red_alliance_major_penalties">
+      <button type="button" class="red_alliance_major_penalties_minus" id="redAllianceMajorPenaltiesPixelsMinus"><b>—</b></button>
+      <input type="number" class="red_alliance_major_penalties_number red_button" id="redAllianceMajorPenaltiesPixelsNumber" placeholder="0" value="0">
+      <button type="button" class="red_alliance_major_penalties_plus" id="redAllianceMajorPenaltiesPixelsPlus"><b>+</b></button>
     </div>
     <div class = "player_three">
       <h1 class = "player_three_header" id = playerThreeHeader>Team Three</h1>
@@ -292,8 +294,8 @@
         </p>
       </h2>
       <div class="player_three_prop">
-        <button class="player_three_prop_no blue_button" id="playerThreePropNo" type="button">No</button>
-        <button class="player_three_prop_yes blue_button" id="playerThreePropYes" type="button">Yes</button>
+        <button class="player_three_prop_no red_button" id="playerThreePropNo" type="button">No</button>
+        <button class="player_three_prop_yes red_button" id="playerThreePropYes" type="button">Yes</button>
       </div>
       <h2 class = "drone_zone_header">
         Drone Zone
@@ -303,10 +305,10 @@
         </p>
       </h2>
       <div class="player_three_drone_zone">
-        <button class="player_three_drone_zone_none blue_button" id="playerThreeDroneZoneNone" type="button">None</button>
-        <button class="player_three_drone_zone_one blue_button" id="playerThreeDroneZoneOne" type="button">1</button>
-        <button class="player_three_drone_zone_two blue_button" id="playerThreeDroneZoneTwo" type="button">2</button>
-        <button class="player_three_drone_zone_three blue_button" id="playerThreeDroneZoneThree" type="button">3</button>
+        <button class="player_three_drone_zone_none red_button" id="playerThreeDroneZoneNone" type="button">None</button>
+        <button class="player_three_drone_zone_one red_button" id="playerThreeDroneZoneOne" type="button">1</button>
+        <button class="player_three_drone_zone_two red_button" id="playerThreeDroneZoneTwo" type="button">2</button>
+        <button class="player_three_drone_zone_three red_button" id="playerThreeDroneZoneThree" type="button">3</button>
       </div>
       <h2 class = "endgame_park_header">
         Endgame Park
@@ -316,9 +318,9 @@
         </p>
       </h2>
       <div class="player_three_endgame_park">
-        <button class="player_three_park_none blue_button" id="playerThreeParkNone" type="button">None</button>
-        <button class="player_three_park_park blue_button" id="playerThreeParkPark" type="button">Park</button>
-        <button class="player_three_park_suspend blue_button" id="playerThreeParkSuspend" type="button">Suspend</button>
+        <button class="player_three_park_none red_button" id="playerThreeParkNone" type="button">None</button>
+        <button class="player_three_park_park red_button" id="playerThreeParkPark" type="button">Park</button>
+        <button class="player_three_park_suspend red_button" id="playerThreeParkSuspend" type="button">Suspend</button>
       </div>
       <h2 class = "team_auto_spike">
         Auto Spike
@@ -328,8 +330,8 @@
         </p>
       </h2>
       <div class="player_three_auto_spike">
-        <button class="player_three_auto_spike_no blue_button" id="playerThreeAutoSpikeNo" type="button">No</button>
-        <button class="player_three_auto_spike_yes blue_button" id="playerThreeAutoSpikeYes" type="button">Yes</button>
+        <button class="player_three_auto_spike_no red_button" id="playerThreeAutoSpikeNo" type="button">No</button>
+        <button class="player_three_auto_spike_yes red_button" id="playerThreeAutoSpikeYes" type="button">Yes</button>
       </div>
       <h2 class = "team_auto_pixel">
         Auto Pixel
@@ -339,8 +341,8 @@
         </p>
       </h2>
       <div class="player_three_auto_pixel">
-        <button class="player_three_auto_pixel_no blue_button" id="playerThreeAutoPixelNo" type="button">No</button>
-        <button class="player_three_auto_pixel_yes blue_button" id="playerThreeAutoPixelYes" type="button">Yes</button>
+        <button class="player_three_auto_pixel_no red_button" id="playerThreeAutoPixelNo" type="button">No</button>
+        <button class="player_three_auto_pixel_yes red_button" id="playerThreeAutoPixelYes" type="button">Yes</button>
       </div>
       <h2 class = "team_auto_park">
         Auto Park
@@ -350,38 +352,38 @@
         </p>
       </h2>
       <div class="player_three_auto_park">
-        <button class="player_three_auto_park_no blue_button" id="playerThreeAutoParkNo" type="button">No</button>
-        <button class="player_three_auto_park_yes blue_button" id="playerThreeAutoParkYes" type="button">Yes</button>
+        <button class="player_three_auto_park_no red_button" id="playerThreeAutoParkNo" type="button">No</button>
+        <button class="player_three_auto_park_yes red_button" id="playerThreeAutoParkYes" type="button">Yes</button>
       </div>
     </div>
     <div class = "player_four">
       <h1 class = "player_four_header" id = playerFourHeader>Team Four</h1>
       <div class="player_four_prop">
-        <button class="player_four_prop_no blue_button" id="playerFourPropNo" type="button">No</button>
-        <button class="player_four_prop_yes blue_button" id="playerFourPropYes" type="button">Yes</button>
+        <button class="player_four_prop_no red_button" id="playerFourPropNo" type="button">No</button>
+        <button class="player_four_prop_yes red_button" id="playerFourPropYes" type="button">Yes</button>
       </div>
       <div class="player_four_drone_zone">
-        <button class="player_four_drone_zone_none blue_button" id="playerFourDroneZoneNone" type="button">None</button>
-        <button class="player_four_drone_zone_one blue_button" id="playerFourDroneZoneOne" type="button">1</button>
-        <button class="player_four_drone_zone_two blue_button" id="playerFourDroneZoneTwo" type="button">2</button>
-        <button class="player_four_drone_zone_three blue_button" id="playerFourDroneZoneThree" type="button">3</button>
+        <button class="player_four_drone_zone_none red_button" id="playerFourDroneZoneNone" type="button">None</button>
+        <button class="player_four_drone_zone_one red_button" id="playerFourDroneZoneOne" type="button">1</button>
+        <button class="player_four_drone_zone_two red_button" id="playerFourDroneZoneTwo" type="button">2</button>
+        <button class="player_four_drone_zone_three red_button" id="playerFourDroneZoneThree" type="button">3</button>
       </div>
       <div class="player_four_endgame_park">
-        <button class="player_four_park_none blue_button" id="playerFourParkNone" type="button">None</button>
-        <button class="player_four_park_park blue_button" id="playerFourParkPark" type="button">Park</button>
-        <button class="player_four_park_suspend blue_button" id="playerFourParkSuspend" type="button">Suspend</button>
+        <button class="player_four_park_none red_button" id="playerFourParkNone" type="button">None</button>
+        <button class="player_four_park_park red_button" id="playerFourParkPark" type="button">Park</button>
+        <button class="player_four_park_suspend red_button" id="playerFourParkSuspend" type="button">Suspend</button>
       </div>
       <div class="player_four_auto_spike">
-        <button class="player_four_auto_spike_no blue_button" id="playerFourAutoSpikeNo" type="button">No</button>
-        <button class="player_four_auto_spike_yes blue_button" id="playerFourAutoSpikeYes" type="button">Yes</button>
+        <button class="player_four_auto_spike_no red_button" id="playerFourAutoSpikeNo" type="button">No</button>
+        <button class="player_four_auto_spike_yes red_button" id="playerFourAutoSpikeYes" type="button">Yes</button>
       </div>
       <div class="player_four_auto_pixel">
-        <button class="player_four_auto_pixel_no blue_button" id="playerFourAutoPixelNo" type="button">No</button>
-        <button class="player_four_auto_pixel_yes blue_button" id="playerFourAutoPixelYes" type="button">Yes</button>
+        <button class="player_four_auto_pixel_no red_button" id="playerFourAutoPixelNo" type="button">No</button>
+        <button class="player_four_auto_pixel_yes red_button" id="playerFourAutoPixelYes" type="button">Yes</button>
       </div>
       <div class="player_four_auto_park">
-        <button class="player_four_auto_park_no blue_button" id="playerFourAutoParkNo" type="button">No</button>
-        <button class="player_four_auto_park_yes blue_button" id="playerFourAutoParkYes" type="button">Yes</button>
+        <button class="player_four_auto_park_no red_button" id="playerFourAutoParkNo" type="button">No</button>
+        <button class="player_four_auto_park_yes red_button" id="playerFourAutoParkYes" type="button">Yes</button>
       </div>
     </div>
   </div>

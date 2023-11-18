@@ -1,16 +1,16 @@
 /* #f9812c oranage */
-/* #0464cc blue */
+/* #0464cc red */
 
 :root {
   --oranage: #f9812c;
-  --blue: #0464cc;
+  --red: #0464cc;
   --border: #000000;
   --mainbackground: #d2daff;
   --buttonbackground:#f0f0f0;
-  --gradientreddark:#f82b2b;
-  --gradientredlight:#ff8b8b;
-  --gradientbluedark:#3358ff;
-  --gradientbluelight:#93a7ff;
+  --gradientbluedark:#f82b2b;
+  --gradientbluelight:#ff8b8b;
+  --gradientreddark:#3358ff;
+  --gradientredlight:#93a7ff;
   --textcolor: #000000;
   --hoverbackground: #93a7ff;
 }
@@ -42,12 +42,12 @@ h1, p, h1, a, h2    {
   font-display: swap;
 }
 
-.redColorStateHeader, .blueColorStateHeader  {
+.blueColorStateHeader, .redColorStateHeader  {
   white-space: nowrap;
   text-align: center;
 }
 
-.hex_row_blue, .hex_row_red {
+.hex_row_red, .hex_row_blue {
   display: flex;
   margin-top: -0.6vw;
   width: 100%;
@@ -57,7 +57,7 @@ h1, p, h1, a, h2    {
   background: linear-gradient(transparent 0%, transparent 35%, rgba(255, 255, 255, 0.61) 35%, rgba(255, 255, 255, 0.61) 65%, transparent 65%, transparent 100%);
 }
 
-.hexagon_blue, .hexagon_red  {
+.hexagon_red, .hexagon_blue  {
   width: 3.7vw;
   aspect-ratio: 10/11.5;
   background-color: black;
@@ -68,22 +68,22 @@ h1, p, h1, a, h2    {
   transition: all 0.3s ease-in-out;
 }
 
-.hexagon_red.black, .hexagon_blue.black {
+.hexagon_blue.black, .hexagon_red.black {
   background-color: black;
 }
-.hexagon_red.white, .hexagon_blue.white {
+.hexagon_blue.white, .hexagon_red.white {
   background-color: white;
 }
 
-.hexagon_red.green, .hexagon_blue.green {
+.hexagon_blue.green, .hexagon_red.green {
   background-color: green;
 }
 
-.hexagon_red.purple, .hexagon_blue.purple {
+.hexagon_blue.purple, .hexagon_red.purple {
   background-color: purple;
 }
 
-.hexagon_red.yellow, .hexagon_blue.yellow {
+.hexagon_blue.yellow, .hexagon_red.yellow {
   background-color: yellow;
 }
 
@@ -101,7 +101,7 @@ h1, p, h1, a, h2    {
   padding: 1vw;
   background-color: var(--oranage);
   border-radius: 4vw;
-  border: 5px solid var(--blue);
+  border: 5px solid var(--red);
   box-shadow: 0 0 0.5vw black,
   0 0 2.5vw black,
   0 0 5vw black,
@@ -123,6 +123,7 @@ h1, p, h1, a, h2    {
 }
 
 .timer_container {
+  display: none;
   cursor: move;
   position: absolute;
   z-index: 9;
@@ -135,7 +136,7 @@ h1, p, h1, a, h2    {
   position: fixed;
   width: 100%;
   height: 5vw;
-  background-color: var(--blue);
+  background-color: var(--red);
   z-index: 3;
 }
 .logo{
@@ -180,7 +181,7 @@ h1, p, h1, a, h2    {
   left: 68.5%;
 }
 .player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
-  border: 0.5vw solid var(--blue);
+  border: 0.5vw solid var(--red);
   border-radius: 2vw;
 }
 .player_one_input:hover, .player_two_input:hover, .player_three_input:hover, .player_four_input:hover{
@@ -189,7 +190,7 @@ h1, p, h1, a, h2    {
 }
 
 
-.red_alliance_score, .blue_alliance_score{
+.blue_alliance_score, .red_alliance_score{
   position: absolute;
   background-color: var(--mainbackground);
   width: fit-content;
@@ -203,11 +204,11 @@ h1, p, h1, a, h2    {
   font-weight: bold;
   border-radius: 1vw;
 }
-.red_alliance_score{
+.blue_alliance_score{
   left: 9%;
   top: 2.5vw;
 }
-.blue_alliance_score{
+.red_alliance_score{
   right: 9%;
   top: 2.5vw;
 }
@@ -245,7 +246,7 @@ h1, p, h1, a, h2    {
   position: fixed;
   right: 0;
   border-radius: 0 0 0 3vw;
-  height: 20vw;
+  height: 22vw;
   opacity: 1;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
@@ -309,7 +310,7 @@ h1, p, h1, a, h2    {
   background-color: darkgreen;
 }
 .stop_button:hover{
-  background-color: darkred;
+  background-color: darkblue;
 }
 .restart_button:hover{
   background-color: rgb(145, 145, 0);
@@ -334,9 +335,11 @@ h1, p, h1, a, h2    {
   background-color: var(--buttonbackground);
 }
 .import_button:hover, .export_button:hover{
-  background-color: var(--buttonbackground); 
+  background-color: var(--hoverbackground); 
 }
-
+/* #importButton.import_button{
+  display: none;
+} */
 .flexbox_dropdown{
   display: flex;
   flex-direction: column;
@@ -353,7 +356,7 @@ h1, p, h1, a, h2    {
   width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
-  border:0.15vw solid var(--blue);
+  border:0.15vw solid var(--red);
   margin: 1vw;
 }
 
@@ -376,7 +379,7 @@ h1, p, h1, a, h2    {
   font-size: 0.85vw;
 }
 
-.red_backdrop{
+.blue_backdrop{
   width: 50%;
   top: 5vw;
   height: fit-content;
@@ -385,7 +388,7 @@ h1, p, h1, a, h2    {
   justify-content: center;
   
 }
-.blue_backdrop{
+.red_backdrop{
   width: 50%;
   top: 5vw;
   right: 0;
@@ -395,7 +398,7 @@ h1, p, h1, a, h2    {
   justify-content: center;
 }
 
-.hex_container_red, .hex_container_blue {
+.hex_container_blue, .hex_container_red {
   background: linear-gradient(to right,#2e2b2b,#3d3939);
   padding: 1vw;
   border-radius: 2vw;
@@ -405,12 +408,12 @@ h1, p, h1, a, h2    {
   flex-direction: column;
   align-items: center;
 }
-.hex_container_red {
+.hex_container_blue {
   margin-top: 4vw;
   left: 4vw;
   position: absolute;
 }
-.hex_container_blue {
+.hex_container_red {
   margin-top: 4vw;
   right: 4vw;
   position: absolute;
@@ -432,19 +435,19 @@ h1, p, h1, a, h2    {
 }
 
 
-.image_div_red, .image_div_blue {
+.image_div_blue, .image_div_red {
   display: flex;
   position: relative;
   flex-direction: row;
   justify-items: center;
 }
-.reset_red_backpanel_button, .reset_blue_backpanel_button{
-  box-shadow: 0 0 0.5vw red,
-  0 0 2.5vw red,
-  0 0 5vw red,
+.reset_blue_backpanel_button, .reset_red_backpanel_button{
+  box-shadow: 0 0 0.5vw blue,
+  0 0 2.5vw blue,
+  0 0 5vw blue,
   0 0 8vw;
   background-color: var(--buttonbackground);
-  border: 0.5vw solid red;
+  border: 0.5vw solid blue;
   border-radius: 1.5vw;
   padding: 0.5vw 2vw 0.5vw 2vw;
   margin-top: 0.5vw;
@@ -453,14 +456,14 @@ h1, p, h1, a, h2    {
   color: var(--textcolor);
   transition: all 0.3s ease-in-out;
 }
-.reset_blue_backpanel_button{
-  box-shadow: 0 0 0.5vw blue,
-  0 0 2.5vw blue,
-  0 0 5vw blue,
+.reset_red_backpanel_button{
+  box-shadow: 0 0 0.5vw red,
+  0 0 2.5vw red,
+  0 0 5vw red,
   0 0 8vw;
-  border: 0.5vw solid blue;
+  border: 0.5vw solid red;
 }
-.reset_red_backpanel_button:hover, .reset_blue_backpanel_button:hover{
+.reset_blue_backpanel_button:hover, .reset_red_backpanel_button:hover{
   box-shadow: 0 0 5px var(--oranage),
   0 0 25px var(--oranage),
   0 0 50px var(--oranage),
@@ -474,31 +477,31 @@ h1, p, h1, a, h2    {
   text-align: center;
   transform: translateY(10px);
 }
-.red_alliance{
+.blue_alliance{
   width: 48%;
   top: 59.5vw;
   left: 0;
   height: 92vw;
-  background: linear-gradient(to right, var(--gradientreddark), var(--gradientredlight));
+  background: linear-gradient(to right, var(--gradientbluedark), var(--gradientbluelight));
   position: absolute;
-  border: 0.5vw solid red;
+  border: 0.5vw solid blue;
   border-width: 0.5vw 0.5vw 0.5vw 0;
   border-radius: 0 1vw 1vw 0;
 }
-.blue_alliance{
+.red_alliance{
   width: 48%;
   top: 59.5vw;
   right: 0;
   height: 92vw;
-  background: linear-gradient(to left, var(--gradientbluedark), var(--gradientbluelight));
+  background: linear-gradient(to left, var(--gradientreddark), var(--gradientredlight));
   position: absolute;
-  border: 0.5vw solid blue;
+  border: 0.5vw solid red;
   border-width: 0.5vw 0 0.5vw 0.5vw;
   border-radius: 1vw 0 0 1vw;
 }
 
 /* Textboxes */
-.red_alliance_backstage_pixels_number, .red_alliance_auto_backstage_pixels_number, .red_alliance_auto_backpanel_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number, .blue_alliance_backstage_pixels_number, .blue_alliance_auto_backstage_pixels_number, .blue_alliance_auto_backpanel_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number{
+.blue_alliance_backstage_pixels_number, .blue_alliance_auto_backstage_pixels_number, .blue_alliance_auto_backpanel_pixels_number, .blue_alliance_minor_penalties_number, .blue_alliance_major_penalties_number, .red_alliance_backstage_pixels_number, .red_alliance_auto_backstage_pixels_number, .red_alliance_auto_backpanel_pixels_number, .red_alliance_minor_penalties_number, .red_alliance_major_penalties_number{
   width: 25%;
   height: fit-content;
   position: relative;
@@ -514,7 +517,7 @@ h1, p, h1, a, h2    {
 }
 
 /* Plus Buttons */
-.red_alliance_backstage_pixels_minus, .red_alliance_auto_backstage_pixels_minus, .red_alliance_auto_backpanel_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus, .blue_alliance_backstage_pixels_minus, .blue_alliance_auto_backstage_pixels_minus, .blue_alliance_auto_backpanel_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus{
+.blue_alliance_backstage_pixels_minus, .blue_alliance_auto_backstage_pixels_minus, .blue_alliance_auto_backpanel_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus, .red_alliance_backstage_pixels_minus, .red_alliance_auto_backstage_pixels_minus, .red_alliance_auto_backpanel_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus{
   width: 20%;
   height: fit-content;
   border-radius: 1vw 0px 0px 1vw;
@@ -527,21 +530,21 @@ h1, p, h1, a, h2    {
   transition: all 0.3s ease-in-out;
 }
 
-.red_alliance_backstage_pixels_minus:hover, 
-.red_alliance_auto_backstage_pixels_minus:hover,
-.red_alliance_auto_backpanel_pixels_minus:hover,
-.red_alliance_minor_penalties_minus:hover, 
-.red_alliance_major_penalties_minus:hover, 
 .blue_alliance_backstage_pixels_minus:hover, 
 .blue_alliance_auto_backstage_pixels_minus:hover,
 .blue_alliance_auto_backpanel_pixels_minus:hover,
 .blue_alliance_minor_penalties_minus:hover, 
-.blue_alliance_major_penalties_minus:hover {
+.blue_alliance_major_penalties_minus:hover, 
+.red_alliance_backstage_pixels_minus:hover, 
+.red_alliance_auto_backstage_pixels_minus:hover,
+.red_alliance_auto_backpanel_pixels_minus:hover,
+.red_alliance_minor_penalties_minus:hover, 
+.red_alliance_major_penalties_minus:hover {
   background-color:rgb(221, 43, 43);
 }
 
 /* Plus buttons */
-.red_alliance_backstage_pixels_plus, .red_alliance_auto_backstage_pixels_plus, .red_alliance_auto_backpanel_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus ,.blue_alliance_backstage_pixels_plus, .blue_alliance_auto_backstage_pixels_plus, .blue_alliance_auto_backpanel_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus{
+.blue_alliance_backstage_pixels_plus, .blue_alliance_auto_backstage_pixels_plus, .blue_alliance_auto_backpanel_pixels_plus, .blue_alliance_minor_penalties_plus, .blue_alliance_major_penalties_plus ,.red_alliance_backstage_pixels_plus, .red_alliance_auto_backstage_pixels_plus, .red_alliance_auto_backpanel_pixels_plus, .red_alliance_minor_penalties_plus, .red_alliance_major_penalties_plus{
   width: 20%;
   height: fit-content;
   border-radius: 0px 1vw 1vw 0px;
@@ -554,27 +557,27 @@ h1, p, h1, a, h2    {
   transition: all 0.3s ease-in-out;
 }
 
-.red_alliance_backstage_pixels_plus:hover, 
-.red_alliance_auto_backstage_pixels_plus:hover,
-.red_alliance_auto_backpanel_pixels_plus:hover,
-.red_alliance_minor_penalties_plus:hover, 
-.red_alliance_major_penalties_plus:hover, 
 .blue_alliance_backstage_pixels_plus:hover, 
 .blue_alliance_auto_backstage_pixels_plus:hover,
 .blue_alliance_auto_backpanel_pixels_plus:hover,
 .blue_alliance_minor_penalties_plus:hover, 
-.blue_alliance_major_penalties_plus:hover {
+.blue_alliance_major_penalties_plus:hover, 
+.red_alliance_backstage_pixels_plus:hover, 
+.red_alliance_auto_backstage_pixels_plus:hover,
+.red_alliance_auto_backpanel_pixels_plus:hover,
+.red_alliance_minor_penalties_plus:hover, 
+.red_alliance_major_penalties_plus:hover {
   background-color:rgb(88, 185, 23);
 }
 
-.red_alliance_backstage_pixels, .red_alliance_auto_backpanel_pixels, .red_alliance_auto_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
+.blue_alliance_backstage_pixels, .blue_alliance_auto_backpanel_pixels, .blue_alliance_auto_backstage_pixels, .blue_alliance_minor_penalties, .blue_alliance_major_penalties{
   display: flex;
   justify-content: left;
   margin-left: 10%;
   margin-top: 3vw;
 }
 
-.blue_alliance_backstage_pixels, .blue_alliance_auto_backpanel_pixels, .blue_alliance_auto_backstage_pixels, .blue_alliance_minor_penalties, .blue_alliance_major_penalties{
+.red_alliance_backstage_pixels, .red_alliance_auto_backpanel_pixels, .red_alliance_auto_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
   display: flex;
   justify-content: right;
   margin-right: 10%;
@@ -600,11 +603,12 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2.5vw;
   font-family: abel;
 }
-.auto_backstage_pixels_header{
-  top: 10.5vw;
-}
+
 .auto_backpanel_pixels_header{
-  top: 18vw
+  top: 10.5vw
+}
+.backstage_pixels_header{
+  top: 18vw;
 }
 .minor_penalties_header{
   top: 25.5vw
@@ -634,7 +638,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: abel;
   display: block;
   background-color: var(--oranage);
-  border: 0.5vw solid var(--blue);
+  border: 0.5vw solid var(--red);
   opacity: 0;
   transition: all 0.5s ease;
   pointer-events: none;
@@ -662,7 +666,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2vw;
 }
 
-.red_alliance_header{
+.blue_alliance_header{
   font-family: abel;
   left: 14.9vw;
   text-align: center;
@@ -671,7 +675,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1vw;
   font-size: 2vw;
 }
-.blue_alliance_header{
+.red_alliance_header{
   font-family: abel;
   right: 14.9vw;
   text-align: center;
@@ -814,6 +818,6 @@ input[type="number"]::-webkit-outer-spin-button {
   border-right: 0.4vw solid var(--border);
 }
 
-.red_button:hover, .blue_button:hover {
+.blue_button:hover, .red_button:hover {
   background-color: var(--hoverbackground);
 }

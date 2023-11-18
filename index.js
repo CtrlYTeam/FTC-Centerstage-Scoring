@@ -166,13 +166,13 @@ function updateBackboardStats()
 {
   let red = redAlliance; let blue = blueAlliance;
   const colorArr = ["White", "Green", "Purple", "Yellow"];
-  backboard[0].innerHTML = red[1] + " - Mosaics - " + blue[1];
-  backboard[1].innerHTML = redColorStates.filter(color => color !== "black").length + "- Total Pixels - " + blueColorStates.filter(color => color !== "black").length;
-  backboard[6].innerHTML = red[12] + " - Set Lines Crossed - " + blue[12];
+  backboard[0].innerHTML = blue[1] + " - Mosaics - " + red[1];
+  backboard[1].innerHTML = blueColorStates.filter(color => color !== "black").length + "- Total Pixels - " + redColorStates.filter(color => color !== "black").length;
+  backboard[6].innerHTML = blue[12] + " - Set Lines Crossed - " + red[12];
   for(let i=0; i < 4; i++) {
-    backboard[i+2].innerHTML = redColorStates.filter(color => color == colorArr[i].toLowerCase()).length
+    backboard[i+2].innerHTML = blueColorStates.filter(color => color == colorArr[i].toLowerCase()).length
     + " - " + colorArr[i] + " Pixels - " 
-    + blueColorStates.filter(color => color == colorArr[i].toLowerCase()).length;
+    + redColorStates.filter(color => color == colorArr[i].toLowerCase()).length;
   }
 }
 function createHexDivision(containerColor, hexRowColor, hexColor)
@@ -451,7 +451,11 @@ function updateTimmer(){
 }
 
 function updateDarkmode(){
+  let tooltips_color = document.querySelectorAll('.toolbox_info_image');
   if(userData[jsonItems[2]] == 1){
+    for(let i = 0; i <tooltips_color.length; i++){
+      tooltips_color[i].src = 'images/questionMarkWhite.svg';
+    }
     root.style.setProperty("--mainbackground", "#242528");
     root.style.setProperty("--buttonbackground", "#242528");
     root.style.setProperty("--border", "#d2daff");
@@ -463,6 +467,9 @@ function updateDarkmode(){
     root.style.setProperty("--gradientbluelight", "#0025c9");
     root.style.setProperty("--hoverbackground", "#8c8f98");
   }else{
+    for(let i = 0; i <tooltips_color.length; i++){
+      tooltips_color[i].src = 'images/questionMark.svg';
+    }
     root.style.setProperty("--mainbackground", "#d2daff");
     root.style.setProperty("--buttonbackground", "#f0f0f0");
     root.style.setProperty("--border", "#000000");
@@ -505,9 +512,51 @@ function importScoreGame (file){
   reader.onload = function(event) {
       const csvContent = event.target.result
       importData = csvToArray(csvContent)
+      // console.log(redAlliance , redColorStates , blueAlliance , blueColorStates)
+      console.log(importData)
+      let redAlliance = [
+        parseInt(importData[0][0]),
+        parseInt(importData[0][1]),
+        parseInt(importData[0][2]),
+        [parseInt(importData[0][3]), parseInt(importData[0][4])],
+        [parseInt(importData[0][5]), parseInt(importData[0][6])],
+        [parseInt(importData[0][7]), parseInt(importData[0][8])],
+        [parseInt(importData[0][9]), parseInt(importData[0][10])],
+        [parseInt(importData[0][11]), parseInt(importData[0][12])],
+        [parseInt(importData[0][13]), parseInt(importData[0][14])],
+        [parseInt(importData[0][15]), parseInt(importData[0][16])],
+        [parseInt(importData[0][17]), parseInt(importData[0][18])],
+        parseInt(importData[0][19]),
+        parseInt(importData[0][20]),
+        parseInt(importData[0][21])
+      ];
+      redColorStates = importData[1].slice(21)
+      let blueAlliance = [
+        parseInt(importData[1][0]),
+        parseInt(importData[1][1]),
+        parseInt(importData[1][2]),
+        [parseInt(importData[1][3]), parseInt(importData[1][4])],
+        [parseInt(importData[1][5]), parseInt(importData[1][6])],
+        [parseInt(importData[1][7]), parseInt(importData[1][8])],
+        [parseInt(importData[1][9]), parseInt(importData[1][10])],
+        [parseInt(importData[1][11]), parseInt(importData[1][12])],
+        [parseInt(importData[1][13]), parseInt(importData[1][14])],
+        [parseInt(importData[1][15]), parseInt(importData[1][16])],
+        [parseInt(importData[1][17]), parseInt(importData[1][18])],
+        parseInt(importData[1][19]),
+        parseInt(importData[1][20]),
+        parseInt(importData[1][21])
+      ];
+      redColorStates = importData[1].slice(21) 
+      updateInputValues
   }
   reader.readAsText(file)
 }
+
+function updateInputValues(){
+  
+}
+
 //csv shinanigans
 function csvToArray(csvString) {
   const rows = csvString.split('\n')
@@ -535,7 +584,6 @@ function csvToArray(csvString) {
 function convertArrayToCSV(data) {
   const csvRows = []
   for (const row of data) {
-    console.log
       const csvRow = row.map(value => {
           if (typeof value === 'string' && value.includes(',')) {
               return `"${value.replace(/"/g, '""')}"`
@@ -598,8 +646,8 @@ function updatePoints(color) {
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
   let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10);
-  let autoBackstagePts = (alliance[13] * 2);
-  let autoBackpanelPts = (alliance[14] * 3);
+  let autoBackstagePts = (alliance[13] * 3);
+  let autoBackpanelPts = (alliance[14] * 5);
   //Driver control period
   let pixelPts = (alliance[0] * 3) + (alliance[1] * 10) + (alliance[2]) + (alliance[12]*10);
   //Endgame
@@ -690,11 +738,17 @@ let redAlliancePoints  = [redAllianceBackstagePixels, redAllianceAutoBackstagePi
 let blueAlliancePoints = [blueAlliancebackstagePixels, blueAllianceAutoBackstagePixels, blueAllianceAutoBackpanelPixels, blueAllianceMinorPenalties, blueAllianceMajorPenalties]
 
 function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
-  if(change > 0 || teamPoints[pointType][0].value != 0) 
+  if(change > 0 || team[arrayPos] > 0 || Number(teamPoints[pointType][0].value) > 0) 
   {
     team[arrayPos] = Number(teamPoints[pointType][0].value)
     team[arrayPos] += change
     teamPoints[pointType][0].value = team[arrayPos]
+
+
+    if(pointType == 1 && (team[2] != 0 || change > 0)) {
+      team[2] += change;
+      teamPoints[0][0].value = team[arrayPos];
+    }
 
     if (teamPoints[pointType][0].value.length > 4)
       teamPoints[pointType][0].value = teamPoints[pointType][0].value.slice(0, 4)
@@ -702,7 +756,7 @@ function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   updatePoints("blue")
   updatePoints("red")
 }
-// doing commas like 1 ,2 ,3 is a crime
+// doing commas like 1 ,2 ,3 is a war crime
 const teamIndices = [2, 13, 14, 10, 11]
 
 /**
@@ -711,6 +765,7 @@ const teamIndices = [2, 13, 14, 10, 11]
 for(let i=0; i < redAlliancePoints.length; i++) 
 {
   redAlliancePoints[i][0].addEventListener('input', () => {
+    //console.log(Number(redAlliancePoints[i][0].value))
     penaltyScoreUpdate(0, redAlliance, redAlliancePoints, teamIndices[i], i)
   })
   
@@ -1005,36 +1060,36 @@ for(let i=0; i < 4; i++)
   for(let j=0; j < 4; j++)
   {
       teamDroneZone[i][j].addEventListener("click", () => {
-          droneZoneChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          droneZoneChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
   }
 
   for(let j=0; j < 2; j++)
   {
       teamProps[i][j].addEventListener("click", () => {
-          propChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          propChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
       teamAutoSpike[i][j].addEventListener("click", () => {
-          autoSpikeChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          autoSpikeChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
       teamAutoPixel[i][j].addEventListener("click", () => {
-          autoPixelChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          autoPixelChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
       teamAutoPark[i][j].addEventListener("click", () => {
-          autoParkChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          autoParkChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
   }
 
   for(let j=0; j < 3; j++)
   {
       teamEndgamePark[i][j].addEventListener("click", () => {
-          endgameParkChange(i <= 1? redAlliance: blueAlliance, i, j)
-          updatePoints(i <= 1? "red": "blue")
+          endgameParkChange(i <= 1? blueAlliance: redAlliance, i, j)
+          updatePoints(i <= 1? "blue": "red")
       })
   }
 }

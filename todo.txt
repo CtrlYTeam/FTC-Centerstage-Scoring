@@ -19,13 +19,13 @@ delete ids of tooltips                           Done
 Theroretical limits and checks for scoring
 reverse travel right clicks for hexagons
 export                                           Done
-import
+import                                           Done
 fix import css
 update elements according to the import
 timmer                                           Done
 timmer on/off                                    Done
-!!Fix + - buttons. update not propigating properly!!
-need to change color for tooltips on dark mode
+Fix +- buttons. update not propigating properly  Done?
+need to change color for tooltips on dark mode   Done
 
 ===later===
 ctrl + p css
@@ -33,5 +33,5 @@ ctrl + p crashing on brave browser?
 sounds? timer, button clicks, scoring changes
 fancy crown effect on score
 data visualization
-darkmode add to dropdown - zihaar                Doneish
+darkmode add to dropdown - zihaar                Done
 cookies for scoring (idk)
