@@ -47,6 +47,7 @@ blueColorStates.fill("black")
 
 changeColor("red", redColorStates)
 changeColor("blue", blueColorStates)
+let hexColorAvail = ["black", "white", "green", "purple", "yellow"]; 
 
 function changeColor(hexColor, colorStates) 
 {
@@ -54,17 +55,7 @@ function changeColor(hexColor, colorStates)
   hexagons.forEach((hex, index) => {
     let currentColorIndex = 0
     hex.addEventListener("click", () => {
-      if(hexColor == "red") {
-        if(redReset[index]) {
-          currentColorIndex = 0
-          redReset[index] = false
-        }
-      } else {
-        if(blueReset[index]) {
-          currentColorIndex = 0
-          blueReset[index] = false
-        }
-      }
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[index]);
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
         switch(currentColorIndex)
@@ -523,91 +514,110 @@ function exportScoreGame() {
 }
 //input input needs to be reworked
 function importScoreGame (file){
+  
   const reader = new FileReader()
   //reader.onload is async
   reader.onload = function(event) {
-      const csvContent = event.target.result
-      importData = csvToArray(csvContent)
-      // console.log(redAlliance , redColorStates , blueAlliance , blueColorStates)
-      console.log(importData)
-      let redAlliance = [
-        parseInt(importData[0][0]),
-        parseInt(importData[0][1]),
-        parseInt(importData[0][2]),
-        [parseInt(importData[0][3]), parseInt(importData[0][4])],
-        [parseInt(importData[0][5]), parseInt(importData[0][6])],
-        [parseInt(importData[0][7]), parseInt(importData[0][8])],
-        [parseInt(importData[0][9]), parseInt(importData[0][10])],
-        [parseInt(importData[0][11]), parseInt(importData[0][12])],
-        [parseInt(importData[0][13]), parseInt(importData[0][14])],
-        [parseInt(importData[0][15]), parseInt(importData[0][16])],
-        [parseInt(importData[0][17]), parseInt(importData[0][18])],
-        parseInt(importData[0][19]),
-        parseInt(importData[0][20]),
-        parseInt(importData[0][21])
-      ];
-      redColorStates = importData[1].slice(21)
-      let blueAlliance = [
-        parseInt(importData[1][0]),
-        parseInt(importData[1][1]),
-        parseInt(importData[1][2]),
-        [parseInt(importData[1][3]), parseInt(importData[1][4])],
-        [parseInt(importData[1][5]), parseInt(importData[1][6])],
-        [parseInt(importData[1][7]), parseInt(importData[1][8])],
-        [parseInt(importData[1][9]), parseInt(importData[1][10])],
-        [parseInt(importData[1][11]), parseInt(importData[1][12])],
-        [parseInt(importData[1][13]), parseInt(importData[1][14])],
-        [parseInt(importData[1][15]), parseInt(importData[1][16])],
-        [parseInt(importData[1][17]), parseInt(importData[1][18])],
-        parseInt(importData[1][19]),
-        parseInt(importData[1][20]),
-        parseInt(importData[1][21])
-      ];
-      redColorStates = importData[1].slice(21) 
-      updateInputValues
+    
+    const jsonData = JSON.parse(event.target.result);
+
+    let redAlliance = jsonData.redAlliance;
+    let blueAlliance = jsonData.blueAlliance;
+    let redColorStates = jsonData.redBackpanel;
+    let blueColorStates = jsonData.blueBackpanel;
+
+    console.log("Red Alliance:", redAlliance);
+    console.log("Blue Alliance:", blueAlliance);
+    console.log("Red Backpanel:", redColorStates);
+    console.log("Blue Backpanel:", blueColorStates);
+    updateInputValues()
   }
-  reader.readAsText(file)
-}
-//csv shinanigans
-function csvToArray(csvString) {
-  const rows = csvString.split('\n')
-  const result = []
-  for (const row of rows) {
-      const values = []
-      let currentValue = ''
-      let insideQuotes = false
-      for (let i = 0; i < row.length; i++) {
-          const char = row[i]
-          if (char === '"') {
-              insideQuotes = !insideQuotes
-          } else if (char === ',' && !insideQuotes) {
-              values.push(currentValue)
-              currentValue = ''
-          } else {
-              currentValue += char
-          }
-      }
-      values.push(currentValue)
-      result.push(values)
-  }
-  return result;
-}
-function convertArrayToCSV(data) {
-  const csvRows = []
-  for (const row of data) {
-    console.log
-      const csvRow = row.map(value => {
-          if (typeof value === 'string' && value.includes(',')) {
-              return `"${value.replace(/"/g, '""')}"`
-          } else {
-              return value
-          }
-      }).join(",")
-      csvRows.push(csvRow)
-  }
-  return csvRows.join("\n")
+  reader.readAsText(file);
 }
 
+function updateInputValues(){
+let colorString = "red";
+let color = "redAlliance";
+let colorStates = redColorStates;
+let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+for(i = 0; i < hexagons.length; i++) {
+  hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+  hexagons[i].classList.add(redColorStates[i]);
+}
+redAllianceBackstagePixels[0].value = redAlliance[2];
+redAllianceAutoBackpanelPixels[0].value = redAlliance[14];
+redAllianceAutoBackstagePixels[0].value = redAlliance[13];
+redAllianceMinorPenalties[0].value = redAlliance[10];
+redAllianceMajorPenalties[0].value = redAlliance[11];
+updateSetLines(color, colorStates);
+scoreMosaics(colorStates, color);
+updateBackboardStats();
+updatePoints("red");
+updatePoints("blue");
+
+let arrPos = [3, 4, 5, 6]
+let arrElementsRed = [
+  playerThreeProp,
+  playerFourProp,
+  playerThreeAutoSpike,
+  playerFourAutoSpike,
+  playerThreeAutoPixel,
+  playerFourAutoPixel,
+  playerThreeAutoPark,
+  playerFourAutoPark
+]
+for(i = 0; i < arrPos.length; i++){
+  if(redAlliance[arrPos[i][]] == 0){
+    // needs work
+    arrElementsRed[i][].color = universalRed
+    arrElementsRed[i][].color = "black"
+  }else{
+    arrElementsRed[i][].color = universalGreen
+    arrElementsRed[i][].color = "white"
+  }
+}
+let endgamePark = [
+  playerOneEndgamePark,
+  playerTwoEndgamePark,
+  playerThreeEndgamePark,
+  playerFourEndgamePark
+]
+
+let arrElementsBlue = [
+  playerOneProp,
+  playerTwoProp,
+  playerOneAutoSpike,
+  playerTwoAutoSpike,
+  playerOneAutoPixel,
+  playerTwoAutoPixel,
+  playerOneAutoPark,
+  playerTwoAutoPark,
+]
+
+// 0,//(0) pixels on backboard
+// 0,//(1) mozaiacs
+// 0,//(2) pixel in backstage
+// //player one left player 2 right
+// [0,0],//(3) player prop
+// [0,0],//(4) auto spike
+// [0,0],//(5) auto pixel
+// [0,0],//(6) auto park
+// [0,0],//(7) suspension
+// [0,0],//(8) park
+// [0,0],//(9) drone
+// 0,//(10) minor penalties
+// 0,//(11) major penalties
+// 0,//(12) set lines crossed
+// 0,//(13) auto backstage pixel
+// 0,//(14) auto backpanel pixel
+// [0,0]//(15) team name 
+//   let buttons = document.getElementsByClassName("red_button");
+//   for(let i = 0; i < buttons.length;i++) {
+//     buttons[i].style.backgroundColor="aliceblue";
+//     buttons[i].style.color="black";
+//   }
+
+}
 let redAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mozaiacs
@@ -1119,7 +1129,7 @@ const resetButtons = [
 ]
 
 resetButtons[0].addEventListener("click" , () => {
-    const colorString = "red"
+    let colorString = "red"
     redAlliance = [
         0,//(0) pixels on backboard
         0,//(1) mozaiacs
@@ -1167,7 +1177,7 @@ resetButtons[0].addEventListener("click" , () => {
   });
 
   resetButtons[1].addEventListener("click" , () => {
-    const colorString = "blue";
+    colorString = "blue";
     blueAlliance = [
       0,//(0) pixels on backboard
       0,//(1) mozaiacs
