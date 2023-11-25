@@ -1,5 +1,10 @@
 //landscape prefrence
 
+const universalGreen = "#58b917";
+const universalRed = "red"
+const universalYellow = "#D5D817";
+const universalOrange = "orange";
+
 let alertElements = [
   document.getElementById("landscapeWarning"),
   document.getElementById("alertButton")
@@ -18,8 +23,6 @@ let redReset = new Array(71);
 let blueReset = new Array(71)
 redReset.fill(false);
 blueReset.fill(false);
-const universalGreen = "#58b917";
-const universalRed = "red"
 //Hexagon code
 function formatText(array) {
   let finalString = ""
@@ -521,10 +524,10 @@ function importScoreGame (file){
     
     const jsonData = JSON.parse(event.target.result);
 
-    let redAlliance = jsonData.redAlliance;
-    let blueAlliance = jsonData.blueAlliance;
-    let redColorStates = jsonData.redBackpanel;
-    let blueColorStates = jsonData.blueBackpanel;
+    redAlliance = jsonData.redAlliance;
+    blueAlliance = jsonData.blueAlliance;
+    redColorStates = jsonData.redBackpanel;
+    blueColorStates = jsonData.blueBackpanel;
 
     console.log("Red Alliance:", redAlliance);
     console.log("Blue Alliance:", blueAlliance);
@@ -555,7 +558,7 @@ updateBackboardStats();
 updatePoints("red");
 updatePoints("blue");
 
-let arrPos = [3, 4, 5, 6]
+let arrPos = [3, 0, 4, 0, 5, 0, 6]
 let arrElementsRed = [
   playerThreeProp,
   playerFourProp,
@@ -566,22 +569,45 @@ let arrElementsRed = [
   playerThreeAutoPark,
   playerFourAutoPark
 ]
-for(i = 0; i < arrPos.length; i++){
-  if(redAlliance[arrPos[i][]] == 0){
-    // needs work
-    arrElementsRed[i][].color = universalRed
-    arrElementsRed[i][].color = "black"
+
+let arrElementsRed2= [
+  playerThreeEndgamePark,
+  playerFourEndgamePark,
+  playerThreeDroneZone,
+  playerFourDroneZone
+]
+
+for(i = 0; i < arrPos.length; i += 2){
+  if(redAlliance[arrPos[i]][0] == 1){
+    arrElementsRed[i][1].style.background = universalGreen
+    arrElementsRed[i][0].style="";
+    arrElementsRed[i][1].style.color = "white"
   }else{
-    arrElementsRed[i][].color = universalGreen
-    arrElementsRed[i][].color = "white"
+    arrElementsRed[i][0].style.background = universalRed
+    arrElementsRed[i][1].style="";
+    arrElementsRed[i][0].style.color = "white"
+  }
+  if(redAlliance[arrPos[i]][1] == 1){
+    arrElementsRed[i+1][1].style.background = universalGreen
+    arrElementsRed[i+1][0].style="";
+    arrElementsRed[i+1][1].style.color = "white"
+  }else{
+    arrElementsRed[i+1][0].style.background = universalRed
+    arrElementsRed[i+1][1].style="";
+    arrElementsRed[i+1][0].style.color = "white"
   }
 }
-let endgamePark = [
-  playerOneEndgamePark,
-  playerTwoEndgamePark,
-  playerThreeEndgamePark,
-  playerFourEndgamePark
-]
+
+for (i = 0; i < 2; i++) {
+  droneZoneChange(redAlliance,i+2,redAlliance[9][i]);
+  if(redAlliance[7][i] == 1) {
+    endgameParkChange(redAlliance,i+2,2)
+  } else if(redAlliance[8][i] == 1) {
+    endgameParkChange(redAlliance,i+2,1)
+  } else {
+    endgameParkChange(redAlliance,i+2,0)
+  }
+}
 
 let arrElementsBlue = [
   playerOneProp,
@@ -592,6 +618,13 @@ let arrElementsBlue = [
   playerTwoAutoPixel,
   playerOneAutoPark,
   playerTwoAutoPark,
+]
+
+let arrElementsBlue2= [
+  playerOneEndgamePark,
+  playerTwoEndgamePark,
+  playerOneDroneZone,
+  playerTwoDroneZone
 ]
 
 // 0,//(0) pixels on backboard
@@ -852,6 +885,7 @@ let playerFourDroneZone = [
 
 let teamDroneZone = [playerOneDroneZone, playerTwoDroneZone, playerThreeDroneZone, playerFourDroneZone]
 
+
 function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
@@ -864,9 +898,9 @@ function droneZoneChange(alliance, teamNumber, change)
   else if(change == 1)
     teamDroneZone[teamNumber][change].style.backgroundColor = universalGreen
   else if(change == 2)
-    teamDroneZone[teamNumber][change].style.backgroundColor = "#D5D817"
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalYellow
   else
-    teamDroneZone[teamNumber][change].style.backgroundColor = "orange"
+    teamDroneZone[teamNumber][change].style.backgroundColor = universalOrange
 }
 
 /*
@@ -962,7 +996,7 @@ function endgameParkChange(alliance, teamNumber, change)
   if(change == 0)
     teamEndgamePark[teamNumber][change].style.backgroundColor = universalRed
   else if(change == 1)
-    teamEndgamePark[teamNumber][change].style.backgroundColor = "#D5D817"
+    teamEndgamePark[teamNumber][change].style.backgroundColor = universalYellow
   else
     teamEndgamePark[teamNumber][change].style.backgroundColor = universalGreen
 }
