@@ -470,7 +470,7 @@ h1, p, h1, a, h2    {
   0 0 200px;
   border: 2px solid var(--oranage);
 }
-.total_mosaiacs, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines{
+.total_mosaics, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines{
   margin-top: 2vw;
   font-family: abel;
   font-size: 2vw;
@@ -481,7 +481,7 @@ h1, p, h1, a, h2    {
   width: 48%;
   top: 59.5vw;
   left: 0;
-  height: 92vw;
+  height: 102vw;
   background: linear-gradient(to right, var(--gradientbluedark), var(--gradientbluelight));
   position: absolute;
   border: 0.5vw solid blue;
@@ -492,7 +492,7 @@ h1, p, h1, a, h2    {
   width: 48%;
   top: 59.5vw;
   right: 0;
-  height: 92vw;
+  height: 102vw;
   background: linear-gradient(to left, var(--gradientreddark), var(--gradientredlight));
   position: absolute;
   border: 0.5vw solid red;
@@ -685,7 +685,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2vw;
 }
 
-.team_prop_header, .drone_zone_header, .endgame_park_header, .team_auto_spike, .team_auto_pixel, .team_auto_park{
+.team_prop_header, .drone_zone_header, .endgame_park_header, .endgame_suspend_header, .team_auto_spike, .team_auto_pixel, .team_auto_park {
   font-family: abel;
   font-size: 1.8vw;
   position: absolute;
@@ -714,10 +714,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /*Divs containing each button*/
-.player_one_prop, .player_one_drone_zone, .player_one_endgame_park, .player_one_auto_spike, .player_one_auto_pixel, .player_one_auto_park,
-.player_two_prop, .player_two_drone_zone, .player_two_endgame_park, .player_two_auto_spike, .player_two_auto_pixel, .player_two_auto_park,
-.player_three_prop, .player_three_drone_zone, .player_three_endgame_park, .player_three_auto_spike, .player_three_auto_pixel, .player_three_auto_park,
-.player_four_prop, .player_four_drone_zone, .player_four_endgame_park, .player_four_auto_spike, .player_four_auto_pixel, .player_four_auto_park {
+.player_one_prop, .player_one_drone_zone, .player_one_endgame_park, .player_one_auto_spike, .player_one_auto_pixel, .player_one_auto_park, .player_one_endgame_suspend,
+.player_two_prop, .player_two_drone_zone, .player_two_endgame_park, .player_two_auto_spike, .player_two_auto_pixel, .player_two_auto_park, .player_two_endgame_suspend,
+.player_three_prop, .player_three_drone_zone, .player_three_endgame_park, .player_three_auto_spike, .player_three_auto_pixel, .player_three_auto_park, .player_three_endgame_suspend,
+.player_four_prop, .player_four_drone_zone, .player_four_endgame_park, .player_four_auto_spike, .player_four_auto_pixel, .player_four_auto_park, .player_four_endgame_suspend {
   justify-content: center;
   display: flex;
   margin-top: 2.5vw;
@@ -725,10 +725,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /*All yes no buttons*/
-.player_one_prop_no, .player_one_prop_yes, .player_one_prop_no, .player_one_prop_yes, .player_one_auto_spike_no, .player_one_auto_spike_yes, .player_one_auto_pixel_no, .player_one_auto_pixel_yes, .player_one_auto_park_no, .player_one_auto_park_yes,
-.player_two_prop_no, .player_two_prop_yes, .player_two_prop_no, .player_two_prop_yes, .player_two_auto_spike_no, .player_two_auto_spike_yes, .player_two_auto_pixel_no, .player_two_auto_pixel_yes, .player_two_auto_park_no, .player_two_auto_park_yes,
-.player_three_prop_no, .player_three_prop_yes, .player_three_prop_no, .player_three_prop_yes, .player_three_auto_spike_no, .player_three_auto_spike_yes, .player_three_auto_pixel_no, .player_three_auto_pixel_yes, .player_three_auto_park_no, .player_three_auto_park_yes,
-.player_four_prop_no, .player_four_prop_yes, .player_four_prop_no, .player_four_prop_yes, .player_four_auto_spike_no, .player_four_auto_spike_yes, .player_four_auto_pixel_no, .player_four_auto_pixel_yes, .player_four_auto_park_no, .player_four_auto_park_yes {
+.player_one_prop_no, .player_one_prop_yes, .player_one_prop_no, .player_one_prop_yes, .player_one_auto_spike_no, .player_one_auto_spike_yes, .player_one_auto_pixel_no, .player_one_auto_pixel_yes, .player_one_auto_park_no, .player_one_auto_park_yes, .player_one_endgame_park_no, .player_one_endgame_park_yes, .player_one_endgame_suspend_no, .player_one_endgame_suspend_yes,
+.player_two_prop_no, .player_two_prop_yes, .player_two_prop_no, .player_two_prop_yes, .player_two_auto_spike_no, .player_two_auto_spike_yes, .player_two_auto_pixel_no, .player_two_auto_pixel_yes, .player_two_auto_park_no, .player_two_auto_park_yes, .player_two_endgame_park_no, .player_two_endgame_park_yes, .player_two_endgame_suspend_no, .player_two_endgame_suspend_yes,
+.player_three_prop_no, .player_three_prop_yes, .player_three_prop_no, .player_three_prop_yes, .player_three_auto_spike_no, .player_three_auto_spike_yes, .player_three_auto_pixel_no, .player_three_auto_pixel_yes, .player_three_auto_park_no, .player_three_auto_park_yes, .player_three_endgame_park_no, .player_three_endgame_park_yes, .player_three_endgame_suspend_no, .player_three_endgame_suspend_yes,
+.player_four_prop_no, .player_four_prop_yes, .player_four_prop_no, .player_four_prop_yes, .player_four_auto_spike_no, .player_four_auto_spike_yes, .player_four_auto_pixel_no, .player_four_auto_pixel_yes, .player_four_auto_park_no, .player_four_auto_park_yes, .player_four_endgame_park_no, .player_four_endgame_park_yes, .player_four_endgame_suspend_no, .player_four_endgame_suspend_yes {
   width: 50%;
   text-align: center;
   padding: 1.1vw;
@@ -791,28 +791,82 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 /*Left buttons */
-.player_one_prop_no, .player_one_prop_no, .player_one_auto_spike_no, .player_one_auto_pixel_no, .player_one_auto_park_no, .player_two_prop_no, .player_two_prop_no, .player_two_auto_spike_no, .player_two_auto_pixel_no, .player_two_auto_park_no, .player_three_prop_no, .player_three_prop_no, .player_three_auto_spike_no, .player_three_auto_pixel_no, .player_three_auto_park_no, .player_four_prop_no, .player_four_prop_no, .player_four_auto_spike_no, .player_four_auto_pixel_no, .player_four_auto_park_no, .player_one_drone_zone_none,
+.player_one_prop_no,
+.player_one_prop_no,
+.player_one_auto_spike_no,
+.player_one_auto_pixel_no,
+.player_one_auto_park_no,
+.player_one_drone_zone_none,
+.player_one_endgame_park_no,
+.player_one_endgame_suspend_no,
+
+.player_two_prop_no,
+.player_two_prop_no,
+.player_two_auto_spike_no,
+.player_two_auto_pixel_no,
+.player_two_auto_park_no,
 .player_two_drone_zone_none,
+.player_two_endgame_park_no,
+.player_two_endgame_suspend_no,
+
+.player_three_prop_no,
+.player_three_prop_no,
+.player_three_auto_spike_no,
+.player_three_auto_pixel_no,
+.player_three_auto_park_no,
 .player_three_drone_zone_none,
+.player_three_endgame_park_no,
+.player_three_endgame_suspend_no,
+
+.player_four_prop_no,
+.player_four_prop_no,
+.player_four_auto_spike_no,
+.player_four_auto_pixel_no,
+.player_four_auto_park_no,
 .player_four_drone_zone_none,
-.player_one_park_none,
-.player_two_park_none,
-.player_three_park_none,
-.player_four_park_none
+.player_four_endgame_park_no,
+.player_four_endgame_suspend_no
 {
   border-radius: 1vw 0% 0% 1vw;
   border-left: 0.4vw solid var(--border);
 }
 
 /*Right buttons */
-.player_one_prop_yes, .player_one_prop_yes, .player_one_auto_spike_yes, .player_one_auto_pixel_yes, .player_one_auto_park_yes, .player_two_prop_yes, .player_two_prop_yes, .player_two_auto_spike_yes, .player_two_auto_pixel_yes, .player_two_auto_park_yes, .player_three_prop_yes, .player_three_prop_yes, .player_three_auto_spike_yes, .player_three_auto_pixel_yes, .player_three_auto_park_yes, .player_four_prop_yes, .player_four_prop_yes, .player_four_auto_spike_yes, .player_four_auto_pixel_yes, .player_four_auto_park_yes, .player_one_drone_zone_three,
+.player_one_prop_yes,
+.player_one_prop_yes,
+.player_one_auto_spike_yes,
+.player_one_auto_pixel_yes,
+.player_one_auto_park_yes,
+.player_one_drone_zone_three,
+.player_one_endgame_park_yes,
+.player_one_endgame_suspend_yes,
+
+.player_two_prop_yes,
+.player_two_prop_yes,
+.player_two_auto_spike_yes,
+.player_two_auto_pixel_yes,
+.player_two_auto_park_yes,
 .player_two_drone_zone_three,
+.player_two_endgame_park_yes,
+.player_two_endgame_suspend_yes,
+
+.player_three_prop_yes,
+.player_three_prop_yes,
+.player_three_auto_spike_yes,
+.player_three_auto_pixel_yes,
+.player_three_auto_park_yes,
 .player_three_drone_zone_three,
+.player_three_endgame_park_yes,
+.player_three_endgame_suspend_yes,
+
+.player_four_prop_yes,
+.player_four_prop_yes,
+.player_four_auto_spike_yes,
+.player_four_auto_pixel_yes,
+.player_four_auto_park_yes,
 .player_four_drone_zone_three,
-.player_one_park_suspend,
-.player_two_park_suspend,
-.player_three_park_suspend,
-.player_four_park_suspend
+.player_four_endgame_park_yes,
+.player_four_endgame_suspend_yes
 {
   border-radius: 0% 1vw 1vw 0%;
   border-right: 0.4vw solid var(--border);

@@ -291,26 +291,36 @@ let teamNamesString = [
   "Team Four"
 ]
 
-for (let i = 0; i < 4; i++) {
-  teamNames[i].addEventListener("input", (function (index) {
-    return function () {
-      if (teamNames[index].value.length === 0) {
-        teamNameHeader[index].innerHTML = teamNamesString[index];
-        if (index > 1) {
-          redAlliance[15][index - 2] = teamNamesString[index];
+function updateTeamNames(update){
+
+  if(update == 1){
+    teamNames[0].value = blueAlliance[15][0]
+    teamNames[1].value = blueAlliance[15][1]
+    teamNames[2].value = redAlliance[15][0]
+    teamNames[3].value = redAlliance[15][1]
+  }
+
+  for (let i = 0; i < 4; i++) {
+    teamNames[i].addEventListener("input", (function (index) {
+      return function () {
+        if (teamNames[index].value.length === 0) {
+          teamNameHeader[index].innerHTML = teamNamesString[index];
+          if (index > 1) {
+            redAlliance[15][index - 2] = teamNamesString[index];
+          } else {
+            blueAlliance[15][index] = teamNamesString[index];
+          }
         } else {
-          blueAlliance[15][index] = teamNamesString[index];
+          teamNameHeader[index].innerHTML = teamNames[index].value;
+          if (index > 1) {
+            redAlliance[15][index - 2] = teamNames[index].value;
+          } else {
+            blueAlliance[15][index] = teamNames[index].value;
+          }
         }
-      } else {
-        teamNameHeader[index].innerHTML = teamNames[index].value;
-        if (index > 1) {
-          redAlliance[15][index - 2] = teamNames[index].value;
-        } else {
-          blueAlliance[15][index] = teamNames[index].value;
-        }
-      }
-    };
-  })(i));
+      };
+    })(i));
+  }
 }
 
 //toggle buttons
@@ -529,103 +539,170 @@ function importScoreGame (file){
     redColorStates = jsonData.redBackpanel;
     blueColorStates = jsonData.blueBackpanel;
 
-    console.log("Red Alliance:", redAlliance);
-    console.log("Blue Alliance:", blueAlliance);
-    console.log("Red Backpanel:", redColorStates);
-    console.log("Blue Backpanel:", blueColorStates);
     updateInputValues()
   }
   reader.readAsText(file);
 }
 
 function updateInputValues(){
-let colorString = "red";
-let color = "redAlliance";
-let colorStates = redColorStates;
-let hexagons = document.getElementsByClassName("hexagon_" + colorString);
-for(i = 0; i < hexagons.length; i++) {
-  hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
-  hexagons[i].classList.add(redColorStates[i]);
-}
-redAllianceBackstagePixels[0].value = redAlliance[2];
-redAllianceAutoBackpanelPixels[0].value = redAlliance[14];
-redAllianceAutoBackstagePixels[0].value = redAlliance[13];
-redAllianceMinorPenalties[0].value = redAlliance[10];
-redAllianceMajorPenalties[0].value = redAlliance[11];
-updateSetLines(color, colorStates);
-scoreMosaics(colorStates, color);
-updateBackboardStats();
-updatePoints("red");
-updatePoints("blue");
+  updateTeamNames(1)
 
-let arrPos = [3, 0, 4, 0, 5, 0, 6]
-let arrElementsRed = [
-  playerThreeProp,
-  playerFourProp,
-  playerThreeAutoSpike,
-  playerFourAutoSpike,
-  playerThreeAutoPixel,
-  playerFourAutoPixel,
-  playerThreeAutoPark,
-  playerFourAutoPark
-]
-
-let arrElementsRed2= [
-  playerThreeEndgamePark,
-  playerFourEndgamePark,
-  playerThreeDroneZone,
-  playerFourDroneZone
-]
-
-for(i = 0; i < arrPos.length; i += 2){
-  if(redAlliance[arrPos[i]][0] == 1){
-    arrElementsRed[i][1].style.background = universalGreen
-    arrElementsRed[i][0].style="";
-    arrElementsRed[i][1].style.color = "white"
-  }else{
-    arrElementsRed[i][0].style.background = universalRed
-    arrElementsRed[i][1].style="";
-    arrElementsRed[i][0].style.color = "white"
+  let colorString = "red";
+  let color = "redAlliance";
+  let colorStates = redColorStates;
+  let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+  for(i = 0; i < hexagons.length; i++) {
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
+    hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+    switch(currentColorIndex)
+        {
+          case 0:
+            hexagons[i].classList.add("black")
+            break
+          case 1:
+            hexagons[i].classList.add("white")
+            break
+          case 2:
+            hexagons[i].classList.add("green")
+            break
+          case 3:
+            hexagons[i].classList.add("purple")
+            break
+          case 4:
+            hexagons[i].classList.add("yellow")
+            break
+        }
   }
-  if(redAlliance[arrPos[i]][1] == 1){
-    arrElementsRed[i+1][1].style.background = universalGreen
-    arrElementsRed[i+1][0].style="";
-    arrElementsRed[i+1][1].style.color = "white"
-  }else{
-    arrElementsRed[i+1][0].style.background = universalRed
-    arrElementsRed[i+1][1].style="";
-    arrElementsRed[i+1][0].style.color = "white"
+  redAllianceBackstagePixels[0].value = redAlliance[2];
+  redAllianceAutoBackpanelPixels[0].value = redAlliance[14];
+  redAllianceAutoBackstagePixels[0].value = redAlliance[13];
+  redAllianceMinorPenalties[0].value = redAlliance[10];
+  redAllianceMajorPenalties[0].value = redAlliance[11];
+
+  let arrPos = [3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8]
+  let arrElementsRed = [
+    playerThreeProp,
+    playerFourProp,
+    playerThreeAutoSpike,
+    playerFourAutoSpike,
+    playerThreeAutoPixel,
+    playerFourAutoPixel,
+    playerThreeAutoPark,
+    playerFourAutoPark,
+    playerThreeEndgamePark,
+    playerFourEndgamePark,
+    playerThreeEndgameSuspend,
+    playerFourEndgameSuspend
+  ]
+
+  for(i = 0; i < arrPos.length; i += 2){
+    if(redAlliance[arrPos[i]][0] == 1){
+      arrElementsRed[i][1].style.background = universalGreen
+      arrElementsRed[i][0].style="";
+      arrElementsRed[i][1].style.color = "white"
+    }else{
+      arrElementsRed[i][0].style.background = universalRed
+      arrElementsRed[i][1].style="";
+      arrElementsRed[i][0].style.color = "white"
+    }
+    if(redAlliance[arrPos[i]][1] == 1){
+      arrElementsRed[i+1][1].style.background = universalGreen
+      arrElementsRed[i+1][0].style="";
+      arrElementsRed[i+1][1].style.color = "white"
+    }else{
+      arrElementsRed[i+1][0].style.background = universalRed
+      arrElementsRed[i+1][1].style="";
+      arrElementsRed[i+1][0].style.color = "white"
+    }
   }
-}
 
-for (i = 0; i < 2; i++) {
-  droneZoneChange(redAlliance,i+2,redAlliance[9][i]);
-  if(redAlliance[7][i] == 1) {
-    endgameParkChange(redAlliance,i+2,2)
-  } else if(redAlliance[8][i] == 1) {
-    endgameParkChange(redAlliance,i+2,1)
-  } else {
-    endgameParkChange(redAlliance,i+2,0)
+  for (i = 0; i < 2; i++) {
+    droneZoneChange(redAlliance,i+2,redAlliance[9][i]);
   }
-}
 
-let arrElementsBlue = [
-  playerOneProp,
-  playerTwoProp,
-  playerOneAutoSpike,
-  playerTwoAutoSpike,
-  playerOneAutoPixel,
-  playerTwoAutoPixel,
-  playerOneAutoPark,
-  playerTwoAutoPark,
-]
+  updateSetLines(color, colorStates);
+  scoreMosaics(colorStates, color);
+  updateBackboardStats();
+  updatePoints("red");
+  updatePoints("blue");
 
-let arrElementsBlue2= [
-  playerOneEndgamePark,
-  playerTwoEndgamePark,
-  playerOneDroneZone,
-  playerTwoDroneZone
-]
+  colorString = "blue";
+  color = "blueAlliance";
+  colorStates = blueColorStates;
+  hexagons = document.getElementsByClassName("hexagon_" + colorString);
+  for(i = 0; i < hexagons.length; i++) {
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
+    hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+    switch(currentColorIndex)
+        {
+          case 0:
+            hexagons[i].classList.add("black")
+            break
+          case 1:
+            hexagons[i].classList.add("white")
+            break
+          case 2:
+            hexagons[i].classList.add("green")
+            break
+          case 3:
+            hexagons[i].classList.add("purple")
+            break
+          case 4:
+            hexagons[i].classList.add("yellow")
+            break
+        }
+  }
+  blueAllianceBackstagePixels[0].value = blueAlliance[2];
+  blueAllianceAutoBackpanelPixels[0].value = blueAlliance[14];
+  blueAllianceAutoBackstagePixels[0].value = blueAlliance[13];
+  blueAllianceMinorPenalties[0].value = blueAlliance[10];
+  blueAllianceMajorPenalties[0].value = blueAlliance[11];
+
+  let arrElementsBlue = [
+    playerOneProp,
+    playerTwoProp,
+    playerOneAutoSpike,
+    playerTwoAutoSpike,
+    playerOneAutoPixel,
+    playerTwoAutoPixel,
+    playerOneAutoPark,
+    playerTwoAutoPark,
+    playerOneEndgamePark,
+    playerTwoEndgamePark,
+    playerOneEndgameSuspend,
+    playerTwoEndgameSuspend
+  ]
+
+  for(i = 0; i < arrPos.length; i += 2){
+    if(blueAlliance[arrPos[i]][0] == 1){
+      arrElementsBlue[i][1].style.background = universalGreen
+      arrElementsBlue[i][0].style="";
+      arrElementsBlue[i][1].style.color = "white"
+    }else{
+      arrElementsBlue[i][0].style.background = universalRed
+      arrElementsBlue[i][1].style="";
+      arrElementsBlue[i][0].style.color = "white"
+    }
+    if(blueAlliance[arrPos[i]][1] == 1){
+      arrElementsBlue[i+1][1].style.background = universalGreen
+      arrElementsBlue[i+1][0].style="";
+      arrElementsBlue[i+1][1].style.color = "white"
+    }else{
+      arrElementsBlue[i+1][0].style.background = universalRed
+      arrElementsBlue[i+1][1].style="";
+      arrElementsBlue[i+1][0].style.color = "white"
+    }
+  }
+
+  for (i = 0; i < 2; i++) {
+    droneZoneChange(blueAlliance,i+2,blueAlliance[9][i]);
+  }
+
+  updateSetLines(color, colorStates);
+  scoreMosaics(colorStates, color);
+  updateBackboardStats();
+  updatePoints("red");
+  updatePoints("blue");
 
 // 0,//(0) pixels on backboard
 // 0,//(1) mozaiacs
@@ -668,7 +745,7 @@ let redAlliance = [
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
   0,//(14) auto backpanel pixel
-  [0,0]//(15) team name 
+  [null,null]//(15) team name 
 ]
 let blueAlliance = [
   0,//(0) pixels on backboard
@@ -687,13 +764,15 @@ let blueAlliance = [
   0,//(12) set lines crossed
   0,//(13) auto backstage pixel
   0,//(14) auto backpanel pixel
-  [0,0]//(15) team name 
+  [null,null]//(15) team name 
 ]
 
 let scoreElements = [
   document.getElementById("redAllianceScore"),
   document.getElementById("blueAllianceScore")
 ]
+
+updateTeamNames(0)
 
 //Function to calculate points
 function updatePoints(color) {
@@ -761,7 +840,7 @@ let redAllianceMajorPenalties = [
 /**
  * Team 2
  */
-let blueAlliancebackstagePixels = [
+let blueAllianceBackstagePixels = [
   document.getElementById("blueAllianceBackstagePixelsNumber"),
   document.getElementById("blueAllianceBackstagePixelsPlus"),
   document.getElementById("blueAllianceBackstagePixelsMinus")
@@ -792,7 +871,7 @@ let blueAllianceMajorPenalties = [
 ]
 
 let redAlliancePoints  = [redAllianceBackstagePixels, redAllianceAutoBackstagePixels, redAllianceAutoBackpanelPixels, redAllianceMinorPenalties, redAllianceMajorPenalties]
-let blueAlliancePoints = [blueAlliancebackstagePixels, blueAllianceAutoBackstagePixels, blueAllianceAutoBackpanelPixels, blueAllianceMinorPenalties, blueAllianceMajorPenalties]
+let blueAlliancePoints = [blueAllianceBackstagePixels, blueAllianceAutoBackstagePixels, blueAllianceAutoBackpanelPixels, blueAllianceMinorPenalties, blueAllianceMajorPenalties]
 
 function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   if(change > 0 || team[arrayPos] > 0 || Number(teamPoints[pointType][0].value) > 0) 
@@ -822,7 +901,6 @@ const teamIndices = [2, 13, 14, 10, 11]
 for(let i=0; i < redAlliancePoints.length; i++) 
 {
   redAlliancePoints[i][0].addEventListener('input', () => {
-    //console.log(Number(redAlliancePoints[i][0].value))
     penaltyScoreUpdate(0, redAlliance, redAlliancePoints, teamIndices[i], i)
   })
   
@@ -947,48 +1025,32 @@ function propChange(alliance, teamNumber, change)
  *
  */
 let playerOneEndgamePark = [
-  document.getElementById("playerOneParkNone"),
-  document.getElementById("playerOneParkPark"),
-  document.getElementById("playerOneParkSuspend")
-]
+  document.getElementById("playerOneEndgameParkNo"),
+  document.getElementById("playerOneEndgameParkYes")
+];
+
 let playerTwoEndgamePark = [
-  document.getElementById("playerTwoParkNone"),
-  document.getElementById("playerTwoParkPark"),
-  document.getElementById("playerTwoParkSuspend")
-]
+  document.getElementById("playerTwoEndgameParkNo"),
+  document.getElementById("playerTwoEndgameParkYes")
+];
+
 let playerThreeEndgamePark = [
-  document.getElementById("playerThreeParkNone"),
-  document.getElementById("playerThreeParkPark"),
-  document.getElementById("playerThreeParkSuspend")
-]
+  document.getElementById("playerThreeEndgameParkNo"),
+  document.getElementById("playerThreeEndgameParkYes")
+];
+
 let playerFourEndgamePark = [
-  document.getElementById("playerFourParkNone"),
-  document.getElementById("playerFourParkPark"),
-  document.getElementById("playerFourParkSuspend")
-]
+  document.getElementById("playerFourEndgameParkNo"),
+  document.getElementById("playerFourEndgameParkYes")
+];
+
 
 let teamEndgamePark = [playerOneEndgamePark, playerTwoEndgamePark, playerThreeEndgamePark, playerFourEndgamePark]
 
 function endgameParkChange(alliance, teamNumber, change)
 {
-  switch(change)
-  {
-    
-    case 1:
-      alliance[8][teamNumber%2] = 1
-      alliance[7][teamNumber%2] = 0
-      break
-    case 2:
-      alliance[8][teamNumber%2] = 0
-      alliance[7][teamNumber%2] = 1
-      break
-    default:
-      alliance[8][teamNumber%2] = 0
-      alliance[7][teamNumber%2] = 0
-      break
-          
-  }
-  for(let i=0; i < 3; i++) {
+  alliance[8][teamNumber%2] = change;
+  for(let i=0; i < 2; i++) {
       teamEndgamePark[teamNumber][i].style = ""
   }
 
@@ -996,10 +1058,60 @@ function endgameParkChange(alliance, teamNumber, change)
   if(change == 0)
     teamEndgamePark[teamNumber][change].style.backgroundColor = universalRed
   else if(change == 1)
-    teamEndgamePark[teamNumber][change].style.backgroundColor = universalYellow
-  else
     teamEndgamePark[teamNumber][change].style.backgroundColor = universalGreen
 }
+
+
+/*
+ *
+ *      Endgame Suspend
+ *
+ */
+
+let playerOneEndgameSuspend = [
+  document.getElementById("playerOneEndgameSuspendNo"),
+  document.getElementById("playerOneEndgameSuspendYes")
+];
+
+let playerTwoEndgameSuspend = [
+  document.getElementById("playerTwoEndgameSuspendNo"),
+  document.getElementById("playerTwoEndgameSuspendYes")
+];
+
+let playerThreeEndgameSuspend = [
+  document.getElementById("playerThreeEndgameSuspendNo"),
+  document.getElementById("playerThreeEndgameSuspendYes")
+];
+
+let playerFourEndgameSuspend = [
+  document.getElementById("playerFourEndgameSuspendNo"),
+  document.getElementById("playerFourEndgameSuspendYes")
+];
+
+let teamEndgameSuspend = [
+  playerOneEndgameSuspend,
+  playerTwoEndgameSuspend,
+  playerThreeEndgameSuspend,
+  playerFourEndgameSuspend
+];
+
+function endgameSuspendChange(alliance, teamNumber, change)
+{
+  alliance[7][teamNumber%2] = change;
+  for(let i=0; i < 2; i++) {
+      teamEndgameSuspend[teamNumber][i].style = ""
+  }
+  teamEndgameSuspend[teamNumber][change].style.color = "white"
+  if(change == 0)
+    teamEndgameSuspend[teamNumber][change].style.backgroundColor = universalRed
+  else if(change == 1)
+    teamEndgameSuspend[teamNumber][change].style.backgroundColor = universalGreen
+}
+
+
+
+
+
 
 /*
  *
@@ -1141,15 +1253,16 @@ for(let i=0; i < 4; i++)
           autoParkChange(i <= 1? blueAlliance: redAlliance, i, j)
           updatePoints(i <= 1? "blue": "red")
       })
+      teamEndgamePark[i][j].addEventListener("click", () => {
+        endgameParkChange(i <= 1? blueAlliance: redAlliance, i, j)
+        updatePoints(i <= 1? "blue": "red")
+    })
+    teamEndgameSuspend[i][j].addEventListener("click", () => {
+      endgameSuspendChange(i <= 1? blueAlliance: redAlliance, i, j)
+      updatePoints(i <= 1? "blue": "red")
+  })
   }
 
-  for(let j=0; j < 3; j++)
-  {
-      teamEndgamePark[i][j].addEventListener("click", () => {
-          endgameParkChange(i <= 1? blueAlliance: redAlliance, i, j)
-          updatePoints(i <= 1? "blue": "red")
-      })
-  }
 }
 
 updateBackboardStats();
@@ -1182,9 +1295,7 @@ resetButtons[0].addEventListener("click" , () => {
         0,//(13) auto backstage pixel
         0//(14) auto backpanel pixel
     ]
-    for(let i = 0; i < 71; i++) {
-      redColorStates[i] = "black"
-    } 
+    redColorStates.fill("black")
     let color = redAlliance;
     let colorStates = redColorStates;
     let hexagons = document.getElementsByClassName("hexagon_" + colorString);
@@ -1230,9 +1341,7 @@ resetButtons[0].addEventListener("click" , () => {
       0,//(13) auto backstage pixel
       0//(14) auto backpanel pixel
     ]
-    for(let i = 0; i < 71; i++) {
-      blueColorStates[i] = "black"
-    }
+    blueColorStates.fill("black")
     let color = blueAlliance;
     let colorStates = blueColorStates;
     let hexagons = document.getElementsByClassName("hexagon_" + colorString);
