@@ -322,12 +322,33 @@ h1, p, h1, a, h2    {
   align-items: center;
   margin-bottom: 1vw;
 }
-.import_button, .export_button{
-  width: 30%;
+.custom-import-button {
   font-size: 1.3vw;
+  margin-left: 12%;
+  font-family: abel;
+  font-weight: bold;
+  background-color: white;
+  padding-left: 0.4vw;
+  padding: 0.4vw;
+  padding-right: 0.4vw;
+  border: 0.2vw black solid;
+  border-radius: 0.5vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-import-button:hover {
+  background-color: var(--hoverbackground); 
+}
+
+.import_button, .export_button {
+  width: 35%;
+  padding: 0.4vw;
+  font-size: 1.3vw;
+  font-family: abel;
+  font-weight: bold;
   color: var(--textcolor);
-  border: 0px solid;
-  border-radius: 1vw;
+  border: 0.2vw black solid;
+  border-radius: 0.5vw;
   padding-left: 0.4vw;
   padding-right: 0.4vw;
   transition: all 0.3s ease-in-out;
@@ -337,9 +358,9 @@ h1, p, h1, a, h2    {
 .import_button:hover, .export_button:hover{
   background-color: var(--hoverbackground); 
 }
-/* #importButton.import_button{
+#importButton{
   display: none;
-} */
+}
 .flexbox_dropdown{
   display: flex;
   flex-direction: column;
