@@ -327,7 +327,7 @@ let timerElements = [
 
 let timer;
 let running = false;
-let totalSeconds = 180;
+let totalSeconds = 158;
 
 function updateTimer() {
   const minutes = Math.floor(totalSeconds / 60);
@@ -357,7 +357,7 @@ function stopTimer() {
 
 function restartTimer() {
   stopTimer();
-  totalSeconds = 180; // Reset to 3 minutes
+  totalSeconds = 158; // Reset to 3 minutes
   updateTimer();
 }
 
@@ -516,18 +516,26 @@ function exportScoreGame() {
   URL.revokeObjectURL(url);
 }
 //input input needs to be reworked
-function importScoreGame (file){
-  
+function importScoreGame(file) 
+{  
   const reader = new FileReader()
-  //reader.onload is async
+  // reader.onload is async
   reader.onload = function(event) {
     
-    const jsonData = JSON.parse(event.target.result);
+    const jsonData = JSON.parse(event.target.result)
 
-    redAlliance = jsonData.redAlliance;
-    blueAlliance = jsonData.blueAlliance;
-    redColorStates = jsonData.redBackpanel;
-    blueColorStates = jsonData.blueBackpanel;
+    let i = 0
+    for(const x in jsonData.redAlliance)
+    {
+      redAlliance[i]  = jsonData.redAlliance[i]
+      blueAlliance[i] = jsonData.blueAlliance[i++]
+    }
+    i = 0
+    for(const x in jsonData.redBackpanel)
+    {
+      redColorStates[i]  = jsonData.redBackpanel[i]
+      blueColorStates[i] = jsonData.blueBackpanel[i++]
+    }
 
     updateInputValues()
   }
