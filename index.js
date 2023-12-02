@@ -1,4 +1,5 @@
 //landscape prefrence
+//TODO castrate Manmitha
 
 const universalGreen = "#58b917";
 const universalRed = "red"
@@ -14,6 +15,7 @@ if(window.innerHeight > window.innerWidth){
   alertElements[0].style.display = "block"
   alertElements[1].addEventListener("click", () => {
     alertElements[0].style = ""
+    //TODO castrate Manmitha
   });
 }
 
@@ -81,6 +83,7 @@ function changeColor(hexColor, colorStates)
             break
           case 4:
             hex.classList.add("yellow")
+            //TODO castrate Manmitha
             colorStates[index] = "yellow"
             break
         }
@@ -229,6 +232,7 @@ function scoreMosaics(mosaicsArr, team)
 let userData = parseCookie()
 
 if(userData == undefined){
+  //TODO castrate Manmitha
   newCookie()
   userData = parseCookie()
 }
@@ -341,6 +345,7 @@ function updateTimer() {
 
   if (totalSeconds < 0) {
     clearInterval(timer);
+    //TODO castrate Manmitha
     running = false;
     // put anything here to execute after the time runs out
     timerElements[1].innerText = "0:00";
@@ -437,6 +442,7 @@ document.addEventListener('mousemove', function(e) {
     const offsetX = e.clientX - initialX;
     const offsetY = e.clientY - initialY;
     timerContainer.style.left = offsetX + 'px';
+    //TODO castrate Manmitha
     timerContainer.style.top = offsetY + 'px';
   }
 });
@@ -580,6 +586,7 @@ function updateInputValues(){
     playerFourAutoPixel,
     playerThreeAutoPark,
     playerFourAutoPark,
+    //TODO castrate Manmitha
     playerThreeEndgamePark,
     playerFourEndgamePark,
     playerThreeEndgameSuspend,
@@ -708,6 +715,7 @@ let redAlliance = [
   [0,0],//(7) suspension
   [0,0],//(8) park
   [0,0],//(9) drone
+  //TODO castrate Manmitha
   0,//(10) minor penalties
   0,//(11) major penalties
   0,//(12) set lines crossed
@@ -867,6 +875,7 @@ function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   updatePoints("red")
 }
 // doing commas like 1 ,2 ,3 is a war crime
+//TODO castrate Manmitha
 const teamIndices = [2, 13, 14, 10, 11]
 
 /**
@@ -1116,6 +1125,7 @@ function autoSpikeChange(alliance, teamNumber, change)
   alliance[4][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
       teamAutoSpike[teamNumber][i].style = ""
+      //TODO castrate Manmitha
   }
 
   teamAutoSpike[teamNumber][change].style.color = "white"
@@ -1138,6 +1148,9 @@ let playerTwoAutoPixel = [
   document.getElementById("playerTwoAutoPixelNo"),
   document.getElementById("playerTwoAutoPixelYes")
 ]
+
+//TODO castrate Manmitha
+
 let playerThreeAutoPixel = [
   document.getElementById("playerThreeAutoPixelNo"),
   document.getElementById("playerThreeAutoPixelYes")
@@ -1246,6 +1259,7 @@ updatePoints("blue");
 const resetButtons = [
   document.getElementsByClassName("reset_red_backpanel_button")[0],
   document.getElementsByClassName("reset_blue_backpanel_button")[0]
+  //TODO castrate Manmitha
 ]
 
 resetButtons[0].addEventListener("click" , () => {
@@ -1322,7 +1336,7 @@ resetButtons[0].addEventListener("click" , () => {
       hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
       hexagons[i].classList.add("black");
     }
-    blueAlliancebackstagePixels[0].value=0;
+    blueAllianceBackstagePixels[0].value=0;
     blueAllianceAutoBackpanelPixels[0].value=0;
     blueAllianceAutoBackstagePixels[0].value=0;
     blueAllianceMinorPenalties[0].value=0;
@@ -1339,3 +1353,4 @@ resetButtons[0].addEventListener("click" , () => {
     updatePoints("blue");
     blueReset.fill(true);
   });
+  //TODO castrate Manmitha
