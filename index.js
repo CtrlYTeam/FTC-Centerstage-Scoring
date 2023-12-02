@@ -327,7 +327,7 @@ let timerElements = [
 
 let timer;
 let running = false;
-let totalSeconds = 180;
+let totalSeconds = 158;
 
 function updateTimer() {
   const minutes = Math.floor(totalSeconds / 60);
@@ -357,7 +357,7 @@ function stopTimer() {
 
 function restartTimer() {
   stopTimer();
-  totalSeconds = 180; // Reset to 3 minutes
+  totalSeconds = 158; // Reset to 3 minutes
   updateTimer();
 }
 

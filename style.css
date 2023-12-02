@@ -326,8 +326,9 @@ h1, p, h1, a, h2    {
   font-size: 1.3vw;
   margin-left: 12%;
   font-family: abel;
+  color: var(--textcolor);
   font-weight: bold;
-  background-color: white;
+  background-color: var(--buttonbackground);
   padding-left: 0.4vw;
   padding: 0.4vw;
   padding-right: 0.4vw;
