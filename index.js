@@ -85,16 +85,6 @@ function changeColor(hexColor, colorStates)
             break
         }
         //Update points here
-        let filteredColorStates = colorStates.filter(color => color !== "black");
-        if(hexColor == "red") {
-          redAlliance[0] = filteredColorStates.length
-          updateSetLines(redAlliance,colorStates);
-          scoreMosaics(colorStates, redAlliance);
-        } else {
-          blueAlliance[0] = filteredColorStates.length
-          updateSetLines(blueAlliance,colorStates);
-          scoreMosaics(colorStates, blueAlliance);
-        }
         updatePoints(hexColor)
         //pirate?
         //run scoreMosaics(mosaicsArr, team)
@@ -551,6 +541,7 @@ function updateInputValues(){
   let color = "redAlliance";
   let colorStates = redColorStates;
   let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+
   for(i = 0; i < hexagons.length; i++) {
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
@@ -622,7 +613,6 @@ function updateInputValues(){
 
   updateSetLines(color, colorStates);
   scoreMosaics(colorStates, color);
-  updateBackboardStats();
   updatePoints("red");
   updatePoints("blue");
 
@@ -630,6 +620,7 @@ function updateInputValues(){
   color = "blueAlliance";
   colorStates = blueColorStates;
   hexagons = document.getElementsByClassName("hexagon_" + colorString);
+
   for(i = 0; i < hexagons.length; i++) {
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
@@ -700,32 +691,9 @@ function updateInputValues(){
 
   updateSetLines(color, colorStates);
   scoreMosaics(colorStates, color);
-  updateBackboardStats();
   updatePoints("red");
   updatePoints("blue");
-
-// 0,//(0) pixels on backboard
-// 0,//(1) mozaiacs
-// 0,//(2) pixel in backstage
-// //player one left player 2 right
-// [0,0],//(3) player prop
-// [0,0],//(4) auto spike
-// [0,0],//(5) auto pixel
-// [0,0],//(6) auto park
-// [0,0],//(7) suspension
-// [0,0],//(8) park
-// [0,0],//(9) drone
-// 0,//(10) minor penalties
-// 0,//(11) major penalties
-// 0,//(12) set lines crossed
-// 0,//(13) auto backstage pixel
-// 0,//(14) auto backpanel pixel
-// [0,0]//(15) team name 
-//   let buttons = document.getElementsByClassName("red_button");
-//   for(let i = 0; i < buttons.length;i++) {
-//     buttons[i].style.backgroundColor="aliceblue";
-//     buttons[i].style.color="black";
-//   }
+  updateBackboardStats();
 
 }
 let redAlliance = [
@@ -777,7 +745,13 @@ updateTeamNames(0)
 //Function to calculate points
 function updatePoints(color) {
   let alliance = [];
-  alliance = (color == "red")? redAlliance: blueAlliance
+  alliance = (color == "red")? redAlliance: blueAlliance;
+  let colorStates = (color == "red")? redColorStates : blueColorStates;
+  let filteredColorStates = colorStates.filter(color => color !== "black");
+  alliance[0] = filteredColorStates.length;
+  updateSetLines(alliance,colorStates);
+  scoreMosaics(colorStates, alliance);
+
   //Auto
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
@@ -1265,7 +1239,6 @@ for(let i=0; i < 4; i++)
 
 }
 
-updateBackboardStats();
 updateBackboardStats();
 updatePoints("red");
 updatePoints("blue");
