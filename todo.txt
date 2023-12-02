@@ -21,7 +21,9 @@ reverse travel right clicks for hexagons
 export                                           Done
 import                                           Done
 fix import css
-update elements according to the import
+update elements according to the import          Done
+update elements breaks updateBackboardStats()
+mike reset buttons sutable for the right things
 timmer                                           Done
 timmer on/off                                    Done
 Fix +- buttons. update not propigating properly  Done?

@@ -1,5 +1,4 @@
 //landscape prefrence
-//TODO castrate Manmitha
 
 const universalGreen = "#58b917";
 const universalRed = "red"
@@ -15,7 +14,6 @@ if(window.innerHeight > window.innerWidth){
   alertElements[0].style.display = "block"
   alertElements[1].addEventListener("click", () => {
     alertElements[0].style = ""
-    //TODO castrate Manmitha
   });
 }
 
@@ -50,42 +48,36 @@ let blueColorStates = new Array(71)
 redColorStates.fill("black")
 blueColorStates.fill("black")
 
-changeColor("red", redColorStates)
-changeColor("blue", blueColorStates)
+changeColor("red")
+changeColor("blue")
 let hexColorAvail = ["black", "white", "green", "purple", "yellow"]; 
 
-function changeColor(hexColor, colorStates) 
+function changeColor(hexColor) 
 {
   let hexagons = hexColor == "red"? redHexagons : blueHexagons;
+  let colorStates = (hexColor == "red")? redColorStates : blueColorStates;
+  let currentColorIndex = 0;
   hexagons.forEach((hex, index) => {
-    let currentColorIndex = 0
     hex.addEventListener("click", () => {
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[index]);
+    console.log(index,currentColorIndex);
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
-        switch(currentColorIndex)
-        {
-          case 0:
-            hex.classList.add("black")
-            colorStates[index] = "black"
-            break
-          case 1:
-            hex.classList.add("white")
-            colorStates[index] = "white"
-            break
-          case 2:
-            hex.classList.add("green")
-            colorStates[index] = "green"
-            break
-          case 3:
-            hex.classList.add("purple")
-            colorStates[index] = "purple"
-            break
-          case 4:
-            hex.classList.add("yellow")
-            //TODO castrate Manmitha
-            colorStates[index] = "yellow"
-            break
+        if (currentColorIndex === 0) {
+          hex.classList.add("black");
+          colorStates[index] = "black";
+        } else if (currentColorIndex === 1) {
+          hex.classList.add("white");
+          colorStates[index] = "white";
+        } else if (currentColorIndex === 2) {
+          hex.classList.add("green");
+          colorStates[index] = "green";
+        } else if (currentColorIndex === 3) {
+          hex.classList.add("purple");
+          colorStates[index] = "purple";
+        } else if (currentColorIndex === 4) {
+          hex.classList.add("yellow");
+          colorStates[index] = "yellow";
         }
         //Update points here
         updatePoints(hexColor)
@@ -93,6 +85,7 @@ function changeColor(hexColor, colorStates)
         //run scoreMosaics(mosaicsArr, team)
         
         updateBackboardStats();
+        console.log(redColorStates);
         //document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates)
         //document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates)
     })
@@ -232,7 +225,6 @@ function scoreMosaics(mosaicsArr, team)
 let userData = parseCookie()
 
 if(userData == undefined){
-  //TODO castrate Manmitha
   newCookie()
   userData = parseCookie()
 }
@@ -345,7 +337,6 @@ function updateTimer() {
 
   if (totalSeconds < 0) {
     clearInterval(timer);
-    //TODO castrate Manmitha
     running = false;
     // put anything here to execute after the time runs out
     timerElements[1].innerText = "0:00";
@@ -369,6 +360,8 @@ function restartTimer() {
   totalSeconds = 180; // Reset to 3 minutes
   updateTimer();
 }
+
+/*goofy*/
 
 timerElements[2].addEventListener('click', startTimer);
 timerElements[3].addEventListener('click', stopTimer);
@@ -442,7 +435,6 @@ document.addEventListener('mousemove', function(e) {
     const offsetX = e.clientX - initialX;
     const offsetY = e.clientY - initialY;
     timerContainer.style.left = offsetX + 'px';
-    //TODO castrate Manmitha
     timerContainer.style.top = offsetY + 'px';
   }
 });
@@ -504,6 +496,8 @@ importExportButtons[0].addEventListener("click", () => {
   exportScoreGame();
 });
 
+/*goofy*/
+
 function exportScoreGame() {
   const data = {
     redAlliance: redAlliance,
@@ -543,6 +537,7 @@ function importScoreGame (file){
 function updateInputValues(){
   updateTeamNames(1)
 
+  //console.log(redColorStates);
   let colorString = "red";
   let color = "redAlliance";
   let colorStates = redColorStates;
@@ -554,14 +549,14 @@ function updateInputValues(){
     switch(currentColorIndex)
         {
           case 0:
-            hexagons[i].classList.add("black")
-            break
+            hexagons[i].classList.add("black");
+            break;
           case 1:
-            hexagons[i].classList.add("white")
-            break
+            hexagons[i].classList.add("white");
+            break;
           case 2:
-            hexagons[i].classList.add("green")
-            break
+            hexagons[i].classList.add("green");
+            break;
           case 3:
             hexagons[i].classList.add("purple")
             break
@@ -586,13 +581,13 @@ function updateInputValues(){
     playerFourAutoPixel,
     playerThreeAutoPark,
     playerFourAutoPark,
-    //TODO castrate Manmitha
     playerThreeEndgamePark,
     playerFourEndgamePark,
     playerThreeEndgameSuspend,
     playerFourEndgameSuspend
   ]
 
+  /*goofy*/
   for(i = 0; i < arrPos.length; i += 2){
     if(redAlliance[arrPos[i]][0] == 1){
       arrElementsRed[i][1].style.background = universalGreen
@@ -634,20 +629,20 @@ function updateInputValues(){
     switch(currentColorIndex)
         {
           case 0:
-            hexagons[i].classList.add("black")
-            break
+            hexagons[i].classList.add("black");
+            break;
           case 1:
-            hexagons[i].classList.add("white")
-            break
+            hexagons[i].classList.add("white");
+            break;
           case 2:
-            hexagons[i].classList.add("green")
-            break
+            hexagons[i].classList.add("green");
+            break;
           case 3:
-            hexagons[i].classList.add("purple")
-            break
+            hexagons[i].classList.add("purple");
+            break;
           case 4:
-            hexagons[i].classList.add("yellow")
-            break
+            hexagons[i].classList.add("yellow");
+            break;
         }
   }
   blueAllianceBackstagePixels[0].value = blueAlliance[2];
@@ -705,7 +700,7 @@ function updateInputValues(){
 }
 let redAlliance = [
   0,//(0) pixels on backboard
-  0,//(1) mozaiacs
+  0,//(1) mosaics
   0,//(2) pixel in backstage
   //player one left player 2 right
   [0,0],//(3) player prop
@@ -715,7 +710,6 @@ let redAlliance = [
   [0,0],//(7) suspension
   [0,0],//(8) park
   [0,0],//(9) drone
-  //TODO castrate Manmitha
   0,//(10) minor penalties
   0,//(11) major penalties
   0,//(12) set lines crossed
@@ -725,7 +719,7 @@ let redAlliance = [
 ]
 let blueAlliance = [
   0,//(0) pixels on backboard
-  0,//(1) mozaiacs
+  0,//(1) mosaics
   0,//(2) pixel in backstage
   //player one left player 2 right
   [0,0],//(3) player prop
@@ -749,6 +743,8 @@ let scoreElements = [
 ]
 
 updateTeamNames(0)
+
+/*goofy*/
 
 //Function to calculate points
 function updatePoints(color) {
@@ -875,7 +871,6 @@ function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
   updatePoints("red")
 }
 // doing commas like 1 ,2 ,3 is a war crime
-//TODO castrate Manmitha
 const teamIndices = [2, 13, 14, 10, 11]
 
 /**
@@ -1125,7 +1120,6 @@ function autoSpikeChange(alliance, teamNumber, change)
   alliance[4][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
       teamAutoSpike[teamNumber][i].style = ""
-      //TODO castrate Manmitha
   }
 
   teamAutoSpike[teamNumber][change].style.color = "white"
@@ -1148,9 +1142,6 @@ let playerTwoAutoPixel = [
   document.getElementById("playerTwoAutoPixelNo"),
   document.getElementById("playerTwoAutoPixelYes")
 ]
-
-//TODO castrate Manmitha
-
 let playerThreeAutoPixel = [
   document.getElementById("playerThreeAutoPixelNo"),
   document.getElementById("playerThreeAutoPixelYes")
@@ -1259,14 +1250,13 @@ updatePoints("blue");
 const resetButtons = [
   document.getElementsByClassName("reset_red_backpanel_button")[0],
   document.getElementsByClassName("reset_blue_backpanel_button")[0]
-  //TODO castrate Manmitha
 ]
 
 resetButtons[0].addEventListener("click" , () => {
     let colorString = "red"
     redAlliance = [
         0,//(0) pixels on backboard
-        0,//(1) mozaiacs
+        0,//(1) mosaics
         0,//(2) pixel in backstage
         //player one left player 2 right
         [0,0],//(3) player prop
@@ -1312,7 +1302,7 @@ resetButtons[0].addEventListener("click" , () => {
     colorString = "blue";
     blueAlliance = [
       0,//(0) pixels on backboard
-      0,//(1) mozaiacs
+      0,//(1) mosaics
       0,//(2) pixel in backstage
       //player one left player 2 right
       [0,0],//(3) player prop
@@ -1353,4 +1343,4 @@ resetButtons[0].addEventListener("click" , () => {
     updatePoints("blue");
     blueReset.fill(true);
   });
-  //TODO castrate Manmitha
+  /*goofy*/

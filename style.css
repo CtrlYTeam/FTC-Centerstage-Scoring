@@ -3,7 +3,7 @@
 
 :root {
   --oranage: #f9812c;
-  --red: #0464cc;
+  --blue: #0464cc;
   --border: #000000;
   --mainbackground: #d2daff;
   --buttonbackground:#f0f0f0;
@@ -101,7 +101,7 @@ h1, p, h1, a, h2    {
   padding: 1vw;
   background-color: var(--oranage);
   border-radius: 4vw;
-  border: 5px solid var(--red);
+  border: 5px solid var(--blue);
   box-shadow: 0 0 0.5vw black,
   0 0 2.5vw black,
   0 0 5vw black,
@@ -136,7 +136,7 @@ h1, p, h1, a, h2    {
   position: fixed;
   width: 100%;
   height: 5vw;
-  background-color: var(--red);
+  background-color: var(--blue);
   z-index: 3;
 }
 .logo{
@@ -181,7 +181,7 @@ h1, p, h1, a, h2    {
   left: 68.5%;
 }
 .player_four_input:focus, .player_three_input:focus, .player_two_input:focus, .player_one_input:focus{
-  border: 0.5vw solid var(--red);
+  border: 0.5vw solid var(--blue);
   border-radius: 2vw;
 }
 .player_one_input:hover, .player_two_input:hover, .player_three_input:hover, .player_four_input:hover{
@@ -356,7 +356,7 @@ h1, p, h1, a, h2    {
   width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
-  border:0.15vw solid var(--red);
+  border:0.15vw solid var(--blue);
   margin: 1vw;
 }
 
@@ -441,6 +441,8 @@ h1, p, h1, a, h2    {
   flex-direction: row;
   justify-items: center;
 }
+/*goofy*/
+
 .reset_blue_backpanel_button, .reset_red_backpanel_button{
   box-shadow: 0 0 0.5vw blue,
   0 0 2.5vw blue,
@@ -516,6 +518,8 @@ h1, p, h1, a, h2    {
   transition: all 0.3s ease-in-out;
 }
 
+/*goofy*/
+
 /* Plus Buttons */
 .blue_alliance_backstage_pixels_minus, .blue_alliance_auto_backstage_pixels_minus, .blue_alliance_auto_backpanel_pixels_minus, .blue_alliance_minor_penalties_minus, .blue_alliance_major_penalties_minus, .red_alliance_backstage_pixels_minus, .red_alliance_auto_backstage_pixels_minus, .red_alliance_auto_backpanel_pixels_minus, .red_alliance_minor_penalties_minus, .red_alliance_major_penalties_minus{
   width: 20%;
@@ -576,6 +580,8 @@ h1, p, h1, a, h2    {
   margin-left: 10%;
   margin-top: 3vw;
 }
+
+/*goofy*/
 
 .red_alliance_backstage_pixels, .red_alliance_auto_backpanel_pixels, .red_alliance_auto_backstage_pixels, .red_alliance_minor_penalties, .red_alliance_major_penalties{
   display: flex;
@@ -638,7 +644,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: abel;
   display: block;
   background-color: var(--oranage);
-  border: 0.5vw solid var(--red);
+  border: 0.5vw solid var(--blue);
   opacity: 0;
   transition: all 0.5s ease;
   pointer-events: none;
@@ -875,3 +881,4 @@ input[type="number"]::-webkit-outer-spin-button {
 .blue_button:hover, .red_button:hover {
   background-color: var(--hoverbackground);
 }
+/*goofy*/
