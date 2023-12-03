@@ -1,13 +1,48 @@
 //landscape prefrence
 
-const universalGreen = "#58b917";
-const universalRed = "red"
+//Constant Variables
+const universalGreen  = "#58b917";
+const universalRed    = "red"
 const universalYellow = "#D5D817";
 const universalOrange = "orange";
 
-let alertElements = [
+createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
+createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
+const redHexagons  = document.querySelectorAll(".hexagon_red")
+const blueHexagons = document.querySelectorAll(".hexagon_blue")
+
+const alertElements = [
   document.getElementById("landscapeWarning"),
   document.getElementById("alertButton")
+]
+
+const hexColorAvail = ["black", "white", "green", "purple", "yellow"]; 
+
+var redColorStates  = new Array(71)
+var blueColorStates = new Array(71)
+
+redColorStates.fill("black")
+blueColorStates.fill("black")
+
+var redAlliance, blueAlliance;
+redAlliance = blueAlliance = [
+  0,//(0) pixels on backboard
+  0,//(1) mosaics
+  0,//(2) pixel in backstage
+  //player one left player 2 right
+  [0,0],//(3) player prop
+  [0,0],//(4) auto spike    
+  [0,0],//(5) auto pixel
+  [0,0],//(6) auto park
+  [0,0],//(7) suspension
+  [0,0],//(8) park
+  [0,0],//(9) drone
+  0,//(10) minor penalties
+  0,//(11) major penalties
+  0,//(12) set lines crossed
+  0,//(13) auto backstage pixel
+  0,//(14) auto backpanel pixel
+  [null,null]//(15) team name 
 ]
 
 if(window.innerHeight > window.innerWidth){
@@ -17,12 +52,8 @@ if(window.innerHeight > window.innerWidth){
   });
 }
 
-createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
-createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
-let redReset = new Array(71);
-let blueReset = new Array(71)
-redReset.fill(false);
-blueReset.fill(false);
+
+ 
 //Hexagon code
 function formatText(array) {
   let finalString = ""
@@ -38,19 +69,6 @@ function formatText(array) {
   }
   return finalString
 }
-
-const redHexagons  = document.querySelectorAll(".hexagon_red")
-const blueHexagons = document.querySelectorAll(".hexagon_blue")
-
-let redColorStates  = new Array(71)
-let blueColorStates = new Array(71)
-
-redColorStates.fill("black")
-blueColorStates.fill("black")
-
-changeColor("red")
-changeColor("blue")
-let hexColorAvail = ["black", "white", "green", "purple", "yellow"]; 
 
 function changeColor(hexColor) 
 {
@@ -79,18 +97,44 @@ function changeColor(hexColor)
           hex.classList.add("yellow");
           colorStates[index] = "yellow";
         }
-        //Update points here
         updatePoints(hexColor)
-        //pirate?
-        //run scoreMosaics(mosaicsArr, team)
-        
         updateBackboardStats();
         console.log(redColorStates);
-        //document.getElementsByClassName("redColorStateHeader")[0].innerHTML  = formatText(redColorStates)
-        //document.getElementsByClassName("blueColorStateHeader")[0].innerHTML = formatText(blueColorStates)
     })
   })
 }
+
+changeColor("red")
+changeColor("blue")
+
+function createHexDivision(containerColor, hexRowColor, hexColor)
+{
+  const container = document.getElementsByClassName(containerColor)
+  for(let i=0; i < 11; i++)
+  {
+    const hexRow = document.createElement("div")
+    hexRow.classList.add(hexRowColor)
+    if(i == 8 || i == 5 || i == 2) {
+      hexRow.classList.add("hex_row_setLine");
+    }
+    hexRow.setAttribute("id", hexRowColor+i)
+    container[0].appendChild(hexRow)
+    for(let j=0; j < (!(i%2)?6:7); j++)
+    {
+      const hex = document.createElement("div")
+      hex.classList.add(hexColor)
+      hex.setAttribute("id", hexColor+i+j)
+      hexRow.appendChild(hex)
+    }
+  }
+  const resetBtn = document.createElement("button");
+  let resetClass = hexColor == "hexagon_red"? "reset_red_backpanel_button" : "reset_blue_backpanel_button";
+  resetBtn.classList.add(resetClass);
+  resetBtn.innerHTML = "Reset"
+  container[0].appendChild(resetBtn);
+}
+
+
 
 function updateSetLines(team, colorStates) {
   let maxIndex = 0; 
@@ -142,45 +186,19 @@ let backboard = [
 ]
 
 
-function updateBackboardStats()
-{
-  let red = redAlliance; let blue = blueAlliance;
+function updateBackboardStats() {
   const colorArr = ["White", "Green", "Purple", "Yellow"];
-  backboard[0].innerHTML = blue[1] + " - Mosaics - " + red[1];
+  backboard[0].innerHTML = blueAlliance[1] + " - Mosaics - " + redAlliance[1];
   backboard[1].innerHTML = blueColorStates.filter(color => color !== "black").length + "- Total Pixels - " + redColorStates.filter(color => color !== "black").length;
-  backboard[6].innerHTML = blue[12] + " - Set Lines Crossed - " + red[12];
+  backboard[6].innerHTML = blueAlliance[12] + " - Set Lines Crossed - " + redAlliance[12];
   for(let i=0; i < 4; i++) {
     backboard[i+2].innerHTML = blueColorStates.filter(color => color == colorArr[i].toLowerCase()).length
     + " - " + colorArr[i] + " Pixels - " 
     + redColorStates.filter(color => color == colorArr[i].toLowerCase()).length;
   }
 }
-function createHexDivision(containerColor, hexRowColor, hexColor)
-{
-  const container = document.getElementsByClassName(containerColor)
-  for(let i=0; i < 11; i++)
-  {
-    const hexRow = document.createElement("div")
-    hexRow.classList.add(hexRowColor)
-    if(i == 8 || i == 5 || i == 2) {
-      hexRow.classList.add("hex_row_setLine");
-    }
-    hexRow.setAttribute("id", hexRowColor+i)
-    container[0].appendChild(hexRow)
-    for(let j=0; j < (!(i%2)?6:7); j++)
-    {
-      const hex = document.createElement("div")
-      hex.classList.add(hexColor)
-      hex.setAttribute("id", hexColor+i+j)
-      hexRow.appendChild(hex)
-    }
-  }
-  const resetBtn = document.createElement("button");
-  let resetClass = hexColor == "hexagon_red"? "reset_red_backpanel_button" : "reset_blue_backpanel_button";
-  resetBtn.classList.add(resetClass);
-  resetBtn.innerHTML = "Reset"
-  container[0].appendChild(resetBtn);
-}
+
+//Mosaic stuff
 
 const getRow = n => {
   const lastMod = (n - (n%6)) / 6;
@@ -555,24 +573,25 @@ function updateInputValues(){
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
     switch(currentColorIndex)
-        {
-          case 0:
-            hexagons[i].classList.add("black");
-            break;
-          case 1:
-            hexagons[i].classList.add("white");
-            break;
-          case 2:
-            hexagons[i].classList.add("green");
-            break;
-          case 3:
-            hexagons[i].classList.add("purple")
-            break
-          case 4:
-            hexagons[i].classList.add("yellow")
-            break
-        }
+    {
+      case 0:
+        hexagons[i].classList.add("black");
+        break;
+      case 1:
+        hexagons[i].classList.add("white");
+        break;
+      case 2:
+        hexagons[i].classList.add("green");
+        break;
+      case 3:
+        hexagons[i].classList.add("purple")
+        break
+      case 4:
+        hexagons[i].classList.add("yellow")
+        break
+    }
   }
+
   redAllianceBackstagePixels[0].value = redAlliance[2];
   redAllianceAutoBackpanelPixels[0].value = redAlliance[14];
   redAllianceAutoBackstagePixels[0].value = redAlliance[13];
@@ -596,30 +615,31 @@ function updateInputValues(){
   ]
 
   /*goofy*/
-  for(i = 0; i < arrPos.length; i += 2){
-    if(redAlliance[arrPos[i]][0] == 1){
+  for(i = 0; i < arrPos.length; i += 2) {
+    if(redAlliance[arrPos[i]][0] == 1) {
       arrElementsRed[i][1].style.background = universalGreen
       arrElementsRed[i][0].style="";
       arrElementsRed[i][1].style.color = "white"
-    }else{
+    }
+    else{
       arrElementsRed[i][0].style.background = universalRed
       arrElementsRed[i][1].style="";
       arrElementsRed[i][0].style.color = "white"
     }
-    if(redAlliance[arrPos[i]][1] == 1){
+    if(redAlliance[arrPos[i]][1] == 1) {
       arrElementsRed[i+1][1].style.background = universalGreen
       arrElementsRed[i+1][0].style="";
       arrElementsRed[i+1][1].style.color = "white"
-    }else{
+    }
+    else{
       arrElementsRed[i+1][0].style.background = universalRed
       arrElementsRed[i+1][1].style="";
       arrElementsRed[i+1][0].style.color = "white"
     }
   }
 
-  for (i = 0; i < 2; i++) {
-    droneZoneChange(redAlliance,i+2,redAlliance[9][i]);
-  }
+  droneZoneChange(redAlliance, 2, redAlliance[9][0]);
+  droneZoneChange(redAlliance, 3, redAlliance[9][1]);
 
   updateSetLines(color, colorStates);
   scoreMosaics(colorStates, color);
@@ -635,23 +655,23 @@ function updateInputValues(){
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
     switch(currentColorIndex)
-        {
-          case 0:
-            hexagons[i].classList.add("black");
-            break;
-          case 1:
-            hexagons[i].classList.add("white");
-            break;
-          case 2:
-            hexagons[i].classList.add("green");
-            break;
-          case 3:
-            hexagons[i].classList.add("purple");
-            break;
-          case 4:
-            hexagons[i].classList.add("yellow");
-            break;
-        }
+    {
+      case 0:
+        hexagons[i].classList.add("black");
+        break;
+      case 1:
+        hexagons[i].classList.add("white");
+        break;
+      case 2:
+        hexagons[i].classList.add("green");
+        break;
+      case 3:
+        hexagons[i].classList.add("purple");
+        break;
+      case 4:
+        hexagons[i].classList.add("yellow");
+        break;
+    }
   }
   blueAllianceBackstagePixels[0].value = blueAlliance[2];
   blueAllianceAutoBackpanelPixels[0].value = blueAlliance[14];
@@ -695,9 +715,8 @@ function updateInputValues(){
     }
   }
 
-  for (i = 0; i < 2; i++) {
-    droneZoneChange(blueAlliance,i+2,blueAlliance[9][i]);
-  }
+  droneZoneChange(blueAlliance, 2, blueAlliance[9][0]);
+  droneZoneChange(blueAlliance, 3, blueAlliance[9][1]);
 
   updateSetLines(color, colorStates);
   scoreMosaics(colorStates, color);
@@ -706,44 +725,6 @@ function updateInputValues(){
   updateBackboardStats();
 
 }
-let redAlliance = [
-  0,//(0) pixels on backboard
-  0,//(1) mosaics
-  0,//(2) pixel in backstage
-  //player one left player 2 right
-  [0,0],//(3) player prop
-  [0,0],//(4) auto spike
-  [0,0],//(5) auto pixel
-  [0,0],//(6) auto park
-  [0,0],//(7) suspension
-  [0,0],//(8) park
-  [0,0],//(9) drone
-  0,//(10) minor penalties
-  0,//(11) major penalties
-  0,//(12) set lines crossed
-  0,//(13) auto backstage pixel
-  0,//(14) auto backpanel pixel
-  [null,null]//(15) team name 
-]
-let blueAlliance = [
-  0,//(0) pixels on backboard
-  0,//(1) mosaics
-  0,//(2) pixel in backstage
-  //player one left player 2 right
-  [0,0],//(3) player prop
-  [0,0],//(4) auto spike    
-  [0,0],//(5) auto pixel
-  [0,0],//(6) auto park
-  [0,0],//(7) suspension
-  [0,0],//(8) park
-  [0,0],//(9) drone
-  0,//(10) minor penalties
-  0,//(11) major penalties
-  0,//(12) set lines crossed
-  0,//(13) auto backstage pixel
-  0,//(14) auto backpanel pixel
-  [null,null]//(15) team name 
-]
 
 let scoreElements = [
   document.getElementById("redAllianceScore"),
@@ -1303,7 +1284,6 @@ resetButtons[0].addEventListener("click" , () => {
     updateBackboardStats();
     updatePoints("red");
     updatePoints("blue");
-    redReset.fill(true);
   });
 
   resetButtons[1].addEventListener("click" , () => {
@@ -1349,6 +1329,6 @@ resetButtons[0].addEventListener("click" , () => {
     updateBackboardStats();
     updatePoints("red");
     updatePoints("blue");
-    blueReset.fill(true);
+
   });
   /*goofy*/
