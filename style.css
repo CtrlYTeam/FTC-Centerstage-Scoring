@@ -17,6 +17,8 @@
 * {
   margin: 0;
   padding: 0;
+  transition: all 0.3s ease-in-out;
+
 }
 html, body {
   overflow-x: hidden;
