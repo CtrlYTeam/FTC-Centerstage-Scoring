@@ -221,42 +221,6 @@ function scoreMosaics(mosaicsArr, team)
       team[1]++
 }
 
-//cookies for dropdown
-let userData = parseCookie()
-
-if(userData == undefined){
-  newCookie()
-  userData = parseCookie()
-}
-
-function newCookie(){
-  userData = {
-    timerCheck: 0,
-    tooltipsCheck: 1,
-    darkmodeToggleCheck: 0,
-  }
-  let jsonData = JSON.stringify(userData);
-  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
-}
-
-function updateCookie(){
-  let jsonData = JSON.stringify(userData);
-  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
-}
-
-function parseCookie(){
-  let cookies = document.cookie
-  let cookieData = cookies
-    .split("; ")
-    .find((cookie) => cookie.startsWith("userData="))
-
-  if (cookieData) {
-    let jsonData = decodeURIComponent(cookieData.split("=")[1])
-    let userData = JSON.parse(jsonData)
-    return(userData)
-  }
-}
-
 //player name update
 let teamNames = [
   document.getElementById("playerOne"),
@@ -309,11 +273,49 @@ function updateTeamNames(update){
   }
 }
 
+//cookies for dropdown
+let userData = parseCookie()
+
+if(userData == undefined){
+  newCookie()
+  userData = parseCookie()
+}
+
+function newCookie(){
+  userData = {
+    timerCheck: 0,
+    tooltipsCheck: 1,
+    darkmodeToggleCheck: 0,
+    summaryPanelCheck: 0,
+  }
+  let jsonData = JSON.stringify(userData);
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+}
+
+function updateCookie(){
+  let jsonData = JSON.stringify(userData);
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+}
+
+function parseCookie(){
+  let cookies = document.cookie
+  let cookieData = cookies
+    .split("; ")
+    .find((cookie) => cookie.startsWith("userData="))
+
+  if (cookieData) {
+    let jsonData = decodeURIComponent(cookieData.split("=")[1])
+    let userData = JSON.parse(jsonData)
+    return(userData)
+  }
+}
+
 //toggle buttons
 let toggleButtons = [
   document.getElementById("timerToggleButton"),
   document.getElementById("tooltipsToggleButton"),
-  document.getElementById("darkmodeToggleButton")
+  document.getElementById("darkmodeToggleButton"),
+  document.getElementById("summaryToggleButton")
 ]
 
 let timerElements = [
@@ -322,6 +324,10 @@ let timerElements = [
   document.getElementById("startButton"),
   document.getElementById("stopButton"),
   document.getElementById("restartButton")
+]
+
+let summaryElements = [
+  document.getElementById("summaryContainer"),
 ]
 
 
@@ -357,26 +363,23 @@ function stopTimer() {
 
 function restartTimer() {
   stopTimer();
-  totalSeconds = 158; // Reset to 3 minutes
+  totalSeconds = 158;
   updateTimer();
 }
-
-/*goofy*/
 
 timerElements[2].addEventListener('click', startTimer);
 timerElements[3].addEventListener('click', stopTimer);
 timerElements[4].addEventListener('click', restartTimer);
 
-const timerContainer = document.getElementById("timerContainer");
-
 const root = document.documentElement;
 
-var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck"]
+var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck", "summaryPanelCheck"]
 
 initializeButtonAppearances()
 updateTimmer()
 updateTooltips()
 updateDarkmode()
+updateSummary()
 
 function initializeButtonAppearances() {
   for (let i = 0; i < toggleButtons.length; i++) {
@@ -393,11 +396,13 @@ for (let i = 0; i < toggleButtons.length; i++) {
       updateTooltips()
       updateTimmer()
       updateDarkmode()
+      updateSummary()
     } else {
       toggleButtons[i].style.backgroundColor = "white"
       updateTooltips()
       updateTimmer()
       updateDarkmode()
+      updateSummary()
     }
     updateCookie()
   });
@@ -422,33 +427,47 @@ function updateTooltips(){
 let isDragging = false;
 let initialX;
 let initialY;
+let draggedElement = null;
 
-timerContainer.addEventListener('mousedown', function(e) {
-  isDragging = true;
-  initialX = e.clientX - timerContainer.getBoundingClientRect().left;
-  initialY = e.clientY - timerContainer.getBoundingClientRect().top;
+const draggingElements = document.querySelectorAll('.draggable'); // Assuming you have elements with the 'draggable' class
+
+draggingElements.forEach(function (element) {
+  element.addEventListener('mousedown', function (e) {
+    isDragging = true;
+    draggedElement = element;
+
+    const rect = draggedElement.getBoundingClientRect();
+    initialX = e.clientX + window.scrollX - rect.left;
+    initialY = e.clientY + window.scrollY - rect.top;
+  });
 });
 
-document.addEventListener('mousemove', function(e) {
+document.addEventListener('mousemove', function (e) {
   if (isDragging) {
     e.preventDefault();
-    const offsetX = e.clientX - initialX;
-    const offsetY = e.clientY - initialY;
-    timerContainer.style.left = offsetX + 'px';
-    timerContainer.style.top = offsetY + 'px';
+    if (draggedElement) {
+      const offsetX = e.clientX + window.scrollX - initialX;
+      const offsetY = e.clientY + window.scrollY - initialY;
+      console.log(window.scrollY , e.clientY)
+      console.log(offsetY)
+      draggedElement.style.left = offsetX + 'px';
+      draggedElement.style.top = offsetY + 'px';
+    }
   }
 });
 
-document.addEventListener('mouseup', function() {
+document.addEventListener('mouseup', function () {
   isDragging = false;
+  draggedElement = null;
 });
+
 
 function updateTimmer(){
   if(userData[jsonItems[0]] == 0){
     timerElements[0].style.display = "none"
     restartTimer()
-    timerContainer.style.left = 0 + 'px';
-    timerContainer.style.top = 0 + 'px';
+    timerElements[0].style.left = 0 + 'px';
+    timerElements[0].style.top = 0 + 'px';
   }else{
     timerElements[0].style.display = "block"
   }
@@ -487,6 +506,16 @@ function updateDarkmode(){
   }
 }
 
+function updateSummary(){
+  if(userData[jsonItems[3]] == 0){
+    summaryElements[0].style.display = "none"
+    summaryElements[0].style.left = 0 + 'px';
+    summaryElements[0].style.top = 0 + 'px';
+  }else{
+    summaryElements[0].style.display = "block"
+  }
+}
+
 let importExportButtons = [
   document.getElementById("export_button"),
   document.getElementById("import_button")
@@ -495,8 +524,6 @@ let importExportButtons = [
 importExportButtons[0].addEventListener("click", () => {
   exportScoreGame();
 });
-
-/*goofy*/
 
 function exportScoreGame() {
   const data = {
@@ -515,7 +542,7 @@ function exportScoreGame() {
   link.click();
   URL.revokeObjectURL(url);
 }
-//input input needs to be reworked
+
 function importScoreGame (file){
   
   const reader = new FileReader()
@@ -587,7 +614,6 @@ function updateInputValues(){
     playerFourEndgameSuspend
   ]
 
-  /*goofy*/
   for(i = 0; i < arrPos.length; i += 2){
     if(redAlliance[arrPos[i]][0] == 1){
       arrElementsRed[i][1].style.background = universalGreen
@@ -744,7 +770,6 @@ let scoreElements = [
 
 updateTeamNames(0)
 
-/*goofy*/
 
 //Function to calculate points
 function updatePoints(color) {
@@ -1343,4 +1368,3 @@ resetButtons[0].addEventListener("click" , () => {
     updatePoints("blue");
     blueReset.fill(true);
   });
-  /*goofy*/

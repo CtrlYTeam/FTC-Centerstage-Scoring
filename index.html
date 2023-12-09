@@ -46,6 +46,10 @@
         <button class = "darkmode_toggle_button" id = "darkmodeToggleButton" aria-labelledby="labelDropdown"></button>
         <label  id = "labelDropdown" for = "darkmodeToggleButton" class = "label_dropdown">Darkmode?</label>
       </div>
+      <div class = "dropdown_item">
+        <button class = "summary_toggle_button" id = "summaryToggleButton" aria-labelledby="labelDropdown"></button>
+        <label  id = "labelDropdown" for = "summaryToggleButton" class = "label_dropdown">Summary?</label>
+      </div>
     </div>
     <div class = "import_export_box">
       <label for="importButton" class="custom-import-button">Import</label>
@@ -62,11 +66,15 @@
     </div>
   </div>
 
-  <div class = "timer_container" id="timerContainer">
-    <h2 class = "timer_time" id = "timerTime">3:00</h2>
+  <div class = "timer_container draggable" id="timerContainer">
+    <h2 class = "timer_time" id = "timerTime">2:38</h2>
     <button class="start_button" id = "startButton">start</button>
     <button class="stop_button" id = "stopButton">stop</button>
     <button class="restart_button"id = "restartButton">restart</button>
+  </div>
+
+  <div class = "summary_container draggable" id="summaryContainer">
+    <h2 class = "team" id = "team">team</h2>
   </div>
 
   <div class = "background"></div>

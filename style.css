@@ -122,7 +122,7 @@ h1, p, h1, a, h2    {
   aspect-ratio: 1/1;
 }
 
-.timer_container {
+.timer_container, .summary_container{
   display: none;
   cursor: move;
   position: absolute;
@@ -245,8 +245,8 @@ h1, p, h1, a, h2    {
   z-index: 1;
   position: fixed;
   right: 0;
-  border-radius: 0 0 0 3vw;
-  height: 22vw;
+  border-radius: 0 0 0 2vw;
+  height: 25.5vw;
   opacity: 1;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
@@ -263,7 +263,7 @@ h1, p, h1, a, h2    {
   width: 3vw;
 }
 
-.timer_container{
+.timer_container, .summary_container{
   width: 20vw;
   height: 9vw;
   border-radius: 1vw;
@@ -274,6 +274,7 @@ h1, p, h1, a, h2    {
   0 0 5vw black,
   0 0 8vw;
 }
+
 .timer_time{
   font-size: 4.5vw;
   font-family: abel;
@@ -374,7 +375,7 @@ h1, p, h1, a, h2    {
   z-index: 2;
 }
 
-.timer_toggle_button, .tooltips_toggle_button, .darkmode_toggle_button{
+.timer_toggle_button, .tooltips_toggle_button, .darkmode_toggle_button, .summary_toggle_button{
   width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 1.2vw;
