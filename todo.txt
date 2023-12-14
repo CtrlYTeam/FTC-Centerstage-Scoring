@@ -20,13 +20,13 @@ Theroretical limits and checks for scoring
 reverse travel right clicks for hexagons
 export                                           Done
 import                                           Done
-fix import css
+fix import css                                   Done
 update elements according to the import          Done
-update elements breaks updateBackboardStats()
-mike reset buttons sutable for the right things
+update elements breaks updateBackboardStats()    Done
+make reset buttons sutable for the right things
 timmer                                           Done
 timmer on/off                                    Done
-Fix +- buttons. update not propigating properly  Done?
+Fix +- buttons. update not propigating properly  Done
 need to change color for tooltips on dark mode   Done
 
 ===later===

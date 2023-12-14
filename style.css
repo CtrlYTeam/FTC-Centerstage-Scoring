@@ -127,10 +127,17 @@ h1, p, h1, a, h2    {
 .timer_container, .summary_container{
   display: none;
   cursor: move;
-  position: absolute;
+  position: fixed;
   z-index: 9;
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+.summary_line{
+  margin-top: 2vw;
+  font-family: abel;
+  font-size: 1.5vw;
   text-align: center;
 }
 
@@ -275,6 +282,9 @@ h1, p, h1, a, h2    {
   0 0 2.5vw black,
   0 0 5vw black,
   0 0 8vw;
+}
+.summary_container{
+  height: 18vw;
 }
 
 .timer_time{
@@ -722,7 +732,6 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   text-align: center;
   width: 208.5%;
-  z-index: 1;
 }
 
 .player_one, .player_two ,.player_three, .player_four{

@@ -1,5 +1,3 @@
-//landscape prefrence
-
 //Constant Variables
 const universalGreen  = "#58b917";
 const universalRed    = "red"
@@ -11,10 +9,14 @@ createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
 const redHexagons  = document.querySelectorAll(".hexagon_red")
 const blueHexagons = document.querySelectorAll(".hexagon_blue")
 
+//landscape prefrence
 const alertElements = [
   document.getElementById("landscapeWarning"),
   document.getElementById("alertButton")
 ]
+
+let redSummary = [0,0,0,0]
+let blueSummary = [0,0,0,0]
 
 const hexColorAvail = ["black", "white", "green", "purple", "yellow"]; 
 
@@ -24,8 +26,7 @@ var blueColorStates = new Array(71)
 redColorStates.fill("black")
 blueColorStates.fill("black")
 
-var redAlliance, blueAlliance;
-redAlliance = blueAlliance = [
+let redAlliance = [
   0,//(0) pixels on backboard
   0,//(1) mosaics
   0,//(2) pixel in backstage
@@ -44,7 +45,25 @@ redAlliance = blueAlliance = [
   0,//(14) auto backpanel pixel
   [null,null]//(15) team name 
 ]
-
+let blueAlliance = [
+  0,//(0) pixels on backboard
+  0,//(1) mosaics
+  0,//(2) pixel in backstage
+  //player one left player 2 right
+  [0,0],//(3) player prop
+  [0,0],//(4) auto spike    
+  [0,0],//(5) auto pixel
+  [0,0],//(6) auto park
+  [0,0],//(7) suspension
+  [0,0],//(8) park
+  [0,0],//(9) drone
+  0,//(10) minor penalties
+  0,//(11) major penalties
+  0,//(12) set lines crossed
+  0,//(13) auto backstage pixel
+  0,//(14) auto backpanel pixel
+  [null,null]//(15) team name 
+]
 if(window.innerHeight > window.innerWidth){
   alertElements[0].style.display = "block"
   alertElements[1].addEventListener("click", () => {
@@ -78,7 +97,6 @@ function changeColor(hexColor)
   hexagons.forEach((hex, index) => {
     hex.addEventListener("click", () => {
     currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[index]);
-    console.log(index,currentColorIndex);
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
         if (currentColorIndex === 0) {
@@ -99,7 +117,6 @@ function changeColor(hexColor)
         }
         updatePoints(hexColor)
         updateBackboardStats();
-        console.log(redColorStates);
     })
   })
 }
@@ -346,7 +363,18 @@ let timerElements = [
 
 let summaryElements = [
   document.getElementById("summaryContainer"),
+  document.getElementById("autonomusSummary"),
+  document.getElementById("teleopSummary"),
+  document.getElementById("endgameSummary"),
+  document.getElementById("penaltySummary")
 ]
+
+function updateSummaryPoints(){
+  summaryElements[1].innerHTML = blueSummary[0] + " - Autonomus Period - " + redSummary[0]
+  summaryElements[2].innerHTML = blueSummary[1] + " - Teleop Period - " + redSummary[1]
+  summaryElements[3].innerHTML = blueSummary[2] + " - Endgame Period - " + redSummary[2]
+  summaryElements[4].innerHTML = blueSummary[3] + " - Penalties - " + redSummary[3]
+}
 
 
 let timer;
@@ -466,8 +494,6 @@ document.addEventListener('mousemove', function (e) {
     if (draggedElement) {
       const offsetX = e.clientX + window.scrollX - initialX;
       const offsetY = e.clientY + window.scrollY - initialY;
-      console.log(window.scrollY , e.clientY)
-      console.log(offsetY)
       draggedElement.style.left = offsetX + 'px';
       draggedElement.style.top = offsetY + 'px';
     }
@@ -590,7 +616,6 @@ function importScoreGame (file){
 function updateInputValues(){
   updateTeamNames(1)
 
-  //console.log(redColorStates);
   let colorString = "red";
   let color = "redAlliance";
   let colorStates = redColorStates;
@@ -769,7 +794,6 @@ function updatePoints(color) {
   alliance[0] = filteredColorStates.length;
   updateSetLines(alliance,colorStates);
   scoreMosaics(colorStates, alliance);
-
   //Auto
   let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
   let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
@@ -788,12 +812,20 @@ function updatePoints(color) {
     penaltyPts = (blueAlliance[10] * 10) + (blueAlliance[11]*30);
     let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[0].innerHTML = total;
-
+    redSummary[0] = parkPts+spikePts+autoPixelPts+autoBackstagePts+autoBackpanelPts
+    redSummary[1] = pixelPts
+    redSummary[2] = endgamePts+dronePts
+    blueSummary[3] = penaltyPts
   } else {
     penaltyPts = (redAlliance[10] * 10) + (redAlliance[11]*30);
     let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
     scoreElements[1].innerHTML = total;
+    blueSummary[0] = parkPts+spikePts+autoPixelPts+autoBackstagePts+autoBackpanelPts
+    blueSummary[1] = pixelPts
+    blueSummary[2] = endgamePts+dronePts
+    redSummary[3] = penaltyPts
   }
+  updateSummaryPoints()
 }
 
 /**
