@@ -103,7 +103,7 @@ h1, p, h1, a, h2    {
   padding: 1vw;
   background-color: var(--oranage);
   border-radius: 4vw;
-  border: 5px solid var(--blue);
+  border: 0.5vw solid var(--blue);
   box-shadow: 0 0 0.5vw black,
   0 0 2.5vw black,
   0 0 5vw black,
@@ -476,13 +476,8 @@ h1, p, h1, a, h2    {
   flex-direction: row;
   justify-items: center;
 }
-/*goofy*/
 
 .reset_blue_backpanel_button, .reset_red_backpanel_button{
-  box-shadow: 0 0 0.5vw blue,
-  0 0 2.5vw blue,
-  0 0 5vw blue,
-  0 0 8vw;
   background-color: var(--buttonbackground);
   border: 0.5vw solid blue;
   border-radius: 1.5vw;
@@ -494,10 +489,6 @@ h1, p, h1, a, h2    {
   transition: all 0.3s ease-in-out;
 }
 .reset_red_backpanel_button{
-  box-shadow: 0 0 0.5vw red,
-  0 0 2.5vw red,
-  0 0 5vw red,
-  0 0 8vw;
   border: 0.5vw solid red;
 }
 .reset_blue_backpanel_button:hover, .reset_red_backpanel_button:hover{
@@ -505,7 +496,7 @@ h1, p, h1, a, h2    {
   0 0 25px var(--oranage),
   0 0 50px var(--oranage),
   0 0 200px;
-  border: 2px solid var(--oranage);
+  border: 0.5vw solid var(--oranage);
 }
 .total_mosaics, .total_pixels, .total_white_pixels, .total_green_pixels, .total_purple_pixels, .total_yellow_pixels, .setLines{
   margin-top: 2vw;
@@ -518,7 +509,7 @@ h1, p, h1, a, h2    {
   width: 48%;
   top: 59.5vw;
   left: 0;
-  height: 102vw;
+  height: 109.5vw;
   background: linear-gradient(to right, var(--gradientbluedark), var(--gradientbluelight));
   position: absolute;
   border: 0.5vw solid blue;
@@ -529,7 +520,7 @@ h1, p, h1, a, h2    {
   width: 48%;
   top: 59.5vw;
   right: 0;
-  height: 102vw;
+  height: 109.5vw;
   background: linear-gradient(to left, var(--gradientreddark), var(--gradientredlight));
   position: absolute;
   border: 0.5vw solid red;
@@ -726,12 +717,28 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2vw;
 }
 
-.team_prop_header, .drone_zone_header, .endgame_park_header, .endgame_suspend_header, .team_auto_spike, .team_auto_pixel, .team_auto_park {
+.team_prop_header, .drone_zone_header, .endgame_park_header, .endgame_suspend_header, .team_auto_spike, .team_auto_pixel, .team_auto_park, .resetContainer {
   font-family: abel;
   font-size: 1.8vw;
   position: absolute;
   text-align: center;
   width: 208.5%;
+}
+
+.reset_blue_alliance, .reset_red_alliance{
+  margin-top: 1vw;
+  width: 50%;
+  text-align: center;
+  padding: 1.1vw;
+  background-color: var(--buttonbackground);
+  color: #333;
+  border: 0.4vw solid var(--border);
+  color: var(--textcolor);
+  font-size: 2.5vw;
+  font-family: abel;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 1vw;
 }
 
 .player_one, .player_two ,.player_three, .player_four{
@@ -915,4 +922,3 @@ input[type="number"]::-webkit-outer-spin-button {
 .blue_button:hover, .red_button:hover {
   background-color: var(--hoverbackground);
 }
-/*goofy*/

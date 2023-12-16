@@ -1,8 +1,8 @@
 //Constant Variables
-const universalGreen  = "#58b917";
+const universalGreen  = "#58b917"
 const universalRed    = "red"
-const universalYellow = "#D5D817";
-const universalOrange = "orange";
+const universalYellow = "#D5D817"
+const universalOrange = "orange"
 
 createHexDivision("hex_container_blue", "hex_row_blue", "hexagon_blue")
 createHexDivision("hex_container_red", "hex_row_red", "hexagon_red")
@@ -64,11 +64,11 @@ let blueAlliance = [
   0,//(14) auto backpanel pixel
   [null,null]//(15) team name 
 ]
-if(window.innerHeight > window.innerWidth){
+if(window.innerHeight > window.innerWidth) {
   alertElements[0].style.display = "block"
   alertElements[1].addEventListener("click", () => {
     alertElements[0].style = ""
-  });
+  })
 }
 
 
@@ -91,32 +91,32 @@ function formatText(array) {
 
 function changeColor(hexColor) 
 {
-  let hexagons = hexColor == "red"? redHexagons : blueHexagons;
-  let colorStates = (hexColor == "red")? redColorStates : blueColorStates;
-  let currentColorIndex = 0;
+  let hexagons = hexColor == "red"? redHexagons : blueHexagons
+  let colorStates = (hexColor == "red")? redColorStates : blueColorStates
+  let currentColorIndex = 0
   hexagons.forEach((hex, index) => {
     hex.addEventListener("click", () => {
-    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[index]);
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[index])
       hex.classList.remove("black", "white", "green", "purple", "yellow")
         currentColorIndex = (currentColorIndex + 1) % 5
         if (currentColorIndex === 0) {
-          hex.classList.add("black");
-          colorStates[index] = "black";
+          hex.classList.add("black")
+          colorStates[index] = "black"
         } else if (currentColorIndex === 1) {
-          hex.classList.add("white");
-          colorStates[index] = "white";
+          hex.classList.add("white")
+          colorStates[index] = "white"
         } else if (currentColorIndex === 2) {
-          hex.classList.add("green");
-          colorStates[index] = "green";
+          hex.classList.add("green")
+          colorStates[index] = "green"
         } else if (currentColorIndex === 3) {
-          hex.classList.add("purple");
-          colorStates[index] = "purple";
+          hex.classList.add("purple")
+          colorStates[index] = "purple"
         } else if (currentColorIndex === 4) {
-          hex.classList.add("yellow");
-          colorStates[index] = "yellow";
+          hex.classList.add("yellow")
+          colorStates[index] = "yellow"
         }
         updatePoints(hexColor)
-        updateBackboardStats();
+        updateBackboardStats()
     })
   })
 }
@@ -144,31 +144,30 @@ function createHexDivision(containerColor, hexRowColor, hexColor)
       hexRow.appendChild(hex)
     }
   }
-  const resetBtn = document.createElement("button");
+  //why do we create the button?????
+  const resetBtn = document.createElement("button")
   let resetClass = hexColor == "hexagon_red"? "reset_red_backpanel_button" : "reset_blue_backpanel_button";
-  resetBtn.classList.add(resetClass);
+  resetBtn.classList.add(resetClass)
   resetBtn.innerHTML = "Reset"
-  container[0].appendChild(resetBtn);
+  container[0].appendChild(resetBtn)
 }
 
-
-
 function updateSetLines(team, colorStates) {
-  let maxIndex = 0; 
+  let maxIndex = 0
   for(let i = 0; i < 71;i++) {
     if(colorStates[70-i] != "black") {
-      maxIndex = i; 
+      maxIndex = i
     }
   }
-  team[12] = 0;
+  team[12] = 0
   if(maxIndex >= 52) {
-    team[12] = 3;
+    team[12] = 3
   }
   else if(maxIndex >= 32) {
-    team[12] = 2;
+    team[12] = 2
   }
   else if(maxIndex >= 13 ) {
-    team[12] = 1;
+    team[12] = 1
   }
 }
 
@@ -204,22 +203,22 @@ let backboard = [
 
 
 function updateBackboardStats() {
-  const colorArr = ["White", "Green", "Purple", "Yellow"];
-  backboard[0].innerHTML = blueAlliance[1] + " - Mosaics - " + redAlliance[1];
+  const colorArr = ["White", "Green", "Purple", "Yellow"]
+  backboard[0].innerHTML = blueAlliance[1] + " - Mosaics - " + redAlliance[1]
   backboard[1].innerHTML = blueColorStates.filter(color => color !== "black").length + "- Total Pixels - " + redColorStates.filter(color => color !== "black").length;
-  backboard[6].innerHTML = blueAlliance[12] + " - Set Lines Crossed - " + redAlliance[12];
+  backboard[6].innerHTML = blueAlliance[12] + " - Set Lines Crossed - " + redAlliance[12]
   for(let i=0; i < 4; i++) {
     backboard[i+2].innerHTML = blueColorStates.filter(color => color == colorArr[i].toLowerCase()).length
     + " - " + colorArr[i] + " Pixels - " 
-    + redColorStates.filter(color => color == colorArr[i].toLowerCase()).length;
+    + redColorStates.filter(color => color == colorArr[i].toLowerCase()).length
   }
 }
 
 //Mosaic stuff
 
 const getRow = n => {
-  const lastMod = (n - (n%6)) / 6;
-  return ((n-Math.floor(lastMod/2)) - (n-Math.floor(lastMod/2)) % 6) / 6;
+  const lastMod = (n - (n%6)) / 6
+  return ((n-Math.floor(lastMod/2)) - (n-Math.floor(lastMod/2)) % 6) / 6
 }
 
 function checkBorders(mosaicsArr, index, tertiary_idx) 
@@ -276,9 +275,9 @@ let teamNamesString = [
   "Team Four"
 ]
 
-function updateTeamNames(update){
+function updateTeamNames(update) {
 
-  if(update == 1){
+  if(update == 1) {
     teamNames[0].value = blueAlliance[15][0]
     teamNames[1].value = blueAlliance[15][1]
     teamNames[2].value = redAlliance[15][0]
@@ -289,50 +288,50 @@ function updateTeamNames(update){
     teamNames[i].addEventListener("input", (function (index) {
       return function () {
         if (teamNames[index].value.length === 0) {
-          teamNameHeader[index].innerHTML = teamNamesString[index];
+          teamNameHeader[index].innerHTML = teamNamesString[index]
           if (index > 1) {
-            redAlliance[15][index - 2] = teamNamesString[index];
+            redAlliance[15][index - 2] = teamNamesString[index]
           } else {
-            blueAlliance[15][index] = teamNamesString[index];
+            blueAlliance[15][index] = teamNamesString[index]
           }
         } else {
-          teamNameHeader[index].innerHTML = teamNames[index].value;
+          teamNameHeader[index].innerHTML = teamNames[index].value
           if (index > 1) {
-            redAlliance[15][index - 2] = teamNames[index].value;
+            redAlliance[15][index - 2] = teamNames[index].value
           } else {
-            blueAlliance[15][index] = teamNames[index].value;
+            blueAlliance[15][index] = teamNames[index].value
           }
         }
-      };
-    })(i));
+      }
+    })(i))
   }
 }
 
 //cookies for dropdown
 let userData = parseCookie()
 
-if(userData == undefined){
+if(userData == undefined) {
   newCookie()
   userData = parseCookie()
 }
 
-function newCookie(){
+function newCookie() {
   userData = {
     timerCheck: 0,
     tooltipsCheck: 1,
     darkmodeToggleCheck: 0,
     summaryPanelCheck: 0,
   }
-  let jsonData = JSON.stringify(userData);
+  let jsonData = JSON.stringify(userData)
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
 }
 
-function updateCookie(){
-  let jsonData = JSON.stringify(userData);
+function updateCookie() {
+  let jsonData = JSON.stringify(userData)
   document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
 }
 
-function parseCookie(){
+function parseCookie() {
   let cookies = document.cookie
   let cookieData = cookies
     .split("; ")
@@ -369,7 +368,7 @@ let summaryElements = [
   document.getElementById("penaltySummary")
 ]
 
-function updateSummaryPoints(){
+function updateSummaryPoints() {
   summaryElements[1].innerHTML = blueSummary[0] + " - Autonomus Period - " + redSummary[0]
   summaryElements[2].innerHTML = blueSummary[1] + " - Teleop Period - " + redSummary[1]
   summaryElements[3].innerHTML = blueSummary[2] + " - Endgame Period - " + redSummary[2]
@@ -377,47 +376,47 @@ function updateSummaryPoints(){
 }
 
 
-let timer;
-let running = false;
-let totalSeconds = 158;
+let timer
+let running = false
+let totalSeconds = 158
 
 function updateTimer() {
-  const minutes = Math.floor(totalSeconds / 60);
-  const remainingSeconds = totalSeconds % 60;
+  const minutes = Math.floor(totalSeconds / 60)
+  const remainingSeconds = totalSeconds % 60
   timerElements[1].innerText = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  totalSeconds--;
+  totalSeconds --
 
   if (totalSeconds < 0) {
-    clearInterval(timer);
-    running = false;
+    clearInterval(timer)
+    running = false
     // put anything here to execute after the time runs out
-    timerElements[1].innerText = "0:00";
+    timerElements[1].innerText = "0:00"
   }
 }
 
 function startTimer() {
   if (!running) {
-    running = true;
-    timer = setInterval(updateTimer, 1000);
+    running = true
+    timer = setInterval(updateTimer, 1000)
   }
 }
 
 function stopTimer() {
-  running = false;
-  clearInterval(timer);
+  running = false
+  clearInterval(timer)
 }
 
 function restartTimer() {
-  stopTimer();
-  totalSeconds = 158;
-  updateTimer();
+  stopTimer()
+  totalSeconds = 158
+  updateTimer()
 }
 
-timerElements[2].addEventListener('click', startTimer);
-timerElements[3].addEventListener('click', stopTimer);
-timerElements[4].addEventListener('click', restartTimer);
+timerElements[2].addEventListener('click', startTimer)
+timerElements[3].addEventListener('click', stopTimer)
+timerElements[4].addEventListener('click', restartTimer)
 
-const root = document.documentElement;
+const root = document.documentElement
 
 var jsonItems = ["timerCheck", "tooltipsCheck", "darkmodeToggleCheck", "summaryPanelCheck"]
 
@@ -454,107 +453,107 @@ for (let i = 0; i < toggleButtons.length; i++) {
   });
 }
 
-function updateTooltips(){
-  var elements = document.querySelectorAll('.toolbox_info');
-  var elements2 = document.querySelectorAll('.toolbox_info_image');
-  if(userData[jsonItems[1]] == 0){
-    for(let i = 0; i <elements.length; i++){
-      elements[i].style.display = 'none';
-      elements2[i].style.display = 'none';
+function updateTooltips() {
+  var elements = document.querySelectorAll('.toolbox_info')
+  var elements2 = document.querySelectorAll('.toolbox_info_image')
+  if(userData[jsonItems[1]] == 0) {
+    for(let i = 0; i <elements.length; i++) {
+      elements[i].style.display = 'none'
+      elements2[i].style.display = 'none'
     }
   }else{
-    for(let i = 0; i <elements.length; i++){
-      elements[i].style = "";
-      elements2[i].style = "";
+    for(let i = 0; i <elements.length; i++) {
+      elements[i].style = ""
+      elements2[i].style = ""
     }
   }
 }
 
-let isDragging = false;
-let initialX;
-let initialY;
-let draggedElement = null;
+let isDragging = false
+let initialX
+let initialY
+let draggedElement = null
 
-const draggingElements = document.querySelectorAll('.draggable'); // Assuming you have elements with the 'draggable' class
+const draggingElements = document.querySelectorAll('.draggable') // Assuming you have elements with the 'draggable' class
 
 draggingElements.forEach(function (element) {
   element.addEventListener('mousedown', function (e) {
-    isDragging = true;
-    draggedElement = element;
+    isDragging = true
+    draggedElement = element
 
-    const rect = draggedElement.getBoundingClientRect();
-    initialX = e.clientX + window.scrollX - rect.left;
-    initialY = e.clientY + window.scrollY - rect.top;
-  });
-});
+    const rect = draggedElement.getBoundingClientRect()
+    initialX = e.clientX + window.scrollX - rect.left
+    initialY = e.clientY + window.scrollY - rect.top
+  })
+})
 
 document.addEventListener('mousemove', function (e) {
   if (isDragging) {
-    e.preventDefault();
+    e.preventDefault()
     if (draggedElement) {
-      const offsetX = e.clientX + window.scrollX - initialX;
-      const offsetY = e.clientY + window.scrollY - initialY;
-      draggedElement.style.left = offsetX + 'px';
-      draggedElement.style.top = offsetY + 'px';
+      const offsetX = e.clientX + window.scrollX - initialX
+      const offsetY = e.clientY + window.scrollY - initialY
+      draggedElement.style.left = offsetX + 'px'
+      draggedElement.style.top = offsetY + 'px'
     }
   }
-});
+})
 
 document.addEventListener('mouseup', function () {
-  isDragging = false;
-  draggedElement = null;
-});
+  isDragging = false
+  draggedElement = null
+})
 
 
-function updateTimmer(){
-  if(userData[jsonItems[0]] == 0){
+function updateTimmer() {
+  if(userData[jsonItems[0]] == 0) {
     timerElements[0].style.display = "none"
     restartTimer()
-    timerElements[0].style.left = 0 + 'px';
-    timerElements[0].style.top = 0 + 'px';
+    timerElements[0].style.left = 0 + 'px'
+    timerElements[0].style.top = 0 + 'px'
   }else{
     timerElements[0].style.display = "block"
   }
 }
 
-function updateDarkmode(){
-  let tooltips_color = document.querySelectorAll('.toolbox_info_image');
-  if(userData[jsonItems[2]] == 1){
-    for(let i = 0; i <tooltips_color.length; i++){
-      tooltips_color[i].src = 'images/questionMarkWhite.svg';
+function updateDarkmode() {
+  let tooltips_color = document.querySelectorAll('.toolbox_info_image')
+  if(userData[jsonItems[2]] == 1) {
+    for(let i = 0; i <tooltips_color.length; i++) {
+      tooltips_color[i].src = 'images/questionMarkWhite.svg'
     }
-    root.style.setProperty("--mainbackground", "#242528");
-    root.style.setProperty("--buttonbackground", "#242528");
-    root.style.setProperty("--border", "#d2daff");
-    root.style.setProperty("--textcolor", "#f0f0f0");
-    root.style.setProperty("--userinputboxcolor", "#313135");
-    root.style.setProperty("--gradientreddark", "#8c0404");
-    root.style.setProperty("--gradientredlight", "#c40000");
-    root.style.setProperty("--gradientbluedark", "#001b99");
-    root.style.setProperty("--gradientbluelight", "#0025c9");
-    root.style.setProperty("--hoverbackground", "#8c8f98");
+    root.style.setProperty("--mainbackground", "#242528")
+    root.style.setProperty("--buttonbackground", "#242528")
+    root.style.setProperty("--border", "#d2daff")
+    root.style.setProperty("--textcolor", "#f0f0f0")
+    root.style.setProperty("--userinputboxcolor", "#313135")
+    root.style.setProperty("--gradientreddark", "#8c0404")
+    root.style.setProperty("--gradientredlight", "#c40000")
+    root.style.setProperty("--gradientbluedark", "#001b99")
+    root.style.setProperty("--gradientbluelight", "#0025c9")
+    root.style.setProperty("--hoverbackground", "#8c8f98")
   }else{
-    for(let i = 0; i <tooltips_color.length; i++){
-      tooltips_color[i].src = 'images/questionMark.svg';
+    for(let i = 0; i <tooltips_color.length; i++) {
+      tooltips_color[i].src = 'images/questionMark.svg'
     }
-    root.style.setProperty("--mainbackground", "#d2daff");
-    root.style.setProperty("--buttonbackground", "#f0f0f0");
-    root.style.setProperty("--border", "#000000");
-    root.style.setProperty("--textcolor", "#000000");
-    root.style.setProperty("--userinputboxcolor", "#f0f0f0");
-    root.style.setProperty("--gradientreddark", "#f82b2b");
-    root.style.setProperty("--gradientredlight", "#ff8b8b");
-    root.style.setProperty("--gradientbluedark", "#3358ff");
-    root.style.setProperty("--gradientbluelight", "#93a7ff");
-    root.style.setProperty("--hoverbackground", "#93a7ff");
+    root.style.setProperty("--mainbackground", "#d2daff")
+    root.style.setProperty("--buttonbackground", "#f0f0f0")
+    root.style.setProperty("--border", "#000000")
+    root.style.setProperty("--textcolor", "#000000")
+    root.style.setProperty("--userinputboxcolor", "#f0f0f0")
+    root.style.setProperty("--gradientreddark", "#f82b2b")
+    root.style.setProperty("--gradientredlight", "#ff8b8b")
+    root.style.setProperty("--gradientbluedark", "#3358ff")
+    root.style.setProperty("--gradientbluelight", "#93a7ff")
+    root.style.setProperty("--hoverbackground", "#93a7ff")
   }
 }
 
-function updateSummary(){
-  if(userData[jsonItems[3]] == 0){
+function updateSummary() {
+  if(userData[jsonItems[3]] == 0) {
     summaryElements[0].style.display = "none"
-    summaryElements[0].style.left = 0 + 'px';
-    summaryElements[0].style.top = 0 + 'px';
+    summaryElements[0].style.left = 0 + 'px'
+    summaryElements[0].style.top = 0 + 'px'
   }else{
     summaryElements[0].style.display = "block"
   }
@@ -566,7 +565,7 @@ let importExportButtons = [
 ];
 
 importExportButtons[0].addEventListener("click", () => {
-  exportScoreGame();
+  exportScoreGame()
 });
 
 function exportScoreGame() {
@@ -577,17 +576,17 @@ function exportScoreGame() {
     blueBackpanel: blueColorStates,
   };
 
-  const jsonString = JSON.stringify(data, null, 2); // The third parameter (2) is for indentation spaces
-  const blob = new Blob([jsonString], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'data.json';
-  link.click();
-  URL.revokeObjectURL(url);
+  const jsonString = JSON.stringify(data, null, 2) // The third parameter (2) is for indentation spaces
+  const blob = new Blob([jsonString], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = 'data.json'
+  link.click()
+  URL.revokeObjectURL(url)
 }
 
-function importScoreGame (file){
+function importScoreGame (file) {
   
   const reader = new FileReader()
   // reader.onload is async
@@ -610,31 +609,31 @@ function importScoreGame (file){
 
     updateInputValues()
   }
-  reader.readAsText(file);
+  reader.readAsText(file)
 }
 
-function updateInputValues(){
+function updateInputValues() {
   updateTeamNames(1)
 
-  let colorString = "red";
-  let color = "redAlliance";
-  let colorStates = redColorStates;
-  let hexagons = document.getElementsByClassName("hexagon_" + colorString);
+  let colorString = "red"
+  let color = "redAlliance"
+  let colorStates = redColorStates
+  let hexagons = document.getElementsByClassName("hexagon_" + colorString)
 
   for(i = 0; i < hexagons.length; i++) {
-    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i])
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
     switch(currentColorIndex)
     {
       case 0:
-        hexagons[i].classList.add("black");
-        break;
+        hexagons[i].classList.add("black")
+        break
       case 1:
-        hexagons[i].classList.add("white");
-        break;
+        hexagons[i].classList.add("white")
+        break
       case 2:
-        hexagons[i].classList.add("green");
-        break;
+        hexagons[i].classList.add("green")
+        break
       case 3:
         hexagons[i].classList.add("purple")
         break
@@ -644,11 +643,11 @@ function updateInputValues(){
     }
   }
 
-  redAllianceBackstagePixels[0].value = redAlliance[2];
-  redAllianceAutoBackpanelPixels[0].value = redAlliance[14];
-  redAllianceAutoBackstagePixels[0].value = redAlliance[13];
-  redAllianceMinorPenalties[0].value = redAlliance[10];
-  redAllianceMajorPenalties[0].value = redAlliance[11];
+  redAllianceBackstagePixels[0].value = redAlliance[2]
+  redAllianceAutoBackpanelPixels[0].value = redAlliance[14]
+  redAllianceAutoBackstagePixels[0].value = redAlliance[13]
+  redAllianceMinorPenalties[0].value = redAlliance[10]
+  redAllianceMajorPenalties[0].value = redAlliance[11]
 
   let arrPos = [3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8]
   let arrElementsRed = [
@@ -666,69 +665,69 @@ function updateInputValues(){
     playerFourEndgameSuspend
   ]
 
-  for(i = 0; i < arrPos.length; i += 2){
-    if(redAlliance[arrPos[i]][0] == 1){
+  for(i = 0; i < arrPos.length; i += 2) {
+    if(redAlliance[arrPos[i]][0] == 1) {
       arrElementsRed[i][1].style.background = universalGreen
-      arrElementsRed[i][0].style="";
+      arrElementsRed[i][0].style=""
       arrElementsRed[i][1].style.color = "white"
     }
     else{
       arrElementsRed[i][0].style.background = universalRed
-      arrElementsRed[i][1].style="";
+      arrElementsRed[i][1].style=""
       arrElementsRed[i][0].style.color = "white"
     }
     if(redAlliance[arrPos[i]][1] == 1) {
       arrElementsRed[i+1][1].style.background = universalGreen
-      arrElementsRed[i+1][0].style="";
+      arrElementsRed[i+1][0].style=""
       arrElementsRed[i+1][1].style.color = "white"
     }
     else{
       arrElementsRed[i+1][0].style.background = universalRed
-      arrElementsRed[i+1][1].style="";
+      arrElementsRed[i+1][1].style=""
       arrElementsRed[i+1][0].style.color = "white"
     }
   }
 
-  droneZoneChange(redAlliance, 2, redAlliance[9][0]);
-  droneZoneChange(redAlliance, 3, redAlliance[9][1]);
+  droneZoneChange(redAlliance, 2, redAlliance[9][0])
+  droneZoneChange(redAlliance, 3, redAlliance[9][1])
 
-  updateSetLines(color, colorStates);
-  scoreMosaics(colorStates, color);
-  updatePoints("red");
-  updatePoints("blue");
+  updateSetLines(color, colorStates)
+  scoreMosaics(colorStates, color)
+  updatePoints("red")
+  updatePoints("blue")
 
-  colorString = "blue";
-  color = "blueAlliance";
-  colorStates = blueColorStates;
-  hexagons = document.getElementsByClassName("hexagon_" + colorString);
+  colorString = "blue"
+  color = "blueAlliance"
+  colorStates = blueColorStates
+  hexagons = document.getElementsByClassName("hexagon_" + colorString)
 
   for(i = 0; i < hexagons.length; i++) {
-    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i]);
+    currentColorIndex = hexColorAvail.findIndex(x => x == colorStates[i])
     hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
     switch(currentColorIndex)
     {
       case 0:
-        hexagons[i].classList.add("black");
-        break;
+        hexagons[i].classList.add("black")
+        break
       case 1:
-        hexagons[i].classList.add("white");
-        break;
+        hexagons[i].classList.add("white")
+        break
       case 2:
-        hexagons[i].classList.add("green");
-        break;
+        hexagons[i].classList.add("green")
+        break
       case 3:
-        hexagons[i].classList.add("purple");
-        break;
+        hexagons[i].classList.add("purple")
+        break
       case 4:
-        hexagons[i].classList.add("yellow");
-        break;
+        hexagons[i].classList.add("yellow")
+        break
     }
   }
-  blueAllianceBackstagePixels[0].value = blueAlliance[2];
-  blueAllianceAutoBackpanelPixels[0].value = blueAlliance[14];
-  blueAllianceAutoBackstagePixels[0].value = blueAlliance[13];
-  blueAllianceMinorPenalties[0].value = blueAlliance[10];
-  blueAllianceMajorPenalties[0].value = blueAlliance[11];
+  blueAllianceBackstagePixels[0].value = blueAlliance[2]
+  blueAllianceAutoBackpanelPixels[0].value = blueAlliance[14]
+  blueAllianceAutoBackstagePixels[0].value = blueAlliance[13]
+  blueAllianceMinorPenalties[0].value = blueAlliance[10]
+  blueAllianceMajorPenalties[0].value = blueAlliance[11]
 
   let arrElementsBlue = [
     playerOneProp,
@@ -745,35 +744,35 @@ function updateInputValues(){
     playerTwoEndgameSuspend
   ]
 
-  for(i = 0; i < arrPos.length; i += 2){
-    if(blueAlliance[arrPos[i]][0] == 1){
+  for(i = 0; i < arrPos.length; i += 2) {
+    if(blueAlliance[arrPos[i]][0] == 1) {
       arrElementsBlue[i][1].style.background = universalGreen
-      arrElementsBlue[i][0].style="";
+      arrElementsBlue[i][0].style=""
       arrElementsBlue[i][1].style.color = "white"
     }else{
       arrElementsBlue[i][0].style.background = universalRed
-      arrElementsBlue[i][1].style="";
+      arrElementsBlue[i][1].style=""
       arrElementsBlue[i][0].style.color = "white"
     }
-    if(blueAlliance[arrPos[i]][1] == 1){
+    if(blueAlliance[arrPos[i]][1] == 1) {
       arrElementsBlue[i+1][1].style.background = universalGreen
-      arrElementsBlue[i+1][0].style="";
+      arrElementsBlue[i+1][0].style=""
       arrElementsBlue[i+1][1].style.color = "white"
     }else{
       arrElementsBlue[i+1][0].style.background = universalRed
-      arrElementsBlue[i+1][1].style="";
+      arrElementsBlue[i+1][1].style=""
       arrElementsBlue[i+1][0].style.color = "white"
     }
   }
 
-  droneZoneChange(blueAlliance, 2, blueAlliance[9][0]);
-  droneZoneChange(blueAlliance, 3, blueAlliance[9][1]);
+  droneZoneChange(blueAlliance, 2, blueAlliance[9][0])
+  droneZoneChange(blueAlliance, 3, blueAlliance[9][1])
 
-  updateSetLines(color, colorStates);
-  scoreMosaics(colorStates, color);
-  updatePoints("red");
-  updatePoints("blue");
-  updateBackboardStats();
+  updateSetLines(color, colorStates)
+  scoreMosaics(colorStates, color)
+  updatePoints("red")
+  updatePoints("blue")
+  updateBackboardStats()
 
 }
 
@@ -787,39 +786,39 @@ updateTeamNames(0)
 
 //Function to calculate points
 function updatePoints(color) {
-  let alliance = [];
-  alliance = (color == "red")? redAlliance: blueAlliance;
-  let colorStates = (color == "red")? redColorStates : blueColorStates;
-  let filteredColorStates = colorStates.filter(color => color !== "black");
-  alliance[0] = filteredColorStates.length;
-  updateSetLines(alliance,colorStates);
-  scoreMosaics(colorStates, alliance);
+  let alliance = []
+  alliance = (color == "red")? redAlliance: blueAlliance
+  let colorStates = (color == "red")? redColorStates : blueColorStates
+  let filteredColorStates = colorStates.filter(color => color !== "black")
+  alliance[0] = filteredColorStates.length
+  updateSetLines(alliance,colorStates)
+  scoreMosaics(colorStates, alliance)
   //Auto
-  let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5);
-  let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10);
-  let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10);
-  let autoBackstagePts = (alliance[13] * 3);
-  let autoBackpanelPts = (alliance[14] * 5);
+  let parkPts = (alliance[6][0]*5)+(alliance[6][1]*5)
+  let spikePts = (alliance[4][0] * (alliance[3][0]+1)*10) + (alliance[4][1] * (alliance[3][1]+1)*10)
+  let autoPixelPts = (alliance[5][0] * (alliance[3][0]+1)*10) + (alliance[5][1] * (alliance[3][1]+1)*10)
+  let autoBackstagePts = (alliance[13] * 3)
+  let autoBackpanelPts = (alliance[14] * 5)
   //Driver control period
-  let pixelPts = (alliance[0] * 3) + (alliance[1] * 10) + (alliance[2]) + (alliance[12]*10);
+  let pixelPts = (alliance[0] * 3) + (alliance[1] * 10) + (alliance[2]) + (alliance[12]*10)
   //Endgame
-  let endgamePts = (alliance[8][0]*5) + (alliance[8][1]*5) + (alliance[7][0]*20) + (alliance[7][1]*20);
-  let dronePts = ((alliance[9][0] == 0 ? 0 : 30 - (alliance[9][0]-1)*10)) + ((alliance[9][1] == 0 ? 0 : 30 - (alliance[9][1]-1)*10));
+  let endgamePts = (alliance[8][0]*5) + (alliance[8][1]*5) + (alliance[7][0]*20) + (alliance[7][1]*20)
+  let dronePts = ((alliance[9][0] == 0 ? 0 : 30 - (alliance[9][0]-1)*10)) + ((alliance[9][1] == 0 ? 0 : 30 - (alliance[9][1]-1)*10))
 
   //Penalties
-  let penaltyPts = 0;
+  let penaltyPts = 0
   if(color == "red") {
-    penaltyPts = (blueAlliance[10] * 10) + (blueAlliance[11]*30);
-    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
-    scoreElements[0].innerHTML = total;
+    penaltyPts = (blueAlliance[10] * 10) + (blueAlliance[11]*30)
+    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts
+    scoreElements[0].innerHTML = total
     redSummary[0] = parkPts+spikePts+autoPixelPts+autoBackstagePts+autoBackpanelPts
     redSummary[1] = pixelPts
     redSummary[2] = endgamePts+dronePts
     blueSummary[3] = penaltyPts
   } else {
-    penaltyPts = (redAlliance[10] * 10) + (redAlliance[11]*30);
-    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts;
-    scoreElements[1].innerHTML = total;
+    penaltyPts = (redAlliance[10] * 10) + (redAlliance[11]*30)
+    let total = parkPts + spikePts + autoPixelPts + pixelPts + autoBackstagePts + autoBackpanelPts + endgamePts + dronePts + penaltyPts
+    scoreElements[1].innerHTML = total
     blueSummary[0] = parkPts+spikePts+autoPixelPts+autoBackstagePts+autoBackpanelPts
     blueSummary[1] = pixelPts
     blueSummary[2] = endgamePts+dronePts
@@ -841,13 +840,13 @@ let redAllianceAutoBackstagePixels = [
   document.getElementById("redAllianceAutoBackstagePixelsNumber"),
   document.getElementById("redAllianceAutoBackstagePixelsPlus"),
   document.getElementById("redAllianceAutoBackstagePixelsMinus")
-];
+]
 
 let redAllianceAutoBackpanelPixels = [
   document.getElementById("redAllianceAutoBackpanelPixelsNumber"),
   document.getElementById("redAllianceAutoBackpanelPixelsPlus"),
   document.getElementById("redAllianceAutoBackpanelPixelsMinus")
-];
+]
 
 let redAllianceMinorPenalties = [
   document.getElementById("redAllianceMinorPenaltiesPixelsNumber"),
@@ -906,8 +905,8 @@ function penaltyScoreUpdate(change, team, teamPoints, arrayPos, pointType) {
 
 
     if(pointType == 1 && (team[2] != 0 || change > 0)) {
-      team[2] += change;
-      teamPoints[0][0].value = team[arrayPos];
+      team[2] += change
+      teamPoints[0][0].value = team[arrayPos]
     }
 
     if (teamPoints[pointType][0].value.length > 4)
@@ -992,7 +991,7 @@ function droneZoneChange(alliance, teamNumber, change)
 {
   alliance[9][teamNumber%2] = change
   for(let i=0; i < 4; i++) {
-      teamDroneZone[teamNumber][i].style = "";
+      teamDroneZone[teamNumber][i].style = ""
   }
   teamDroneZone[teamNumber][change].style.color = "white"
   if(change == 0)
@@ -1051,29 +1050,29 @@ function propChange(alliance, teamNumber, change)
 let playerOneEndgamePark = [
   document.getElementById("playerOneEndgameParkNo"),
   document.getElementById("playerOneEndgameParkYes")
-];
+]
 
 let playerTwoEndgamePark = [
   document.getElementById("playerTwoEndgameParkNo"),
   document.getElementById("playerTwoEndgameParkYes")
-];
+]
 
 let playerThreeEndgamePark = [
   document.getElementById("playerThreeEndgameParkNo"),
   document.getElementById("playerThreeEndgameParkYes")
-];
+]
 
 let playerFourEndgamePark = [
   document.getElementById("playerFourEndgameParkNo"),
   document.getElementById("playerFourEndgameParkYes")
-];
+]
 
 
 let teamEndgamePark = [playerOneEndgamePark, playerTwoEndgamePark, playerThreeEndgamePark, playerFourEndgamePark]
 
 function endgameParkChange(alliance, teamNumber, change)
 {
-  alliance[8][teamNumber%2] = change;
+  alliance[8][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
       teamEndgamePark[teamNumber][i].style = ""
   }
@@ -1095,33 +1094,33 @@ function endgameParkChange(alliance, teamNumber, change)
 let playerOneEndgameSuspend = [
   document.getElementById("playerOneEndgameSuspendNo"),
   document.getElementById("playerOneEndgameSuspendYes")
-];
+]
 
 let playerTwoEndgameSuspend = [
   document.getElementById("playerTwoEndgameSuspendNo"),
   document.getElementById("playerTwoEndgameSuspendYes")
-];
+]
 
 let playerThreeEndgameSuspend = [
   document.getElementById("playerThreeEndgameSuspendNo"),
   document.getElementById("playerThreeEndgameSuspendYes")
-];
+]
 
 let playerFourEndgameSuspend = [
   document.getElementById("playerFourEndgameSuspendNo"),
   document.getElementById("playerFourEndgameSuspendYes")
-];
+]
 
 let teamEndgameSuspend = [
   playerOneEndgameSuspend,
   playerTwoEndgameSuspend,
   playerThreeEndgameSuspend,
   playerFourEndgameSuspend
-];
+]
 
 function endgameSuspendChange(alliance, teamNumber, change)
 {
-  alliance[7][teamNumber%2] = change;
+  alliance[7][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
       teamEndgameSuspend[teamNumber][i].style = ""
   }
@@ -1203,7 +1202,7 @@ function autoPixelChange(alliance, teamNumber, change)
 {
   alliance[5][teamNumber%2] = change
   for(let i=0; i < 2; i++) {
-      teamAutoPixel[teamNumber][i].style = "";
+      teamAutoPixel[teamNumber][i].style = ""
   }
   teamAutoPixel[teamNumber][change].style.color = "white"
   if(change == 0)
@@ -1249,18 +1248,15 @@ function autoParkChange(alliance, teamNumber, change)
     teamAutoPark[teamNumber][change].style.backgroundColor = universalGreen
 }
 
-for(let i=0; i < 4; i++)
-{
-  for(let j=0; j < 4; j++)
-  {
+for(let i=0; i < 4; i++) {
+  for(let j=0; j < 4; j++) {
       teamDroneZone[i][j].addEventListener("click", () => {
           droneZoneChange(i <= 1? blueAlliance: redAlliance, i, j)
           updatePoints(i <= 1? "blue": "red")
       })
   }
 
-  for(let j=0; j < 2; j++)
-  {
+  for(let j=0; j < 2; j++) {
       teamProps[i][j].addEventListener("click", () => {
           propChange(i <= 1? blueAlliance: redAlliance, i, j)
           updatePoints(i <= 1? "blue": "red")
@@ -1286,105 +1282,91 @@ for(let i=0; i < 4; i++)
       updatePoints(i <= 1? "blue": "red")
   })
   }
-
 }
 
-updateBackboardStats();
-updatePoints("red");
-updatePoints("blue");
+updateBackboardStats()
+updatePoints("red")
+updatePoints("blue")
 
 const resetButtons = [
   document.getElementsByClassName("reset_red_backpanel_button")[0],
-  document.getElementsByClassName("reset_blue_backpanel_button")[0]
+  document.getElementsByClassName("reset_blue_backpanel_button")[0],
+  document.getElementById("resetRedAlliance"),
+  document.getElementById("resetBlueAlliance")
 ]
 
 resetButtons[0].addEventListener("click" , () => {
-    let colorString = "red"
-    redAlliance = [
-        0,//(0) pixels on backboard
-        0,//(1) mosaics
-        0,//(2) pixel in backstage
-        //player one left player 2 right
-        [0,0],//(3) player prop
-        [0,0],//(4) auto spike
-        [0,0],//(5) auto pixel
-        [0,0],//(6) auto park
-        [0,0],//(7) suspension
-        [0,0],//(8) park
-        [0,0],//(9) drone
-        0,//(10) minor penalties
-        0,//(11) major penalties
-        0,//(12) set lines crossed
-        0,//(13) auto backstage pixel
-        0//(14) auto backpanel pixel
-    ]
-    redColorStates.fill("black")
-    let color = redAlliance;
-    let colorStates = redColorStates;
-    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
-    for(i = 0; i < hexagons.length; i++) {
-      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
-      hexagons[i].classList.add("black");
-    }
-    redAllianceBackstagePixels[0].value=0;
-    redAllianceAutoBackpanelPixels[0].value=0;
-    redAllianceAutoBackstagePixels[0].value=0;
-    redAllianceMinorPenalties[0].value=0;
-    redAllianceMajorPenalties[0].value=0;
-    let buttons = document.getElementsByClassName("red_button");
-    for(let i = 0; i < buttons.length;i++) {
-      buttons[i].style.backgroundColor="aliceblue";
-      buttons[i].style.color="black";
-    }
-    updateSetLines(color,colorStates);
-    scoreMosaics(colorStates,color);
-    updateBackboardStats();
-    updatePoints("red");
-    updatePoints("blue");
-  });
+  let colorString = "red"
+  redAlliance = [0,0,0,[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],0,0,0,0,0]
+  redColorStates.fill("black")
+  let color = redAlliance
+  let colorStates = redColorStates
+  let hexagons = document.getElementsByClassName("hexagon_" + colorString)
+  for(i = 0; i < hexagons.length; i++) {
+    hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+    hexagons[i].classList.add("black")
+  }
+  updateSetLines(color,colorStates)
+  scoreMosaics(colorStates,color)
+  updateBackboardStats()
+  updatePoints("red")
+  updatePoints("blue")
+})
 
-  resetButtons[1].addEventListener("click" , () => {
-    colorString = "blue";
-    blueAlliance = [
-      0,//(0) pixels on backboard
-      0,//(1) mosaics
-      0,//(2) pixel in backstage
-      //player one left player 2 right
-      [0,0],//(3) player prop
-      [0,0],//(4) auto spike
-      [0,0],//(5) auto pixel
-      [0,0],//(6) auto park
-      [0,0],//(7) suspension
-      [0,0],//(8) park
-      [0,0],//(9) drone
-      0,//(10) minor penalties
-      0,//(11) major penalties
-      0,//(12) set lines crossed
-      0,//(13) auto backstage pixel
-      0//(14) auto backpanel pixel
-    ]
-    blueColorStates.fill("black")
-    let color = blueAlliance;
-    let colorStates = blueColorStates;
-    let hexagons = document.getElementsByClassName("hexagon_" + colorString);
-    for(i = 0; i < hexagons.length; i++) {
-      hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
-      hexagons[i].classList.add("black");
-    }
-    blueAllianceBackstagePixels[0].value=0;
-    blueAllianceAutoBackpanelPixels[0].value=0;
-    blueAllianceAutoBackstagePixels[0].value=0;
-    blueAllianceMinorPenalties[0].value=0;
-    blueAllianceMajorPenalties[0].value=0;
-    let buttons = document.getElementsByClassName("blue_button");
-    for(let i = 0; i < buttons.length;i++) {
-      buttons[i].style.backgroundColor="aliceblue";
-      buttons[i].style.color="black";
-    }
-    updateSetLines(color,colorStates);
-    scoreMosaics(colorStates,color);
-    updateBackboardStats();
-    updatePoints("red");
-    updatePoints("blue");
+resetButtons[1].addEventListener("click" , () => {
+  colorString = "blue"
+  blueColorStates.fill("black")
+  let color = blueAlliance
+  let colorStates = blueColorStates
+  let hexagons = document.getElementsByClassName("hexagon_" + colorString)
+  for(i = 0; i < hexagons.length; i++) {
+    hexagons[i].classList.remove("black", "white", "green", "purple", "yellow")
+    hexagons[i].classList.add("black")
+  }
+  updateSetLines(color,colorStates)
+  scoreMosaics(colorStates,color)
+  updateBackboardStats()
+  updatePoints("red")
+  updatePoints("blue")
+})
 
-  });
+resetButtons[2].addEventListener("click" , () => {
+  let color = redAlliance
+  let colorStates = redColorStates
+  redAllianceBackstagePixels[0].value=0
+  redAllianceAutoBackpanelPixels[0].value=0
+  redAllianceAutoBackstagePixels[0].value=0
+  redAllianceMinorPenalties[0].value=0
+  redAllianceMajorPenalties[0].value=0
+  let buttons = document.getElementsByClassName("red_button")
+  for(let i = 0; i < buttons.length;i++) {
+    buttons[i].style.backgroundColor="aliceblue"
+    buttons[i].style.color="black"
+  }
+  updateSetLines(color,colorStates)
+  scoreMosaics(colorStates,color)
+  updateBackboardStats()
+  updatePoints("red")
+  updatePoints("blue")
+})
+
+resetButtons[3].addEventListener("click" , () => {
+  blueAlliance = [0,0,0,[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],0,0,0,0,0]
+  let color = blueAlliance
+  let colorStates = blueColorStates
+  blueAllianceBackstagePixels[0].value=0
+  blueAllianceAutoBackpanelPixels[0].value=0
+  blueAllianceAutoBackstagePixels[0].value=0
+  blueAllianceMinorPenalties[0].value=0
+  blueAllianceMajorPenalties[0].value=0
+  let buttons = document.getElementsByClassName("blue_button")
+  for(let i = 0; i < buttons.length;i++) {
+    buttons[i].style.backgroundColor="aliceblue"
+    buttons[i].style.color="black"
+  }
+  updateSetLines(color,colorStates)
+  scoreMosaics(colorStates,color)
+  updateBackboardStats()
+  updatePoints("red")
+  updatePoints("blue")
+})
