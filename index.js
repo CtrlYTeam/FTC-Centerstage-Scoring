@@ -323,12 +323,12 @@ function newCookie() {
     summaryPanelCheck: 0,
   }
   let jsonData = JSON.stringify(userData)
-  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Tue, 30 Dec 2024 12:00:00 UTC; path=/`
 }
 
 function updateCookie() {
   let jsonData = JSON.stringify(userData)
-  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`
+  document.cookie = `userData=${encodeURIComponent(jsonData)}; expires=Tue, 30 Dec 2024 12:00:00 UTC; path=/`
 }
 
 function parseCookie() {
