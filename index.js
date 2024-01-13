@@ -1340,8 +1340,8 @@ resetButtons[2].addEventListener("click" , () => {
   redAllianceMajorPenalties[0].value=0
   let buttons = document.getElementsByClassName("red_button")
   for(let i = 0; i < buttons.length;i++) {
-    buttons[i].style.backgroundColor="aliceblue"
-    buttons[i].style.color="black"
+    buttons[i].style.backgroundColor="var(--buttonbackground)"
+    buttons[i].style.color="var(--textcolor)"
   }
   updateSetLines(color,colorStates)
   scoreMosaics(colorStates,color)
@@ -1361,8 +1361,8 @@ resetButtons[3].addEventListener("click" , () => {
   blueAllianceMajorPenalties[0].value=0
   let buttons = document.getElementsByClassName("blue_button")
   for(let i = 0; i < buttons.length;i++) {
-    buttons[i].style.backgroundColor="aliceblue"
-    buttons[i].style.color="black"
+    buttons[i].style.backgroundColor="var(--buttonbackground)"
+    buttons[i].style.color="var(--textcolor)"
   }
   updateSetLines(color,colorStates)
   scoreMosaics(colorStates,color)
