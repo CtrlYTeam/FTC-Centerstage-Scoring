@@ -55,5 +55,5 @@ in the case it goes by
  0, 
  0
 ]
-that means for player x and player x+1
-the list with colors folows an array from top right to bottom left
+that means for player x and player x+1 respectively
+the list with colors follows an array from top right to bottom left
