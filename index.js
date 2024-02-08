@@ -1297,7 +1297,6 @@ const resetButtons = [
 
 resetButtons[0].addEventListener("click" , () => {
   let colorString = "red"
-  redAlliance = [0,0,0,[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],0,0,0,0,0]
   redColorStates.fill("black")
   let color = redAlliance
   let colorStates = redColorStates
