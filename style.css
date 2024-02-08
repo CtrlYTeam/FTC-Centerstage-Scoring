@@ -2,8 +2,8 @@
 /* #0464cc red */
 
 :root {
-  --oranage: #f9812c;
-  --blue: #0464cc;
+  --oranage: #f66902ff;
+  --blue: #0061ceff;
   --border: #000000;
   --mainbackground: #d2daff;
   --buttonbackground:#f0f0f0;
@@ -149,8 +149,7 @@ h1, p, h1, a, h2    {
   z-index: 3;
 }
 .logo{
-  height: 5vw;
-  margin: 0.085vw;
+  height: 7.3vw;
 }
 .player_one_input, .player_two_input, .player_three_input, .player_four_input{
   width: 14%;
